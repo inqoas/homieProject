@@ -1,0 +1,2314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fastkart">
+    <meta name="keywords" content="Fastkart">
+    <meta name="author" content="Fastkart">
+    <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
+    <title>User Dashboard</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- bootstrap css -->
+    <link id="rtl-link" rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
+
+    <!-- font-awesome css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
+
+    <!-- feather icon css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css">
+
+    <!-- slick css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick-theme.css">
+
+    <!-- Iconly css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/bulk-style.css">
+
+    <!-- Template css -->
+    <link id="color-link" rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/template/assets/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/user-dashboard.css">
+    
+</head>
+
+<body>
+
+    <!-- Loader Start -->
+    <div class="fullpage-loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <!-- Loader End -->
+
+    <!-- Header Start -->
+    <header class="pb-md-4 pb-0">
+
+        <div class="top-nav top-header sticky-header">
+            <div class="container-fluid-lg">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="navbar-top">
+                            <button class="navbar-toggler d-xl-none d-inline navbar-menu-button" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#primaryMenu">
+                                <span class="navbar-toggler-icon">
+                                    <i class="fa-solid fa-bars"></i>
+                                </span>
+                            </button>
+                            <a href="index.html" class="web-logo nav-logo">
+                                <img src="../assets/images/svg/Homie_logo.svg" class="img-fluid blur-up lazyload"
+                                    alt="">
+                            </a>
+                            <div class="rightside-box">
+                                <div class="search-full">
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i data-feather="search" class="font-light"></i>
+                                        </span>
+                                        <input type="text" class="form-control search-type"
+                                            placeholder="Search here..">dashboard-contant-title
+                                        <span class="input-group-text close-search">
+                                            <i data-feather="x" class="font-light"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <ul class="right-side-menu">
+                                    <li class="right-side">
+                                        <div class="delivery-login-box">
+                                            <div class="delivery-icon">
+                                                <div class="search-box">
+                                                    <i data-feather="search"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- 鈴鐺 -->
+                                    <li class="right-side">
+                                        <div class="onhover-dropdown header-badge">
+                                            <button type="button" class="btn p-0 position-relative header-wishlist">
+                                                <div class="delivery-icon">
+                                                    <i class="fa-regular fa-bell fa-xl"></i>
+                                                </div>
+                                                <span class="position-absolute top-0 start-100 translate-middle badge">3
+                                                    <span class="visually-hidden">unread messages</span>
+                                                </span>
+                                            </button>
+
+                                            <div class="onhover-div">
+                                                <ul class="cart-list">
+                                                    <li class="product-box-contain">
+                                                        <a class="aa" href="#">
+                                                            <div class="drop-cart">
+                                                                <div class="drop-contain">
+                                                                    <h5 class="a">通知一</h5>
+                                                                    <h6>關於今日特價方案</h6>
+                                                                    <button class="close-button close_button">
+                                                                        <i class="fa-solid fa-xmark"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+
+                                                    <li class="product-box-contain">
+                                                        <a class="aa" href="#">
+                                                            <div class="drop-cart">
+                                                                <div class="drop-contain">
+                                                                    <h5 class="a">通知二
+                                                                    </h5>
+                                                                    <h6>關於今日特價方案</h6>
+                                                                    <button class="close-button close_button">
+                                                                        <i class="fa-solid fa-xmark"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+
+                                                    <li class="product-box-contain">
+                                                        <a class="aa" href="#">
+                                                            <div class="drop-cart">
+                                                                <div class="drop-contain">
+                                                                    <h5 class="a">通知三
+                                                                    </h5>
+                                                                    <h6>關於今日特價方案</h6>
+                                                                    <button class="close-button close_button">
+                                                                        <i class="fa-solid fa-xmark"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- 鈴鐺 -->
+
+                                    <li class="right-side">
+                                        <a href="user-dashboard.html" class="btn p-0 position-relative header-wishlist"
+                                            onclick="redirectToWishlist()">
+                                            <i data-feather="heart"></i>
+                                        </a>
+                                    </li>
+
+
+                                    <li class="right-side">
+                                        <div class="onhover-dropdown header-badge">
+                                            <button type="button" class="btn p-0 position-relative header-wishlist">
+                                                <i data-feather="shopping-cart"></i>
+                                                <span class="position-absolute top-0 start-100 translate-middle badge">2
+                                                    <span class="visually-hidden">unread messages</span>
+                                                </span>
+                                            </button>
+
+                                            <div class="onhover-div">
+                                                <ul class="cart-list">
+                                                    <li class="product-box-contain">
+                                                        <div class="drop-cart">
+                                                            <a href="product-left-thumbnail.html" class="drop-image">
+                                                                <img src="../assets/images/vegetable/product/1.png"
+                                                                    class="blur-up lazyload" alt="">
+                                                            </a>
+
+                                                            <div class="drop-contain">
+                                                                <a href="product-left-thumbnail.html">
+                                                                    <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+                                                                </a>
+                                                                <h6><span>1 x</span> $80.58</h6>
+                                                                <button class="close-button close_button">
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="product-box-contain">
+                                                        <div class="drop-cart">
+                                                            <a href="product-left-thumbnail.html" class="drop-image">
+                                                                <img src="../assets/images/vegetable/product/2.png"
+                                                                    class="blur-up lazyload" alt="">
+                                                            </a>
+
+                                                            <div class="drop-contain">
+                                                                <a href="product-left-thumbnail.html">
+                                                                    <h5>Peanut Butter Bite Premium Butter Cookies 600 g
+                                                                    </h5>
+                                                                </a>
+                                                                <h6><span>1 x</span> $25.68</h6>
+                                                                <button class="close-button close_button">
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+
+                                                <div class="price-box">
+                                                    <h5>總價 :</h5>
+                                                    <h4 class="theme-color fw-bold">$106.58</h4>
+                                                </div>
+
+                                                <div class="button-group">
+                                                    <a href="cart.html" class="btn btn-sm cart-button">購物車</a>
+                                                    <a href="checkout.html" class="btn btn-sm cart-button theme-bg-color
+                                                    text-white">結帳</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="right-side onhover-dropdown">
+                                        <div class="delivery-login-box">
+                                            <div class="delivery-icon">
+                                                <i data-feather="user"></i>
+                                            </div>
+                                            <div class="delivery-detail">
+                                                <h6>Hello,</h6>
+                                                <h5>My Account</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="onhover-div onhover-div-login">
+                                            <ul class="user-box-name">
+                                                <li class="product-box-contain">
+                                                    <i></i>
+                                                    <a href="login.html">登入</a>
+                                                </li>
+
+                                                <li class="product-box-contain">
+                                                    <a href="sign-up.html">註冊</a>
+                                                </li>
+
+                                                <li class="product-box-contain">
+                                                    <a href="forgot.html">忘記密碼</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-12">
+                    <div class="header-nav">
+                        <div class="header-nav-middle">
+                            <div class="main-nav navbar navbar-expand-xl navbar-light navbar-sticky">
+                                <div class="offcanvas offcanvas-collapse order-xl-2" id="primaryMenu">
+                                    <div class="offcanvas-header navbar-shadow">
+                                        <h5>Menu</h5>
+                                        <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="offcanvas-body">
+                                        <ul class="navbar-nav">
+
+                                            <li class="nav-item dropdown">
+                                                <a style="font-size: 20px; font-weight: bold;">商品頁面</a>
+                                            </li>
+
+                                            <li class="nav-item dropdown">
+                                                <a style="font-size: 20px; font-weight: bold;">服務頁面</a>
+                                            </li>
+
+                                            <li class="nav-item dropdown dropdown-mega">
+                                                <a style="font-size: 20px; font-weight: bold;">幫助中心</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- mobile fix menu start -->
+    <div class="mobile-menu d-md-none d-block mobile-cart">
+        <ul>
+            <li class="active">
+                <a href="index.html">
+                    <i class="iconly-Home icli"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <li class="mobile-category">
+                <a href="javascript:void(0)">
+                    <i class="iconly-Category icli js-link"></i>
+                    <span>Category</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="search.html" class="search-box">
+                    <i class="iconly-Search icli"></i>
+                    <span>Search</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="wishlist.html" class="notifi-wishlist">
+                    <i class="iconly-Heart icli"></i>
+                    <span>My Wish</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="cart.html">
+                    <i class="iconly-Bag-2 icli fly-cate"></i>
+                    <span>Cart</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- mobile fix menu end -->
+
+    <!-- Breadcrumb Section Start -->
+    <section class="breadscrumb-section pt-0">
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadscrumb-contain">
+                        <h2>會員中心</h2>
+                        <nav>
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">
+                                        <i class="fa-solid fa-house"></i>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">會員中心</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- User Dashboard Section Start -->
+    <section class="user-dashboard-section section-b-space">
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-xxl-3 col-lg-4">
+                    <div class="dashboard-left-sidebar">
+                        <div class="close-button d-flex d-lg-none">
+                            <button class="close-sidebar">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <div class="profile-box">
+                            <div class="cover-image">
+                                <img src="../assets/images/inner-page/cover-img.jpg" class="img-fluid blur-up lazyload"
+                                    alt="">
+                            </div>
+
+                            <div class="profile-contain">
+                                <div class="profile-image">
+                                    <div class="position-relative">
+                                        <img src="../assets/images/inner-page/user/1.jpg"
+                                            class="blur-up lazyload update_img" alt="">
+                                        <div class="cover-icon">
+                                            <i class="fa-solid fa-pen">
+                                                <input type="file" onchange="readURL(this,0)">
+                                            </i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="profile-name">
+                                    <h3>Vicki E. Pope</h3>
+                                    <h6 class="text-content">vicki.pope@gmail.com</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ul class="nav nav-pills user-nav-pills" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="pills-dashboard-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-dashboard" type="button" role="tab"
+                                    aria-controls="pills-dashboard" aria-selected="true"><i data-feather="home"></i>
+                                    會員總覽</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-profile" type="button" role="tab"
+                                    aria-controls="pills-profile" aria-selected="false"><i data-feather="user"></i>
+                                    個人檔案</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-order-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-order" type="button" role="tab" aria-controls="pills-order"
+                                    aria-selected="false"><i data-feather="shopping-bag"></i>購買清單</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-wishlist-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-wishlist" type="button" role="tab"
+                                    aria-controls="pills-wishlist" aria-selected="false"><i data-feather="heart"></i>
+                                    我的最愛</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-card-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-card" type="button" role="tab" aria-controls="pills-card"
+                                    aria-selected="false"><i data-feather="package"></i> 商家檔案</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-service-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-service" type="button" role="tab"
+                                    aria-controls="pills-service" aria-selected="false"><i data-feather="list"></i>
+                                    服務管理</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-address-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-address" type="button" role="tab"
+                                    aria-controls="pills-address" aria-selected="false"><i data-feather="file-text"></i>
+                                    訂單管理</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-security-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-security" type="button" role="tab"
+                                    aria-controls="pills-security" aria-selected="false"><i
+                                        data-feather="bar-chart-2"></i>
+                                    營運表現</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-xxl-9 col-lg-8">
+                    <button class="btn left-dashboard-show btn-animation btn-md fw-bold d-block mb-4 d-lg-none">Show
+                        Menu</button>
+                    <div class="dashboard-right-sidebar">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-dashboard" role="tabpanel"
+                                aria-labelledby="pills-dashboard-tab">
+                                <div class="dashboard-home">
+                                    <div class="title">
+                                        <h2>會員總攬</h2>
+                                        <span class="title-leaf">
+                                            <svg class="icon-width bg-gray">
+                                                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                            </svg>
+                                        </span>
+                                    </div>
+
+                                    <div class="total-box">
+                                        <div class="row g-sm-4 g-3">
+                                            <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
+                                                <div class="totle-contain">
+                                                    <img src="../assets/images/svg/order.svg"
+                                                        class="img-1 blur-up lazyload" alt="">
+                                                    <img src="../assets/images/svg/order.svg" class="blur-up lazyload"
+                                                        alt="">
+                                                    <div class="totle-detail">
+                                                        <h5>總訂單數</h5>
+                                                        <h3>3658</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
+                                                <div class="totle-contain">
+                                                    <img src="../assets/images/svg/pending.svg"
+                                                        class="img-1 blur-up lazyload" alt="">
+                                                    <img src="../assets/images/svg/pending.svg" class="blur-up lazyload"
+                                                        alt="">
+                                                    <div class="totle-detail">
+                                                        <h5>處理中訂單</h5>
+                                                        <h3>254</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
+                                                <div class="totle-contain">
+                                                    <img src="../assets/images/svg/coins-solid.svg"
+                                                        class="img-1 blur-up lazyload" alt="">
+                                                    <img src="../assets/images/svg/coins-solid.svg"
+                                                        class="blur-up lazyload" alt="">
+                                                    <div class="totle-detail">
+                                                        <h5>GC幣</h5>
+                                                        <h3>100</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-4">
+                                        <div class="col-xxl-6">
+                                            <div class="dashboard-contant-title">
+                                                <h3>個人資訊
+                                                </h3>
+                                            </div>
+                                            <div class="dashboard-detail">
+                                                <h4 class="text-content">帳號 :<span>vicki.pope@gmail.com</span> </h6>
+                                                    <br>
+                                                    <h4 class="text-content">姓名 :<span>MARK JECNO</span></h6>
+                                                        <br>
+                                                        <h4 class="text-content">電話 :<span>0912345678</span></h6>
+                                                            <br>
+                                                            <h4 class="text-content">地址 :<span>台北市信義區忠孝東路五段</span></h6>
+                                                                <br>
+                                                                <h4 class="text-content">生日 :<span>1990/01/01</span>
+                                                                    </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade show" id="pills-wishlist" role="tabpanel"
+                                aria-labelledby="pills-wishlist-tab">
+                                <div class="dashboard-wishlist">
+                                    <div class="title">
+                                        <h2>我的最愛</h2>
+                                        <span class="title-leaf title-leaf-gray">
+                                            <svg class="icon-width bg-gray">
+                                                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="row g-sm-4 g-3">
+                                        <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
+                                            <div class="product-box-3 theme-bg-white h-90">
+                                                <div class="product-header">
+                                                    <div class="product-image">
+                                                        <a href="product-left-thumbnail.html">
+                                                            <img src="../assets/images/cake/product/2.png"
+                                                                class="img-fluid blur-up lazyload" alt="">
+                                                        </a>
+
+                                                        <div class="product-header-top">
+                                                            <button class="btn wishlist-button close_button">
+                                                                <i data-feather="x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="product-footer">
+                                                    <div class="product-detail">
+                                                        <span class="span-name">Vegetable</span>
+                                                        <a href="product-left-thumbnail.html">
+                                                            <h5 class="name">Fresh Bread and
+                                                                PaCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCstry
+                                                                Flour 200 g</h5>
+                                                        </a>
+                                                        <p class="text-content mt-1 mb-2 product-content">Cheesy feet
+                                                            cheesy grin brie. Mascarpone cheese and wine hard cheese the
+                                                            big cheese everyone loves smelly cheese macaroni cheese
+                                                            croque monsieur.</p>
+                                                        <h6 class="unit mt-1">250 ml</h6>
+                                                        <h5 class="price">
+                                                            <span class="theme-color">$08.02</span>
+                                                            <del>$15.15</del>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
+                                            <div class="product-box-3 theme-bg-white h-100">
+                                                <div class="product-header">
+                                                    <div class="product-image">
+                                                        <a href="product-left-thumbnail.html">
+                                                            <img src="../assets/images/cake/product/3.png"
+                                                                class="img-fluid blur-up lazyload" alt="">
+                                                        </a>
+
+                                                        <div class="product-header-top">
+                                                            <button class="btn wishlist-button close_button">
+                                                                <i data-feather="x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="product-footer">
+                                                    <div class="product-detail">
+                                                        <span class="span-name">Vegetable</span>
+                                                        <a href="product-left-thumbnail.html">
+                                                            <h5 class="name">Peanut Butter Bite Premium Butter Cookies
+                                                                600 g</h5>
+                                                        </a>
+                                                        <p class="text-content mt-1 mb-2 product-content">Feta taleggio
+                                                            croque monsieur swiss manchego cheesecake dolcelatte
+                                                            jarlsberg. Hard cheese danish fontina boursin melted cheese
+                                                            fondue.</p>
+                                                        <h6 class="unit mt-1">350 G</h6>
+                                                        <h5 class="price">
+                                                            <span class="theme-color">$04.33</span>
+                                                            <del>$10.36</del>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
+                                            <div class="product-box-3 theme-bg-white h-100">
+                                                <div class="product-header">
+                                                    <div class="product-image">
+                                                        <a href="product-left-thumbnail.html">
+                                                            <img src="../assets/images/cake/product/4.png"
+                                                                class="img-fluid blur-up lazyload" alt="">
+                                                        </a>
+
+                                                        <div class="product-header-top">
+                                                            <button class="btn wishlist-button close_button">
+                                                                <i data-feather="x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="product-footer">
+                                                    <div class="product-detail">
+                                                        <span class="span-name">Snacks</span>
+                                                        <a href="product-left-thumbnail.html">
+                                                            <h5 class="name">SnackAmor Combo Pack of Jowar Stick and
+                                                                Jowar Chips</h5>
+                                                        </a>
+                                                        <p class="text-content mt-1 mb-2 product-content">Lancashire
+                                                            hard cheese parmesan. Danish fontina mozzarella cream cheese
+                                                            smelly cheese cheese and wine cheesecake dolcelatte stilton.
+                                                            Cream cheese parmesan who moved my cheese when the cheese
+                                                            comes out everybody's happy cream cheese red leicester
+                                                            ricotta edam.</p>
+                                                        <h6 class="unit mt-1">570 G</h6>
+                                                        <h5 class="price">
+                                                            <span class="theme-color">$12.52</span>
+                                                            <del>$13.62</del>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
+                                            <div class="product-box-3 theme-bg-white h-100">
+                                                <div class="product-header">
+                                                    <div class="product-image">
+                                                        <a href="product-left-thumbnail.html">
+                                                            <img src="../assets/images/cake/product/5.png"
+                                                                class="img-fluid blur-up lazyload" alt="">
+                                                        </a>
+
+                                                        <div class="product-header-top">
+                                                            <button class="btn wishlist-button close_button">
+                                                                <i data-feather="x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="product-footer">
+                                                    <div class="product-detail">
+                                                        <span class="span-name">Snacks</span>
+                                                        <a href="product-left-thumbnail.html">
+                                                            <h5 class="name">Yumitos Chilli Sprinkled Potato Chips 100 g
+                                                            </h5>
+                                                        </a>
+                                                        <p class="text-content mt-1 mb-2 product-content">Cheddar
+                                                            cheddar pecorino hard cheese hard cheese cheese and biscuits
+                                                            bocconcini babybel. Cow goat paneer cream cheese fromage
+                                                            cottage cheese cauliflower cheese jarlsberg.</p>
+                                                        <h6 class="unit mt-1">100 G</h6>
+                                                        <h5 class="price">
+                                                            <span class="theme-color">$10.25</span>
+                                                            <del>$12.36</del>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
+                                            <div class="product-box-3 theme-bg-white h-100">
+                                                <div class="product-header">
+                                                    <div class="product-image">
+                                                        <a href="product-left-thumbnail.html">
+                                                            <img src="../assets/images/cake/product/6.png"
+                                                                class="img-fluid blur-up lazyload" alt="">
+                                                        </a>
+
+                                                        <div class="product-header-top">
+                                                            <button class="btn wishlist-button close_button">
+                                                                <i data-feather="x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="product-footer">
+                                                    <div class="product-detail">
+                                                        <span class="span-name">Vegetable</span>
+                                                        <a href="product-left-thumbnail.html">
+                                                            <h5 class="name">Fantasy Crunchy Choco Chip Cookies</h5>
+                                                        </a>
+                                                        <p class="text-content mt-1 mb-2 product-content">Bavarian
+                                                            bergkase smelly cheese swiss cut the cheese lancashire who
+                                                            moved my cheese manchego melted cheese. Red leicester paneer
+                                                            cow when the cheese comes out everybody's happy croque
+                                                            monsieur goat melted cheese port-salut.</p>
+                                                        <h6 class="unit mt-1">550 G</h6>
+                                                        <h5 class="price">
+                                                            <span class="theme-color">$14.25</span>
+                                                            <del>$16.57</del>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
+                                            <div class="product-box-3 theme-bg-white h-100">
+                                                <div class="product-header">
+                                                    <div class="product-image">
+                                                        <a href="product-left-thumbnail.html">
+                                                            <img src="../assets/images/cake/product/7.png"
+                                                                class="img-fluid blur-up lazyload" alt="">
+                                                        </a>
+
+                                                        <div class="product-header-top">
+                                                            <button class="btn wishlist-button close_button">
+                                                                <i data-feather="x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="product-footer">
+                                                    <div class="product-detail">
+                                                        <span class="span-name">Vegetable</span>
+                                                        <a href="product-left-thumbnail.html">
+                                                            <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>
+                                                        </a>
+                                                        <p class="text-content mt-1 mb-2 product-content">Melted cheese
+                                                            babybel chalk and cheese. Port-salut port-salut cream cheese
+                                                            when the cheese comes out everybody's happy cream cheese
+                                                            hard cheese cream cheese red leicester.</p>
+                                                        <h6 class="unit mt-1">1 Kg</h6>
+                                                        <h5 class="price">
+                                                            <span class="theme-color">$12.68</span>
+                                                            <del>$14.69</del>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
+                                            <div class="product-box-3 theme-bg-white h-100">
+                                                <div class="product-header">
+                                                    <div class="product-image">
+                                                        <a href="product-left-thumbnail.html">
+                                                            <img src="../assets/images/cake/product/2.png"
+                                                                class="img-fluid blur-up lazyload" alt="">
+                                                        </a>
+
+                                                        <div class="product-header-top">
+                                                            <button class="btn wishlist-button close_button">
+                                                                <i data-feather="x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="product-footer">
+                                                    <div class="product-detail">
+                                                        <span class="span-name">Vegetable</span>
+                                                        <a href="product-left-thumbnail.html">
+                                                            <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>
+                                                        </a>
+                                                        <p class="text-content mt-1 mb-2 product-content">Squirty cheese
+                                                            cottage cheese cheese strings. Red leicester paneer danish
+                                                            fontina queso lancashire when the cheese comes out
+                                                            everybody's happy cottage cheese paneer.</p>
+                                                        <h6 class="unit mt-1">250 ml</h6>
+                                                        <h5 class="price">
+                                                            <span class="theme-color">$08.02</span>
+                                                            <del>$15.15</del>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
+                                            <div class="product-box-3 theme-bg-white h-100">
+                                                <div class="product-header">
+                                                    <div class="product-image">
+                                                        <a href="product-left-thumbnail.html">
+                                                            <img src="../assets/images/cake/product/2.png"
+                                                                class="img-fluid blur-up lazyload" alt="">
+                                                        </a>
+
+                                                        <div class="product-header-top">
+                                                            <button class="btn wishlist-button close_button">
+                                                                <i data-feather="x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="product-footer">
+                                                    <div class="product-detail">
+                                                        <span class="span-name">Vegetable</span>
+                                                        <a href="product-left-thumbnail.html">
+                                                            <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>
+                                                        </a>
+                                                        <p class="text-content mt-1 mb-2 product-content">Squirty cheese
+                                                            cottage cheese cheese strings. Red leicester paneer danish
+                                                            fontina queso lancashire when the cheese comes out
+                                                            everybody's happy cottage cheese paneer.</p>
+                                                        <h6 class="unit mt-1">250 ml</h6>
+                                                        <h5 class="price">
+                                                            <span class="theme-color">$08.02</span>
+                                                            <del>$15.15</del>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
+                                            <div class="product-box-3 theme-bg-white h-100">
+                                                <div class="product-header">
+                                                    <div class="product-image">
+                                                        <a href="product-left-thumbnail.html">
+                                                            <img src="../assets/images/cake/product/2.png"
+                                                                class="img-fluid blur-up lazyload" alt="">
+                                                        </a>
+
+                                                        <div class="product-header-top">
+                                                            <button class="btn wishlist-button close_button">
+                                                                <i data-feather="x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="product-footer">
+                                                    <div class="product-detail">
+                                                        <span class="span-name">Vegetable</span>
+                                                        <a href="product-left-thumbnail.html">
+                                                            <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>
+                                                        </a>
+                                                        <p class="text-content mt-1 mb-2 product-content">Squirty cheese
+                                                            cottage cheese cheese strings. Red leicester paneer danish
+                                                            fontina queso lancashire when the cheese comes out
+                                                            everybody's happy cottage cheese paneer.</p>
+                                                        <h6 class="unit mt-1">250 ml</h6>
+                                                        <h5 class="price">
+                                                            <span class="theme-color">$08.02</span>
+                                                            <del>$15.15</del>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
+                                            <div class="product-box-3 theme-bg-white h-100">
+                                                <div class="product-header">
+                                                    <div class="product-image">
+                                                        <a href="product-left-thumbnail.html">
+                                                            <img src="../assets/images/cake/product/2.png"
+                                                                class="img-fluid blur-up lazyload" alt="">
+                                                        </a>
+
+                                                        <div class="product-header-top">
+                                                            <button class="btn wishlist-button close_button">
+                                                                <i data-feather="x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="product-footer">
+                                                    <div class="product-detail">
+                                                        <span class="span-name">Vegetable</span>
+                                                        <a href="product-left-thumbnail.html">
+                                                            <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>
+                                                        </a>
+                                                        <p class="text-content mt-1 mb-2 product-content">Squirty cheese
+                                                            cottage cheese cheese strings. Red leicester paneer danish
+                                                            fontina queso lancashire when the cheese comes out
+                                                            everybody's happy cottage cheese paneer.</p>
+                                                        <h6 class="unit mt-1">250 ml</h6>
+                                                        <h5 class="price">
+                                                            <span class="theme-color">$08.02</span>
+                                                            <del>$15.15</del>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
+                                            <div class="product-box-3 theme-bg-white h-100">
+                                                <div class="product-header">
+                                                    <div class="product-image">
+                                                        <a href="product-left-thumbnail.html">
+                                                            <img src="../assets/images/cake/product/2.png"
+                                                                class="img-fluid blur-up lazyload" alt="">
+                                                        </a>
+
+                                                        <div class="product-header-top">
+                                                            <button class="btn wishlist-button close_button">
+                                                                <i data-feather="x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="product-footer">
+                                                    <div class="product-detail">
+                                                        <span class="span-name">Vegetable</span>
+                                                        <a href="product-left-thumbnail.html">
+                                                            <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>
+                                                        </a>
+                                                        <p class="text-content mt-1 mb-2 product-content">Squirty cheese
+                                                            cottage cheese cheese strings. Red leicester paneer danish
+                                                            fontina queso lancashire when the cheese comes out
+                                                            everybody's happy cottage cheese paneer.</p>
+                                                        <h6 class="unit mt-1">250 ml</h6>
+                                                        <h5 class="price">
+                                                            <span class="theme-color">$08.02</span>
+                                                            <del>$15.15</del>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade show" id="pills-order" role="tabpanel"
+                                aria-labelledby="pills-order-tab">
+                                <div class="dashboard-order">
+                                    <div class="title">
+                                        <h2>購買清單</h2>
+                                        <span class="title-leaf title-leaf-gray">
+                                            <svg class="icon-width bg-gray">
+                                                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="order-top row">
+                                                    <div class="col-3 order-top-div"><a href="#">全部</a></div>
+                                                    <div class="col-3 order-top-div"><a href="#">等待交易</a> </div>
+                                                    <div class="col-3 order-top-div"><a href="#">交易完成</a></div>
+                                                    <div class="col-3 order-top-div"><a href="#">退貨</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="order-contain">
+                                            <div class="order-contain-top">
+                                                Homie百貨
+                                                <button class="order-contain-top-button">查看完整訂單</button>
+                                            </div>
+                                            <div class="order-contain-content">
+                                                <img class="order-contain-content-img   " src="../assets/images/nousaki.jpeg" alt="無圖片顯示">
+                                                <div class="order-contain-content-shop">八合一多功能清潔器 擦拭布 毛刷 耳機 相機 鍵盤 螢幕清潔 清潔筆 AirPods清潔器 清潔工具 清潔套裝 XU01</div>
+                                                <div class="order-contain-content-price">$1000</div>
+                                            </div>
+                                            <div class="order-contain-foot">
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <div class="col-4 order-contain-foot-time">訂單時間:<span>2023/07/14 20:35</span></div>
+                                                        <div class="col-2"><button class="order-contain-foot-button">聯絡賣家</button></div>
+                                                        <div class="col-2"><button class="order-contain-foot-button">修改訂單</button></div>
+                                                        <div class="col-2"><button class="order-contain-foot-button">取消訂單</button></div>
+                                                        <div class="col-2"><button class="order-contain-foot-button">完成訂單</button></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade show" id="pills-service" role="tabpanel"
+                                aria-labelledby="pills-service-tab">
+                                <div class="dashboard-order">
+                                    <div class="title">
+                                        <h2>購買清單</h2>
+                                        <span class="title-leaf title-leaf-gray">
+                                            <svg class="icon-width bg-gray">
+                                                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="order-top row">
+                                                    <div class="col-3 order-top-div"><a href="#">全部</a></div>
+                                                    <div class="col-3 order-top-div"><a href="#">等待交易</a> </div>
+                                                    <div class="col-3 order-top-div"><a href="#">交易完成</a></div>
+                                                    <div class="col-3 order-top-div"><a href="#">退貨</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="order-contain">
+                                            <div class="order-contain-top">
+                                                Homie百貨
+                                                <button class="order-contain-top-button">查看完整訂單</button>
+                                            </div>
+                                            <div class="order-contain-content">
+                                                <img class="order-contain-content-img   " src="../assets/images/nousaki.jpeg" alt="無圖片顯示">
+                                                <div class="order-contain-content-shop">八合一多功能清潔器 擦拭布 毛刷 耳機 相機 鍵盤 螢幕清潔 清潔筆 AirPods清潔器 清潔工具 清潔套裝 XU01</div>
+                                                <div class="order-contain-content-price">$1000</div>
+                                            </div>
+                                            <div class="order-contain-foot">
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <div class="col-4 order-contain-foot-time">訂單時間:<span>2023/07/14 20:35</span></div>
+                                                        <div class="col-2"><button class="order-contain-foot-button">聯絡買家</button></div>
+                                                        <div class="col-2"><button class="order-contain-foot-button">修改訂單</button></div>
+                                                        <div class="col-2"><button class="order-contain-foot-button">取消訂單</button></div>
+                                                        <div class="col-2"><button class="order-contain-foot-button">完成訂單</button></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade show" id="pills-address" role="tabpanel"
+                                aria-labelledby="pills-address-tab">
+                                <div class="dashboard-address">
+                                    <div class="title title-flex">
+                                        <div>
+                                            <h2>My Address Book</h2>
+                                            <span class="title-leaf">
+                                                <svg class="icon-width bg-gray">
+                                                    <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+
+                                        <button class="btn theme-bg-color text-white btn-sm fw-bold mt-lg-0 mt-3"
+                                            data-bs-toggle="modal" data-bs-target="#add-address"><i data-feather="plus"
+                                                class="me-2"></i> Add New Address</button>
+                                    </div>
+
+                                    <div class="row g-sm-4 g-3">
+                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
+                                            <div class="address-box">
+                                                <div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="jack"
+                                                            id="flexRadioDefault2" checked>
+                                                    </div>
+
+                                                    <div class="label">
+                                                        <label>Home</label>
+                                                    </div>
+
+                                                    <div class="table-responsive address-table">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td colspan="2">Jack Jennas</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Address :</td>
+                                                                    <td>
+                                                                        <p>8424 James Lane South San Francisco, CA 94080
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Pin Code :</td>
+                                                                    <td>+380</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Phone :</td>
+                                                                    <td>+ 812-710-3798</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <div class="button-group">
+                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
+                                                        data-bs-target="#editProfile"><i data-feather="edit"></i>
+                                                        Edit</button>
+                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
+                                                        data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
+                                                        Remove</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
+                                            <div class="address-box">
+                                                <div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="jack"
+                                                            id="flexRadioDefault3">
+                                                    </div>
+
+                                                    <div class="label">
+                                                        <label>Office</label>
+                                                    </div>
+
+                                                    <div class="table-responsive address-table">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td colspan="2">Terry S. Sutton</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Address :</td>
+                                                                    <td>
+                                                                        <p>2280 Rose Avenue Kenner, LA 70062</p>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Pin Code :</td>
+                                                                    <td>+25</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Phone :</td>
+                                                                    <td>+ 504-228-0969</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <div class="button-group">
+                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
+                                                        data-bs-target="#editProfile"><i data-feather="edit"></i>
+                                                        Edit</button>
+                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
+                                                        data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
+                                                        Remove</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
+                                            <div class="address-box">
+                                                <div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="jack"
+                                                            id="flexRadioDefault4">
+                                                    </div>
+
+                                                    <div class="label">
+                                                        <label>Neighbour</label>
+                                                    </div>
+
+                                                    <div class="table-responsive address-table">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td colspan="2">Juan M. McKeon</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Address :</td>
+                                                                    <td>
+                                                                        <p>1703 Carson Street Lexington, KY 40593</p>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Pin Code :</td>
+                                                                    <td>+78</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Phone :</td>
+                                                                    <td>+ 859-257-0509</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <div class="button-group">
+                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
+                                                        data-bs-target="#editProfile"><i data-feather="edit"></i>
+                                                        Edit</button>
+                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
+                                                        data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
+                                                        Remove</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
+                                            <div class="address-box">
+                                                <div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="jack"
+                                                            id="flexRadioDefault5">
+                                                    </div>
+
+                                                    <div class="label">
+                                                        <label>Home 2</label>
+                                                    </div>
+
+                                                    <div class="table-responsive address-table">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td colspan="2">Gary M. Bailey</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Address :</td>
+                                                                    <td>
+                                                                        <p>2135 Burning Memory Lane Philadelphia, PA
+                                                                            19135</p>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Pin Code :</td>
+                                                                    <td>+26</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Phone :</td>
+                                                                    <td>+ 215-335-9916</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <div class="button-group">
+                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
+                                                        data-bs-target="#editProfile"><i data-feather="edit"></i>
+                                                        Edit</button>
+                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
+                                                        data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
+                                                        Remove</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
+                                            <div class="address-box">
+                                                <div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="jack"
+                                                            id="flexRadioDefault1">
+                                                    </div>
+
+                                                    <div class="label">
+                                                        <label>Home 2</label>
+                                                    </div>
+
+                                                    <div class="table-responsive address-table">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td colspan="2">Gary M. Bailey</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Address :</td>
+                                                                    <td>
+                                                                        <p>2135 Burning Memory Lane Philadelphia, PA
+                                                                            19135</p>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Pin Code :</td>
+                                                                    <td>+26</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Phone :</td>
+                                                                    <td>+ 215-335-9916</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <div class="button-group">
+                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
+                                                        data-bs-target="#editProfile"><i data-feather="edit"></i>
+                                                        Edit</button>
+                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
+                                                        data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
+                                                        Remove</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade show" id="pills-card" role="tabpanel"
+                                aria-labelledby="pills-card-tab">
+                                <div class="dashboard-card">
+                                    <div class="title title-flex">
+                                        <div>
+                                            <h2>My Card Details</h2>
+                                            <span class="title-leaf">
+                                                <svg class="icon-width bg-gray">
+                                                    <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+
+                                        <button class="btn theme-bg-color text-white btn-sm fw-bold mt-lg-0 mt-3"
+                                            data-bs-toggle="modal" data-bs-target="#editCard"><i data-feather="plus"
+                                                class="me-2"></i> Add New Card</button>
+                                    </div>
+
+                                    <div class="row g-4">
+                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-sm-6">
+                                            <div class="payment-card-detail">
+                                                <div class="card-details">
+                                                    <div class="card-number">
+                                                        <h4>XXXX - XXXX - XXXX - 2548</h4>
+                                                    </div>
+
+                                                    <div class="valid-detail">
+                                                        <div class="title">
+                                                            <span>valid</span>
+                                                            <span>thru</span>
+                                                        </div>
+                                                        <div class="date">
+                                                            <h3>08/05</h3>
+                                                        </div>
+                                                        <div class="primary">
+                                                            <span class="badge bg-pill badge-light">primary</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="name-detail">
+                                                        <div class="name">
+                                                            <h5>Audrey Carol</h5>
+                                                        </div>
+                                                        <div class="card-img">
+                                                            <img src="../assets/images/payment-icon/1.jpg"
+                                                                class="img-fluid blur-up lazyloaded" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="edit-card">
+                                                    <a data-bs-toggle="modal" data-bs-target="#editCard"
+                                                        href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#removeProfile"><i
+                                                            class="far fa-minus-square"></i> delete</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="edit-card-mobile">
+                                                <a data-bs-toggle="modal" data-bs-target="#editCard"
+                                                    href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
+                                                <a href="javascript:void(0)"><i class="far fa-minus-square"></i>
+                                                    delete</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-sm-6">
+                                            <div class="payment-card-detail">
+                                                <div class="card-details card-visa">
+                                                    <div class="card-number">
+                                                        <h4>XXXX - XXXX - XXXX - 1536</h4>
+                                                    </div>
+
+                                                    <div class="valid-detail">
+                                                        <div class="title">
+                                                            <span>valid</span>
+                                                            <span>thru</span>
+                                                        </div>
+                                                        <div class="date">
+                                                            <h3>12/23</h3>
+                                                        </div>
+                                                        <div class="primary">
+                                                            <span class="badge bg-pill badge-light">primary</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="name-detail">
+                                                        <div class="name">
+                                                            <h5>Leah Heather</h5>
+                                                        </div>
+                                                        <div class="card-img">
+                                                            <img src="../assets/images/payment-icon/2.jpg"
+                                                                class="img-fluid blur-up lazyloaded" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="edit-card">
+                                                    <a data-bs-toggle="modal" data-bs-target="#editCard"
+                                                        href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#removeProfile"><i
+                                                            class="far fa-minus-square"></i> delete</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="edit-card-mobile">
+                                                <a data-bs-toggle="modal" data-bs-target="#editCard"
+                                                    href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
+                                                <a href="javascript:void(0)"><i class="far fa-minus-square"></i>
+                                                    delete</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-sm-6">
+                                            <div class="payment-card-detail">
+                                                <div class="card-details dabit-card">
+                                                    <div class="card-number">
+                                                        <h4>XXXX - XXXX - XXXX - 1366</h4>
+                                                    </div>
+
+                                                    <div class="valid-detail">
+                                                        <div class="title">
+                                                            <span>valid</span>
+                                                            <span>thru</span>
+                                                        </div>
+                                                        <div class="date">
+                                                            <h3>05/21</h3>
+                                                        </div>
+                                                        <div class="primary">
+                                                            <span class="badge bg-pill badge-light">primary</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="name-detail">
+                                                        <div class="name">
+                                                            <h5>mark jecno</h5>
+                                                        </div>
+                                                        <div class="card-img">
+                                                            <img src="../assets/images/payment-icon/3.jpg"
+                                                                class="img-fluid blur-up lazyloaded" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="edit-card">
+                                                    <a data-bs-toggle="modal" data-bs-target="#editCard"
+                                                        href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#removeProfile"><i
+                                                            class="far fa-minus-square"></i> delete</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="edit-card-mobile">
+                                                <a data-bs-toggle="modal" data-bs-target="#editCard"
+                                                    href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
+                                                <a href="javascript:void(0)"><i class="far fa-minus-square"></i>
+                                                    delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade show" id="pills-profile" role="tabpanel"
+                                aria-labelledby="pills-profile-tab">
+                                <div class="dashboard-profile">
+                                    <div class="title">
+                                        <h2>個人檔案</h2>
+                                        <span class="title-leaf">
+                                            <svg class="icon-width bg-gray">
+                                                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                            </svg>
+                                        </span>
+                                    </div>
+
+                                    <div class="profile-about dashboard-bg-box">
+                                        <div class="row">
+                                            <div class="col-xxl-8">
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>帳號(信箱) :</td>
+                                                                <td>
+                                                                    <p class="profile-p">vicki.pope@gmail.com</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>密碼 :</td>
+                                                                <td>
+                                                                    <input type="password" value="●●●●●●" readonly
+                                                                        class="profile-password">
+                                                                </td>
+                                                                <td style="vertical-align:auto;">
+                                                                    <a href="reset-password.html"
+                                                                        style="margin-bottom: auto; font-size: 16px; color: #274C77; font-weight: bolder;">修改密碼</a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>姓名 :</td>
+                                                                <td>
+                                                                    <p class="profile-p">vicki</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>電話 :</td>
+                                                                <td>
+                                                                    <p class="profile-p">0921847593</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>身分證 :</td>
+                                                                <td>
+                                                                    <p class="profile-p">F123456789</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>地址 :</td>
+                                                                <td>
+                                                                    <p class="profile-p">vicki.pope@gmail.com</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>性別 :</td>
+                                                                <td>
+                                                                    <p class="profile-p">男</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>生日 :</td>
+                                                                <td>
+                                                                    <p class="profile-p">1990/01/01</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>GC幣 :</td>
+                                                                <td>
+                                                                    <p class="profile-p">100</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="seller">
+                                                                <td>銀行戶名 :</td>
+                                                                <td>
+                                                                    <input type="text" id="bank_holder_name"
+                                                                        name="bank_holder_name" value="pep" readonly
+                                                                        style="width: 20%; text-align: center;">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                            <tr class="seller">
+                                                                <td>銀行代碼 :</td>
+                                                                <td>
+                                                                    <input type="text" id="bank_code" name="bank_code"
+                                                                        value="100" readonly
+                                                                        style="width: 20%; text-align: center;">
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="seller">
+                                                                <td>銀行帳號 :</td>
+                                                                <td>
+                                                                    <input type="text" id="bank_account"
+                                                                        name="bank_account" value="198573010293847"
+                                                                        readonly
+                                                                        style="width: 70%; text-align: center;">
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="seller">
+                                                                <td>良民證 :</td>
+                                                                <td>
+                                                                    <img class="pcrc_img"
+                                                                        src="../assets/images/pcrc.jpg"
+                                                                        alt="pcrc">
+                                                                </td>
+
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="javascript:void(0)">修改個人檔案
+                                                                        <span data-bs-toggle="modal"
+                                                                            data-bs-target="#editProfile">修改</span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="./apply-business.html">申請商家
+                                                                        <span data-bs-target="#editProfile">申請 </span></a>
+                                                                </td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade show" id="pills-security" role="tabpanel"
+                                aria-labelledby="pills-security-tab">
+                                <div class="dashboard-privacy">
+                                    <div class="dashboard-bg-box">
+                                        <div class="dashboard-title mb-4">
+                                            <h3>Privacy</h3>
+                                        </div>
+
+                                        <div class="privacy-box">
+                                            <div class="d-flex align-items-start">
+                                                <h6>Allows others to see my profile</h6>
+                                                <div class="form-check form-switch switch-radio ms-auto">
+                                                    <input class="form-check-input" type="checkbox" role="switch"
+                                                        id="redio" aria-checked="false">
+                                                    <label class="form-check-label" for="redio"></label>
+                                                </div>
+                                            </div>
+
+                                            <p class="text-content">all peoples will be able to see my profile</p>
+                                        </div>
+
+                                        <div class="privacy-box">
+                                            <div class="d-flex align-items-start">
+                                                <h6>who has save this profile only that people see my profile</h6>
+                                                <div class="form-check form-switch switch-radio ms-auto">
+                                                    <input class="form-check-input" type="checkbox" role="switch"
+                                                        id="redio2" aria-checked="false">
+                                                    <label class="form-check-label" for="redio2"></label>
+                                                </div>
+                                            </div>
+
+                                            <p class="text-content">all peoples will not be able to see my profile</p>
+                                        </div>
+
+                                        <button class="btn theme-bg-color btn-md fw-bold mt-4 text-white">Save
+                                            Changes</button>
+                                    </div>
+
+                                    <div class="dashboard-bg-box mt-4">
+                                        <div class="dashboard-title mb-4">
+                                            <h3>Account settings</h3>
+                                        </div>
+
+                                        <div class="privacy-box">
+                                            <div class="d-flex align-items-start">
+                                                <h6>Deleting Your Account Will Permanently</h6>
+                                                <div class="form-check form-switch switch-radio ms-auto">
+                                                    <input class="form-check-input" type="checkbox" role="switch"
+                                                        id="redio3" aria-checked="false">
+                                                    <label class="form-check-label" for="redio3"></label>
+                                                </div>
+                                            </div>
+                                            <p class="text-content">Once your account is deleted, you will be logged out
+                                                and will be unable to log in back.</p>
+                                        </div>
+
+                                        <div class="privacy-box">
+                                            <div class="d-flex align-items-start">
+                                                <h6>Deleting Your Account Will Temporary</h6>
+                                                <div class="form-check form-switch switch-radio ms-auto">
+                                                    <input class="form-check-input" type="checkbox" role="switch"
+                                                        id="redio4" aria-checked="false">
+                                                    <label class="form-check-label" for="redio4"></label>
+                                                </div>
+                                            </div>
+
+                                            <p class="text-content">Once your account is deleted, you will be logged out
+                                                and you will be create new account</p>
+                                        </div>
+
+                                        <button class="btn theme-bg-color btn-md fw-bold mt-4 text-white">Delete My
+                                            Account</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- User Dashboard Section End -->
+
+    <!-- Footer Section Start -->
+    <footer class="section-t-space">
+        <div class="container-fluid-lg">
+            <div class="service-section">
+                <div class="row g-3">
+                    <div class="col-12">
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-footer section-b-space section-t-space">
+                <div class="row g-md-4 g-3">
+                    <div class="col-lg-6">
+                        <div class="footer-logo">
+                            <div class="theme-logo">
+                                <a href="index.html">
+                                    <img src="../assets/images/logo/1.png" class="blur-up lazyload" alt="">
+                                </a>
+                            </div>
+
+                            <div class="footer-logo-contain">
+                                <p>我們是一家專業的清潔服務提供商，為客戶提供高品質的清潔服務和產品。
+                                    我們的平台連結客戶和優質的清潔人員，提供各種清潔服務，包括家庭和商業清潔。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="footer-title">
+                            <h4>聯絡我們</h4>
+                        </div>
+
+                        <div class="footer-contact">
+                            <ul>
+                                <li>
+                                    <div class="footer-number">
+                                        <i data-feather="phone"></i>
+                                        <div class="contact-number">
+                                            <h6 class="text-content">客服專線 :</h6>
+                                            <h5>02-0909-0909</h5>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="footer-number">
+                                        <i data-feather="mail"></i>
+                                        <div class="contact-number">
+                                            <h6 class="text-content">公司信箱 :</h6>
+                                            <h5>stella@Homie.com.tw</h5>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="footer-number">
+                                        <i data-feather="home"></i>
+                                        <div class="contact-number">
+                                            <h6 class="text-content">公司地址 :</h6>
+                                            <h5>台北市信義區忠孝東路五段</h5>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Deal Box Modal Start -->
+    <div class="modal fade theme-modal deal-modal" id="deal-box" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title w-100" id="deal_today">Deal Today</h5>
+                        <p class="mt-1 text-content">Recommended deals for you.</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="deal-offer-box">
+                        <ul class="deal-offer-list">
+                            <li class="list-1">
+                                <div class="deal-offer-contain">
+                                    <a href="shop-left-sidebar.html" class="deal-image">
+                                        <img src="../assets/images/vegetable/product/10.png" class="blur-up lazyload"
+                                            alt="">
+                                    </a>
+
+                                    <a href="shop-left-sidebar.html" class="deal-contain">
+                                        <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
+                                        <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="list-2">
+                                <div class="deal-offer-contain">
+                                    <a href="shop-left-sidebar.html" class="deal-image">
+                                        <img src="../assets/images/vegetable/product/11.png" class="blur-up lazyload"
+                                            alt="">
+                                    </a>
+
+                                    <a href="shop-left-sidebar.html" class="deal-contain">
+                                        <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
+                                        <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="list-3">
+                                <div class="deal-offer-contain">
+                                    <a href="shop-left-sidebar.html" class="deal-image">
+                                        <img src="../assets/images/vegetable/product/12.png" class="blur-up lazyload"
+                                            alt="">
+                                    </a>
+
+                                    <a href="shop-left-sidebar.html" class="deal-contain">
+                                        <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
+                                        <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="list-1">
+                                <div class="deal-offer-contain">
+                                    <a href="shop-left-sidebar.html" class="deal-image">
+                                        <img src="../assets/images/vegetable/product/13.png" class="blur-up lazyload"
+                                            alt="">
+                                    </a>
+
+                                    <a href="shop-left-sidebar.html" class="deal-contain">
+                                        <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
+                                        <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Deal Box Modal End -->
+
+    <!-- Tap to top start -->
+    <div class="theme-option">
+        <div class="back-to-top">
+            <a id="back-to-top" href="#">
+                <i class="fas fa-chevron-up"></i>
+            </a>
+        </div>
+    </div>
+    <!-- Tap to top end -->
+
+    <!-- Bg overlay Start -->
+    <div class="bg-overlay"></div>
+    <!-- Bg overlay End -->
+
+    <!-- Add address modal box start -->
+    <div class="modal fade theme-modal" id="add-address" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add a new address</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-floating mb-4 theme-form-floating">
+                            <input type="text" class="form-control" id="fname" placeholder="Enter First Name">
+                            <label for="fname">First Name</label>
+                        </div>
+                    </form>
+
+                    <form>
+                        <div class="form-floating mb-4 theme-form-floating">
+                            <input type="text" class="form-control" id="lname" placeholder="Enter Last Name">
+                            <label for="lname">Last Name</label>
+                        </div>
+                    </form>
+
+                    <form>
+                        <div class="form-floating mb-4 theme-form-floating">
+                            <input type="email" class="form-control" id="email" placeholder="Enter Email Address">
+                            <label for="email">Email Address</label>
+                        </div>
+                    </form>
+
+                    <form>
+                        <div class="form-floating mb-4 theme-form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="address"
+                                style="height: 100px"></textarea>
+                            <label for="address">Enter Address</label>
+                        </div>
+                    </form>
+
+                    <form>
+                        <div class="form-floating mb-4 theme-form-floating">
+                            <input type="email" class="form-control" id="pin" placeholder="Enter Pin Code">
+                            <label for="pin">Pin Code</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-md" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn theme-bg-color btn-md text-white" data-bs-dismiss="modal">Save
+                        changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add address modal box end -->
+
+    <!-- Location Modal Start -->
+    <div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">Choose your Delivery Location</h5>
+                    <p class="mt-1 text-content">Enter your address and we will specify the offer for your area.</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="location-list">
+                        <div class="search-input">
+                            <input type="search" class="form-control" placeholder="Search Your Area">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+
+                        <div class="disabled-box">
+                            <h6>Select a Location</h6>
+                        </div>
+
+                        <ul class="location-select custom-height">
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Alabama</h6>
+                                    <span>Min: $130</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Arizona</h6>
+                                    <span>Min: $150</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>California</h6>
+                                    <span>Min: $110</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Colorado</h6>
+                                    <span>Min: $140</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Florida</h6>
+                                    <span>Min: $160</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Georgia</h6>
+                                    <span>Min: $120</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Kansas</h6>
+                                    <span>Min: $170</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Minnesota</h6>
+                                    <span>Min: $120</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>New York</h6>
+                                    <span>Min: $110</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Washington</h6>
+                                    <span>Min: $130</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Location Modal End -->
+
+    <!-- Edit Profile Start -->
+    <div class="modal fade theme-modal" id="editProfile" tabindex="-1" aria-labelledby="exampleModalLabel2"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2">修改個人檔案</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4">
+                        <div class="col-xxl-12">
+                            <form>
+                                <div class="form-floating theme-form-floating">
+                                    <input type="text" class="form-control" id="pname" value="Jack Jennas">
+                                    <label for="pname">姓名</label>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-xxl-12  ">
+                            <form>
+                                <div class="form-floating theme-form-floating">
+                                    <input type="email" class="form-control" id="email1" value="0912345678">
+                                    <label for="email1">電話</label>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-xxl-4">
+                            <form>
+                                <div class="form-floating theme-form-floating">
+                                    <select class="form-select" id="floatingSelect1"
+                                        aria-label="Floating label select example">
+                                        <option selected>選擇縣市</option>
+                                        <option value="taipei">台北市</option>
+                                        <option value="new_taipei">新北市</option>
+                                        <option value="taoyuan">桃園市</option>
+                                        <option value="taichung">台中市</option>
+                                        <option value="tainan">台南市</option>
+                                        <option value="kaohsiung">高雄市</option>
+                                        <option value="keelung">基隆市</option>
+                                        <option value="hsinchu">新竹市</option>
+                                        <option value="hsinchu_county">新竹縣</option>
+                                        <option value="miaoli">苗栗縣</option>
+                                        <option value="changhua">彰化縣</option>
+                                        <option value="nantou">南投縣</option>
+                                        <option value="yunlin">雲林縣</option>
+                                        <option value="chiayi">嘉義市</option>
+                                        <option value="chiayi_county">嘉義縣</option>
+                                        <option value="pingtung">屏東縣</option>
+                                        <option value="yilan">宜蘭縣</option>
+                                        <option value="hualien">花蓮縣</option>
+                                        <option value="taitung">台東縣</option>
+                                        <option value="kinmen">金門縣</option>
+                                        <option value="penghu">澎湖縣</option>
+                                        <option value="lienchiang">連江縣</option>
+                                    </select>
+                                    <label for="floatingSelect">縣市</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-12">
+                            <form>
+                                <div class="form-floating theme-form-floating">
+                                    <input type="text" class="form-control" id="address1"
+                                        value="8424 James Lane South San Francisco">
+                                    <label for="address1">地址</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-dismiss="modal">關閉</button>
+                    <button type="button" data-bs-dismiss="modal"
+                        class="btn theme-bg-color btn-md fw-bold text-light">儲存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Edit Profile End -->
+
+    <!-- Edit Card Start -->
+    <div class="modal fade theme-modal" id="editCard" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel8">Edit Card</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4">
+                        <div class="col-xxl-6">
+                            <form>
+                                <div class="form-floating theme-form-floating">
+                                    <input type="text" class="form-control" id="finame" value="Mark">
+                                    <label for="finame">First Name</label>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-xxl-6">
+                            <form>
+                                <div class="form-floating theme-form-floating">
+                                    <input type="text" class="form-control" id="laname" value="Jecno">
+                                    <label for="laname">Last Name</label>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-xxl-4">
+                            <form>
+                                <div class="form-floating theme-form-floating">
+                                    <select class="form-select" id="floatingSelect12"
+                                        aria-label="Floating label select example">
+                                        <option selected>Card Type</option>
+                                        <option value="kindom">Visa Card</option>
+                                        <option value="states">MasterCard Card</option>
+                                        <option value="fra">RuPay Card</option>
+                                        <option value="china">Contactless Card</option>
+                                        <option value="spain">Maestro Card</option>
+                                    </select>
+                                    <label for="floatingSelect12">Card Type</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-animation btn-md fw-bold"
+                        data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn theme-bg-color btn-md fw-bold text-light">Update Card</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Edit Card End -->
+
+    <!-- Remove Profile Modal Start -->
+    <div class="modal fade theme-modal remove-profile" id="removeProfile" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header d-block text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel22">Are You Sure ?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="remove-box">
+                        <p>The permission for the use/group, preview is inherited from the object, object will create a
+                            new permission for this object</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn theme-bg-color btn-md fw-bold text-light"
+                        data-bs-target="#removeAddress" data-bs-toggle="modal">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade theme-modal remove-profile" id="removeAddress" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel12">Done!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="remove-box text-center">
+                        <h4 class="text-content">It's Removed.</h4>
+                    </div>
+                </div>
+                <div class="modal-footer pt-0">
+                    <button type="button" class="btn theme-bg-color btn-md fw-bold text-light"
+                        data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Remove Profile Modal End -->
+
+    <!-- latest jquery-->
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+
+    <!-- jquery ui-->
+    <script src="../assets/js/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/bootstrap/bootstrap-notify.min.js"></script>
+    <script src="../assets/js/bootstrap/popper.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="../assets/js/feather/feather.min.js"></script>
+    <script src="../assets/js/feather/feather-icon.js"></script>
+
+    <!-- Lazyload Js -->
+    <script src="../assets/js/lazysizes.min.js"></script>
+
+    <!-- Wizard js -->
+    <script src="../assets/js/wizard.js"></script>
+
+    <!-- Slick js-->
+    <script src="../assets/js/slick/slick.js"></script>
+    <script src="../assets/js/slick/custom_slick.js"></script>
+
+    <!-- Quantity js -->
+    <script src="../assets/js/quantity-2.js"></script>
+
+    <!-- Nav & tab upside js -->
+    <script src="../assets/js/nav-tab.js"></script>
+
+    <!-- script js -->
+    <script src="../assets/js/script.js"></script>
+
+    <script src="/template/assets/js/user-dashbord.js"></script>
+
+    <script>
+        $(document).on("click", "button.wishlist-button", function () {
+            $(this).closest("div.col-xxl-3.col-lg-6.col-md-4.col-sm-6").remove();
+        })
+
+        function redirectToWishlist() {
+            window.location.href = 'user-dashboard.html#pills-wishlist';
+        }
+
+    </script>
+</body>
+
+</html>
