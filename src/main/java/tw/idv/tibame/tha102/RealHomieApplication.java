@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication
-@ServletComponentScan("tw.idv.tibame.tha102.*.controller")
+@ServletComponentScan("tw.idv.tibame.tha102.web.*.controller")
 public class RealHomieApplication {
 
 	public static void main(String[] args) {

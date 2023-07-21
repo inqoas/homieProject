@@ -2,6 +2,8 @@ package tw.idv.tibame.tha102.web.userinfo.service.impl;
 
 import java.lang.reflect.Member;
 
+import tw.idv.tibame.tha102.web.userinfo.dao.MemberDao;
+import tw.idv.tibame.tha102.web.userinfo.dao.MemberDaoImpl;
 import tw.idv.tibame.tha102.web.userinfo.dao.UserInfoDao;
 import tw.idv.tibame.tha102.web.userinfo.dao.UserInfoDaoImpl;
 import tw.idv.tibame.tha102.web.userinfo.service.MemberService;
@@ -11,9 +13,9 @@ import tw.idv.tibame.tha102.web.userinfo.vo.UserInfo;
 
 public class MemberServiceImpl implements MemberService{
 	
-	private MemberService memberServiceImpl = null;
+	private MemberDao memberDaoImpl = null;
 	public MemberServiceImpl() {
-		memberServiceImpl = new MemberServiceImpl();
+		memberDaoImpl = new MemberDaoImpl();
 	}
 	
 	@Override
@@ -50,7 +52,11 @@ public class MemberServiceImpl implements MemberService{
 			userInfo.setMessage("請輸入地址");
 			return userInfo;
 		}
-		
+		final int result = memberDaoImpl.insert(userInfo);
+		if(result < 1) {
+			userInfo.setMessage("註冊失敗，請聯繫管理員");
+			return userInfo;
+		}
 		userInfo.setMessage("註冊成功");
 		return userInfo;
 	}
