@@ -1,6 +1,6 @@
 function init() {
     $.ajax({
-        url: 'http://localhost:8080/homie/products',
+        url: '../products',
         type: 'GET',
         dataType: "json",
         success: function(response) {
