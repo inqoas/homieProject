@@ -20,8 +20,16 @@ public class UserInfo implements java.io.Serializable {
     private Integer garbage_coin;
     private Integer seller_identity;
     private String message;
+    private boolean success;
     
     
+    
+	public boolean isSuccess() {
+		return success;
+	}
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
 	public String getMessage() {
 		return message;
 	}
