@@ -15,13 +15,13 @@ import tw.idv.tibame.tha102.web.userinfo.service.UserInfoServiceImpl;
 import tw.idv.tibame.tha102.web.userinfo.vo.UserInfo;
 
 
-@WebServlet("/all-users")
-public class UserInfoController extends HttpServlet{
+@WebServlet("/userinfo/findall")
+public class UserInfoFindAllController extends HttpServlet{
     private static final long serialVersionUID = 1L;
     private UserInfoService userInfoService;
     private static final Gson gson = new Gson();	
     
-    public UserInfoController() {
+    public UserInfoFindAllController() {
         userInfoService = new UserInfoServiceImpl();
     }
     

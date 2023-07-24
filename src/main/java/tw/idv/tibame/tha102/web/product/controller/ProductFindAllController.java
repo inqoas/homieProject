@@ -14,13 +14,13 @@ import tw.idv.tibame.tha102.web.product.service.ProductService;
 import tw.idv.tibame.tha102.web.product.service.ProductServiceImpl;
 import tw.idv.tibame.tha102.web.product.vo.Product;
 
-@WebServlet("/products")
-public class ProductController extends HttpServlet {
+@WebServlet("/product/findall")
+public class ProductFindAllController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProductService productService;
 	private static final Gson gson = new Gson();
 	
-	public ProductController() {
+	public ProductFindAllController() {
 		super();
 		productService = new ProductServiceImpl();
 	}
