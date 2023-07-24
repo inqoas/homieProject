@@ -3,21 +3,24 @@ package tw.idv.tibame.tha102.web.orderproduct.dao;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import jakarta.persistence.PersistenceContext;
 import tw.idv.tibame.tha102.web.orderproduct.vo.OrderProduct;
 
-@Repository
 public class OrderProductDaoImpl implements OrderProductDao {
-	@PersistenceContext
-	private Session session;
+
+    private final SessionFactory sessionFactory;
+
+    public OrderProductDaoImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public void insert(OrderProduct orderProduct) {
         Transaction transaction = null;
-        try {
+        try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
             session.persist(orderProduct);
             transaction.commit();
@@ -26,38 +29,32 @@ public class OrderProductDaoImpl implements OrderProductDao {
                 transaction.rollback();
             }
             e.printStackTrace();
-        } finally {
-            session.close();
         }
     }
 
     public void update(OrderProduct orderProduct) {
         Transaction transaction = null;
 
-        try {
+        try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
-            session.update(orderProduct);
+            session.merge(orderProduct);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
             e.printStackTrace();
-        } finally {
-            session.close();
         }
     }
 
     public List<OrderProduct> getAll() {
         List<OrderProduct> orderProducts = null;
 
-        try {
+        try (Session session = sessionFactory.openSession()) {
             Query<OrderProduct> query = session.createQuery("FROM OrderProduct", OrderProduct.class);
             orderProducts = query.list();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            session.close();
         }
 
         return orderProducts;
@@ -66,16 +63,14 @@ public class OrderProductDaoImpl implements OrderProductDao {
     public List<OrderProduct> findByUserId(Integer user_id) {
         List<OrderProduct> orderProducts = null;
 
-        try {
+        try (Session session = sessionFactory.openSession()) {
             Query<OrderProduct> query = session.createQuery("FROM OrderProduct WHERE user_id = :userId", OrderProduct.class);
             query.setParameter("userId", user_id);
             orderProducts = query.list();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            session.close();
         }
 
         return orderProducts;
-    }
+    }   
 }

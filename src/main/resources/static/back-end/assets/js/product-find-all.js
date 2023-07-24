@@ -1,39 +1,29 @@
-// var host = window.location.host;
-// var pathname = window.location.pathname;
-// var apiUrl = 'http://' + host + pathname + 'homie/all-users'
-
-// console.log(host);
-// console.log(pathname);
-
-function init(){
-
+function init() {
     $.ajax({
-        url: '../all-users',
+        url: '../product/findall',
         type: 'GET',
         dataType: "json",
         success: function(response) {
-            var tableBody = $('#all-users-table');
-        
+            var tableBody = $('#products-table');
+
             // 清空原本的內容
             tableBody.empty();
-        
-            // 插入待審核賣家的資料
-            response.forEach(function(seller) {
+
+            response.forEach(function(product) {
                 var row = `
                     <tr>
                         <td>
                             <div class="table-image">
-                                <img src="path/to/image/${seller.user_id}.jpg" class="img-fluid" alt="">
+                                <img src="assets/images/product/${product.product_picture}.png" class="img-fluid" alt="">
                             </div>
                         </td>
-                        <td>
-                            <div class="user-name">
-                                <span>${seller.user_name}</span>
-                                <span>${seller.user_address}</span>
-                            </div>
+                        <td>${product.product_name}</td>
+                        <td>${product.product_category}</td>
+                        <td>${product.product_stock}</td>
+                        <td class="td-price">$${product.product_price}</td>
+                        <td class="status-danger">
+                            <span>Pending</span>
                         </td>
-                        <td>${seller.user_phone}</td>
-                        <td>${seller.user_account}</td>
                         <td>
                             <ul>
                                 <li>
@@ -58,11 +48,9 @@ function init(){
                 tableBody.append(row);
             });
         }
-        
     });
 }
 
-$(function(){
+$(function() {
     init();
 });
-
