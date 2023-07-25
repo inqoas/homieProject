@@ -31,13 +31,6 @@ public class UserInfoFindAllController extends HttpServlet{
         response.setHeader("Access-Control-Allow-Headers", "Content-Type");
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setContentType("application/json; charset=utf-8");
-        
-        try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
         List<UserInfo> userList = userInfoService.findAll();
 

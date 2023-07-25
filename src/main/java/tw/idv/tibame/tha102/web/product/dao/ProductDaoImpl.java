@@ -8,8 +8,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.el.parser.AstString;
+import org.hibernate.usertype.internal.AbstractTimeZoneStorageCompositeUserType;
+import org.springframework.boot.autoconfigure.amqp.AbstractConnectionFactoryConfigurer;
+import org.springframework.jdbc.core.support.AbstractInterruptibleBatchPreparedStatementSetter;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import tw.idv.tibame.tha102.web.product.vo.Product;
 
@@ -147,4 +154,5 @@ public class ProductDaoImpl implements ProductDao{
 		}
 	}
 
+	
 }
