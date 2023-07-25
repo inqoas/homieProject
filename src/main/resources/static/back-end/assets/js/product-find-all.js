@@ -49,6 +49,24 @@ function init() {
             });
         }
     });
+
+    $('#searchInput').on('input', function() {
+        var searchTerm = $(this).val().toLowerCase();
+
+        $('#products-table tr').each(function() {
+            var productName = $(this).find('td:nth-child(2)').text().toLowerCase();
+            var productCategory = $(this).find('td:nth-child(3)').text().toLowerCase();
+            var productStock = $(this).find('td:nth-child(4)').text().toLowerCase();
+            var productPrice = $(this).find('td:nth-child(5)').text().toLowerCase();
+
+            if (productName.includes(searchTerm) || productCategory.includes(searchTerm) ||
+                productStock.includes(searchTerm) || productPrice.includes(searchTerm)) {
+                $(this).removeClass('hidden');
+            } else {
+                $(this).addClass('hidden');
+            }
+        });
+    });
 }
 
 $(function() {
