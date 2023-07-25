@@ -12,7 +12,6 @@ public class MemberLogoutController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getSession().invalidate();
-		System.out.println("成功");
 	}
 
 }

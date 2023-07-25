@@ -30,8 +30,6 @@ public class MemberLoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Gson gson = new Gson();
 		UserInfo userInfo = gson.fromJson(req.getReader(), UserInfo.class);
-//		System.out.println(userInfo.getUser_account());
-//		System.out.println(userInfo.getUser_password());
 		resp.setContentType("application/json");
 		resp.setCharacterEncoding("UTF-8");
 		if(userInfo == null) {

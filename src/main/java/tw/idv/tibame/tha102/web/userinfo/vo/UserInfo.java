@@ -21,9 +21,16 @@ public class UserInfo implements java.io.Serializable {
     private Integer seller_identity;
     private String message;
     private boolean success;
+    private String user_pic_base64;
     
     
     
+	public String getUser_pic_base64() {
+		return user_pic_base64;
+	}
+	public void setUser_pic_base64(String user_pic_base64) {
+		this.user_pic_base64 = user_pic_base64;
+	}
 	public boolean isSuccess() {
 		return success;
 	}

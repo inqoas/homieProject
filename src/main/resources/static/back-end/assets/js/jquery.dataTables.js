@@ -3405,10 +3405,10 @@
             var features = oSettings.oFeatures;
 
             // All DataTables are wrapped in a div
-            var insert = $('<div/>', {
-                id: oSettings.sTableId + '_wrapper',
-                'class': classes.sWrapper + (oSettings.nTFoot ? '' : ' ' + classes.sNoFooter)
-            });
+            // var insert = $('<div/>', {
+            //     id: oSettings.sTableId + '_wrapper',
+            //     'class': classes.sWrapper + (oSettings.nTFoot ? '' : ' ' + classes.sNoFooter)
+            // });
 
             oSettings.nHolding = holding[0];
             oSettings.nTableWrapper = insert[0];

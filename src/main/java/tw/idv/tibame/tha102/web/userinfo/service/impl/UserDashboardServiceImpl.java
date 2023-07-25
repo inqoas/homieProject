@@ -11,12 +11,15 @@ public class UserDashboardServiceImpl implements UserDashboardService{
 		memberDaoImpl = new MemberDaoImpl();
 	}
 	@Override
-	public UserInfo pillsProfile(Integer userid) {
+	public UserInfo userProfile(Integer userid) {
 		UserInfo userInfo = memberDaoImpl.selectByUserId(userid);
 		if(userInfo == null) {
+			userInfo.setMessage("會員資料載入失敗，請重新登入");
+			userInfo.setSuccess(false);
 			return userInfo;
 		}
-		return null;
+		userInfo.setSuccess(true);
+		return userInfo;
 	}
 
 }
