@@ -1328,7 +1328,7 @@
         
 
         $.ajax({
-		url : "/homieProject/products",
+		url : "/homieProject/product/findall",
 		type : "GET",
 		dataType : "json",
 		success : function(data) {
@@ -1336,6 +1336,8 @@
                 for ( let key in data) {
 					
 					
+                 console.log("http://localhost:8080/homieProject/product/ProductFindImgController?product_id="+`${data[key].product_id}`);   
+
 				// const blob = new Blob([new Uint8Array(data[key].product_picture)], { type: 'image/jpg' });	
 				
 				// const resu= reader.readAsDataURL(blob);
@@ -1363,7 +1365,7 @@
 			    productImageLink.href = "product-left-thumbnail.html";
 			    const productImg = document.createElement("img");
 			    productImg.id ="product_img"
-			    productImg.src ="";
+			    productImg.src ="http://localhost:8080/homieProject/product/ProductFindImgController?product_id="+`${data[key].product_id}`;
 			    productImg.className = "img-fluid blur-up lazyload";
 			    productImg.alt = "";
 			
