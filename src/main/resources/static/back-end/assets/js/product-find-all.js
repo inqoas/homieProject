@@ -14,7 +14,7 @@ function init() {
                     <tr>
                         <td>
                             <div class="table-image">
-                                <img src="assets/images/product/${product.product_picture}.png" class="img-fluid" alt="">
+                                <img src=" http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${product.product_id}" class="img-fluid" alt="">
                             </div>
                         </td>
                         <td>${product.product_name}</td>
