@@ -1,4 +1,4 @@
-package tw.idv.tibame.tha102.web.product.controller;
+package tw.idv.tibame.tha102.web.userinfo.controller;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
@@ -11,18 +11,18 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import tw.idv.tibame.tha102.web.product.dao.ProductDaoImpl;
-import tw.idv.tibame.tha102.web.product.vo.Product;
-@WebServlet(urlPatterns = "/product/ProductFindImgController")
-public class ProductFindImgController extends HttpServlet{
+import tw.idv.tibame.tha102.web.userinfo.dao.UserInfoDaoImpl;
+import tw.idv.tibame.tha102.web.userinfo.vo.UserInfo;
+
+@WebServlet(urlPatterns = "/userinfo/userInfoFindImgController")
+public class UserInfoFindImgController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private ProductDaoImpl productDaoImpl; 
-	
+	private UserInfoDaoImpl userInfoDaoImpl;
 	
 	@Override
 	public void init() throws ServletException {
-		productDaoImpl =new ProductDaoImpl();
+		userInfoDaoImpl = new UserInfoDaoImpl();
 	}
 	
 	@Override
@@ -36,11 +36,11 @@ public class ProductFindImgController extends HttpServlet{
 		resp.setContentType("image/jpg");
 		ServletOutputStream out = resp.getOutputStream();
 		
-		Integer id =Integer.parseInt(req.getParameter("product_id"));
+		Integer id =Integer.parseInt(req.getParameter("user_id"));
 		
-		Product product =productDaoImpl.getProduct_ImgById(id);
+		UserInfo userInfo =userInfoDaoImpl.getUserPicById(id);
 		
-		InputStream input =new ByteArrayInputStream(product.getProduct_picture());
+		InputStream input =new ByteArrayInputStream(userInfo.getUser_pic());
 		
 		BufferedInputStream in = new BufferedInputStream(input);
 				byte[] buf = new byte[4 * 1024]; // 4K buffer
@@ -51,5 +51,4 @@ public class ProductFindImgController extends HttpServlet{
 				in.close();
 		
 	}
-
 }

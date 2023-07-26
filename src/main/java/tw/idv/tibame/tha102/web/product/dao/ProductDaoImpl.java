@@ -4,14 +4,16 @@ import static tw.idv.tibame.tha102.core.util.CommonMysql.PASSWORD;
 import static tw.idv.tibame.tha102.core.util.CommonMysql.URL;
 import static tw.idv.tibame.tha102.core.util.CommonMysql.USER;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.eclipse.tags.shaded.org.apache.bcel.generic.AASTORE;
 
 import tw.idv.tibame.tha102.web.product.vo.Product;
 
@@ -163,13 +165,39 @@ public class ProductDaoImpl implements ProductDao{
     
     public static void main(String[] args) {
     		
-    	  Product product = new ProductDaoImpl().getProduct_ImgById(1);
-    	
-    	  byte[] bb = product.getProduct_picture();
-    	  
-    	  for(byte aa :bb) {
-    		 System.out.println(aa);
-    	  }
+    	InputStream in =null;
+        byte[] bb =null;
+        try {
+            in =new FileInputStream("/Users/kevinyang/homie-workspace/pic/6.jpg");
+            bb = new byte[in.available()];
+            int a ;
+
+                in.read(bb);
+
+            in.close();
+
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        Product product =new Product();
+
+        product.setProduct_name("玻璃擦");
+        product.setProduct_price(90);
+        product.setProduct_stock(70);
+        product.setProduct_shipped(50);
+        product.setProduct_introduction("這款玻璃擦採用高品質橡膠刮板和微纖維布，能迅速而有效地清潔玻璃表面。適用於窗戶、鏡子等玻璃物品的清潔。");
+        product.setProduct_picture(bb);
+        product.setProduct_category(1);
+        product.setProduct_review_stars(200);
+        product.setProduct_review_count(110);
+        product.setProduct_id(5);
+
+        new ProductDaoImpl().update(product);
   
 	}
 
