@@ -12,7 +12,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    <title>Fastkart - Product</title>
+    <title>Homie - 使用者資料</title>
 
     <!-- Google font-->
     <link
@@ -35,9 +35,6 @@
     <link rel="stylesheet" type="text/css" href="assets/css/remixicon.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
 
-    <!-- Data Table css -->
-    <link rel="stylesheet" type="text/css" href="assets/css/datatables.css">
-
     <!-- Plugins css -->
     <link rel="stylesheet" type="text/css" href="assets/css/vendors/scrollbar.css">
     <link rel="stylesheet" type="text/css" href="assets/css/vendors/animate.css">
@@ -48,26 +45,18 @@
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <style>
-        #searchInput{
-            width: 170px;
-            height: 30px;
-            font-size: 15px;
-            margin-left: auto;
-        }
-        .hidden {
-            display: none;
-        }
+        
     </style>
 </head>
 
 <body>
-    <!-- tap on top start-->
+    <!-- tap on top start -->
     <div class="tap-top">
-        <span class="lnr lnr-chevron-up"></span>
+        <i data-feather="chevrons-up"></i>
     </div>
-    <!-- tap on tap end-->
+    <!-- tap on tap end -->
 
-    <!-- page-wrapper Start-->
+    <!-- page-wrapper Start -->
     <div class="page-wrapper compact-wrapper" id="pageWrapper">
         <!-- Page Header Start-->
         <div class="page-header">
@@ -86,22 +75,6 @@
                         </a>
                     </div>
                 </div>
-
-                <form class="form-inline search-full" action="javascript:void(0)" method="get">
-                    <div class="form-group w-100">
-                        <div class="Typeahead Typeahead--twitterUsers">
-                            <div class="u-posRelative">
-                                <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text"
-                                    placeholder="搜尋 Homie .." name="q" title="" autofocus>
-                                <i class="close-search" data-feather="x"></i>
-                                <div class="spinner-border Typeahead-spinner" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>
-                            </div>
-                            <div class="Typeahead-menu"></div>
-                        </div>
-                    </div>
-                </form>
                 <div class="nav-right col-6 pull-right right-header p-0">
                     <ul class="nav-menus">
                         <li>
@@ -234,7 +207,7 @@
                                             <a href="product-order-list.html">商品訂單列表</a>
                                         </li>
                                         <li>
-                                            <a href="">服務訂單列表</a>
+                                            <a href="service-order-list.html">服務訂單列表</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -352,74 +325,102 @@
                     </nav>
                 </div>
             </div>
-            <!-- Page Sidebar Ends-->
-
-            <!-- Container-fluid starts-->
-            <div class="page-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="card card-table">
-                                <div class="card-body">
-                                    <div class="title-header option-title d-sm-flex d-block">
-                                        <h5>商品一覽表</h5>
-                                        <input type="text" id="searchInput" placeholder="輸入搜尋關鍵字">
-                                        <div class="right-options">
-                                            <ul>
-                                                <li>
-                                                    <a href="javascript:void(0)">import</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Export</a>
-                                                </li>
-                                                <li>
-                                                    <a class="btn btn-solid" href="add-new-product.html">Add Product</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="table-responsive">
-                                            <table class="table all-package theme-table table-product" id="table_id">
-                                                <thead>
-                                                    <tr>
-                                                        <th>產品照片</th>
-                                                        <th>產品名稱</th>
-                                                        <th>產品種類</th>
-                                                        <th>產品庫存</th>
-                                                        <th>產品價格</th>
-                                                        <th>其他選項</th>
-                                                    </tr>
-                                                </thead>
-
-                                                <tbody id="products-table">                                                                                
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+            <div class="container rounded bg-white mt-5 mb-5" id="userProfileContainer">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 border-right">
+                        <div class="p-3 py-5">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-right">使用者資料</h4>
+                            </div>
+            
+                            <!-- Personal Information Section -->
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="labels">姓名</label>
+                                    <input type="text" id="nameInput" class="form-control" placeholder="輸入姓名" value="">
                                 </div>
+                                <div class="col-md-6">
+                                    <label class="labels">使用者編號</label>
+                                    <input type="text" id="idInput" class="form-control" placeholder="輸入編號" value="">
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="labels">密碼</label>
+                                    <input type="text" id="passwordInput" class="form-control" placeholder="輸入密碼" value="">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels">帳號(Email)</label>
+                                    <input type="text" id="accountInput" class="form-control" placeholder="輸入帳號" value="">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="labels">手機號碼</label>
+                                    <input type="text" id="phoneInput" class="form-control" placeholder="輸入手機號碼" value="">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels">性別</label>
+                                    <input type="text" id="genderInput" class="form-control" placeholder="輸入性別" value="">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <label class="labels">地址</label>
+                                    <input type="text" id="addressInput" class="form-control" placeholder="輸入地址" value="">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="labels">生日</label>
+                                    <input type="text" id="birthInput" class="form-control" placeholder="輸入生日" value="">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels">身分證字號</label>
+                                    <input type="text" id="icInput" class="form-control" placeholder="輸入分證字號" value="">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="labels">狀態</label>
+                                    <input type="text" id="statusInput" class="form-control" placeholder="輸入狀態" value="">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels">累積GC</label>
+                                    <input type="text" id="coinInput" class="form-control" placeholder="輸入GC" value="">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="labels">是否為賣家？</label>
+                                    <input type="text" id="sellerInput" class="form-control" placeholder="輸入是否為賣家" value="">
+                                </div>
+                            </div>
+                            <div class="mt-5 text-center">
+                                <button class="btn btn-primary profile-button" type="button">儲存</button>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Container-fluid Ends-->
-
-                <div class="container-fluid">
-                    <!-- footer start-->
-                    <footer class="footer">
-                        <div class="row">
-                            <div class="col-md-12 footer-copyright text-center">
-                                <p class="mb-0">Copyright</p>
-                            </div>
+                    <div class="col-md-3">
+                        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                            <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                            <span class="font-weight-bold" id="user-detail-name"></span>
+                            <span class="text-black-50" id="user-detail-email"></span>
                         </div>
-                    </footer>
+                    </div>
                 </div>
+            </div>
+                      
+            </div>
+            </div>
             </div>
         </div>
     </div>
-    <!-- page-wrapper End-->
+    <!-- page-wrapper End -->
 
-    <!-- Modal Start -->
+    <!-- Modal start -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog  modal-dialog-centered">
@@ -437,60 +438,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal End -->
-
-    <!-- Delete Modal Box Start -->
-    <div class="modal fade theme-modal remove-coupon" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header d-block text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel22">Are You Sure ?</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="remove-box">
-                        <p>The permission for the use/group, preview is inherited from the object, object will create a
-                            new permission for this object</p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-target="#exampleModalToggle2"
-                        data-bs-toggle="modal" data-bs-dismiss="modal">Yes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade theme-modal remove-coupon" id="exampleModalToggle2" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-center" id="exampleModalLabel12">Done!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="remove-box text-center">
-                        <div class="wrapper">
-                            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
-                                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-                            </svg>
-                        </div>
-                        <h4 class="text-content">It's Removed.</h4>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Delete Modal Box End -->
+    <!-- Modal end -->
 
     <!-- latest js -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
@@ -517,17 +465,24 @@
     <script src="assets/js/notify/bootstrap-notify.min.js"></script>
     <script src="assets/js/notify/index.js"></script>
 
-    <!-- Data table js -->
-    <script src="assets/js/jquery.dataTables.js"></script>
-    <script src="assets/js/custom-data-table.js"></script>
-
     <!-- sidebar effect -->
     <script src="assets/js/sidebareffect.js"></script>
 
     <!-- Theme js -->
     <script src="assets/js/script.js"></script>
 
-    <script src="assets/js/product-find-all.js"></script>
+    <script src="assets/js/user-detail.js"></script>
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const userId = urlParams.get("user_id");
+                console.log(userId);
+            } catch (error) {
+                console.error("無法取得會員資料：", error);
+            }
+        });
+    </script> -->
 </body>
 
 </html>

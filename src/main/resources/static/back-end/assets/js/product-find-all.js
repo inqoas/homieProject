@@ -21,8 +21,6 @@ function init() {
                         <td>${product.product_category}</td>
                         <td>${product.product_stock}</td>
                         <td class="td-price">$${product.product_price}</td>
-                        <td class="status-danger">
-                            <span>Pending</span>
                         </td>
                         <td>
                             <ul>

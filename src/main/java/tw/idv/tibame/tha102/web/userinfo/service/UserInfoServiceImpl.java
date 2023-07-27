@@ -37,4 +37,9 @@ public class UserInfoServiceImpl implements UserInfoService{
 	public List<UserInfo> findUserByName(String userName) {
 		return dao.findByUserName(userName);
 	}
+
+	@Override
+	public List<UserInfo> findUserById(Integer userId) {
+		return dao.findByUserId(userId);
+	}
 }

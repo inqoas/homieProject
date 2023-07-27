@@ -5,6 +5,17 @@
 // console.log(host);
 // console.log(pathname);
 
+var statusMapping = {
+    0: "正常",
+    1: "停權",
+    2: "未審核",
+    3: "註銷",
+};
+
+function getStatusText(statusCode) {
+    return statusMapping[statusCode] || "未知狀態";
+}
+
 function init(){
 
     $.ajax({
@@ -12,6 +23,7 @@ function init(){
         type: 'GET',
         dataType: "json",
         success: function(response) {
+
             var tableBody = $('#all-users-table');
         
             // 清空原本的內容
@@ -19,6 +31,9 @@ function init(){
         
             // 插入待審核賣家的資料
             response.forEach(function(userinfo) {
+
+                var statusText = getStatusText(userinfo.user_status);
+
                 var row = `
                     <tr>
                         <td>
@@ -34,10 +49,11 @@ function init(){
                         </td>
                         <td>${userinfo.user_phone}</td>
                         <td>${userinfo.user_account}</td>
+                        <td>${statusText}</td>
                         <td>
                             <ul>
                                 <li>
-                                    <a href="order-detail.html">
+                                    <a href="user-detail.html?user_id=${userinfo.user_id}">
                                         <i class="ri-eye-line"></i>
                                     </a>
                                 </li>
