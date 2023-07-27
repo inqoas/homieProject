@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import tw.idv.tibame.tha102.web.product.vo.Product;
 import tw.idv.tibame.tha102.web.userinfo.vo.UserInfo;
 
 
@@ -21,6 +22,7 @@ public class UserInfoDaoImpl implements UserInfoDao{
 	private static final String UPDATE_STMT = "update user_info set user_account=? , user_password=?, user_name=?, user_address=?, user_phone=?, user_gender=?, user_birth=?, user_ic=?, user_pic=?, user_status=?, garbage_coin=?, seller_identity=? where user_id=? ";
 	private static final String GET_ONE_NAME_STMT = "select user_id, user_account, user_password, user_name, user_address, user_phone, user_gender, user_birth, user_ic, user_pic, user_status, garbage_coin, seller_identity from user_info where user_name like CONCAT('%', ?, '%')";
 	private static final String GET_ALL_STMT = "select user_id, user_account, user_password, user_name, user_address, user_phone, user_gender, user_birth, user_ic, user_pic, user_status, garbage_coin, seller_identity from user_info order by user_id ";
+	private static final String GET_IMG_BY_ID_STMT = "select user_pic from user_info where user_id = ?";
 	
 	
 	@Override
@@ -133,11 +135,28 @@ public class UserInfoDaoImpl implements UserInfoDao{
 	        return list;
 	}
 	
+	public UserInfo getUserPicById(Integer user_id) {
+		UserInfo userInfo = null;
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+                PreparedStatement ps = connection.prepareStatement(GET_IMG_BY_ID_STMT)) {
+               ps.setInt(1, user_id);
+               ResultSet rs = ps.executeQuery();
+               if (rs.next()) {
+                   userInfo = new UserInfo();
+                   userInfo.setUser_pic(rs.getBytes("user_pic"));       
+               }
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+		
+		
+		return userInfo;
+		
+	}
+	
 	public static void main(String[] args) {
-		List<UserInfo> list = new UserInfoDaoImpl().getAll();
-		for(UserInfo user : list) {
-			System.out.println(user.toString());
-		}
+		
+
 	}
 	
 }

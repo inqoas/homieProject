@@ -4,19 +4,16 @@ import static tw.idv.tibame.tha102.core.util.CommonMysql.PASSWORD;
 import static tw.idv.tibame.tha102.core.util.CommonMysql.URL;
 import static tw.idv.tibame.tha102.core.util.CommonMysql.USER;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.el.parser.AstString;
-import org.hibernate.usertype.internal.AbstractTimeZoneStorageCompositeUserType;
-import org.springframework.boot.autoconfigure.amqp.AbstractConnectionFactoryConfigurer;
-import org.springframework.jdbc.core.support.AbstractInterruptibleBatchPreparedStatementSetter;
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import tw.idv.tibame.tha102.web.product.vo.Product;
 
@@ -27,7 +24,7 @@ public class ProductDaoImpl implements ProductDao{
     private static final String DELETE_STMT = "DELETE FROM product WHERE product_id = ?";
     private static final String GET_ALL_STMT = "SELECT * FROM product";
     private static final String GET_BY_ID_STMT = "SELECT * FROM product WHERE product_id = ?";
-
+    private static final String GET_IMG_BY_ID_STMT ="SELECT product_picture FROM product WHERE product_id = ?";
  
 
     public void insert(Product product) {
@@ -147,11 +144,61 @@ public class ProductDaoImpl implements ProductDao{
         return product;
     }
     
+    public Product getProduct_ImgById(Integer Product_id) {
+    	 Product product = null;
+         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+              PreparedStatement ps = connection.prepareStatement(GET_IMG_BY_ID_STMT)) {
+             ps.setInt(1, Product_id);
+             ResultSet rs = ps.executeQuery();
+             if (rs.next()) {
+                 product = new Product();
+                 product.setProduct_picture(rs.getBytes("product_picture"));
+                
+             }
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+         return product;
+    	
+    	
+    }
+    
     public static void main(String[] args) {
-		List<Product> list = new ProductDaoImpl().getAll();
-		for(Product product : list) {
-			System.out.println(product.toString());
-		}
+    		
+    	InputStream in =null;
+        byte[] bb =null;
+        try {
+            in =new FileInputStream("/Users/kevinyang/homie-workspace/pic/6.jpg");
+            bb = new byte[in.available()];
+            int a ;
+
+                in.read(bb);
+
+            in.close();
+
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        Product product =new Product();
+
+        product.setProduct_name("玻璃擦");
+        product.setProduct_price(90);
+        product.setProduct_stock(70);
+        product.setProduct_shipped(50);
+        product.setProduct_introduction("這款玻璃擦採用高品質橡膠刮板和微纖維布，能迅速而有效地清潔玻璃表面。適用於窗戶、鏡子等玻璃物品的清潔。");
+        product.setProduct_picture(bb);
+        product.setProduct_category(1);
+        product.setProduct_review_stars(200);
+        product.setProduct_review_count(110);
+        product.setProduct_id(5);
+
+        new ProductDaoImpl().update(product);
+  
 	}
 
 	

@@ -23,7 +23,7 @@ function init(){
                     <tr>
                         <td>
                             <div class="table-image">
-                                <img src="path/to/image/${userinfo.user_id}.jpg" class="img-fluid" alt="">
+                                <img src=" http://localhost:8080/homieProject//userinfo/userInfoFindImgController?user_id=${userinfo.user_id}" class="img-fluid" alt="">
                             </div>
                         </td>
                         <td>
@@ -59,6 +59,22 @@ function init(){
             });
         }
         
+    });
+
+    $('#searchInput').on('input', function() {
+        var searchTerm = $(this).val().toLowerCase();
+
+        $('#all-users-table tr').each(function() {
+            var userName = $(this).find('.user-name').text().toLowerCase();
+            var userPhone = $(this).find('td:nth-child(3)').text().toLowerCase();
+            var userEmail = $(this).find('td:nth-child(4)').text().toLowerCase();
+
+            if (userName.includes(searchTerm) || userPhone.includes(searchTerm) || userEmail.includes(searchTerm)) {
+                $(this).show(); // 符合搜尋條件，顯示該行
+            } else {
+                $(this).hide(); // 不符合搜尋條件，隱藏該行
+            }
+        });
     });
 }
 

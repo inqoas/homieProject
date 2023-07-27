@@ -47,6 +47,17 @@
 
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <style>
+        #searchInput{
+            width: 170px;
+            height: 30px;
+            font-size: 15px;
+            margin-left: auto;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -351,7 +362,8 @@
                             <div class="card card-table">
                                 <div class="card-body">
                                     <div class="title-header option-title d-sm-flex d-block">
-                                        <h5>Products List</h5>
+                                        <h5>商品一覽表</h5>
+                                        <input type="text" id="searchInput" placeholder="輸入搜尋關鍵字">
                                         <div class="right-options">
                                             <ul>
                                                 <li>

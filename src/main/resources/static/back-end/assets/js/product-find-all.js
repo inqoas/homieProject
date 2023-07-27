@@ -14,7 +14,7 @@ function init() {
                     <tr>
                         <td>
                             <div class="table-image">
-                                <img src="assets/images/product/${product.product_picture}.png" class="img-fluid" alt="">
+                                <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${product.product_id}" class="img-fluid" alt="">
                             </div>
                         </td>
                         <td>${product.product_name}</td>
@@ -48,6 +48,24 @@ function init() {
                 tableBody.append(row);
             });
         }
+    });
+
+    $('#searchInput').on('input', function() {
+        var searchTerm = $(this).val().toLowerCase();
+
+        $('#products-table tr').each(function() {
+            var productName = $(this).find('td:nth-child(2)').text().toLowerCase();
+            var productCategory = $(this).find('td:nth-child(3)').text().toLowerCase();
+            var productStock = $(this).find('td:nth-child(4)').text().toLowerCase();
+            var productPrice = $(this).find('td:nth-child(5)').text().toLowerCase();
+
+            if (productName.includes(searchTerm) || productCategory.includes(searchTerm) ||
+                productStock.includes(searchTerm) || productPrice.includes(searchTerm)) {
+                $(this).removeClass('hidden');
+            } else {
+                $(this).addClass('hidden');
+            }
+        });
     });
 }
 
