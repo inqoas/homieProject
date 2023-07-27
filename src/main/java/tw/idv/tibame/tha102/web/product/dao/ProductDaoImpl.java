@@ -4,14 +4,20 @@ import static tw.idv.tibame.tha102.core.util.CommonMysql.PASSWORD;
 import static tw.idv.tibame.tha102.core.util.CommonMysql.URL;
 import static tw.idv.tibame.tha102.core.util.CommonMysql.USER;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.tags.shaded.org.apache.bcel.generic.AASTORE;
+import org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionCreator;
 
 import tw.idv.tibame.tha102.web.product.vo.Product;
 
@@ -23,8 +29,9 @@ public class ProductDaoImpl implements ProductDao{
     private static final String GET_ALL_STMT = "SELECT * FROM product";
     private static final String GET_BY_ID_STMT = "SELECT * FROM product WHERE product_id = ?";
     private static final String GET_IMG_BY_ID_STMT ="SELECT product_picture FROM product WHERE product_id = ?";
- 
-
+    private static final String GET_PRO_COUNT_STMT ="select count(*) from product  group by product_category order by product_category ";
+    private static final String GET_PRO_BY_ITEM_STMT="select * from product where product_category = ?";
+    
     public void insert(Product product) {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement ps = connection.prepareStatement(INSERT_STMT)) {
@@ -141,36 +148,83 @@ public class ProductDaoImpl implements ProductDao{
         }
         return product;
     }
-    
-    public Product getProduct_ImgById(Integer Product_id) {
-    	 Product product = null;
-         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-              PreparedStatement ps = connection.prepareStatement(GET_IMG_BY_ID_STMT)) {
-             ps.setInt(1, Product_id);
-             ResultSet rs = ps.executeQuery();
-             if (rs.next()) {
-                 product = new Product();
-                 product.setProduct_picture(rs.getBytes("product_picture"));
+    public List<Product> getProduct_item(Integer product_category ){
+    	List<Product> products = new ArrayList<>();
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement ps = connection.prepareStatement(GET_PRO_BY_ITEM_STMT);){
+             ps.setInt(1,product_category);
+        	 ResultSet rs = ps.executeQuery(); 
+            while (rs.next()) {
+                Product product = new Product();
+                product.setProduct_id(rs.getInt("product_id"));
+                product.setProduct_name(rs.getString("product_name"));
+                product.setProduct_price(rs.getInt("product_price"));
+                product.setProduct_stock(rs.getInt("product_stock"));
+                product.setProduct_shipped(rs.getInt("product_shipped"));
+                product.setProduct_introduction(rs.getString("product_introduction"));
+                product.setProduct_picture(rs.getBytes("product_picture"));
+                product.setProduct_category(rs.getInt("product_category"));
+                product.setProduct_review_stars(rs.getInt("product_review_stars"));
+                product.setProduct_review_count(rs.getInt("product_review_count"));
                 
-             }
-         } catch (Exception e) {
-             e.printStackTrace();
-         }
-         return product;
+                products.add(product);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return products;
     	
     	
     }
     
-    public static void main(String[] args) {
-    		
-    	  Product product = new ProductDaoImpl().getProduct_ImgById(1);
+    //查產品數量
+    public List<Integer> getProductCount(){
+    	List<Integer> ll=null;
     	
-    	  byte[] bb = product.getProduct_picture();
-    	  
-    	  for(byte aa :bb) {
-    		 System.out.println(aa);
-    	  }
-  
+    	try(Connection con =DriverManager.getConnection(URL,USER,PASSWORD);) {
+			PreparedStatement ps =con.prepareStatement(GET_PRO_COUNT_STMT);
+			ResultSet rs =ps.executeQuery();
+			ll =new ArrayList<>();
+			while(rs.next()) {
+				ll.add(rs.getInt(1));
+			}
+    		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	return ll;
+    	
+    }
+    
+    //查圖片
+	public Product getProduct_ImgById(Integer Product_id) {
+		Product product = null;
+		try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+				PreparedStatement ps = connection.prepareStatement(GET_IMG_BY_ID_STMT)) {
+			ps.setInt(1, Product_id);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				product = new Product();
+				product.setProduct_picture(rs.getBytes("product_picture"));
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return product;
+
+	}
+    
+    public static void main(String[] args) {
+    	List<Product> list =new ProductDaoImpl().getProduct_item(1);
+    	
+    	for(Product count :list) {
+    		System.out.println(count.toString());
+    	}
+    	System.out.println(list.size());
+    	
 	}
 
 	
