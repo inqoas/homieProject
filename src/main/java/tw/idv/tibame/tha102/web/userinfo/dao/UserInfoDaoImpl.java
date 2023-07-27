@@ -23,6 +23,8 @@ public class UserInfoDaoImpl implements UserInfoDao{
 	private static final String GET_ONE_NAME_STMT = "select user_id, user_account, user_password, user_name, user_address, user_phone, user_gender, user_birth, user_ic, user_pic, user_status, garbage_coin, seller_identity from user_info where user_name like CONCAT('%', ?, '%')";
 	private static final String GET_ALL_STMT = "select user_id, user_account, user_password, user_name, user_address, user_phone, user_gender, user_birth, user_ic, user_pic, user_status, garbage_coin, seller_identity from user_info order by user_id ";
 	private static final String GET_IMG_BY_ID_STMT = "select user_pic from user_info where user_id = ?";
+	private static final String GET_ONE_ID_STMT = "select user_id, user_account, user_password, user_name, user_address, user_phone, user_gender, user_birth, user_ic, user_pic, user_status, garbage_coin, seller_identity from user_info where user_id = ?";
+	
 	
 	
 	@Override
@@ -154,9 +156,42 @@ public class UserInfoDaoImpl implements UserInfoDao{
 		
 	}
 	
-	public static void main(String[] args) {
-		
-
+	@Override
+	public List<UserInfo> findByUserId(Integer user_id) {
+		List<UserInfo> userList = new ArrayList<>();
+		try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+				PreparedStatement ps = connection.prepareStatement(GET_ONE_ID_STMT)) {
+			ps.setInt(1, user_id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				UserInfo user = new UserInfo();
+				user.setUser_id(rs.getInt("user_id"));
+				user.setUser_account(rs.getString("user_account"));
+				user.setUser_password(rs.getString("user_password"));
+				user.setUser_name(rs.getString("user_name"));
+				user.setUser_address(rs.getString("user_address"));
+				user.setUser_phone(rs.getString("user_phone"));
+				user.setUser_gender(rs.getInt("user_gender"));
+				user.setUser_birth(rs.getDate("user_birth"));
+				user.setUser_ic(rs.getString("user_ic"));
+				user.setUser_pic(rs.getBytes("user_pic"));
+				user.setUser_status(rs.getInt("user_status"));
+				user.setGarbage_coin(rs.getInt("garbage_coin"));
+				user.setSeller_identity(rs.getInt("seller_identity"));
+				userList.add(user);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return userList;
 	}
+	
+	public static void main(String[] args) {
+		UserInfoDaoImpl userInfoDaoImpl = new UserInfoDaoImpl();
+		List<UserInfo> userlist = userInfoDaoImpl.findByUserId(1);
+		System.out.println(userlist);
+	}
+
+
 	
 }

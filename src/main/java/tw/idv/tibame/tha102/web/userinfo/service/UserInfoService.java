@@ -11,4 +11,5 @@ public interface UserInfoService {
 	public UserInfo updateUser(UserInfo user);
 	public UserInfo newUser(UserInfo user);
 	public List<UserInfo> findUserByName(String userName);
+	public List<UserInfo> findUserById(Integer userId);
 }

@@ -12,7 +12,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    <title>Fastkart - Product</title>
+    <title>Homie - 訂單管理</title>
 
     <!-- Google font-->
     <link
@@ -22,8 +22,8 @@
     <!-- Fontawesome css -->
     <link rel="stylesheet" type="text/css" href="assets/css/vendors/font-awesome.css">
 
-    <!-- Linear Icon css -->
-    <link rel="stylesheet" href="assets/css/linearicon.css">
+    <!-- Linear Icon -->
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 
     <!-- Themify icon css -->
     <link rel="stylesheet" type="text/css" href="assets/css/vendors/themify.css">
@@ -47,17 +47,6 @@
 
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <style>
-        #searchInput{
-            width: 170px;
-            height: 30px;
-            font-size: 15px;
-            margin-left: auto;
-        }
-        .hidden {
-            display: none;
-        }
-    </style>
 </head>
 
 <body>
@@ -234,7 +223,7 @@
                                             <a href="product-order-list.html">商品訂單列表</a>
                                         </li>
                                         <li>
-                                            <a href="">服務訂單列表</a>
+                                            <a href="service-order-list.html">服務訂單列表</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -354,45 +343,34 @@
             </div>
             <!-- Page Sidebar Ends-->
 
-            <!-- Container-fluid starts-->
+            <!-- Order section Start -->
             <div class="page-body">
+                <!-- Table Start -->
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card card-table">
                                 <div class="card-body">
-                                    <div class="title-header option-title d-sm-flex d-block">
-                                        <h5>商品一覽表</h5>
-                                        <input type="text" id="searchInput" placeholder="輸入搜尋關鍵字">
-                                        <div class="right-options">
-                                            <ul>
-                                                <li>
-                                                    <a href="javascript:void(0)">import</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Export</a>
-                                                </li>
-                                                <li>
-                                                    <a class="btn btn-solid" href="add-new-product.html">Add Product</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <div class="title-header option-title">
+                                        <h5>服務訂單列表</h5>
+                                        <a href="#" class="btn btn-solid">Download all orders</a>
                                     </div>
                                     <div>
                                         <div class="table-responsive">
-                                            <table class="table all-package theme-table table-product" id="table_id">
+                                            <table class="table all-package order-table theme-table" id="table_id">
                                                 <thead>
                                                     <tr>
-                                                        <th>產品照片</th>
-                                                        <th>產品名稱</th>
-                                                        <th>產品種類</th>
-                                                        <th>產品庫存</th>
-                                                        <th>產品價格</th>
+                                                        <th>訂單編號</th>
+                                                        <th>訂購人</th>
+                                                        <th>下單日期</th>
+                                                        <th>訂單狀態</th>
+                                                        <th>物流編號</th>
+                                                        <th>總金額</th>
                                                         <th>其他選項</th>
                                                     </tr>
                                                 </thead>
 
-                                                <tbody id="products-table">                                                                                
+                                                <tbody id="product-order-table">
                                                 </tbody>
                                             </table>
                                         </div>
@@ -402,24 +380,26 @@
                         </div>
                     </div>
                 </div>
-                <!-- Container-fluid Ends-->
+                <!-- Table End -->
 
+                <!-- footer start-->
                 <div class="container-fluid">
-                    <!-- footer start-->
                     <footer class="footer">
                         <div class="row">
                             <div class="col-md-12 footer-copyright text-center">
-                                <p class="mb-0">Copyright</p>
+                                <p class="mb-0">Copyright 2022 © Fastkart theme by pixelstrap</p>
                             </div>
                         </div>
                     </footer>
                 </div>
             </div>
+            <!-- Order section End -->
         </div>
+        <!-- Page Body End-->
     </div>
-    <!-- page-wrapper End-->
+    <!-- page-wrapper End -->
 
-    <!-- Modal Start -->
+    <!-- Modal start -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog  modal-dialog-centered">
@@ -428,7 +408,6 @@
                     <h5 class="modal-title" id="staticBackdropLabel">Logging Out</h5>
                     <p>Are you sure you want to log out?</p>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
                     <div class="button-box">
                         <button type="button" class="btn btn--no" data-bs-dismiss="modal">No</button>
                         <button type="button" class="btn  btn--yes btn-primary">Yes</button>
@@ -437,7 +416,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal End -->
+    <!-- Modal end -->
 
     <!-- Delete Modal Box Start -->
     <div class="modal fade theme-modal remove-coupon" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
@@ -492,6 +471,79 @@
     </div>
     <!-- Delete Modal Box End -->
 
+    <!-- Offcanvas Box Start -->
+    <div class="offcanvas offcanvas-end order-offcanvas" tabindex="-1" id="order-details"
+        aria-labelledby="offcanvasExampleLabel" aria-expanded="false">
+        <div class="offcanvas-header">
+            <h4 class="offcanvas-title" id="offcanvasExampleLabel">#573-685572</h4>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="order-date">
+                <h6>September 17, 2022 <span class="ms-3">8:12 PM</span></h6>
+                <a href="javascript:void(0)" class="d-block mt-1">Cancel Order</a>
+            </div>
+
+            <div class="accordion accordion-flush custome-accordion" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Status
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <ul class="status-list">
+                                <li>
+                                    <a href="javascript:void(0)">Shipped</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">Pending</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            Accordion Item #2
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Placeholder content for this accordion, which is intended to
+                            demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion
+                            body. Let's imagine this being filled with some actual content.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            Accordion Item #3
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Placeholder content for this accordion, which is intended to
+                            demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion
+                            body. Nothing more exciting happening here in terms of content, but just filling up the
+                            space to make it look, at least at first glance, a bit more representative of how this would
+                            look in a real-world application.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Offcanvas Box End -->
+
     <!-- latest js -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
 
@@ -502,15 +554,15 @@
     <script src="assets/js/icons/feather-icon/feather.min.js"></script>
     <script src="assets/js/icons/feather-icon/feather-icon.js"></script>
 
+    <!-- customizer js -->
+    <script src="assets/js/customizer.js"></script>
+
     <!-- scrollbar simplebar js -->
     <script src="assets/js/scrollbar/simplebar.js"></script>
     <script src="assets/js/scrollbar/custom.js"></script>
 
     <!-- Sidebar js -->
     <script src="assets/js/config.js"></script>
-
-    <!-- customizer js -->
-    <script src="assets/js/customizer.js"></script>
 
     <!-- Plugins js -->
     <script src="assets/js/sidebar-menu.js"></script>
@@ -521,13 +573,16 @@
     <script src="assets/js/jquery.dataTables.js"></script>
     <script src="assets/js/custom-data-table.js"></script>
 
+    <!-- all checkbox select js -->
+    <script src="assets/js/checkbox-all-check.js"></script>
+
     <!-- sidebar effect -->
     <script src="assets/js/sidebareffect.js"></script>
 
     <!-- Theme js -->
     <script src="assets/js/script.js"></script>
 
-    <script src="assets/js/product-find-all.js"></script>
+    <script src="assets/js/order-product-find-all.js"></script>
 </body>
 
 </html>
