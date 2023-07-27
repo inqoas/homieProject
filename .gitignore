@@ -20,6 +20,7 @@ spring.log
 spring.log.2023-07-19.0.gz
 spring.log.2023-07-21.0.gz
 spring.log.2023-07-22.0.gz
+<<<<<<< HEAD
 spring.log.2023-07-24.0.gz
 spring.log.2023-07-25.0.gz
 .idea/.gitignore
@@ -29,3 +30,7 @@ spring.log.2023-07-25.0.gz
 .idea/misc.xml
 .idea/vcs.xml
 src/main/resources/static/assets/js/highcharts.js
+=======
+spring.log.2023-07-25.0.gz
+spring.log.2023-07-26.0.gz
+>>>>>>> joe

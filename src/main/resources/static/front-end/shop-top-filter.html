@@ -465,8 +465,8 @@
                                         <div class="form-check ps-0 m-0 category-list-box">
                                             <input class="checkbox_animated" type="checkbox" id="fruit">
                                             <label class="form-check-label" for="fruit">
-                                                <span class="name">居家清潔</span>
-                                                <span class="number">(15)</span>
+                                                <span class="name">清接劑</span>
+                                                <span id="fruit_number" class="number">(15)</span>
                                             </label>
                                         </div>
                                     </li>
@@ -474,8 +474,8 @@
                                         <div class="form-check ps-0 m-0 category-list-box">
                                             <input class="checkbox_animated" type="checkbox" id="cake">
                                             <label class="form-check-label" for="cake">
-                                                <span class="name">冷氣清潔</span>
-                                                <span class="number">(15)</span>
+                                                <span class="name">洗衣精/粉</span>
+                                                <span id="cake_number" class="number">(15)</span>
                                             </label>
                                         </div>
                                     </li>
@@ -483,8 +483,8 @@
                                         <div class="form-check ps-0 m-0 category-list-box">
                                             <input class="checkbox_animated" type="checkbox" id="behe">
                                             <label class="form-check-label" for="behe">
-                                                <span class="name">洗衣機清潔</span>
-                                                <span class="number">(15)</span>
+                                                <span class="name">掃除用品</span>
+                                                <span id="behe_number" class="number">(15)</span>
                                             </label>
                                         </div>
                                     </li>
@@ -492,26 +492,8 @@
                                         <div class="form-check ps-0 m-0 category-list-box">
                                             <input class="checkbox_animated" type="checkbox" id="snacks">
                                             <label class="form-check-label" for="snacks">
-                                                <span class="name">專業除蟎</span>
-                                                <span class="number">(15)</span>
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check ps-0 m-0 category-list-box">
-                                            <input class="checkbox_animated" type="checkbox" id="beauty">
-                                            <label class="form-check-label" for="beauty">
-                                                <span class="name">水塔清洗</span>
-                                                <span class="number">(15)</span>
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check ps-0 m-0 category-list-box">
-                                            <input class="checkbox_animated" type="checkbox" id="pets">
-                                            <label class="form-check-label" for="pets">
-                                                <span class="name">水管清洗</span>
-                                                <span class="number">(15)</span>
+                                                <span class="name">洗碗精/粉</span>
+                                                <span id="snacks_number" class="snacks_number">(15)</span>
                                             </label>
                                         </div>
                                     </li>
@@ -1316,43 +1298,168 @@
      <!-- ajax-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
+    <script src="../assets/js/shop-top-filter.js"></script> 
+
     <script>
+        
+        const fruit_number =document.querySelector("#fruit_number");
+        const cake_number  =document.querySelector("#cake_number");
+        const behe_number  =document.querySelector("#behe_number");
+        const snacks_number=document.querySelector("#snacks_number");
+        
+        const checkbox_fruit =document.querySelector("#fruit");
+        const checkbox_cake =document.querySelector("#cake");
+        const checkbox_behe =document.querySelector("#behe");
+        const checkbox_snacks =document.querySelector("#snacks");
 
-        var products =document.querySelector("#product");
+        const products =document.querySelector("#product");
 
-        var checkbox_animated =document.querySelector("#fruit");
+        All_product();
+
+		function All_product(){
+		//全部商品列	
+			$.ajax({
+			url : "/homieProject/product/findall",
+			type : "GET",
+			dataType : "json",
+			success : function(data) {
+		
+					for ( let key in data) {
+						
+					// 創建一個<div>元素來代表產品展示卡片
+					const productCard = document.createElement("div");
+					productCard.className = "product-box-3 h-100 wow fadeInUp";
+				
+					// 創建產品的header部分
+					const productHeader = document.createElement("div");
+					productHeader.className = "product-header";
+					const productImage = document.createElement("div");
+					productImage.className = "product-image";
+					const productImageLink = document.createElement("a");
+					productImageLink.href = "product-left-thumbnail.html";
+					const productImg = document.createElement("img");
+
+					productImg.id ="product_img"
+					productImg.src ="http://localhost:8080/homieProject/product/ProductFindImgController?product_id="+`${data[key].product_id}`;
+					productImg.className = "img-fluid blur-up lazyload";
+					productImg.alt = "";
+				
+					// 把元素組合在一起
+					productImageLink.appendChild(productImg);
+					productImage.appendChild(productImageLink);
+					productHeader.appendChild(productImage);
+					productCard.appendChild(productHeader);
+				
+					// 創建產品的footer部分
+					const productFooter = document.createElement("div");
+					productFooter.className = "product-footer";
+					const productDetail = document.createElement("div");
+					productDetail.className = "product-detail";
+				
+					// 添加產品詳細資訊
+					const productName = document.createElement("h5");
+					const productNameLink = document.createElement("a");
+					productNameLink.href = "product-left-thumbnail.html";
+					productNameLink.innerText = `${data[key].product_name}`;
+					productName.appendChild(productNameLink);
+				
+					const productDescription = document.createElement("p");
+					productDescription.className = "text-content mt-1 mb-2 product-content";
+					productDescription.innerText = "asdsadsads";
+				
+					const productRating = document.createElement("div");
+					productRating.className = "product-rating mt-2";
+					const ratingList = document.createElement("ul");
+					ratingList.className = "rating";
+				
+					for (let i = 0; i < 5; i++) {
+
+						const star   = document.createElement("li");
+						const  svg   = document.createElement("svg");
+						const  ii    = document.createElement("i");
+						const polygon= document.createElement("polygon");
+					
+
+						if( i < data[key].product_review_stars ){
+
+							ii.style="color:yellow";
+							ii.className="bi bi-star-fill";
+						
+							star.appendChild(ii);
+						
+						}else{
+
+						
+							ii.className="bi bi-star";
+						
+							star.appendChild(ii);
+						}
+									
+						ratingList.appendChild(star);
+					}
+				
+					const ratingValue = document.createElement("span");
+					ratingValue.innerText = "(" + data[key].product_review_stars + ")";
+				
+					productRating.appendChild(ratingList);
+					productRating.appendChild(ratingValue);
+				
+					const productUnit = document.createElement("h6");
+					productUnit.className = "unit";
+					productUnit.innerText ="$"+ data[key].product_price;
+				
+					const productPrice = document.createElement("h5");
+				// productPrice.innerHTML = '<span class="theme-color">' + "sdsdsd" + '</span> <del>' + "sdsdd" + '</del>';
+				
+					// 把元素組合在一起
+					productDetail.appendChild(productName);
+					productDetail.appendChild(productDescription);
+					productDetail.appendChild(productRating);
+					productDetail.appendChild(productUnit);
+					productDetail.appendChild(productPrice);
+					productFooter.appendChild(productDetail);
+					productCard.appendChild(productFooter);
+				
+					// 把產品展示卡片插入到容器中
+					products.appendChild(productCard);
+				
+
+					}
+
+				}
+			})
+		
+		}	
+
 
         
-    
-        var reader = new FileReader();
-        
-
         $.ajax({
-		url : "/homieProject/product/findall",
+		url : "/homieProject/product/ProductFindCountController",
 		type : "GET",
 		dataType : "json",
 		success : function(data) {
-       
-                for ( let key in data) {
-					
-					
-                 console.log("http://localhost:8080/homieProject/product/ProductFindImgController?product_id="+`${data[key].product_id}`);   
 
-				// const blob = new Blob([new Uint8Array(data[key].product_picture)], { type: 'image/jpg' });	
-				
-				// const resu= reader.readAsDataURL(blob);
-				
-				// console.log(resu);
-				// console.log(blob);
-				// console.log(data[key].product_picture);
-                
-                // const blob = new Blob([new Uint8Array(data[key].product_picture)], { type: 'image/jpg' });    
-                    
-                // reader.readAsDataURL(blob);    
-                
-               // const reader =btoa(data[key].product_picture);
+            fruit_number.innerHTML="("+data[0]+")";
+            cake_number.innerHTML="("+data[1]+")";
+            behe_number.innerHTML="("+data[2]+")";
+            snacks_number.innerHTML="("+data[3]+")";
 
-			    // 創建一個<div>元素來代表產品展示卡片
+        }});
+        //依產品項目
+        function check_show_product(code){
+        
+            $.ajax({
+            url : "/homieProject/product/ProductFindItemController",
+            type : "POST",
+            dataType : "json",
+            data : JSON.stringify ({
+                product_category:code        
+            }) ,
+            success : function(data) {
+            
+
+                for(let key in data){
+                     // 創建一個<div>元素來代表產品展示卡片
 			    const productCard = document.createElement("div");
 			    productCard.className = "product-box-3 h-100 wow fadeInUp";
 			
@@ -1364,6 +1471,7 @@
 			    const productImageLink = document.createElement("a");
 			    productImageLink.href = "product-left-thumbnail.html";
 			    const productImg = document.createElement("img");
+				
 			    productImg.id ="product_img"
 			    productImg.src ="http://localhost:8080/homieProject/product/ProductFindImgController?product_id="+`${data[key].product_id}`;
 			    productImg.className = "img-fluid blur-up lazyload";
@@ -1451,23 +1559,48 @@
 
                 }
 
-		    }
-	    })
+            },
+            error : function(error){
+				 
+				console.log(error);	
+			
+			} 
+    		})    
+        }
+
+
+        // const checkbox_fruit =document.querySelector("#fruit");
+        // const checkbox_cake =document.querySelector("#cake");
+        // const checkbox_behe =document.querySelector("#behe");
+        // const checkbox_snacks =document.querySelector("#snacks");
+
+
+
+        checkbox_fruit.addEventListener("change", function () {
+
+				products.innerHTML = "";
+
+				if (this.checked) {    
+                        check_show_product(1);
+				    if( checkbox_cake.checked && checkbox_behe.checked && checkbox_snacks.checked ){
+                        // check_show_product(2);
+                        // check_show_product(3);
+                        // check_show_product(4);
+                        console.log("asdsa");
+                    }
+
+
+                        
+                } else {
+					
+                    All_product();
+
+				}
+
+			});
 		
-        // window.addEventListener("DOMContentLoaded",function(){
-        // 	var product_img =document.querySelectorAll("#product_img");
-        	
-        // 	console.log(product_img);       
-        // });
-	    
-        checkbox_animated.addEventListener("click",function(){
-            console.log("abcdef");
-        });
-
-
 
     </script>
-
 </body>
 
 </html>
