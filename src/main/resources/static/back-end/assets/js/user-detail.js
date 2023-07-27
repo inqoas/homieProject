@@ -1,3 +1,24 @@
+const statusMapping = {
+    0: "正常",
+    1: "停權",
+    2: "未審核",
+    3: "註銷",
+};
+
+function getStatusText(statusCode) {
+    return statusMapping[statusCode] || "未知狀態";
+}
+
+const sellerMapping = {
+    0: "不是",
+    1: "是"
+};
+
+function getSellerText(sellerCode){
+    return sellerMapping[sellerCode] || "未知選項"
+}
+
+
 document.addEventListener("DOMContentLoaded", function () {
     try {
         const urlParams = new URLSearchParams(window.location.search);
@@ -5,6 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(userId);
 
         const getUserProfileAPI = "../userinfo/findbyid";
+        const getUserProfileImageAPI = `http://localhost:8080/homieProject/userinfo/userInfoFindImgController?user_id=${userId}`;
+
 
         // 發送 GET 請求取得會員資料
         $.ajax({
@@ -13,23 +36,29 @@ document.addEventListener("DOMContentLoaded", function () {
             dataType: "json",
             success: function(data) {
                 console.log(data);
-                const userProfileContainer = document.getElementById("userProfileContainer");
-                userProfileContainer.querySelector('#nameInput').value = data.user_name;
-                userProfileContainer.querySelector('#idInput').value = data.user_id;
-                userProfileContainer.querySelector('[placeholder="輸入密碼"]').value = data.user_password;
-                userProfileContainer.querySelector('[placeholder="輸入帳號"]').value = data.user_account;
-                userProfileContainer.querySelector('[placeholder="輸入手機號碼"]').value = data.user_phone;
-                userProfileContainer.querySelector('[placeholder="輸入性別"]').value = data.user_gender;
-                userProfileContainer.querySelector('[placeholder="輸入地址"]').value = data.user_address;
-                userProfileContainer.querySelector('[placeholder="輸入生日"]').value = data.user_birth;
-                userProfileContainer.querySelector('[placeholder="輸入分證字號"]').value = data.user_ic;
-                userProfileContainer.querySelector('[placeholder="輸入狀態"]').value = data.user_status;
-                userProfileContainer.querySelector('[placeholder="輸入GC"]').value = data.garbage_coin;
-                userProfileContainer.querySelector('[placeholder="輸入是否為賣家"]').value = data.seller_identity;
-                userProfileContainer.querySelector('#user-detail-name').textContent = data.user_name;
-                userProfileContainer.querySelector('#user-detail-email').textContent = data.user_account;
 
-                // ...其他表單欄位的填入...
+                const profileImage = document.getElementById("profileImage");
+                profileImage.src = getUserProfileImageAPI;
+
+                const statusText = getStatusText(data[0].user_status);
+                const sellerText = getSellerText(data[0].seller_identity);
+                const userProfileContainer = document.getElementById("userProfileContainer");
+                userProfileContainer.querySelector('#nameInput').textContent = data[0].user_name;
+                userProfileContainer.querySelector('#idInput').textContent = data[0].user_id;
+                userProfileContainer.querySelector('#accountInput').textContent = data[0].user_account;
+                userProfileContainer.querySelector('#phoneInput').textContent = data[0].user_phone;
+                userProfileContainer.querySelector('#genderInput').textContent = data[0].user_gender;
+                userProfileContainer.querySelector('#addressInput').textContent = data[0].user_address;
+                userProfileContainer.querySelector('#birthInput').textContent = data[0].user_birth;
+                userProfileContainer.querySelector('#icInput').textContent = data[0].user_ic;
+                userProfileContainer.querySelector('#statusInput').textContent = statusText;
+                userProfileContainer.querySelector('#coinInput').textContent = data[0].garbage_coin;
+                userProfileContainer.querySelector('#sellerInput').textContent = sellerText;
+                userProfileContainer.querySelector('#user-detail-name').textContent = data[0].user_name;
+                userProfileContainer.querySelector('#user-detail-email').textContent = data[0].user_account;
+
+
+
             },
             error: function (error) {
                 console.error("無法取得會員資料：", error);
@@ -38,4 +67,11 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch (error) {
         console.error("無法取得會員資料：", error);
     }
+
+    const backButton = document.getElementById("backButton");
+    backButton.addEventListener("click", function () {
+        history.back();
+    });
+    
+
 });

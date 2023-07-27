@@ -338,74 +338,68 @@
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <label class="labels">姓名</label>
-                                    <input type="text" id="nameInput" class="form-control" placeholder="輸入姓名" value="">
+                                    <span type="text" id="nameInput" class="form-control"></span>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="labels">使用者編號</label>
-                                    <input type="text" id="idInput" class="form-control" placeholder="輸入編號" value="">
+                                    <span type="text" id="idInput" class="form-control"></span>
                                 </div>
                             </div>
 
-                            <div class="row mt-3">
-                                <div class="col-md-6">
-                                    <label class="labels">密碼</label>
-                                    <input type="text" id="passwordInput" class="form-control" placeholder="輸入密碼" value="">
-                                </div>
+                            <div class="row mt-3">    
                                 <div class="col-md-6">
                                     <label class="labels">帳號(Email)</label>
-                                    <input type="text" id="accountInput" class="form-control" placeholder="輸入帳號" value="">
+                                    <span type="text" id="accountInput" class="form-control"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels">身分證字號</label>
+                                    <span type="text" id="icInput" class="form-control"></span>
                                 </div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <label class="labels">手機號碼</label>
-                                    <input type="text" id="phoneInput" class="form-control" placeholder="輸入手機號碼" value="">
+                                    <span type="text" id="phoneInput" class="form-control"></span>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="labels">性別</label>
-                                    <input type="text" id="genderInput" class="form-control" placeholder="輸入性別" value="">
+                                    <span type="text" id="genderInput" class="form-control"></span>
                                 </div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-12">
                                     <label class="labels">地址</label>
-                                    <input type="text" id="addressInput" class="form-control" placeholder="輸入地址" value="">
+                                    <span type="text" id="addressInput" class="form-control"></span>
                                 </div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <label class="labels">生日</label>
-                                    <input type="text" id="birthInput" class="form-control" placeholder="輸入生日" value="">
+                                    <span type="text" id="birthInput" class="form-control"></span>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="labels">身分證字號</label>
-                                    <input type="text" id="icInput" class="form-control" placeholder="輸入分證字號" value="">
-                                </div>
-                            </div>
-                            <div class="row mt-3">
                                 <div class="col-md-6">
                                     <label class="labels">狀態</label>
-                                    <input type="text" id="statusInput" class="form-control" placeholder="輸入狀態" value="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="labels">累積GC</label>
-                                    <input type="text" id="coinInput" class="form-control" placeholder="輸入GC" value="">
+                                    <span type="text" id="statusInput" class="form-control"></span>
                                 </div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6">
+                                    <label class="labels">累積GC</label>
+                                    <span type="text" id="coinInput" class="form-control"></span>
+                                </div>
+                                <div class="col-md-6">
                                     <label class="labels">是否為賣家？</label>
-                                    <input type="text" id="sellerInput" class="form-control" placeholder="輸入是否為賣家" value="">
+                                    <span type="text" id="sellerInput" class="form-control"></span>
                                 </div>
                             </div>
                             <div class="mt-5 text-center">
-                                <button class="btn btn-primary profile-button" type="button">儲存</button>
+                                <button id="backButton" class="btn btn-primary profile-button" type="button">上一頁</button>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                            <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                            <img class="rounded-circle mt-5" id="profileImage" width="150px" src="">
                             <span class="font-weight-bold" id="user-detail-name"></span>
                             <span class="text-black-50" id="user-detail-email"></span>
                         </div>
@@ -472,17 +466,7 @@
     <script src="assets/js/script.js"></script>
 
     <script src="assets/js/user-detail.js"></script>
-    <!-- <script>
-        document.addEventListener("DOMContentLoaded", async function () {
-            try {
-                const urlParams = new URLSearchParams(window.location.search);
-                const userId = urlParams.get("user_id");
-                console.log(userId);
-            } catch (error) {
-                console.error("無法取得會員資料：", error);
-            }
-        });
-    </script> -->
+
 </body>
 
 </html>
