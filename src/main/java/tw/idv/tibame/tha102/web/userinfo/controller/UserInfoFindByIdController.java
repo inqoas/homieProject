@@ -14,7 +14,7 @@ import tw.idv.tibame.tha102.web.userinfo.service.UserInfoService;
 import tw.idv.tibame.tha102.web.userinfo.service.UserInfoServiceImpl;
 import tw.idv.tibame.tha102.web.userinfo.vo.UserInfo;
 
-@WebServlet("/userinfo/findbyid")
+@WebServlet("/userinfo/find-by-id")
 public class UserInfoFindByIdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserInfoService userInfoService;

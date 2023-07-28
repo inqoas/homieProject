@@ -1,10 +1,3 @@
-// var host = window.location.host;
-// var pathname = window.location.pathname;
-// var apiUrl = 'http://' + host + pathname + 'homie/all-users'
-
-// console.log(host);
-// console.log(pathname);
-
 var statusMapping = {
     0: "正常",
     1: "停權",
@@ -19,12 +12,12 @@ function getStatusText(statusCode) {
 function init(){
 
     $.ajax({
-        url: '../userinfo/findall',
+        url: '../userinfo/find-pending-seller',
         type: 'GET',
         dataType: "json",
         success: function(response) {
 
-            var tableBody = $('#all-users-table');
+            var tableBody = $('#pending-sellers-table');
         
             // 清空原本的內容
             tableBody.empty();
@@ -38,7 +31,7 @@ function init(){
                     <tr>
                         <td>
                             <div class="table-image">
-                                <img src=" http://localhost:8080/homieProject//userinfo/userInfoFindImgController?user_id=${userinfo.user_id}" class="img-fluid" alt="">
+                                <img src=" http://localhost:8080/homieProject//userinfo/user-info-find-img?user_id=${userinfo.user_id}" class="img-fluid" alt="">
                             </div>
                         </td>
                         <td>
@@ -49,11 +42,10 @@ function init(){
                         </td>
                         <td>${userinfo.user_phone}</td>
                         <td>${userinfo.user_account}</td>
-                        <td>${statusText}</td>
                         <td>
                             <ul>
                                 <li>
-                                    <a href="user-detail.html?user_id=${userinfo.user_id}">
+                                    <a href="pending-seller-detail.html?user_id=${userinfo.user_id}">
                                         <i class="ri-eye-line"></i>
                                     </a>
                                 </li>                       

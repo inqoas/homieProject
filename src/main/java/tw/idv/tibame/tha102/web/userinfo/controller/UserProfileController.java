@@ -7,7 +7,6 @@ import java.util.Base64;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import jakarta.security.auth.message.callback.PrivateKeyCallback.Request;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,6 +16,7 @@ import jakarta.servlet.http.HttpSession;
 import tw.idv.tibame.tha102.web.userinfo.service.UserDashboardService;
 import tw.idv.tibame.tha102.web.userinfo.service.impl.UserDashboardServiceImpl;
 import tw.idv.tibame.tha102.web.userinfo.vo.UserInfo;
+
 @WebServlet("/user-profile")
 public class UserProfileController extends HttpServlet {
 	private static final long serialVersionUID = -1359326233505038780L;

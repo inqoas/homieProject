@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import tw.idv.tibame.tha102.web.userinfo.dao.UserInfoDaoImpl;
 import tw.idv.tibame.tha102.web.userinfo.vo.UserInfo;
 
-@WebServlet(urlPatterns = "/userinfo/userInfoFindImgController")
+@WebServlet(urlPatterns = "/userinfo/user-info-find-img")
 public class UserInfoFindImgController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;

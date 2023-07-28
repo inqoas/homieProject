@@ -14,15 +14,14 @@ import tw.idv.tibame.tha102.web.userinfo.service.UserInfoService;
 import tw.idv.tibame.tha102.web.userinfo.service.UserInfoServiceImpl;
 import tw.idv.tibame.tha102.web.userinfo.vo.UserInfo;
 
-
-@WebServlet("/userinfo/find-all")
-public class UserInfoFindAllController extends HttpServlet{
-    private static final long serialVersionUID = 1L;
-    private UserInfoService userInfoService;
-    private static final Gson gson = new Gson();	
+@WebServlet("/userinfo/find-pending-seller")
+public class PendingSellerController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private UserInfoService userInfoService;
+    private static final Gson gson = new Gson();
     
-    public UserInfoFindAllController() {
-        userInfoService = new UserInfoServiceImpl();
+    public PendingSellerController() {
+    	userInfoService = new UserInfoServiceImpl();
     }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,7 +31,7 @@ public class UserInfoFindAllController extends HttpServlet{
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setContentType("application/json; charset=utf-8");
 
-        List<UserInfo> userList = userInfoService.findAll();
+        List<UserInfo> userList = userInfoService.findPendingSeller();
 
         String jsonResult = gson.toJson(userList);
         response.getWriter().write(jsonResult);
@@ -41,4 +40,6 @@ public class UserInfoFindAllController extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
+    
+    
 }

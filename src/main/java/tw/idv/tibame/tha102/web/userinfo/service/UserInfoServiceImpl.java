@@ -20,7 +20,7 @@ public class UserInfoServiceImpl implements UserInfoService{
 	public List<UserInfo> findAll() {
 		return dao.getAll();
 	}
-
+	
 	@Override
 	public UserInfo updateUser(UserInfo user) {
 		dao.update(user);
@@ -41,5 +41,10 @@ public class UserInfoServiceImpl implements UserInfoService{
 	@Override
 	public List<UserInfo> findUserById(Integer userId) {
 		return dao.findByUserId(userId);
+	}
+
+	@Override
+	public List<UserInfo> findPendingSeller() {
+		return dao.findByUserStatus();
 	}
 }

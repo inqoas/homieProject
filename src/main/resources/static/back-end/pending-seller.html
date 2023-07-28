@@ -46,6 +46,13 @@
 
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <style>
+        #searchInput{
+            width: 170px;
+            height: 30px;
+            font-size: 15px;
+        }
+    </style>
 </head>
 
 <body>
@@ -237,7 +244,7 @@
                                                 <a href="all-users.html">使用者</a>
                                             </li>
                                             <li>
-                                                <a href="">待審核賣家</a>
+                                                <a href="pending-seller.html">待審核賣家</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -330,97 +337,7 @@
                                             <i class="ri-cash-fill"></i>
                                             <span>金流管理</span>
                                         </a>
-                                    </li>
-    
-                                    <!-- <li class="sidebar-list">
-                                        <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
-                                            <i class="ri-list-settings-line"></i>
-                                            <span>Attributes</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li>
-                                                <a href="attributes.html">Attributes</a>
-                                            </li>
-    
-                                            <li>
-                                                <a href="add-new-attributes.html">Add Attributes</a>
-                                            </li>
-                                        </ul>
-                                    </li> -->
-    
-                                    <!-- <li class="sidebar-list">
-                                        <a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                                            <i class="ri-user-3-line"></i>
-                                            <span>Roles</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li>
-                                                <a href="role.html">All roles</a>
-                                            </li>
-                                            <li>
-                                                <a href="create-role.html">Create Role</a>
-                                            </li>
-                                        </ul>
-                                    </li> -->
-    
-                                    <!-- <li class="sidebar-list">
-                                        <a class="sidebar-link sidebar-title link-nav" href="media.html">
-                                            <i class="ri-price-tag-3-line"></i>
-                                            <span>Media</span>
-                                        </a>
-                                    </li> -->
-    
-                                    <!-- <li class="sidebar-list">
-                                        <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
-                                            <i class="ri-focus-3-line"></i>
-                                            <span>Localization</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li>
-                                                <a href="translation.html">Translation</a>
-                                            </li>
-    
-                                            <li>
-                                                <a href="currency-rates.html">Currency Rates</a>
-                                            </li>
-                                        </ul>
-                                    </li> -->
-    
-                                    <!-- <li class="sidebar-list">
-                                        <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
-                                            <i class="ri-price-tag-3-line"></i>
-                                            <span>Coupons</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li>
-                                                <a href="coupon-list.html">Coupon List</a>
-                                            </li>
-    
-                                            <li>
-                                                <a href="create-coupon.html">Create Coupon</a>
-                                            </li>
-                                        </ul>
-                                    </li> -->
-    
-                                    <!-- <li class="sidebar-list">
-                                        <a class="sidebar-link sidebar-title link-nav" href="taxes.html">
-                                            <i class="ri-price-tag-3-line"></i>
-                                            <span>Tax</span>
-                                        </a>
-                                    </li>
-    
-                                    <li class="sidebar-list">
-                                        <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
-                                            <i class="ri-settings-line"></i>
-                                            <span>Settings</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li>
-                                                <a href="profile-setting.html">Profile Setting</a>
-                                            </li>
-                                        </ul>
-                                    </li> -->
-    
+                                    </li>  
                                 </ul>
                             </div>
     
@@ -442,17 +359,18 @@
                                     <div class="card-body">
                                         <div class="title-header option-title">
                                             <h5>待審核賣家</h5>
+                                            <input type="text" id="searchInput" placeholder="輸入搜尋關鍵字">
                                         </div>
 
                                         <div class="table-responsive table-product">
                                             <table class="table all-package theme-table" id="table_id">
                                                 <thead>
                                                     <tr>
-                                                        <th>User</th>
-                                                        <th>Name</th>
-                                                        <th>Phone</th>
-                                                        <th>Email</th>
-                                                        <th>Option</th>
+                                                        <th>照片</th>
+                                                        <th>姓名</th>
+                                                        <th>電話</th>
+                                                        <th>信箱</th>
+                                                        <th>審核</th>
                                                     </tr>
                                                 </thead>
 
@@ -506,6 +424,8 @@
     
     <!-- Theme js -->
     <script src="assets/js/script.js"></script>
+
+    <script src="assets/js/pending-seller.js"></script>
 </body>
 
 </html>
