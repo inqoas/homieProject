@@ -31,20 +31,6 @@ public class ProductFindAllController extends HttpServlet {
         response.setHeader("Access-Control-Allow-Headers", "Content-Type");
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setContentType("application/json; charset=utf-8");
-//		String action = request.getParameter("action");
-//		if (action != null && action.equals("findAll")) {
-//			findAll(request, response);
-//		} else {
-//			// 其他未知的動作
-//			response.sendError(HttpServletResponse.SC_NOT_FOUND);
-//		}
-        
-        try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
         
         List<Product> productsList = productService.findAll();
         String jsonResult = gson.toJson(productsList);
