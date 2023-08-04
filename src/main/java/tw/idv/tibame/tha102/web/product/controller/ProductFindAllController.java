@@ -14,7 +14,7 @@ import tw.idv.tibame.tha102.web.product.service.ProductService;
 import tw.idv.tibame.tha102.web.product.service.ProductServiceImpl;
 import tw.idv.tibame.tha102.web.product.vo.Product;
 
-@WebServlet("/product/findall")
+@WebServlet("/product/find-all")
 public class ProductFindAllController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProductService productService;

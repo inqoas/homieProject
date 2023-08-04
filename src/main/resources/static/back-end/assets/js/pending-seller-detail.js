@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const getUserProfileImageAPI = `http://localhost:8080/homieProject/userinfo/user-info-find-img?user_id=${userId}`;
 
 
-        // 發送 GET 請求取得會員資料
+
         $.ajax({
             url: `${getUserProfileAPI}?user_id=${userId}`,
             type: 'GET',
