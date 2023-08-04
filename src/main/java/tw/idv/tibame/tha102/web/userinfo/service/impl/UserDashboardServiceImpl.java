@@ -1,7 +1,7 @@
 package tw.idv.tibame.tha102.web.userinfo.service.impl;
 
 import tw.idv.tibame.tha102.web.userinfo.dao.MemberDao;
-import tw.idv.tibame.tha102.web.userinfo.dao.MemberDaoImpl;
+import tw.idv.tibame.tha102.web.userinfo.dao.Impl.MemberDaoImpl;
 import tw.idv.tibame.tha102.web.userinfo.service.UserDashboardService;
 import tw.idv.tibame.tha102.web.userinfo.vo.UserInfo;
 

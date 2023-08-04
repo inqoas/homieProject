@@ -22,9 +22,16 @@ public class UserInfo implements java.io.Serializable {
     private String message;
     private boolean success;
     private String user_pic_base64;
+    private String user_jwt;
     
     
     
+	public String getUser_jwt() {
+		return user_jwt;
+	}
+	public void setUser_jwt(String user_jwt) {
+		this.user_jwt = user_jwt;
+	}
 	public String getUser_pic_base64() {
 		return user_pic_base64;
 	}

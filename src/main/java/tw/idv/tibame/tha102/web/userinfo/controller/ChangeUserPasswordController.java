@@ -13,50 +13,33 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import jakarta.websocket.Session;
 import tw.idv.tibame.tha102.core.util.UserInfoJwtUtil;
 import tw.idv.tibame.tha102.web.userinfo.service.MemberService;
 import tw.idv.tibame.tha102.web.userinfo.service.impl.MemberServiceImpl;
 import tw.idv.tibame.tha102.web.userinfo.vo.UserInfo;
-
 @Controller
-@WebServlet("/login")
-public class MemberLoginController extends HttpServlet {
-	private static final long serialVersionUID = -3245570107853379659L;
-	private MemberService memberService;
-	private UserInfoJwtUtil userInfoJwtUtil;
+@WebServlet("/changeUserPassword")
+public class ChangeUserPasswordController extends HttpServlet{
+	private static final long serialVersionUID = 6134219820601521855L;
+	private MemberService memberServiceImpl;
+	private UserInfoJwtUtil jwtUtil;
 	@Autowired
-	public MemberLoginController(UserInfoJwtUtil userInfoJwtUtil) {
-		this.userInfoJwtUtil = userInfoJwtUtil;
+	public ChangeUserPasswordController(UserInfoJwtUtil jwtUtil) {
+		this.jwtUtil = jwtUtil;
 	}
 	@Override
 	public void init() throws ServletException {
-		memberService = new MemberServiceImpl();
+		memberServiceImpl = new MemberServiceImpl();
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Gson gson = new Gson();
+		String jwString = req.getHeader("Authorization");
+		int userid = jwtUtil.checkUserInfoJwt(jwString);
 		UserInfo userInfo = gson.fromJson(req.getReader(), UserInfo.class);
-		resp.setContentType("application/json");
+		userInfo = memberServiceImpl.changeUserPassword(userInfo, userid);
 		resp.setCharacterEncoding("UTF-8");
-		if(userInfo == null) {	
-			userInfo = new  UserInfo();
-			userInfo.setMessage("無會員資訊");
-			userInfo.setSuccess(false);
-			try (PrintWriter writer = resp.getWriter()){
-				writer.print(gson.toJson(userInfo));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return;
-		}
-		userInfo = memberService.login(userInfo);
-		if(userInfo.isSuccess()) {
-			userInfo.setUser_jwt(userInfoJwtUtil.creatUserInfoJwt(userInfo));
-			System.out.println(userInfo.getUser_jwt());
-		}
-		
+		resp.setContentType("application/json");
 		try (PrintWriter writer = resp.getWriter()){
 			writer.print(gson.toJson(userInfo));
 		} catch (Exception e) {

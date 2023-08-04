@@ -19,10 +19,7 @@ document.querySelector("#login-button").addEventListener("click", function(){
             document.querySelector(".login-error-message").innerHTML = body.message;
             if(body.success === true){
                 location = "../front-end/user-dashboard.html";
-                sessionStorage.setItem('user_id', body.user_id);
-                sessionStorage.setItem('user_name', body.user_name);
-                sessionStorage.setItem('user_status', body.user_status);
-                sessionStorage.setItem('seller_identity', body.seller_identity);
+                localStorage.setItem('user_jwt', body.user_jwt);
             }
         },
         function(error) {

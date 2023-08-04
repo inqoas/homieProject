@@ -9,7 +9,7 @@
     <meta name="keywords" content="Fastkart">
     <meta name="author" content="Fastkart">
     <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
-    <title>Forgot Password</title>
+    <title>申請商家</title>
 
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -256,6 +256,7 @@
                                             </li>
                                         </ul>
                                     </div>
+                                    <div class="username" style="font-weight: bold; color: #274C77;"></div>
                                 </li>
                             </ul>
                         </div>
@@ -378,22 +379,20 @@
                             <div class="log-in-title">
                                 <h3>申請商家</h3>
                             </div>
-                            <div class="col-12">
-                                <form action="post">
-                                    銀行代碼:<input type="number"> 
+                            <div class="col-12"> 
+                                    銀行代碼:<input type="number" class="sellerBCode"> 
                                     <br>    
                                     <br>
-                                    銀行帳號:<input type="text">
+                                    銀行帳號:<input type="text" class="sellerBAccount">
                                     <br>
                                     <br>
-                                    銀行戶名:<input type="text">
+                                    銀行戶名:<input type="text" class="sellerBName">
                                     <br>
                                     <br>
-                                    良民證:<input type="file">
+                                    良民證:<input type="file" class="sellerPcrc">
                                     <br>
                                     <br>
-                                    <input type="submit">
-                                </form>
+                                    <button class="sellerSubmit">送出</button>
                             </div>
                         </div>
                     </div>
@@ -509,6 +508,8 @@
 
     <!-- script js -->
     <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/applyBusiness.js"></script>
 </body>
 
 </html>
