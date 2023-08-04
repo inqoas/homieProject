@@ -399,7 +399,7 @@
                                                     <option value="4">水塔清洗</option>
                                                     <option value="5">水管清洗</option>   
                                                 </select>    
-                                                <label for="area">服物類型</label>
+                                                <label for="area">服務類型</label>
                                             </div>
                                         </div>                                       
                                         <div class="col-12">
@@ -419,7 +419,7 @@
                                                 <label for="area">預約時間</label>
                                             </div>
                                         </div>
-                                        <div class="col-14">
+                                        <!-- <div class="col-14">
                                             <div class="cart_qty qty-box">
                                                 <div class="input-group bg-white">
                                                     <button type="button" class="qty-left-minus bg-gray"
@@ -434,7 +434,7 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="col-12">
                                             <button class="btn btn-animation w-100 justify-content-center login-account" type="submit">搜尋</button>
                                         </div>
@@ -449,7 +449,7 @@
                     <div class="cart-table"> 
                         <div class="table-responsive-xl"> 
                             <table class="table">
-                                <tbody>
+                                <tbody id="Service_tbody">
                                     <tr class="product-box-contain">
                                         <td class="product-detail">
                                             <div class="product border-0">
@@ -846,6 +846,174 @@
 
     <!-- script js -->
     <script src="../assets/js/script.js"></script>
-</body>
+    <!-- Ajax-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <script>
+
+                            //    </li>
+                                
+                            //     <li class="quantity-price-box">
+                            //         <div class="cart_qty">
+                            //             <div class="input-group">
+                            //                 <button type="button" class="btn qty-left-minus" data-type="minus" data-field="">
+                            //                     <i class="fa fa-minus ms-0" aria-hidden="true"></i>
+                            //                 </button>
+                            //                 <input class="form-control input-number qty-input" type="text" name="quantity" value="0">
+                            //                 <button type="button" class="btn qty-right-plus" data-type="plus" data-field="">
+                            //                     <i class="fa fa-plus ms-0" aria-hidden="true"></i>
+                            //                 </button>
+                            //             </div>
+                            //         </div>
+                            //     </li>
+                            //     <li>
+                            //         <h5 id ="total">Total: $${data[key].service_name}</h5>
+
+
+        datalimit();
+
+        const Service_tbody =document.querySelector("#Service_tbody");
+        const productRow = $('.product-box-contain');                        
+        
+        $.ajax({
+            url:"/homieProject/service/Get_AllController",
+            type:"GET",
+            dataType:"JSON",
+            success: function(data){
+                       
+                for(let key in data){   
+                    const trElement = document.createElement('tr');
+                    trElement.classList.add('product-box-contain');
+                    trElement.innerHTML =                     
+                        `<td class="product-detail ">
+                            <div class="product border-0">
+                                <a href="product-left-thumbnail.html" class="product-image">
+                                    <img src="../assets/images/vegetable/product/1.png" class="img-fluid blur-up lazyload" alt="">
+                                </a>
+                                <div class="product-detail ">
+                                    <ul>
+                                        <li class="name">
+                                            <a href="product-left-thumbnail.html">${data[key].service_name}</a>
+                                        </li>
+                                        <li class="text-content"><span class="text-title">Sold By:</span> ${data[key].product_stock}</li>
+                                        <li class="text-content"><span class="text-title">Quantity</span> - ${data[key].service_name}</li>
+                                        <li>
+                                            <h5 class="text-content d-inline-block">Price :</h5>
+                                            <span>$${data[key].service_price}</span>                                            
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="price">
+                            <h4 class="table-title text-content">Price</h4>
+                            <h5 id="price" >$${data[key].service_price} </h5>
+                        </td>
+                        <td class="quantity">
+                            <h4 class="table-title text-content">Qty</h4>
+                            <div class="quantity-price">
+                                <div class="cart_qty">
+                                    <div class="input-group">
+                                        <button type="button" class="btn qty-left-minus" data-type="minus" data-field="">
+                                            <i class="fa fa-minus ms-0" aria-hidden="true"></i>
+                                        </button>
+                                        <input class="form-control input-number qty-input" type="text" name="quantity" value="0">
+                                        <button type="button" class="btn qty-right-plus" data-type="plus" data-field="" >
+                                            <i class="fa fa-plus ms-0" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="subtotal">
+                            <h4 class="table-title text-content">Total</h4>
+                            <h5 id=total></h5>
+                        </td>
+                        <td class="save-remove">
+                            <h4 class="table-title text-content">Action</h4>
+                            <a class="save notifi-wishlist" href="javascript:void(0)">Save for later</a>
+                            <a class="remove close_button" href="javascript:void(0)">Remove</a>
+                        </td>
+                        `;
+
+                        
+                    Service_tbody.appendChild(trElement);
+                
+                }
+            },
+            error: function(error){
+
+            }
+        })
+
+
+
+
+        $(document).ready(function() {
+		
+
+            // 這裡的 "document" 是父元素，但可以根據您的實際情況使用更接近的父元素來提高效率
+            $(document).on('click', 'button.qty-right-plus', function() {
+                
+                const price =parseInt( $(this).closest("tr.product-box-contain").find("h5#price").html().substring(1));
+                
+                const total =$(this).closest("tr.product-box-contain").find("h5#total");
+
+                // 找到相鄰的輸入框元素
+                const inputField = $(this).prev('.qty-input');
+                // 獲取當前值並將其轉換為數字
+                let currentValue = parseInt(inputField.val());
+                // 增加數量
+                currentValue++;
+                // 更新輸入框的值
+                inputField.val(currentValue);
+                
+                const inputQuantity=parseInt($(this).closest("tr.product-box-contain").find("input.qty-input").val());
+
+                total.html('$'+(price*inputQuantity));
+
+            });
+            
+            $(document).on('click','.qty-left-minus',function(){
+
+                const price =parseInt( $(this).closest("tr.product-box-contain").find("h5#price").html().substring(1));
+                
+                const total =$(this).closest("tr.product-box-contain").find("h5#total");    
+
+                const inputField = $(this).next('.qty-input');
+                // 獲取當前值並將其轉換為數字
+                let currentValue = parseInt(inputField.val());
+                // 減少數量，但確保不小於0
+                currentValue = Math.max(currentValue - 1, 0);
+                            
+                inputField.val(currentValue);
+                    
+                const inputQuantity=parseInt($(this).closest("tr.product-box-contain").find("input.qty-input").val());
+                
+                total.html('$'+(price*inputQuantity));
+									
+			})
+
+        });
+
+        function datalimit(){
+
+            const today = new Date();
+
+            // 格式化今天的日期為YYYY-MM-DD
+            const formattedToday = today.toISOString().split('T')[0];
+
+            // 取得user_birth元素
+            const user_birth = document.getElementById('user_birth');
+
+            // 設定最小值為今天的日期
+            user_birth.setAttribute('min', formattedToday);
+
+        }   
+
+    </script>
+ 
+</body>
 </html>

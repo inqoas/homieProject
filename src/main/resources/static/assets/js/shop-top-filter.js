@@ -16,7 +16,7 @@ $(function(){
 	
 		// }});
 
-		All_product();
+		//All_product();
 
 		function All_product(){
 		//全部商品列	
