@@ -846,8 +846,6 @@
                             </div>
                         </div>
 
-                     
-
                     </div>
 
                     <nav class="custome-pagination">
@@ -1314,6 +1312,8 @@
 
         const products =document.querySelector("#product");
 
+        //let dynamicElements = [];
+
         All_product();
 
 		function All_product(){
@@ -1336,7 +1336,7 @@
 					const productImage = document.createElement("div");
 					productImage.className = "product-image";
 					const productImageLink = document.createElement("a");
-					productImageLink.href = "product-left-thumbnail.html";
+					productImageLink.href = "http://localhost:8080/homieProject/Product/ProductDetail?product_id="+`${data[key].product_id}`;
 					const productImg = document.createElement("img");
 
 					productImg.id ="product_img"
@@ -1434,42 +1434,51 @@
 
         
         $.ajax({
-		url : "/homieProject/product/ProductFindCountController",
-		type : "GET",
-		dataType : "json",
-		success : function(data) {
+            url : "/homieProject/product/ProductFindCountController",
+            type : "GET",
+            dataType : "json",
+            success : function(data) {
 
-            fruit_number.innerHTML="("+data[0]+")";
-            cake_number.innerHTML="("+data[1]+")";
-            behe_number.innerHTML="("+data[2]+")";
-            snacks_number.innerHTML="("+data[3]+")";
+                fruit_number.innerHTML="("+data[0]+")";
+                cake_number.innerHTML="("+data[1]+")";
+                behe_number.innerHTML="("+data[2]+")";
+                snacks_number.innerHTML="("+data[3]+")";
 
-        }});
+            }
+    
+        });
+
         //依產品項目
-        function check_show_product(code){
+        function check_show_product(code,){
         
             $.ajax({
             url : "/homieProject/product/ProductFindItemController",
             type : "POST",
             dataType : "json",
             data : JSON.stringify ({
-                product_category:code        
+				
+                product_category:code
+                        
             }) ,
             success : function(data) {
-            
 
+                const bigproduct =document.createElement("div");
+                bigproduct.id="bigproduct";
+                bigproduct.className = "product-box-3 h-100 wow fadeInUp";
                 for(let key in data){
-                     // 創建一個<div>元素來代表產品展示卡片
+
+                //創造一個<div id ="bigproduct">        
+                
+                // 創建一個<div>元素來代表產品展示卡片
 			    const productCard = document.createElement("div");
 			    productCard.className = "product-box-3 h-100 wow fadeInUp";
-			
 			    // 創建產品的header部分
 			    const productHeader = document.createElement("div");
 			    productHeader.className = "product-header";
 			    const productImage = document.createElement("div");
 			    productImage.className = "product-image";
 			    const productImageLink = document.createElement("a");
-			    productImageLink.href = "product-left-thumbnail.html";
+			    productImageLink.href = "http://localhost:8080/homieProject/Product/ProductDetail?product_id="+`${data[key].product_id}`;;
 			    const productImg = document.createElement("img");
 				
 			    productImg.id ="product_img"
@@ -1552,12 +1561,13 @@
 			    productDetail.appendChild(productPrice);
 			    productFooter.appendChild(productDetail);
 			    productCard.appendChild(productFooter);
-			
+               // bigproduct.appendChild(productCard);
 			    // 把產品展示卡片插入到容器中
-			    products.appendChild(productCard);
-			
-
+                products.appendChild(productCard);
+                
+                 //dynamicElements.push(productCard);
                 }
+                             
 
             },
             error : function(error){
@@ -1575,29 +1585,43 @@
         // const checkbox_snacks =document.querySelector("#snacks");
 
 
-
         checkbox_fruit.addEventListener("change", function () {
 
 				products.innerHTML = "";
 
 				if (this.checked) {    
                         check_show_product(1);
-				    if( checkbox_cake.checked && checkbox_behe.checked && checkbox_snacks.checked ){
-                        // check_show_product(2);
-                        // check_show_product(3);
-                        // check_show_product(4);
-                        console.log("asdsa");
-                    }
-
-
-                        
                 } else {
 					
-                    All_product();
-
 				}
 
-			});
+		});
+        
+		checkbox_cake.addEventListener("change", function () {
+
+				//products.innerHTML = "";
+
+				if (this.checked) {    
+                        check_show_product(2);
+                } else {
+					
+				
+				}
+
+		});
+
+		checkbox_behe.addEventListener("change", function () {
+
+				//products.innerHTML = "";
+
+				if (this.checked) {    
+                        check_show_product(3);
+                } else {
+					
+					
+				}
+
+		});
 		
 
     </script>

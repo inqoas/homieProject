@@ -1,6 +1,7 @@
 package tw.idv.tibame.tha102.web.service.vo;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class Service implements Serializable{
 	private static final long serialVersionUID = 6544614811701833624L;
@@ -56,6 +57,12 @@ public class Service implements Serializable{
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	@Override
+	public String toString() {
+		return "Service [service_id=" + service_id + ", service_id_code=" + service_id_code + ", user_id=" + user_id
+				+ ", service_name=" + service_name + ", service_price=" + service_price + ", service_introduction="
+				+ service_introduction + ", service_picture=" + Arrays.toString(service_picture) + "]";
 	}
     
 }
