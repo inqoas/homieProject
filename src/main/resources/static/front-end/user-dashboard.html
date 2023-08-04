@@ -396,15 +396,15 @@
                                             class="blur-up lazyload update_img" alt="">
                                         <div class="cover-icon">
                                             <i class="fa-solid fa-pen">
-                                                <input type="file" onchange="readURL(this,0)">
+                                                <input type="file" onchange="readURL(this,0)" class="headimg">
                                             </i>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="profile-name">
-                                    <h3>Vicki E. Pope</h3>
-                                    <h6 class="text-content">vicki.pope@gmail.com</h6>
+                                    <h3 class="profile-name-name">Vicki E. Pope</h3>
+                                    <h6 class="profile-name-account">vicki.pope@gmail.com</h6>
                                 </div>
                             </div>
                         </div>
@@ -562,6 +562,10 @@
                                             </svg>
                                         </span>
                                     </div>
+                                    <div class="text-center mb-3 d-flex justify-content-center">
+                                        <button class="btn btn-primary mr-2 collection" onclick="showProducts()" id="collection-product">商品</button>
+                                        <button class="btn btn-primary" onclick="showServices()" id="collection-service">服務</button>
+                                    </div>
                                     <div class="row g-sm-4 g-3">
                                         <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
                                             <div class="product-box-3 theme-bg-white h-90">
@@ -592,7 +596,6 @@
                                                             cheesy grin brie. Mascarpone cheese and wine hard cheese the
                                                             big cheese everyone loves smelly cheese macaroni cheese
                                                             croque monsieur.</p>
-                                                        <h6 class="unit mt-1">250 ml</h6>
                                                         <h5 class="price">
                                                             <span class="theme-color">$08.02</span>
                                                             <del>$15.15</del>
@@ -621,7 +624,6 @@
 
                                                 <div class="product-footer">
                                                     <div class="product-detail">
-                                                        <span class="span-name">Vegetable</span>
                                                         <a href="product-left-thumbnail.html">
                                                             <h5 class="name">Peanut Butter Bite Premium Butter Cookies
                                                                 600 g</h5>
@@ -1361,166 +1363,72 @@
 
                             <div class="tab-pane fade show" id="pills-card" role="tabpanel"
                                 aria-labelledby="pills-card-tab">
-                                <div class="dashboard-card">
-                                    <div class="title title-flex">
-                                        <div>
-                                            <h2>My Card Details</h2>
-                                            <span class="title-leaf">
-                                                <svg class="icon-width bg-gray">
-                                                    <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
-                                                </svg>
-                                            </span>
-                                        </div>
-
-                                        <button class="btn theme-bg-color text-white btn-sm fw-bold mt-lg-0 mt-3"
-                                            data-bs-toggle="modal" data-bs-target="#editCard"><i data-feather="plus"
-                                                class="me-2"></i> Add New Card</button>
+                                <div class="dashboard-profile">
+                                    <div class="title">
+                                        <h2>商家檔案</h2>
+                                        <span class="title-leaf">
+                                            <svg class="icon-width bg-gray">
+                                                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                            </svg>
+                                        </span>
                                     </div>
 
-                                    <div class="row g-4">
-                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-sm-6">
-                                            <div class="payment-card-detail">
-                                                <div class="card-details">
-                                                    <div class="card-number">
-                                                        <h4>XXXX - XXXX - XXXX - 2548</h4>
-                                                    </div>
+                                    <div class="profile-about dashboard-bg-box">
+                                        <div class="row">
+                                            <div class="col-xxl-8">
+                                                <div class="table-responsive">
+                                                    <table class="sellerTable">
+                                                        <tbody>
+                                                            <tr class="seller" id="bankName">
+                                                                <td>銀行戶名 :</td>
+                                                                <td>
+                                                                    <input type="text" id="bank_holder_name"
+                                                                        name="bank_holder_name" value="" readonly
+                                                                        style="width: 20%; text-align: center;">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                            <tr class="seller" id="bankCode">
+                                                                <td>銀行代碼 :</td>
+                                                                <td>
+                                                                    <input type="text" id="bank_code" name="bank_code"
+                                                                        value="" readonly
+                                                                        style="width: 20%; text-align: center;">
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="seller" id="bankAccount">
+                                                                <td>銀行帳號 :</td>
+                                                                <td>
+                                                                    <input type="text" id="bank_account"
+                                                                        name="bank_account" value=""
+                                                                        readonly
+                                                                        style="width: 70%; text-align: center;">
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="seller" id="pcrcImg">
+                                                                <td>良民證 :</td>
+                                                                <td>
+                                                                    <img class="pcrc_img"
+                                                                        src=""
+                                                                        alt="pcrc">
+                                                                </td>
 
-                                                    <div class="valid-detail">
-                                                        <div class="title">
-                                                            <span>valid</span>
-                                                            <span>thru</span>
-                                                        </div>
-                                                        <div class="date">
-                                                            <h3>08/05</h3>
-                                                        </div>
-                                                        <div class="primary">
-                                                            <span class="badge bg-pill badge-light">primary</span>
-                                                        </div>
-                                                    </div>
+                                                            </tr>
 
-                                                    <div class="name-detail">
-                                                        <div class="name">
-                                                            <h5>Audrey Carol</h5>
-                                                        </div>
-                                                        <div class="card-img">
-                                                            <img src="../assets/images/payment-icon/1.jpg"
-                                                                class="img-fluid blur-up lazyloaded" alt="">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                            <tr>
+                                                                <td class="apply-business">
+                                                                    <a href="./apply-business.html">申請商家
+                                                                        <span data-bs-target="#editProfile">申請 </span></a>
+                                                                </td>
+                                                            </tr>
 
-                                                <div class="edit-card">
-                                                    <a data-bs-toggle="modal" data-bs-target="#editCard"
-                                                        href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#removeProfile"><i
-                                                            class="far fa-minus-square"></i> delete</a>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
 
-                                            <div class="edit-card-mobile">
-                                                <a data-bs-toggle="modal" data-bs-target="#editCard"
-                                                    href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
-                                                <a href="javascript:void(0)"><i class="far fa-minus-square"></i>
-                                                    delete</a>
-                                            </div>
                                         </div>
 
-                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-sm-6">
-                                            <div class="payment-card-detail">
-                                                <div class="card-details card-visa">
-                                                    <div class="card-number">
-                                                        <h4>XXXX - XXXX - XXXX - 1536</h4>
-                                                    </div>
-
-                                                    <div class="valid-detail">
-                                                        <div class="title">
-                                                            <span>valid</span>
-                                                            <span>thru</span>
-                                                        </div>
-                                                        <div class="date">
-                                                            <h3>12/23</h3>
-                                                        </div>
-                                                        <div class="primary">
-                                                            <span class="badge bg-pill badge-light">primary</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="name-detail">
-                                                        <div class="name">
-                                                            <h5>Leah Heather</h5>
-                                                        </div>
-                                                        <div class="card-img">
-                                                            <img src="../assets/images/payment-icon/2.jpg"
-                                                                class="img-fluid blur-up lazyloaded" alt="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="edit-card">
-                                                    <a data-bs-toggle="modal" data-bs-target="#editCard"
-                                                        href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#removeProfile"><i
-                                                            class="far fa-minus-square"></i> delete</a>
-                                                </div>
-                                            </div>
-
-                                            <div class="edit-card-mobile">
-                                                <a data-bs-toggle="modal" data-bs-target="#editCard"
-                                                    href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
-                                                <a href="javascript:void(0)"><i class="far fa-minus-square"></i>
-                                                    delete</a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-sm-6">
-                                            <div class="payment-card-detail">
-                                                <div class="card-details dabit-card">
-                                                    <div class="card-number">
-                                                        <h4>XXXX - XXXX - XXXX - 1366</h4>
-                                                    </div>
-
-                                                    <div class="valid-detail">
-                                                        <div class="title">
-                                                            <span>valid</span>
-                                                            <span>thru</span>
-                                                        </div>
-                                                        <div class="date">
-                                                            <h3>05/21</h3>
-                                                        </div>
-                                                        <div class="primary">
-                                                            <span class="badge bg-pill badge-light">primary</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="name-detail">
-                                                        <div class="name">
-                                                            <h5>mark jecno</h5>
-                                                        </div>
-                                                        <div class="card-img">
-                                                            <img src="../assets/images/payment-icon/3.jpg"
-                                                                class="img-fluid blur-up lazyloaded" alt="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="edit-card">
-                                                    <a data-bs-toggle="modal" data-bs-target="#editCard"
-                                                        href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#removeProfile"><i
-                                                            class="far fa-minus-square"></i> delete</a>
-                                                </div>
-                                            </div>
-
-                                            <div class="edit-card-mobile">
-                                                <a data-bs-toggle="modal" data-bs-target="#editCard"
-                                                    href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
-                                                <a href="javascript:void(0)"><i class="far fa-minus-square"></i>
-                                                    delete</a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1543,6 +1451,12 @@
                                                 <div class="table-responsive">
                                                     <table class="table">
                                                         <tbody>
+                                                            <tr>
+                                                                <td>會員編號 :</td>
+                                                                <td>
+                                                                    <p class="profile-p dashboard-profile-id">01</p>
+                                                                </td>
+                                                            </tr>
                                                             <tr>
                                                                 <td>帳號(信箱) :</td>
                                                                 <td>
@@ -1602,42 +1516,6 @@
                                                                     <p class="profile-p dashboard-profile-gc">100</p>
                                                                 </td>
                                                             </tr>
-                                                            <tr class="seller">
-                                                                <td>銀行戶名 :</td>
-                                                                <td>
-                                                                    <input type="text" id="bank_holder_name"
-                                                                        name="bank_holder_name" value="pep" readonly
-                                                                        style="width: 20%; text-align: center;">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                            <tr class="seller">
-                                                                <td>銀行代碼 :</td>
-                                                                <td>
-                                                                    <input type="text" id="bank_code" name="bank_code"
-                                                                        value="100" readonly
-                                                                        style="width: 20%; text-align: center;">
-                                                                </td>
-                                                            </tr>
-                                                            <tr class="seller">
-                                                                <td>銀行帳號 :</td>
-                                                                <td>
-                                                                    <input type="text" id="bank_account"
-                                                                        name="bank_account" value="198573010293847"
-                                                                        readonly
-                                                                        style="width: 70%; text-align: center;">
-                                                                </td>
-                                                            </tr>
-                                                            <tr class="seller">
-                                                                <td>良民證 :</td>
-                                                                <td>
-                                                                    <img class="pcrc_img"
-                                                                        src="../assets/images/pcrc.jpg"
-                                                                        alt="pcrc">
-                                                                </td>
-
-                                                            </tr>
-
                                                             <tr>
                                                                 <td>
                                                                     <a href="javascript:void(0)">修改個人檔案
@@ -1645,14 +1523,6 @@
                                                                             data-bs-target="#editProfile">修改</span></a>
                                                                 </td>
                                                             </tr>
-
-                                                            <tr>
-                                                                <td>
-                                                                    <a href="./apply-business.html">申請商家
-                                                                        <span data-bs-target="#editProfile">申請 </span></a>
-                                                                </td>
-                                                            </tr>
-
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -2096,7 +1966,7 @@
                         <div class="col-xxl-12  ">
                             <form>
                                 <div class="form-floating theme-form-floating">
-                                    <input type="email" class="form-control" id="email1" value="0912345678">
+                                    <input type="email" class="form-control" id="pphone" value="0912345678">
                                     <label for="email1">電話</label>
                                 </div>
                             </form>
@@ -2108,28 +1978,28 @@
                                     <select class="form-select" id="floatingSelect1"
                                         aria-label="Floating label select example">
                                         <option selected>選擇縣市</option>
-                                        <option value="taipei">台北市</option>
-                                        <option value="new_taipei">新北市</option>
-                                        <option value="taoyuan">桃園市</option>
-                                        <option value="taichung">台中市</option>
-                                        <option value="tainan">台南市</option>
-                                        <option value="kaohsiung">高雄市</option>
-                                        <option value="keelung">基隆市</option>
-                                        <option value="hsinchu">新竹市</option>
-                                        <option value="hsinchu_county">新竹縣</option>
-                                        <option value="miaoli">苗栗縣</option>
-                                        <option value="changhua">彰化縣</option>
-                                        <option value="nantou">南投縣</option>
-                                        <option value="yunlin">雲林縣</option>
-                                        <option value="chiayi">嘉義市</option>
-                                        <option value="chiayi_county">嘉義縣</option>
-                                        <option value="pingtung">屏東縣</option>
-                                        <option value="yilan">宜蘭縣</option>
-                                        <option value="hualien">花蓮縣</option>
-                                        <option value="taitung">台東縣</option>
-                                        <option value="kinmen">金門縣</option>
-                                        <option value="penghu">澎湖縣</option>
-                                        <option value="lienchiang">連江縣</option>
+                                        <option value="台北市">台北市</option>
+                                        <option value="新北市">新北市</option>
+                                        <option value="桃園市">桃園市</option>
+                                        <option value="台中市">台中市</option>
+                                        <option value="台南市">台南市</option>
+                                        <option value="高雄市">高雄市</option>
+                                        <option value="基隆市">基隆市</option>
+                                        <option value="新竹市">新竹市</option>
+                                        <option value="新竹縣">新竹縣</option>
+                                        <option value="苗栗縣">苗栗縣</option>
+                                        <option value="彰化縣">彰化縣</option>
+                                        <option value="南投縣">南投縣</option>
+                                        <option value="雲林縣">雲林縣</option>
+                                        <option value="嘉義市">嘉義市</option>
+                                        <option value="嘉義縣">嘉義縣</option>
+                                        <option value="屏東縣">屏東縣</option>
+                                        <option value="宜蘭縣">宜蘭縣</option>
+                                        <option value="花蓮縣">花蓮縣</option>
+                                        <option value="台東縣">台東縣</option>
+                                        <option value="金門縣">金門縣</option>
+                                        <option value="澎湖縣">澎湖縣</option>
+                                        <option value="連江縣">連江縣</option>
                                     </select>
                                     <label for="floatingSelect">縣市</label>
                                 </div>
@@ -2138,7 +2008,7 @@
                         <div class="col-12">
                             <form>
                                 <div class="form-floating theme-form-floating">
-                                    <input type="text" class="form-control" id="address1"
+                                    <input type="text" class="form-control" id="paddress"
                                         value="8424 James Lane South San Francisco">
                                     <label for="address1">地址</label>
                                 </div>
@@ -2148,8 +2018,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-dismiss="modal">關閉</button>
-                    <button type="button" data-bs-dismiss="modal"
-                        class="btn theme-bg-color btn-md fw-bold text-light">儲存</button>
+                    <button type="button"
+                        class="btn theme-bg-color btn-md fw-bold text-light" id = "psave">儲存</button>
                 </div>
             </div>
         </div>

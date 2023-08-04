@@ -93,3 +93,21 @@
     border: none;
     font-size: 14px;
 }
+
+.display{
+    display: none;
+}
+
+.collection{
+    background-color: #B8CCD5;
+}
+
+#collection-product{
+    color: #8B8C89;
+    font-weight: bolder;
+}
+
+#collection-service{
+    color: #8B8C89;
+    font-weight: bolder;
+}

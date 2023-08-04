@@ -1,5 +1,6 @@
-package tw.idv.tibame.tha102.web.userinfo.dao;
+package tw.idv.tibame.tha102.web.userinfo.dao.Impl;
 
+import tw.idv.tibame.tha102.web.userinfo.dao.MemberDao;
 import tw.idv.tibame.tha102.web.userinfo.vo.UserInfo;
 import static tw.idv.tibame.tha102.core.util.CommonMysql.PASSWORD;
 import static tw.idv.tibame.tha102.core.util.CommonMysql.URL;
@@ -12,6 +13,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import org.springframework.stereotype.Repository;
+@Repository
 public class MemberDaoImpl implements MemberDao{
 	
 	
@@ -40,20 +43,18 @@ public class MemberDaoImpl implements MemberDao{
 	}
 
 	@Override
-	public int update(UserInfo userInfo) {
+	public int updateUserinfo(UserInfo userInfo) {
 		String sql = """
 				update user_info 
-					set user_password=?, user_name=?, user_address=?, user_phone=?, user_pic=? 
+					set user_name=?, user_address=?, user_phone=?
 					where user_id=?
 				""";
 		try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
 				PreparedStatement preparedStatement = connection.prepareStatement(sql)){
-			preparedStatement.setString(1, userInfo.getUser_password());
-			preparedStatement.setString(2, userInfo.getUser_name());
-			preparedStatement.setString(3, userInfo.getUser_address());
-			preparedStatement.setString(4, userInfo.getUser_phone());
-			preparedStatement.setBytes(5, userInfo.getUser_pic());
-			preparedStatement.setInt(6, userInfo.getUser_id());
+			preparedStatement.setString(1, userInfo.getUser_name());
+			preparedStatement.setString(2, userInfo.getUser_address());
+			preparedStatement.setString(3, userInfo.getUser_phone());
+			preparedStatement.setInt(4, userInfo.getUser_id());
 			return preparedStatement.executeUpdate();
 			
 			
@@ -168,5 +169,55 @@ public class MemberDaoImpl implements MemberDao{
 		}
 		return null;
 	}
+
+	@Override
+	public int updatePassword(UserInfo userInfo, int userid) {
+		String sql = """
+				update user_info 
+					set user_password=?
+					where user_id=?
+				""";
+		try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+				PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+			preparedStatement.setString(1, userInfo.getUser_password());
+			preparedStatement.setInt(2, userid);
+			return preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+
+	@Override
+	public int updateUserpic(UserInfo userInfo, int userid) {
+		String sql = """
+				update user_info 
+					set user_pic=?
+					where user_id=?
+				""";
+		try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+				PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+			preparedStatement.setBytes(1, userInfo.getUser_pic());
+			preparedStatement.setInt(2, userid);
+			return preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			return -1;
+		}
+	}
+
+	public int updateSellerIdentityByUserId(int sellerIdentity, int userid) {
+	    String sql = "UPDATE user_info SET seller_identity = ? WHERE user_id = ?";
+	    try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+	         PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+	        preparedStatement.setInt(1, sellerIdentity);
+	        preparedStatement.setInt(2, userid);
+	        return preparedStatement.executeUpdate();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return -1;
+	    }
+	}
+
+
 	
 }

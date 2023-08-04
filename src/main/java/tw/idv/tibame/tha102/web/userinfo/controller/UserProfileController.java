@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Base64;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -13,14 +16,24 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import tw.idv.tibame.tha102.core.util.UserInfoJwtUtil;
 import tw.idv.tibame.tha102.web.userinfo.service.UserDashboardService;
 import tw.idv.tibame.tha102.web.userinfo.service.impl.UserDashboardServiceImpl;
 import tw.idv.tibame.tha102.web.userinfo.vo.UserInfo;
+<<<<<<< HEAD
 
+=======
+@Controller
+>>>>>>> pong
 @WebServlet("/user-profile")
 public class UserProfileController extends HttpServlet {
 	private static final long serialVersionUID = -1359326233505038780L;
 	private UserDashboardService userDashboardService;
+	private UserInfoJwtUtil userInfoJwtUtil;
+	@Autowired
+	public UserProfileController(UserInfoJwtUtil userInfoJwtUtil) {
+		this.userInfoJwtUtil = userInfoJwtUtil;
+	}
 	@Override
 	public void init() throws ServletException {
 		userDashboardService = new UserDashboardServiceImpl();
@@ -30,9 +43,13 @@ public class UserProfileController extends HttpServlet {
 		Gson gson = new GsonBuilder()
 				.setDateFormat("yyyy-MM-dd")
 			    .create();
-		HttpSession session = req.getSession();
-		Integer user_id = (Integer)session.getAttribute("user_id");
-		UserInfo userInfo =  userDashboardService.userProfile(user_id);
+		String jwt = req.getHeader("Authorization");
+		int user_id = userInfoJwtUtil.checkUserInfoJwt(jwt);
+		UserInfo userInfo = new UserInfo();
+		if(user_id == 0) {
+			userInfo.setSuccess(false);
+		}
+		userInfo =  userDashboardService.userProfile(user_id);
 		byte[] user_pic =  userInfo.getUser_pic();
 		if(user_pic != null) {
 			String user_pic_base64 = Base64.getEncoder().encodeToString(user_pic);
