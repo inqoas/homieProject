@@ -10,10 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import tw.idv.tibame.tha102.web.orderproduct.vo.OrderProduct;
 
+@Repository
 public class OrderProductDaoImpl implements OrderProductDao {
 
     private final SessionFactory sessionFactory;
 
+    @Autowired
     public OrderProductDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
@@ -28,7 +30,7 @@ public class OrderProductDaoImpl implements OrderProductDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            e.printStackTrace();
+            throw new RuntimeException("Failed to insert OrderProduct.", e);
         }
     }
 
@@ -43,7 +45,7 @@ public class OrderProductDaoImpl implements OrderProductDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            e.printStackTrace();
+            throw new RuntimeException("Failed to update OrderProduct.", e);
         }
     }
 
@@ -54,7 +56,7 @@ public class OrderProductDaoImpl implements OrderProductDao {
             Query<OrderProduct> query = session.createQuery("FROM OrderProduct", OrderProduct.class);
             orderProducts = query.list();
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException("Failed to retrieve all OrderProduct.", e);
         }
 
         return orderProducts;
@@ -68,9 +70,9 @@ public class OrderProductDaoImpl implements OrderProductDao {
             query.setParameter("userId", user_id);
             orderProducts = query.list();
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException("Failed to find OrderProduct by userId.", e);
         }
 
         return orderProducts;
-    }   
+    }
 }

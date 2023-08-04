@@ -1,6 +1,6 @@
 function init() {
     $.ajax({
-        url: '../orderproduct/findall',
+        url: '../orderproduct/find-all',
         type: 'GET',
         dataType: "json",
         success: function(response) {
@@ -18,9 +18,6 @@ function init() {
                         <td>${orderproduct.product_status}</td>
                         <td>${orderproduct.tracking_number}</td>
                         <td class="td-price">$${orderproduct.product_total}</td>
-                        <td class="status-danger">
-                            <span>Pending</span>
-                        </td>
                         <td>
                             <ul>
                                 <li>

@@ -1,6 +1,18 @@
+var categoryMapping = {
+    1: "清潔劑",
+    2: "洗衣精",
+    3: "打掃用品",
+    4: "洗碗精",
+};
+
+function getCategoryText(categoryCode) {
+    return categoryMapping[categoryCode] || "未知種類";
+}
+
+
 function init() {
     $.ajax({
-        url: '../product/findall',
+        url: '../product/find-all',
         type: 'GET',
         dataType: "json",
         success: function(response) {
@@ -10,6 +22,9 @@ function init() {
             tableBody.empty();
 
             response.forEach(function(product) {
+
+                var categoryText = getCategoryText(product.product_category);
+
                 var row = `
                     <tr>
                         <td>
@@ -18,7 +33,7 @@ function init() {
                             </div>
                         </td>
                         <td>${product.product_name}</td>
-                        <td>${product.product_category}</td>
+                        <td>${categoryText}</td>
                         <td>${product.product_stock}</td>
                         <td class="td-price">$${product.product_price}</td>
                         </td>

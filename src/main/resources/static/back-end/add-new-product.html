@@ -13,7 +13,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    <title>Fastkart - Add New Product</title>
+    <title>Homie - 新增商品</title>
 
     <!-- Google font -->
     <link
@@ -51,11 +51,20 @@
     <!-- Bootstrap css -->
     <link rel="stylesheet" type="text/css" href="assets/css/vendors/bootstrap.css">
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <!-- Bootstrap-tag input css -->
     <link rel="stylesheet" type="text/css" href="assets/css/vendors/bootstrap-tagsinput.css">
 
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <link rel="stylesheet" href="path/to/ckeditor.css">
+
 </head>
 
 <body>
@@ -223,21 +232,18 @@
                                 </li>
 
                                 <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="order-list.html">
+                                    <a class="sidebar-link sidebar-title " href="javascript:void(0)">
                                         <i class="ri-archive-line"></i>
                                         <span>訂單管理</span>
                                     </a>
-                                    <!-- <ul class="sidebar-submenu">
+                                    <ul class="sidebar-submenu">
                                         <li>
-                                            <a href="order-list.html">訂單列表</a>
+                                            <a href="product-order-list.html">商品訂單列表</a>
                                         </li>
                                         <li>
-                                            <a href="order-detail.html">Order Detail</a>
+                                            <a href="service-order-list.html">服務訂單列表</a>
                                         </li>
-                                        <li>
-                                            <a href="order-tracking.html">Order Tracking</a>
-                                        </li>
-                                    </ul> -->
+                                    </ul>
                                 </li>
 
                                 <li class="sidebar-list">
@@ -250,7 +256,7 @@
                                             <a href="all-users.html">使用者</a>
                                         </li>
                                         <li>
-                                            <a href="">待審核賣家</a>
+                                            <a href="pending-seller.html">待審核賣家</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -285,11 +291,11 @@
                                     </a>
                                     <ul class="sidebar-submenu">
                                         <li>
-                                            <a href="">未處理</a>
+                                            <a href="violation.html">未處理</a>
                                         </li>
 
                                         <li>
-                                            <a href="">已處理</a>
+                                            <a href="violation-done.html">已處理</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -344,96 +350,6 @@
                                         <span>金流管理</span>
                                     </a>
                                 </li>
-
-                                <!-- <li class="sidebar-list">
-                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
-                                        <i class="ri-list-settings-line"></i>
-                                        <span>Attributes</span>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li>
-                                            <a href="attributes.html">Attributes</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="add-new-attributes.html">Add Attributes</a>
-                                        </li>
-                                    </ul>
-                                </li> -->
-
-                                <!-- <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                                        <i class="ri-user-3-line"></i>
-                                        <span>Roles</span>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li>
-                                            <a href="role.html">All roles</a>
-                                        </li>
-                                        <li>
-                                            <a href="create-role.html">Create Role</a>
-                                        </li>
-                                    </ul>
-                                </li> -->
-
-                                <!-- <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="media.html">
-                                        <i class="ri-price-tag-3-line"></i>
-                                        <span>Media</span>
-                                    </a>
-                                </li> -->
-
-                                <!-- <li class="sidebar-list">
-                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
-                                        <i class="ri-focus-3-line"></i>
-                                        <span>Localization</span>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li>
-                                            <a href="translation.html">Translation</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="currency-rates.html">Currency Rates</a>
-                                        </li>
-                                    </ul>
-                                </li> -->
-
-                                <!-- <li class="sidebar-list">
-                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
-                                        <i class="ri-price-tag-3-line"></i>
-                                        <span>Coupons</span>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li>
-                                            <a href="coupon-list.html">Coupon List</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="create-coupon.html">Create Coupon</a>
-                                        </li>
-                                    </ul>
-                                </li> -->
-
-                                <!-- <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="taxes.html">
-                                        <i class="ri-price-tag-3-line"></i>
-                                        <span>Tax</span>
-                                    </a>
-                                </li>
-
-                                <li class="sidebar-list">
-                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
-                                        <i class="ri-settings-line"></i>
-                                        <span>Settings</span>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li>
-                                            <a href="profile-setting.html">Profile Setting</a>
-                                        </li>
-                                    </ul>
-                                </li> -->
-
                             </ul>
                         </div>
 
@@ -456,115 +372,28 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="card-header-2">
-                                                <h5>Product Information</h5>
+                                                <h5>商品資訊</h5>
                                             </div>
-
+                                            
                                             <form class="theme-form theme-form-2 mega-form">
                                                 <div class="mb-4 row align-items-center">
-                                                    <label class="form-label-title col-sm-3 mb-0">Product
-                                                        Name</label>
+                                                    <label class="form-label-title col-sm-3 mb-0">商品名稱</label>
                                                     <div class="col-sm-9">
-                                                        <input class="form-control" type="text"
-                                                            placeholder="Product Name">
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-4 row align-items-center">
-                                                    <label class="col-sm-3 col-form-label form-label-title">Product
-                                                        Type</label>
-                                                    <div class="col-sm-9">
-                                                        <select class="js-example-basic-single w-100" name="state">
-                                                            <option disabled>Static Menu</option>
-                                                            <option>Simple</option>
-                                                            <option>Classified</option>
-                                                        </select>
+                                                        <input class="form-control" type="text" placeholder="名稱" id="product_name">
                                                     </div>
                                                 </div>
 
                                                 <div class="mb-4 row align-items-center">
                                                     <label
-                                                        class="col-sm-3 col-form-label form-label-title">Category</label>
+                                                        class="col-sm-3 col-form-label form-label-title">商品類別</label>
                                                     <div class="col-sm-9">
-                                                        <select class="js-example-basic-single w-100" name="state">
-                                                            <option disabled>Category Menu</option>
-                                                            <option>Electronics</option>
-                                                            <option>TV & Appliances</option>
-                                                            <option>Home & Furniture</option>
-                                                            <option>Another</option>
-                                                            <option>Baby & Kids</option>
-                                                            <option>Health, Beauty & Perfumes</option>
-                                                            <option>Uncategorized</option>
+                                                        <select class="js-example-basic-single w-100" id="product_category">
+                                                            <option disabled>類別</option>
+                                                            <option>清潔劑</option>
+                                                            <option>洗衣精</option>
+                                                            <option>打掃用具</option>
+                                                            <option>洗碗精</option>
                                                         </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-4 row align-items-center">
-                                                    <label
-                                                        class="col-sm-3 col-form-label form-label-title">Subcategory</label>
-                                                    <div class="col-sm-9">
-                                                        <select class="js-example-basic-single w-100" name="state">
-                                                            <option disabled>Subcategory Menu</option>
-                                                            <option>Ethnic Wear</option>
-                                                            <option>Ethnic Bottoms</option>
-                                                            <option>Women Western Wear</option>
-                                                            <option>Sandels</option>
-                                                            <option>Shoes</option>
-                                                            <option>Beauty & Grooming</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-4 row align-items-center">
-                                                    <label
-                                                        class="col-sm-3 col-form-label form-label-title">Brand</label>
-                                                    <div class="col-sm-9">
-                                                        <select class="js-example-basic-single w-100">
-                                                            <option disabled>Brand Menu</option>
-                                                            <option value="puma">Puma</option>
-                                                            <option value="hrx">HRX</option>
-                                                            <option value="roadster">Roadster</option>
-                                                            <option value="zara">Zara</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-4 row align-items-center">
-                                                    <label class="col-sm-3 col-form-label form-label-title">Unit</label>
-                                                    <div class="col-sm-9">
-                                                        <select class="js-example-basic-single w-100">
-                                                            <option disabled>Unit Menu</option>
-                                                            <option>Kilogram</option>
-                                                            <option>Pieces</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-4 row align-items-center">
-                                                    <label class="col-sm-3 col-form-label form-label-title">Tags</label>
-                                                    <div class="col-sm-9">
-                                                        <div class="bs-example">
-                                                            <input type="text" class="form-control"
-                                                                placeholder="Type tag & hit enter" id="#inputTag"
-                                                                data-role="tagsinput">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-4 row align-items-center">
-                                                    <label
-                                                        class="col-sm-3 col-form-label form-label-title">Exchangeable</label>
-                                                    <div class="col-sm-9">
-                                                        <label class="switch">
-                                                            <input type="checkbox"><span class="switch-state"></span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="row align-items-center">
-                                                    <label
-                                                        class="col-sm-3 col-form-label form-label-title">Refundable</label>
-                                                    <div class="col-sm-9">
-                                                        <label class="switch">
-                                                            <input type="checkbox" checked=""><span
-                                                                class="switch-state"></span>
-                                                        </label>
                                                     </div>
                                                 </div>
                                             </form>
@@ -581,10 +410,9 @@
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="row">
-                                                            <label class="form-label-title col-sm-3 mb-0">Product
-                                                                Description</label>
+                                                            <label class="form-label-title col-sm-3 mb-0">商品敘述</label>
                                                             <div class="col-sm-9">
-                                                                <div id="editor"></div>
+                                                                <textarea id="product_introduction" style="width: 500px; height: 200px;"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -596,25 +424,33 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="card-header-2">
-                                                <h5>Product Images</h5>
+                                                <h5>商品照片</h5>
                                             </div>
 
                                             <form class="theme-form theme-form-2 mega-form">
                                                 <div class="mb-4 row align-items-center">
                                                     <label
-                                                        class="col-sm-3 col-form-label form-label-title">Images</label>
+                                                        class="col-sm-3 col-form-label form-label-title">照片</label>
                                                     <div class="col-sm-9">
-                                                        <input class="form-control form-choose" type="file"
-                                                            id="formFile" multiple>
+                                                        <input class="form-control form-choose" type="file" id="product_picture" accept="image/*" multiple>
                                                     </div>
                                                 </div>
+                                            </form>
 
-                                                <div class="row align-items-center">
-                                                    <label class="col-sm-3 col-form-label form-label-title">Thumbnail
-                                                        Image</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="card-header-2">
+                                                <h5>商品價格</h5>
+                                            </div>
+
+                                            <form class="theme-form theme-form-2 mega-form">
+                                                <div class="mb-4 row align-items-center">
+                                                    <label class="col-sm-3 form-label-title">價格</label>
                                                     <div class="col-sm-9">
-                                                        <input class="form-control form-choose" type="file"
-                                                            id="formFileMultiple1" multiple>
+                                                        <input class="form-control" type="number" placeholder="0" id="product_price">
                                                     </div>
                                                 </div>
                                             </form>
@@ -624,284 +460,46 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="card-header-2">
-                                                <h5>Product Videos</h5>
+                                                <h5>商品庫存</h5>
                                             </div>
 
                                             <form class="theme-form theme-form-2 mega-form">
                                                 <div class="mb-4 row align-items-center">
-                                                    <label class="col-sm-3 col-form-label form-label-title">Video
-                                                        Provider</label>
+                                                    <label class="form-label-title col-sm-3 mb-0">庫存量</label>
                                                     <div class="col-sm-9">
-                                                        <select class="js-example-basic-single w-100" name="state">
-                                                            <option>Vimeo</option>
-                                                            <option>Youtube</option>
-                                                            <option>Dailymotion</option>
-                                                            <option>Vimeo</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row align-items-center">
-                                                    <label class="form-label-title col-sm-3 mb-0">Video
-                                                        Link</label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="text"
-                                                            placeholder="Video Link">
+                                                        <input class="form-control" type="number" id="product_stock">
                                                     </div>
                                                 </div>
                                             </form>
+                                            
                                         </div>
                                     </div>
-
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="card-header-2">
-                                                <h5>Product variations</h5>
+                                    <div class="mt-5 text-center align-items-center">
+                                        <div class="row justify-content-end">
+                                            <div class="col-auto">
+                                                <button id="backButton" class="btn btn-primary profile-button" type="button">上一頁</button>
                                             </div>
-
-                                            <form class="theme-form theme-form-2 mega-form">
-                                                <div class="mb-4 row align-items-center">
-                                                    <label class="form-label-title col-sm-3 mb-0">Option
-                                                        Name</label>
-                                                    <div class="col-sm-9">
-                                                        <select class="js-example-basic-single w-100" name="state">
-                                                            <option>Color</option>
-                                                            <option>Size</option>
-                                                            <option>Material</option>
-                                                            <option>Style</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row align-items-center">
-                                                    <label class="col-sm-3 col-form-label form-label-title">Option
-                                                        Value</label>
-                                                    <div class="col-sm-9">
-                                                        <div class="bs-example">
-                                                            <input type="text" class="form-control"
-                                                                placeholder="Type tag & hit enter" id="#inputTag"
-                                                                data-role="tagsinput">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-
-                                            <a href="#" class="add-option"><i class="ri-add-line me-2"></i> Add Another
-                                                Option</a>
+                                            <div class="col-auto">
+                                                <button id="confirmButton" class="btn btn-primary profile-button" type="button" data-bs-toggle="modal"
+                                                    data-bs-target="#confirmationModal">確認新增</button>
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="card-header-2">
-                                                <h5>Shipping</h5>
+                                    </div>                                                                                                   
+                                    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="confirmationModalLabel">確認新增</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    確定要新增這個商品嗎？
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                                    <button type="button" class="btn btn-primary" id="confirmAddButton">確認新增</button>
+                                                </div>
                                             </div>
-
-                                            <form class="theme-form theme-form-2 mega-form">
-                                                <div class="mb-4 row align-items-center">
-                                                    <label class="form-label-title col-sm-3 mb-0">Weight
-                                                        (kg)</label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="number" placeholder="Weight">
-                                                    </div>
-                                                </div>
-
-                                                <div class="row align-items-center">
-                                                    <label class="col-sm-3 col-form-label form-label-title">Dimensions
-                                                        (cm)</label>
-                                                    <div class="col-sm-9">
-                                                        <select class="js-example-basic-single w-100" name="state">
-                                                            <option>Length</option>
-                                                            <option>Width</option>
-                                                            <option>Height</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="card-header-2">
-                                                <h5>Product Price</h5>
-                                            </div>
-
-                                            <form class="theme-form theme-form-2 mega-form">
-                                                <div class="mb-4 row align-items-center">
-                                                    <label class="col-sm-3 form-label-title">price</label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="number" placeholder="0">
-                                                    </div>
-                                                </div>
-                                                <div class="mb-4 row align-items-center">
-                                                    <label class="col-sm-3 form-label-title">Compare at
-                                                        price</label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="number" placeholder="0">
-                                                    </div>
-                                                </div>
-                                                <div class="mb-4 row align-items-center">
-                                                    <label class="col-sm-3 form-label-title">Cost per item</label>
-                                                    <div class="col-sm-5">
-                                                        <input class="form-control" type="number" placeholder="0">
-                                                    </div>
-                                                    <div class="col-sm-2">
-                                                        <label>Margin:</label>
-                                                        <span>25%</span>
-                                                    </div>
-                                                    <div class="col-sm-2">
-                                                        <label>Profit:</label>
-                                                        <span>$5</span>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="card-header-2">
-                                                <h5>Product Inventory</h5>
-                                            </div>
-
-                                            <form class="theme-form theme-form-2 mega-form">
-                                                <div class="mb-4 row align-items-center">
-                                                    <label class="form-label-title col-sm-3 mb-0">SKU</label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="text">
-                                                    </div>
-                                                </div>
-                                                <div class="mb-4 row align-items-center">
-                                                    <label class="col-sm-3 col-form-label form-label-title">Stock
-                                                        Status</label>
-                                                    <div class="col-sm-9">
-                                                        <select class="js-example-basic-single w-100" name="state">
-                                                            <option>In Stock</option>
-                                                            <option>Out Of Stock</option>
-                                                            <option>On Backorder</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <table class="table variation-table table-responsive-sm">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Variant</th>
-                                                        <th scope="col">Price</th>
-                                                        <th scope="col">SKU</th>
-                                                        <th scope="col">Quantity</th>
-                                                        <th scope="col"></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Red</td>
-                                                        <td>
-                                                            <input class="form-control" type="number" placeholder="0">
-                                                        </td>
-                                                        <td>
-                                                            <input class="form-control" type="number" placeholder="0">
-                                                        </td>
-                                                        <td>
-                                                            <input class="form-control" type="number" placeholder="0">
-                                                        </td>
-                                                        <td>
-                                                            <ul class="order-option">
-                                                                <li><a href="javascript:void(0)" data-toggle="modal"
-                                                                        data-target="#deleteModal"><i
-                                                                            class="ri-delete-bin-line"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Blue</td>
-                                                        <td>
-                                                            <input class="form-control" type="number" placeholder="0">
-                                                        </td>
-                                                        <td>
-                                                            <input class="form-control" type="number" placeholder="0">
-                                                        </td>
-                                                        <td>
-                                                            <input class="form-control" type="number" placeholder="0">
-                                                        </td>
-                                                        <td>
-                                                            <ul class="order-option">
-                                                                <li><a href="javascript:void(0)" data-toggle="modal"
-                                                                        data-target="#deleteModal"><i
-                                                                            class="ri-delete-bin-line"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="card-header-2">
-                                                <h5>Link Products</h5>
-                                            </div>
-
-                                            <form class="theme-form theme-form-2 mega-form">
-                                                <div class="mb-4 row align-items-center">
-                                                    <label class="form-label-title col-sm-3 mb-0">Upsells</label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="search">
-                                                    </div>
-                                                </div>
-
-                                                <div class="row align-items-center">
-                                                    <label class="form-label-title col-sm-3 mb-0">Cross-Sells</label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="search">
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="card-header-2">
-                                                <h5>Search engine listing</h5>
-                                            </div>
-
-                                            <div class="seo-view">
-                                                <span class="link">https://fastkart.com</span>
-                                                <h5>Buy fresh vegetables & Fruits online at best price</h5>
-                                                <p>Online Vegetable Store - Buy fresh vegetables & Fruits online at best
-                                                    prices. Order online and get free delivery.</p>
-                                            </div>
-
-                                            <form class="theme-form theme-form-2 mega-form">
-                                                <div class="mb-4 row align-items-center">
-                                                    <label class="form-label-title col-sm-3 mb-0">Page title</label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="search"
-                                                            placeholder="Fresh Fruits">
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-4 row">
-                                                    <label class="form-label-title col-sm-3 mb-0">Meta
-                                                        description</label>
-                                                    <div class="col-sm-9">
-                                                        <textarea class="form-control" rows="3"></textarea>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <label class="form-label-title col-sm-3 mb-0">URL handle</label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="search"
-                                                            placeholder="https://fastkart.com/fresh-veggies">
-                                                    </div>
-                                                </div>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -994,6 +592,13 @@
 
     <!-- Theme js -->
     <script src="assets/js/script.js"></script>
+
+    <script src="path/to/ckeditor.js"></script>
+
+    <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+
+    <script src="assets/js/add-new-product.js"></script>
+
 
 </body>
 

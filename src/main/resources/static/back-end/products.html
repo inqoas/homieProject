@@ -52,11 +52,19 @@
             width: 170px;
             height: 30px;
             font-size: 15px;
-            margin-left: auto;
         }
         .hidden {
             display: none;
         }
+        .title-header {
+            display: flex;
+            align-items: center;
+        }
+
+        .left-options {
+            margin-right: 60%;
+        }
+
     </style>
 </head>
 
@@ -363,20 +371,14 @@
                                 <div class="card-body">
                                     <div class="title-header option-title d-sm-flex d-block">
                                         <h5>商品一覽表</h5>
-                                        <input type="text" id="searchInput" placeholder="輸入搜尋關鍵字">
-                                        <div class="right-options">
+                                        <div class="left-options">
                                             <ul>
                                                 <li>
-                                                    <a href="javascript:void(0)">import</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Export</a>
-                                                </li>
-                                                <li>
-                                                    <a class="btn btn-solid" href="add-new-product.html">Add Product</a>
+                                                    <a class="btn btn-solid" href="add-new-product.html">上架商品</a>
                                                 </li>
                                             </ul>
                                         </div>
+                                        <input type="text" id="searchInput" placeholder="輸入搜尋關鍵字">
                                     </div>
                                     <div>
                                         <div class="table-responsive">

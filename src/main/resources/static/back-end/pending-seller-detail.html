@@ -392,8 +392,34 @@
                                     <span type="text" id="sellerInput" class="form-control"></span>
                                 </div>
                             </div>
-                            <div class="mt-5 text-center">
-                                <button id="backButton" class="btn btn-primary profile-button" type="button">上一頁</button>
+                            <div class="container mt-5">
+                                <div class="row justify-content-end">
+                                    <div class="col-auto">
+                                        <button id="backButton" class="btn btn-primary profile-button" type="button">上一頁</button>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button id="confirmButton" class="btn btn-primary profile-button" type="button" data-bs-toggle="modal"
+                                            data-bs-target="#confirmationModal">審核</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="confirmationModalLabel">審核</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            請選擇通過或未通過
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">未通過</button>
+                                            <button type="button" class="btn btn-primary" id="sellerPassButton">通過</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

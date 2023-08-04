@@ -1,29 +1,24 @@
 package tw.idv.tibame.tha102.web.orderproduct.controller;
 
-import static tw.idv.tibame.tha102.core.util.CommonUtil.writePojo2Json;
-
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import tw.idv.tibame.tha102.core.util.HibernateUtil;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import tw.idv.tibame.tha102.web.orderproduct.service.OrderProductService;
-import tw.idv.tibame.tha102.web.orderproduct.service.OrderProductServiceImpl;
+import tw.idv.tibame.tha102.web.orderproduct.vo.OrderProduct;
 
-@WebServlet("/orderproduct/findall")
-public class OrderProductFindAllController extends HttpServlet{
-	private static final long serialVersionUID = 1L;
-	
-    private OrderProductService service; 
+import java.util.List;
 
-    @Override
-    public void init() {
-        service = new OrderProductServiceImpl(HibernateUtil.getSessionFactory());
+@RestController
+@RequestMapping("/orderproduct")
+public class OrderProductFindAllController {
+    private final OrderProductService service;
+
+    public OrderProductFindAllController(OrderProductService service) {
+        this.service = service;
     }
-	
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-		writePojo2Json(response, service.findAll());
-	}
-	
+
+    @GetMapping("/find-all")
+    public List<OrderProduct> findAll() {
+        return service.findAll();
+    }
 }
