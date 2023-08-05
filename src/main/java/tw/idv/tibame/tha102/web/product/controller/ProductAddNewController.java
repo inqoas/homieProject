@@ -71,15 +71,15 @@ public class ProductAddNewController extends HttpServlet {
             Integer product_review_stars = 0;
             Integer product_review_count = 0;
     
-            // 获取上传的照片
+
             Part filePart = request.getPart("product_picture");
             InputStream fileInputStream = filePart.getInputStream();
             byte[] product_picture = readInputStream(fileInputStream);
     
-            // 将商品信息和照片保存到数据库
+
             productService.newProduct(product_name, product_price, product_stock, product_shipped, product_introduction, product_picture, product_category, product_review_stars, product_review_count);
     
-            // 返回响应
+
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
             ResponseMessage responseMessage = new ResponseMessage("新增商品成功");
