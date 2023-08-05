@@ -18,6 +18,15 @@ function getSellerText(sellerCode){
     return sellerMapping[sellerCode] || "未知選項"
 }
 
+const genderMapping = {
+    0: "男",
+    1: "女"
+};
+
+function getGenderText(genderCode){
+    return genderMapping[genderCode] || "未知性別"
+}
+
 
 document.addEventListener("DOMContentLoaded", function () {
     try {
@@ -42,12 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const statusText = getStatusText(data[0].user_status);
                 const sellerText = getSellerText(data[0].seller_identity);
+                const genderText = getGenderText(data[0].user_gender);
                 const userProfileContainer = document.getElementById("userProfileContainer");
                 userProfileContainer.querySelector('#nameInput').textContent = data[0].user_name;
                 userProfileContainer.querySelector('#idInput').textContent = data[0].user_id;
                 userProfileContainer.querySelector('#accountInput').textContent = data[0].user_account;
                 userProfileContainer.querySelector('#phoneInput').textContent = data[0].user_phone;
-                userProfileContainer.querySelector('#genderInput').textContent = data[0].user_gender;
+                userProfileContainer.querySelector('#genderInput').textContent = genderText;
                 userProfileContainer.querySelector('#addressInput').textContent = data[0].user_address;
                 userProfileContainer.querySelector('#birthInput').textContent = data[0].user_birth;
                 userProfileContainer.querySelector('#icInput').textContent = data[0].user_ic;

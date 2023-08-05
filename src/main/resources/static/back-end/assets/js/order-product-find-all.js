@@ -6,6 +6,8 @@ function init() {
         success: function(response) {
             var tableBody = $('#product-order-table');
 
+            console.log(response);
+
             // 清空原本的內容
             tableBody.empty();
 
@@ -21,7 +23,7 @@ function init() {
                         <td>
                             <ul>
                                 <li>
-                                    <a href="order-detail.html">
+                                    <a href="product-order-detail.html">
                                         <i class="ri-eye-line"></i>
                                     </a>
                                 </li>
