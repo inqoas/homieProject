@@ -35,7 +35,12 @@ window.addEventListener("load", function(){
             document.querySelector("#bank_holder_name").value = body.bankHolderName;
             document.querySelector("#bank_code").value = body.bankCode;
             document.querySelector("#bank_account").value = body.bankAccount;
-            document.querySelector(".pcrc_img").src = "data:image/png;base64," + body.sellerPcrcBase64;
+            if(body.sellerPcrcBase64 != null){
+                document.querySelector(".pcrc_img").src = "data:image/png;base64," + body.sellerPcrcBase64;
+            }else{
+                document.querySelector(".pcrc_img").classList.add("display")
+            }
+           
         },
         error => {
 
@@ -75,7 +80,12 @@ window.addEventListener("load", function(){
             document.querySelector(".dashboard-detail-user-phone").innerHTML = body.user_phone;
             document.querySelector(".dashboard-detail-user-address").innerHTML = body.user_address;
             document.querySelector(".dashboard-detail-user-birth").innerHTML = body.user_birth;
-            document.querySelector(".update_img").src = "data:image/png;base64," + body.user_pic_base64;
+            if(body.user_pic_base64!=null){
+                document.querySelector(".update_img").src = "data:image/png;base64," + body.user_pic_base64;
+            }else{
+                document.querySelector(".update_img").src = "../assets/images/inner-page/user/1.jpg";
+            }
+           
             document.querySelector(".dashboard-profile-id").innerHTML = body.user_id;
             document.querySelector(".dashboard-profile-account").innerHTML = body.user_account;
             document.querySelector(".dashboard-profile-password").value = body.user_password; 
@@ -88,7 +98,7 @@ window.addEventListener("load", function(){
             document.querySelector(".dashboard-profile-gc").innerHTML = body.garbage_coin;
             document.querySelector("#pname").value = body.user_name;
             document.querySelector("#pphone").value = body.user_phone;
-            document.querySelector(".profile-name-name").value = body.user_name;
+            document.querySelector(".profile-name-name").innerHTML = body.user_name;
             document.querySelector(".profile-name-account").innerHTML = body.user_account;
             const selectedCity = body.user_address.substring(0, 3);
             const floatingSelect1 = document.querySelector("#floatingSelect1");
@@ -98,18 +108,19 @@ window.addEventListener("load", function(){
                     break;
                 }
             }
+            
             document.querySelector("#paddress").value = body.user_address.substring(3);
-            if(body.seller_identity == 0){
+            if(body.user_status == 0){
                 document.querySelector("#bankName").classList.add("display")
                 document.querySelector("#bankCode").classList.add("display")
                 document.querySelector("#bankAccount").classList.add("display")
                 document.querySelector("#pcrcImg").classList.add("display")
             }
-            if(body.seller_identity == 1){
+            if(body.user_status == 2){
                 document.querySelector(".apply-business").classList.add("display")
                 document.querySelector(".sellerTable").insertAdjacentHTML('beforebegin', "<div style='font-weight: bolder; color: #274C77; font-size: 20px'>商家申請中</div>");
             }
-            if(body.seller_identity == 2){
+            if(body.seller_identity == 1 && body.user_status == 0){
                 document.querySelector(".apply-business").classList.add("display")
             }
             }
@@ -172,7 +183,7 @@ document.querySelector(".headimg").addEventListener("change", function () {
     // 如果未選擇檔案或選擇的不是圖片
     if (!file || !file.type.startsWith("image/")) {
       // 處理空值，例如不上傳圖片的情況
-      console.log("未選擇檔案或選擇的不是圖片");
+      alert("未選擇檔案或選擇的不是圖片");
       return;
     }
 
@@ -205,10 +216,10 @@ document.querySelector(".headimg").addEventListener("change", function () {
   });
   
   function showProducts(){
-    document.querySelector("#collection-product").classList.toggle("collection")
-    document.querySelector("#collection-service").classList.toggle("collection")
+    document.querySelector("#collection-product").classList.add("collection");
+    document.querySelector("#collection-service").classList.remove("collection");
     
-    fetch("", {
+    fetch("../collection/getAllProductCollection", {
         method: "GET",
         headers: {
             "Authorization": "Bearer " + user_jwt
@@ -217,7 +228,59 @@ document.querySelector(".headimg").addEventListener("change", function () {
         return resp.json();
     }).then(
         body => {
-
+            let productId = 0;
+            let productCollectionHTML = "";
+                body.forEach(collection =>{
+                    productId = collection[0];
+                    let productName = collection[1];
+                    let productPrice = collection[2];
+                    let productCategory = collection[3];
+                    if(productCategory == 0){
+                        productCategory = "清潔劑"
+                    }else if(productCategory == 1){
+                        productCategory = "洗衣精/粉"
+                    }else if(productCategory == 2){
+                        productCategory = "掃除用品"
+                    }else if(productCategory == 3){
+                        productCategory = "洗碗精/粉"
+                    }
+                    productCollectionHTML += `
+                                            <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
+                                            <div class="product-box-3 theme-bg-white h-90">
+                                                <div class="product-header">
+                                                    <div class="product-image">
+                                                        <a href="product-left-thumbnail.html">
+                                                            <img src="http://localhost:8080/homieProject/collection/getProductPic?productId=${productId}"
+                                                                class="img-fluid blur-up lazyload" alt="">
+                                                        </a>
+    
+                                                        <div class="product-header-top">
+                                                            <button class="btn wishlist-button close_button" style="font-size : 12px; font-weight: bold;">
+                                                                x
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+    
+                                                <div class="product-footer">
+                                                    <div class="product-detail">
+                                                        <span class="span-name">${productCategory}</span>
+                                                        <a href="product-left-thumbnail.html">
+                                                            <h5 class="collectionName">${productName}</h5>
+                                                        </a>
+                                                        <p class="text-content mt-1 mb-2 product-content">Cheesy feet
+                                                            cheesy grin brie. Mascarpone cheese and wine hard cheese the
+                                                            big cheese everyone loves smelly cheese macaroni cheese
+                                                            croque monsieur.</p>
+                                                        <h5 class="price">
+                                                            <span class="theme-color">${productPrice}元</span>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>`                
+            });
+            document.querySelector("#myWishlist").innerHTML = productCollectionHTML;
         },
         error => {
 
@@ -226,10 +289,10 @@ document.querySelector(".headimg").addEventListener("change", function () {
   }
 
   function showServices(){
-    document.querySelector("#collection-product").classList.toggle("collection")
-    document.querySelector("#collection-service").classList.toggle("collection")
+    document.querySelector("#collection-product").classList.remove("collection");
+    document.querySelector("#collection-service").classList.add("collection");
 
-    fetch("", {
+    fetch("../collection/getAllServiceCollection", {
         method: "GET",
         headers: {
             "Authorization": "Bearer " + user_jwt
@@ -238,7 +301,63 @@ document.querySelector(".headimg").addEventListener("change", function () {
         return resp.json();
     }).then(
         body => {
+            let serviceId = 0;
+            let serviceCollectionHTML = "";
+            body.forEach(collection => {
+                serviceId = collection[0];
+                let serviceName = collection[1];
+                let servicePrice = collection[2];
+                let serviceCode = collection[3];
+                if(serviceCode == 0){
+                    serviceCode = "居家清潔";
+                }else if(serviceCode == 1){
+                    serviceCode = "冷氣清潔";
+                }else if(serviceCode == 2){
+                    serviceCode = "洗衣機清潔";
+                }else if(serviceCode == 3){
+                    serviceCode = "專業除蟎";
+                }else if(serviceCode == 4){
+                    serviceCode = "水塔清洗";
+                }else if(serviceCode == 5){
+                    serviceCode = "水管清洗";
+                }
+                serviceCollectionHTML += `
+                                        <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
+                                        <div class="product-box-3 theme-bg-white h-90">
+                                            <div class="product-header">
+                                                <div class="product-image">
+                                                    <a href="product-left-thumbnail.html">
+                                                        <img src="http://localhost:8080/homieProject/collection/getServicePic?serviceId=${serviceId}"
+                                                            class="img-fluid blur-up lazyload" alt="">
+                                                    </a>
 
+                                                    <div class="product-header-top">
+                                                        <button class="btn wishlist-button close_button" style="font-size : 12px; font-weight: bold;">
+                                                            x
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="product-footer">
+                                                <div class="product-detail">
+                                                    <span class="span-name">${serviceCode}</span>
+                                                    <a href="product-left-thumbnail.html">
+                                                        <h5 class="collectionName">${serviceName}</h5>
+                                                    </a>
+                                                    <p class="text-content mt-1 mb-2 product-content">Cheesy feet
+                                                        cheesy grin brie. Mascarpone cheese and wine hard cheese the
+                                                        big cheese everyone loves smelly cheese macaroni cheese
+                                                        croque monsieur.</p>
+                                                    <h5 class="price">
+                                                        <span class="theme-color">${servicePrice}元</span>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`    
+            })
+            document.querySelector("#myWishlist").innerHTML = serviceCollectionHTML;
         },
         error => {
             
@@ -246,3 +365,41 @@ document.querySelector(".headimg").addEventListener("change", function () {
     )
 
   }
+
+  $(document).on("click",".close_button",function(){
+    let serviceName = $(this).closest(".product-box-3").find(".collectionName").text();
+    let serviceCode = $(this).closest(".product-box-3").find(".span-name").text();
+    console.log(serviceName);
+    console.log(serviceCode);
+    let controller = "";
+    if(serviceCode == "居家清潔" || serviceCode == "冷氣清潔" || serviceCode == "洗衣機清潔" || serviceCode == "專業除蟎" || serviceCode == "水塔清洗" || serviceCode == "水管清洗"){
+        controller = "../collection/deleteServiceCollection";
+    }else{
+        controller = "../collection/deleteProductCollection";
+    }
+    fetch(controller,{
+        method:"DELETE",
+        headers: {
+            "Authorization": "Bearer " + user_jwt,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            "collectionName": serviceName
+        })
+    }).then(resp =>{
+        return resp.json();
+    }).then(
+        body =>{
+            if(body.message != null){
+                alert(body.message);
+            }
+            if(body.success == false && body.message == "驗證失敗，請重新登入"){
+                localStorage.removeItem("user_jwt");
+                location = "../front-end/login.html";
+            }
+        },
+        error =>{
+
+        }
+    )
+  })

@@ -10,5 +10,5 @@ public interface MemberDao {
 	public UserInfo selectByLogin(String userAccount, String password);
 	public UserInfo selectByUserAccount(String userAccount);
 	public UserInfo selectByUserId(Integer userid);
-	public int updateSellerIdentityByUserId(int sellerIdentity, int userid);
+	public int updateUserStatusByUserId(int userStatus, int userid);
 }

@@ -205,11 +205,11 @@ public class MemberDaoImpl implements MemberDao{
 		}
 	}
 
-	public int updateSellerIdentityByUserId(int sellerIdentity, int userid) {
-	    String sql = "UPDATE user_info SET seller_identity = ? WHERE user_id = ?";
+	public int updateUserStatusByUserId(int userStatus, int userid) {
+	    String sql = "UPDATE user_info SET user_status = ? WHERE user_id = ?";
 	    try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
 	         PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-	        preparedStatement.setInt(1, sellerIdentity);
+	        preparedStatement.setInt(1, userStatus);
 	        preparedStatement.setInt(2, userid);
 	        return preparedStatement.executeUpdate();
 	    } catch (Exception e) {

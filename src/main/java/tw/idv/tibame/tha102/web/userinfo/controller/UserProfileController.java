@@ -20,11 +20,8 @@ import tw.idv.tibame.tha102.core.util.UserInfoJwtUtil;
 import tw.idv.tibame.tha102.web.userinfo.service.UserDashboardService;
 import tw.idv.tibame.tha102.web.userinfo.service.impl.UserDashboardServiceImpl;
 import tw.idv.tibame.tha102.web.userinfo.vo.UserInfo;
-<<<<<<< HEAD
 
-=======
 @Controller
->>>>>>> pong
 @WebServlet("/user-profile")
 public class UserProfileController extends HttpServlet {
 	private static final long serialVersionUID = -1359326233505038780L;
