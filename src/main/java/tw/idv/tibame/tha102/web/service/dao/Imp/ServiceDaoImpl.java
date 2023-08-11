@@ -99,8 +99,8 @@ public class ServiceDaoImpl implements ServiceDao{
 			while( rs.next()) {
 				service =new Service();
 				Seller seller =new Seller();
-				seller.setTotal_review_count(rs.getInt("total_review_count")); 
-				seller.setTotal_review_stars(rs.getInt("total_review_stars"));
+				seller.setTotalReviewCount(rs.getInt("total_review_count"));
+				seller.setTotalReviewStars(rs.getInt("total_review_stars"));
 				
 				service.setSeller(seller);
 					
@@ -108,7 +108,7 @@ public class ServiceDaoImpl implements ServiceDao{
 				
 			}
 					
-			System.out.println(service.getSeller().getTotal_review_stars());	
+			System.out.println(service.getSeller().getTotalReviewStars());
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -354,8 +354,8 @@ public class ServiceDaoImpl implements ServiceDao{
 				service.setService_introduction(rs.getString("service_introduction"));
 				service.setService_picture(rs.getBytes("service_picture"));
 				
-				seller.setTotal_review_count(rs.getInt("total_review_count"));
-				seller.setTotal_review_stars(rs.getInt("total_review_stars"));
+				seller.setTotalReviewCount(rs.getInt("total_review_count"));
+				seller.setTotalReviewStars(rs.getInt("total_review_stars"));
 				
 				service.setSeller(seller);
 				
