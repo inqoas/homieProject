@@ -1,7 +1,5 @@
 package tw.idv.tibame.tha102.web.userinfo.vo;
 
-import java.util.Arrays;
-
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Column;
@@ -9,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,25 +21,28 @@ public class Product implements java.io.Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
-	private Integer product_id;
+	private Integer productId;
     @Column(name = "product_name")
-    private String product_name;
-    @Column(name = "")
-    private Integer product_price;
-    @Column(name = "")
-    private Integer product_stock;
-    @Column(name = "")
-    private Integer product_shipped;
-    @Column(name = "")
-    private String product_introduction;
-    @Column(name = "")
-    private byte[] product_picture;
-    @Column(name = "")
-    private Integer product_category;
-    @Column(name = "")
-    private Integer product_review_stars;
-    @Column(name = "")
-    private Integer product_review_count;
-    
+    private String productName;
+    @Column(name = "product_price")
+    private Integer productPrice;
+    @Column(name = "product_stock")
+    private Integer productStock;
+    @Column(name = "product_shipped")
+    private Integer productShipped;
+    @Column(name = "product_introduction")
+    private String productIntroduction;
+    @Column(name = "product_picture")
+    private byte[] productPicture;
+    @Column(name = "product_category")
+    private Integer productCategory;
+    @Column(name = "product_review_stars")
+    private Integer productReview_stars;
+    @Column(name = "product_review_count")
+    private Integer productReview_count;
+    @Transient
+	private String message;
+	@Transient
+	private boolean success;
     
 }
