@@ -1,77 +1,75 @@
-const statusMapping = {
-    0: "正常",
-    1: "停權",
-    2: "未審核",
-    3: "註銷",
-};
+const urlParams = new URLSearchParams(window.location.search);
+const userId = urlParams.get("user_id");
+console.log(userId);
 
-function getStatusText(statusCode) {
-    return statusMapping[statusCode] || "未知狀態";
-}
-
-const sellerMapping = {
-    0: "不是",
-    1: "是"
-};
-
-function getSellerText(sellerCode){
-    return sellerMapping[sellerCode] || "未知選項"
-}
-
-
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     try {
-        const urlParams = new URLSearchParams(window.location.search);
-        const userId = urlParams.get("user_id");
-        console.log(userId);
-
         const getUserProfileAPI = "../userinfo/find-by-id";
-        const getUserProfileImageAPI = `http://localhost:8080/homieProject/userinfo/user-info-find-img?user_id=${userId}`;
+        const getSellerProfileAPI = "../seller/find-seller-by-user-id";
+        const getPcrcImageAPI = `http://localhost:8080/homieProject/seller/pcrc`;
 
-
+        const imgElement = document.getElementById('pcrcImage');
+        imgElement.src = `${getPcrcImageAPI}?user_id=${userId}`;
 
         $.ajax({
             url: `${getUserProfileAPI}?user_id=${userId}`,
             type: 'GET',
             dataType: "json",
-            success: function(data) {
-                console.log(data);
+            success: function(user) {
+                console.log(user);
 
-                const profileImage = document.getElementById("profileImage");
-                profileImage.src = getUserProfileImageAPI;
-
-                const statusText = getStatusText(data[0].user_status);
-                const sellerText = getSellerText(data[0].seller_identity);
                 const userProfileContainer = document.getElementById("userProfileContainer");
-                userProfileContainer.querySelector('#nameInput').textContent = data[0].user_name;
-                userProfileContainer.querySelector('#idInput').textContent = data[0].user_id;
-                userProfileContainer.querySelector('#accountInput').textContent = data[0].user_account;
-                userProfileContainer.querySelector('#phoneInput').textContent = data[0].user_phone;
-                userProfileContainer.querySelector('#genderInput').textContent = data[0].user_gender;
-                userProfileContainer.querySelector('#addressInput').textContent = data[0].user_address;
-                userProfileContainer.querySelector('#birthInput').textContent = data[0].user_birth;
-                userProfileContainer.querySelector('#icInput').textContent = data[0].user_ic;
-                userProfileContainer.querySelector('#statusInput').textContent = statusText;
-                userProfileContainer.querySelector('#coinInput').textContent = data[0].garbage_coin;
-                userProfileContainer.querySelector('#sellerInput').textContent = sellerText;
-                userProfileContainer.querySelector('#user-detail-name').textContent = data[0].user_name;
-                userProfileContainer.querySelector('#user-detail-email').textContent = data[0].user_account;
+                userProfileContainer.querySelector('#nameInput').textContent = user[0].user_name;
+                userProfileContainer.querySelector('#idInput').textContent = user[0].user_id;
 
+                $.ajax({
+                    url: `${getSellerProfileAPI}?user_id=${userId}`,
+                    type: 'GET',
+                    dataType: "json",
+                    success: function(seller) {
+                        console.log(seller);
 
-
+                        userProfileContainer.querySelector('#bankCodeInput').textContent = seller.bankCode;
+                        userProfileContainer.querySelector('#holderInput').textContent = seller.bankHolderName;
+                        userProfileContainer.querySelector('#bankAccountInput').textContent = seller.bankAccount;
+                    },
+                    error: function(error) {
+                        console.error("無法取得Seller資料：", error);
+                    }
+                });
             },
-            error: function (error) {
-                console.error("無法取得會員資料：", error);
+            error: function(error) {
+                console.error("無法取得Userinfo：", error);
             }
         });
     } catch (error) {
         console.error("無法取得會員資料：", error);
     }
 
-    const backButton = document.getElementById("backButton");
-    backButton.addEventListener("click", function () {
+    document.getElementById("backButton").addEventListener("click", function() {
         history.back();
     });
-    
 
+    const updateStatusAPI = "../userinfo/update-status";
+    document.getElementById("sellerPassButton").addEventListener("click", function() {
+        console.log("點擊了通過按鈕，試圖更改用戶狀態");
+        console.log(userId);
+
+        $.ajax({
+            url: `${updateStatusAPI}?user_id=${userId}`,
+            type: 'POST',
+            success: function(response) {
+                console.log(response.message);
+                alert(response.message);
+                window.location.href = 'all-users.html';
+            }
+        });
+    });
+
+    document.getElementById('pcrcImage').addEventListener('click', function() {
+        const imgSrc = this.src;
+        document.getElementById('modalImage').src = imgSrc;
+        const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+        imageModal.show();
+    });
 });

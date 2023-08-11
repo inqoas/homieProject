@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import tw.idv.tibame.tha102.web.userinfo.service.UserInfoService;
-import tw.idv.tibame.tha102.web.userinfo.service.UserInfoServiceImpl;
+import tw.idv.tibame.tha102.web.userinfo.service.impl.UserInfoServiceImpl;
 import tw.idv.tibame.tha102.web.userinfo.vo.UserInfo;
 
 @WebServlet("/userinfo/find-by-id")

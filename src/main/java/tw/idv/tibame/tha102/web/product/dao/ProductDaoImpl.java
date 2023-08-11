@@ -21,7 +21,7 @@ import tw.idv.tibame.tha102.web.product.vo.Product;
 public class ProductDaoImpl implements ProductDao{
 	
 	private static final String INSERT_STMT = "INSERT INTO product (product_name, product_price, product_stock, product_shipped, product_introduction, product_picture, product_category, product_review_stars, product_review_count) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String UPDATE_STMT = "UPDATE product SET product_name = ?, product_price = ?, product_stock = ?, product_shipped = ?, product_introduction = ?, product_picture = ?, product_category = ?, product_review_stars = ?, product_review_count = ? WHERE product_id = ?";
+    private static final String UPDATE_STMT = "UPDATE product SET product_name = ?, product_price = ?, product_stock = ?, product_shipped = ?, product_introduction = ?, product_category = ?, product_review_stars = ?, product_review_count = ? WHERE product_id = ?";
     private static final String DELETE_STMT = "DELETE FROM product WHERE product_id = ?";
     private static final String GET_ALL_STMT = "SELECT * FROM product";
     private static final String GET_BY_ID_STMT = "SELECT * FROM product WHERE product_id = ?";
@@ -56,11 +56,10 @@ public class ProductDaoImpl implements ProductDao{
             ps.setInt(3, product.getProduct_stock());
             ps.setInt(4, product.getProduct_shipped());
             ps.setString(5, product.getProduct_introduction());
-            ps.setBytes(6, product.getProduct_picture());
-            ps.setInt(7, product.getProduct_category());
-            ps.setInt(8, product.getProduct_review_stars());
-            ps.setInt(9, product.getProduct_review_count());
-            ps.setInt(10, product.getProduct_id());
+            ps.setInt(6, product.getProduct_category());
+            ps.setInt(7, product.getProduct_review_stars());
+            ps.setInt(8, product.getProduct_review_count());
+            ps.setInt(9, product.getProduct_id());
             
             ps.executeUpdate();
         } catch (Exception e) {
@@ -145,6 +144,27 @@ public class ProductDaoImpl implements ProductDao{
         }
         return product;
     }
+
+    @Override
+    public void updateProductPicture(Integer product_id, byte[] product_picture) {
+        String sql = "UPDATE product SET product_picture = ? WHERE product_id = ?";
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD); // 假設dataSource已經配置
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            // 將圖片設置為BLOB
+            stmt.setBytes(1, product_picture);
+            // 設置產品ID
+            stmt.setInt(2, product_id);
+
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("更新圖片失敗，找不到該產品。");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public List<Product> getProduct_item(Integer product_category ){
     	List<Product> products = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);

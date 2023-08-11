@@ -14,4 +14,7 @@ public interface UserInfoDao {
     public UserInfo getUserPicById(Integer user_id);
     public List<UserInfo> findByUserStatus();
     public List<UserInfo> getAll();
+    public UserInfo getAddressById(Integer user_id);
+
+    public  Integer updateStatusById(Integer user_id);
 }

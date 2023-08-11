@@ -12,7 +12,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    <title>Homie - 訂單管理</title>
+    <title>Homie - 使用者資料</title>
 
     <!-- Google font-->
     <link
@@ -22,8 +22,8 @@
     <!-- Fontawesome css -->
     <link rel="stylesheet" type="text/css" href="assets/css/vendors/font-awesome.css">
 
-    <!-- Linear Icon -->
-    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <!-- Linear Icon css -->
+    <link rel="stylesheet" href="assets/css/linearicon.css">
 
     <!-- Themify icon css -->
     <link rel="stylesheet" type="text/css" href="assets/css/vendors/themify.css">
@@ -35,9 +35,6 @@
     <link rel="stylesheet" type="text/css" href="assets/css/remixicon.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
 
-    <!-- Data Table css -->
-    <link rel="stylesheet" type="text/css" href="assets/css/datatables.css">
-
     <!-- Plugins css -->
     <link rel="stylesheet" type="text/css" href="assets/css/vendors/scrollbar.css">
     <link rel="stylesheet" type="text/css" href="assets/css/vendors/animate.css">
@@ -47,16 +44,19 @@
 
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <style>
+        
+    </style>
 </head>
 
 <body>
-    <!-- tap on top start-->
+    <!-- tap on top start -->
     <div class="tap-top">
-        <span class="lnr lnr-chevron-up"></span>
+        <i data-feather="chevrons-up"></i>
     </div>
-    <!-- tap on tap end-->
+    <!-- tap on tap end -->
 
-    <!-- page-wrapper Start-->
+    <!-- page-wrapper Start -->
     <div class="page-wrapper compact-wrapper" id="pageWrapper">
         <!-- Page Header Start-->
         <div class="page-header">
@@ -75,22 +75,6 @@
                         </a>
                     </div>
                 </div>
-
-                <form class="form-inline search-full" action="javascript:void(0)" method="get">
-                    <div class="form-group w-100">
-                        <div class="Typeahead Typeahead--twitterUsers">
-                            <div class="u-posRelative">
-                                <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text"
-                                    placeholder="搜尋 Homie .." name="q" title="" autofocus>
-                                <i class="close-search" data-feather="x"></i>
-                                <div class="spinner-border Typeahead-spinner" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>
-                            </div>
-                            <div class="Typeahead-menu"></div>
-                        </div>
-                    </div>
-                </form>
                 <div class="nav-right col-6 pull-right right-header p-0">
                     <ul class="nav-menus">
                         <li>
@@ -238,7 +222,7 @@
                                             <a href="all-users.html">使用者</a>
                                         </li>
                                         <li>
-                                            <a href="">待審核賣家</a>
+                                            <a href="pending-seller.html">待審核賣家</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -341,61 +325,87 @@
                     </nav>
                 </div>
             </div>
-            <!-- Page Sidebar Ends-->
-
-            <!-- Order section Start -->
-            <div class="page-body">
-                <!-- Table Start -->
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="card card-table">
-                                <div class="card-body">
-                                    <div class="title-header option-title">
-                                        <h5>服務訂單列表</h5>
-                                        <a href="#" class="btn btn-solid">Download all orders</a>
-                                    </div>
-                                    <div>
-                                        <div class="table-responsive">
-                                            <table class="table all-package order-table theme-table" id="table_id">
-                                                <thead>
-                                                    <tr>
-                                                        <th>訂單編號</th>
-                                                        <th>訂購人</th>
-                                                        <th>服務提供者</th>
-                                                        <th>下單日期</th>
-                                                        <th>訂單狀態</th>
-                                                        <th>總金額</th>
-                                                        <th>其他選項</th>
-                                                    </tr>
-                                                </thead>
-
-                                                <tbody id="service-order-table">
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+            <div class="container rounded bg-white mt-5 mb-5" id="productContainer">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 border-right">
+                        <div class="p-3 py-5">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-right">商品資料</h4>
+                            </div>
+            
+                            
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="labels">商品名稱</label>
+                                    <input type="text" id="nameInput" class="form-control"></input>
                                 </div>
+                                <div class="col-md-6">
+                                    <label class="labels">商品編號</label>
+                                    <span type="text" id="idInput" class="form-control"></span>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">    
+                                <div class="col-md-6">
+                                    <label class="labels">單價</label>
+                                    <input type="text" id="priceInput" class="form-control"></input>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels">庫存數量</label>
+                                    <input type="text" id="stockInput" class="form-control"></input>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="labels">已售出數量</label>
+                                    <span type="text" id="shippedInput" class="form-control"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels">商品種類</label>
+                                    <select id="categoryInput" class="form-control">
+                                        <option value="1">清潔劑</option>
+                                        <option value="2">洗衣精</option>
+                                        <option value="3">打掃用品</option>
+                                        <option value="4">洗碗精</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <label class="labels">商品介紹</label>
+                                    <textarea id="introInput" class="form-control" rows="4"></textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="labels">商品總星數</label>
+                                    <span type="text" id="starsInput" class="form-control"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels">商品總評價數</label>
+                                    <span type="text" id="reviewsInput" class="form-control"></span>
+                                </div>
+                            </div>
+                            <div class="mt-5 text-center">
+                                <button id="backButton" class="btn btn-primary profile-button" type="button">上一頁</button>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Table End -->
-
-                <!-- footer start-->
-                <div class="container-fluid">
-                    <footer class="footer">
-                        <div class="row">
-                            <div class="col-md-12 footer-copyright text-center">
-                                <p class="mb-0">Copyright 2022 © Fastkart theme by pixelstrap</p>
-                            </div>
+                    <div class="col-md-3">
+                        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                            <img class="mt-5" id="productImage" width="150px" src="">
+                            <input type="file" id="imageUpload" accept="image/*">
+                            <button id="imageUpdateButton" class="btn btn-primary mt-3">更新圖片</button> <!-- 新增的更新按鈕 -->
                         </div>
-                    </footer>
+                    </div>
                 </div>
             </div>
-            <!-- Order section End -->
+                      
+            </div>
+            </div>
+            </div>
         </div>
-        <!-- Page Body End-->
     </div>
     <!-- page-wrapper End -->
 
@@ -408,6 +418,7 @@
                     <h5 class="modal-title" id="staticBackdropLabel">Logging Out</h5>
                     <p>Are you sure you want to log out?</p>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
                     <div class="button-box">
                         <button type="button" class="btn btn--no" data-bs-dismiss="modal">No</button>
                         <button type="button" class="btn  btn--yes btn-primary">Yes</button>
@@ -417,132 +428,6 @@
         </div>
     </div>
     <!-- Modal end -->
-
-    <!-- Delete Modal Box Start -->
-    <div class="modal fade theme-modal remove-coupon" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header d-block text-center">
-                    <h5 class="modal-title w-100" id="exampleModalLabel22">Are You Sure ?</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="remove-box">
-                        <p>The permission for the use/group, preview is inherited from the object, object will create a
-                            new permission for this object</p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-target="#exampleModalToggle2"
-                        data-bs-toggle="modal" data-bs-dismiss="modal">Yes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade theme-modal remove-coupon" id="exampleModalToggle2" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-center" id="exampleModalLabel12">Done!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="remove-box text-center">
-                        <div class="wrapper">
-                            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
-                                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-                            </svg>
-                        </div>
-                        <h4 class="text-content">It's Removed.</h4>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Delete Modal Box End -->
-
-    <!-- Offcanvas Box Start -->
-    <div class="offcanvas offcanvas-end order-offcanvas" tabindex="-1" id="order-details"
-        aria-labelledby="offcanvasExampleLabel" aria-expanded="false">
-        <div class="offcanvas-header">
-            <h4 class="offcanvas-title" id="offcanvasExampleLabel">#573-685572</h4>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="offcanvas-body">
-            <div class="order-date">
-                <h6>September 17, 2022 <span class="ms-3">8:12 PM</span></h6>
-                <a href="javascript:void(0)" class="d-block mt-1">Cancel Order</a>
-            </div>
-
-            <div class="accordion accordion-flush custome-accordion" id="accordionFlushExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            Status
-                        </button>
-                    </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                        data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <ul class="status-list">
-                                <li>
-                                    <a href="javascript:void(0)">Shipped</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">Pending</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            Accordion Item #2
-                        </button>
-                    </h2>
-                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-                        data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                            demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion
-                            body. Let's imagine this being filled with some actual content.</div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseThree" aria-expanded="false"
-                            aria-controls="flush-collapseThree">
-                            Accordion Item #3
-                        </button>
-                    </h2>
-                    <div id="flush-collapseThree" class="accordion-collapse collapse"
-                        aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                            demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion
-                            body. Nothing more exciting happening here in terms of content, but just filling up the
-                            space to make it look, at least at first glance, a bit more representative of how this would
-                            look in a real-world application.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Offcanvas Box End -->
 
     <!-- latest js -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
@@ -554,9 +439,6 @@
     <script src="assets/js/icons/feather-icon/feather.min.js"></script>
     <script src="assets/js/icons/feather-icon/feather-icon.js"></script>
 
-    <!-- customizer js -->
-    <script src="assets/js/customizer.js"></script>
-
     <!-- scrollbar simplebar js -->
     <script src="assets/js/scrollbar/simplebar.js"></script>
     <script src="assets/js/scrollbar/custom.js"></script>
@@ -564,17 +446,13 @@
     <!-- Sidebar js -->
     <script src="assets/js/config.js"></script>
 
+    <!-- customizer js -->
+    <script src="assets/js/customizer.js"></script>
+
     <!-- Plugins js -->
     <script src="assets/js/sidebar-menu.js"></script>
     <script src="assets/js/notify/bootstrap-notify.min.js"></script>
     <script src="assets/js/notify/index.js"></script>
-
-    <!-- Data table js -->
-    <script src="assets/js/jquery.dataTables.js"></script>
-    <script src="assets/js/custom-data-table.js"></script>
-
-    <!-- all checkbox select js -->
-    <script src="assets/js/checkbox-all-check.js"></script>
 
     <!-- sidebar effect -->
     <script src="assets/js/sidebareffect.js"></script>
@@ -582,7 +460,8 @@
     <!-- Theme js -->
     <script src="assets/js/script.js"></script>
 
-    <script src="assets/js/order-service-find-all.js"></script>
+    <script src="assets/js/product-detail.js"></script>
+
 </body>
 
 </html>
