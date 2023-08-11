@@ -78,7 +78,7 @@ function handleImageUpdate(product) {
             success: function(response) {
                 if (response.success) {
                     alert('圖片更新成功');
-                    productImage.src = getProductImageAPI;
+                    productImage.src = getProductImageAPI + '&timestamp=' + new Date().getTime();
                 } else {
                     alert('圖片更新失敗');
                 }
