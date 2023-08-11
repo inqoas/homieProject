@@ -35,21 +35,30 @@ public class ProductFindImgController extends HttpServlet{
 		
 		resp.setContentType("image/jpg");
 		
-		ServletOutputStream out = resp.getOutputStream();
+		//ServletOutputStream out = resp.getOutputStream();
 		
 		Integer id =Integer.parseInt(req.getParameter("product_id"));
 		
 		Product product =productDaoImpl.getProduct_ImgById(id);
 		
-		InputStream input =new ByteArrayInputStream(product.getProduct_picture());
+		resp.getOutputStream().write(product.getProduct_picture());
 		
-		BufferedInputStream in = new BufferedInputStream(input);
-				byte[] buf = new byte[4 * 1024]; // 4K buffer
-				int len;
-				while ((len = in.read(buf)) != -1) {
-					out.write(buf, 0, len);
-				}
-				in.close();
+		resp.getOutputStream().flush();
+		
+		
+//		InputStream input =new ByteArrayInputStream(product.getProduct_picture());
+//		
+//		BufferedInputStream in = new BufferedInputStream(input);
+//		int num = input.available();
+//				byte[] buf = new byte[num]; // 4K buffer
+//				int len;
+//				while ((len = in.read(buf)) != -1) {
+//					out.write(buf, 0, len);
+//				}
+				
+//		in.close();
+//		input.close();
+//		out.close();
 		
 	}
 

@@ -2,18 +2,48 @@ package tw.idv.tibame.tha102.web.service.vo;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.List;
+
+import tw.idv.tibame.tha102.web.area.vo.Area;
+import tw.idv.tibame.tha102.web.availableTime.vo.AvailableTime;
+import tw.idv.tibame.tha102.web.seller.vo.Seller;
 
 public class Service implements Serializable{
 	private static final long serialVersionUID = 6544614811701833624L;
-
+	
 	private Integer service_id;
     private Integer service_id_code;
     private Integer user_id;
-    private String service_name;
+    private String  service_name;
     private Integer service_price;
-    private String service_introduction;
-    private byte[] service_picture;
-	public Integer getService_id() {
+    private String  service_introduction;
+    private byte[]  service_picture;
+    
+    private Seller seller;
+    private Area areas;
+    private AvailableTime availabletimes;
+    
+
+	public Seller getSeller() {
+		return seller;
+	}
+	public void setSeller(Seller seller) {
+		this.seller = seller;
+	}
+    
+	public Area getAreas() {
+		return areas;
+	}
+	public void setAreas(Area areas) {
+		this.areas = areas;
+	}
+	public AvailableTime getAvailabletimes() {
+		return availabletimes;
+	}
+	public void setAvailabletimes(AvailableTime availabletimes) {
+		this.availabletimes = availabletimes;
+	}
+	public Integer  getService_id() {
 		return service_id;
 	}
 	public void setService_id(Integer service_id) {
