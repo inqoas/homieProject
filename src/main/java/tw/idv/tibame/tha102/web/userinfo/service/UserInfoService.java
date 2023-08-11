@@ -13,4 +13,6 @@ public interface UserInfoService {
 	public UserInfo newUser(UserInfo user);
 	public List<UserInfo> findUserByName(String userName);
 	public List<UserInfo> findUserById(Integer userId);
+	public UserInfo findAddressById(Integer userId);
+	public Integer sellerPass(Integer userId);
 }

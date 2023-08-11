@@ -24,7 +24,9 @@ public class UserInfoDaoImpl implements UserInfoDao{
 	private static final String GET_ALL_STMT = "select user_id, user_account, user_password, user_name, user_address, user_phone, user_gender, user_birth, user_ic, user_pic, user_status, garbage_coin, seller_identity from user_info order by user_id ";
 	private static final String GET_IMG_BY_ID_STMT = "select user_pic from user_info where user_id = ?";
 	private static final String GET_ONE_ID_STMT = "select user_id, user_account, user_password, user_name, user_address, user_phone, user_gender, user_birth, user_ic, user_pic, user_status, garbage_coin, seller_identity from user_info where user_id = ?";
-	private static final String GET_ALL_BY_SRATUS_STMT = "select user_id, user_account, user_password, user_name, user_address, user_phone, user_gender, user_birth, user_ic, user_pic, user_status, garbage_coin, seller_identity from user_info where user_status = 2";
+	private static final String GET_ALL_BY_STATUS_STMT = "select user_id, user_account, user_password, user_name, user_address, user_phone, user_gender, user_birth, user_ic, user_pic, user_status, garbage_coin, seller_identity from user_info where user_status = 2";
+	private static final String GET_ADDRESS_BY_ID_STMT = "select user_address from user_info where user_id = ?";
+	private static final String UPDATE_STATUS_BY_ID_STMT = "update user_info set user_status = 0, seller_identity = 1 where user_id = ?";
 	
 	
 	
@@ -137,7 +139,39 @@ public class UserInfoDaoImpl implements UserInfoDao{
 	        }
 	        return list;
 	}
-	
+
+	@Override
+	public UserInfo getAddressById(Integer user_id) {
+		UserInfo userInfo = null;
+		try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+			 PreparedStatement ps = connection.prepareStatement(GET_ADDRESS_BY_ID_STMT)) {
+			ps.setInt(1, user_id);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				userInfo = new UserInfo();
+				userInfo.setUser_address(rs.getString("user_address"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
+		return userInfo;
+	}
+
+	@Override
+	public Integer updateStatusById(Integer user_id) {
+		try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+			 PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_STATUS_BY_ID_STMT)) {
+			preparedStatement.setInt(1, user_id);
+			return preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+
+	}
+
 	public UserInfo getUserPicById(Integer user_id) {
 		UserInfo userInfo = null;
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -193,7 +227,7 @@ public class UserInfoDaoImpl implements UserInfoDao{
 		UserInfo user = null;
 		
 		try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-	            PreparedStatement ps = connection.prepareStatement(GET_ALL_BY_SRATUS_STMT);
+	            PreparedStatement ps = connection.prepareStatement(GET_ALL_BY_STATUS_STMT);
 	            ResultSet rs = ps.executeQuery()) {
 	            while (rs.next()) {
 	                user = new UserInfo();

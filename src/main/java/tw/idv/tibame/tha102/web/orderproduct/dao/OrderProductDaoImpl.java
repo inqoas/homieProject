@@ -75,4 +75,19 @@ public class OrderProductDaoImpl implements OrderProductDao {
 
         return orderProducts;
     }
+
+    @Override
+    public OrderProduct findByOrderProductId(Integer order_product_id) {
+        OrderProduct orderProduct = null;
+
+        try (Session session = sessionFactory.openSession()) {
+            Query<OrderProduct> query = session.createQuery("FROM OrderProduct WHERE order_product_id = :order_product_id", OrderProduct.class);
+            query.setParameter("order_product_id", order_product_id);
+            orderProduct = query.uniqueResult();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to find OrderProduct by order_product_id.", e);
+        }
+
+        return orderProduct;
+    }
 }

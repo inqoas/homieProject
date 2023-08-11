@@ -14,4 +14,8 @@ public interface ProductDao {
 	public void delete(Integer product_id);
 
 	public List<Product> getAll();
+
+	public Product getById(Integer product_id);
+
+	public void updateProductPicture(Integer product_id, byte[] product_picture);
 }

@@ -338,58 +338,28 @@
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <label class="labels">姓名</label>
-                                    <span type="text" id="nameInput" class="form-control"></span>
+                                    <span id="nameInput" class="form-control"></span>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="labels">使用者編號</label>
-                                    <span type="text" id="idInput" class="form-control"></span>
+                                    <span id="idInput" class="form-control"></span>
                                 </div>
                             </div>
 
                             <div class="row mt-3">    
                                 <div class="col-md-6">
-                                    <label class="labels">帳號(Email)</label>
-                                    <span type="text" id="accountInput" class="form-control"></span>
+                                    <label class="labels">銀行代碼</label>
+                                    <span id="bankCodeInput" class="form-control"></span>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="labels">身分證字號</label>
-                                    <span type="text" id="icInput" class="form-control"></span>
+                                    <label class="labels">銀行戶名</label>
+                                    <span id="holderInput" class="form-control"></span>
                                 </div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <label class="labels">手機號碼</label>
-                                    <span type="text" id="phoneInput" class="form-control"></span>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="labels">性別</label>
-                                    <span type="text" id="genderInput" class="form-control"></span>
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-12">
-                                    <label class="labels">地址</label>
-                                    <span type="text" id="addressInput" class="form-control"></span>
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-6">
-                                    <label class="labels">生日</label>
-                                    <span type="text" id="birthInput" class="form-control"></span>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="labels">狀態</label>
-                                    <span type="text" id="statusInput" class="form-control"></span>
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-6">
-                                    <label class="labels">累積GC</label>
-                                    <span type="text" id="coinInput" class="form-control"></span>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="labels">是否為賣家？</label>
-                                    <span type="text" id="sellerInput" class="form-control"></span>
+                                    <label class="labels">銀行帳號</label>
+                                    <span id="bankAccountInput" class="form-control"></span>
                                 </div>
                             </div>
                             <div class="container mt-5">
@@ -425,14 +395,24 @@
                     </div>
                     <div class="col-md-3">
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                            <img class="rounded-circle mt-5" id="profileImage" width="150px" src="">
+                            <img class="mt-5" id="pcrcImage" width="150px" src="">
                             <span class="font-weight-bold" id="user-detail-name"></span>
-                            <span class="text-black-50" id="user-detail-email"></span>
                         </div>
-                    </div>
+                        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <img id="modalImage" src="" class="img-fluid" alt="Image">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
                 </div>
-            </div>
-                      
+            </div>    
             </div>
             </div>
             </div>

@@ -40,17 +40,12 @@ function init() {
                         <td>
                             <ul>
                                 <li>
-                                    <a href="order-detail.html">
+                                    <a href="product-detail.html?product_id=${product.product_id}">
                                         <i class="ri-eye-line"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)">
-                                        <i class="ri-pencil-line"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
+                                    <a href="javascript:void(0)" class="delete-product" data-product-id="${product.product_id}" data-bs-toggle="modal" data-bs-target="#deleteModal">
                                         <i class="ri-delete-bin-line"></i>
                                     </a>
                                 </li>
@@ -80,6 +75,30 @@ function init() {
             }
         });
     });
+
+    $(document).on('click', '.delete-product', function() {
+        var productId = $(this).data('product-id');
+        console.log(productId);
+        $('#confirm-delete').data('product-id', productId);
+    });
+    
+    $('#confirm-delete').click(function() {
+        var productId = $(this).data('product-id');
+        const deleteAPI = "../product/delete-by-id"
+        $.ajax({
+            url: `${deleteAPI}?product_id=${productId}`,
+            type: 'GET',
+            success: function(response) {
+                if (response.success) {
+                    $('#deleteModal').modal('hide');
+                    init();
+                } else {
+                    alert('刪除失敗');
+                }
+            }
+        });
+    });
+    
 }
 
 $(function() {

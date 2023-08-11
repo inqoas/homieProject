@@ -9,4 +9,6 @@ public interface OrderProductDao {
 	public void update(OrderProduct orderproduct);
 	public List<OrderProduct> getAll();
 	public List<OrderProduct> findByUserId(Integer user_id);
+
+	public OrderProduct findByOrderProductId(Integer order_product_id);
 }

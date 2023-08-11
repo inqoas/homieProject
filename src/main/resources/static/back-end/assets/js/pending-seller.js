@@ -62,7 +62,7 @@ function init(){
     $('#searchInput').on('input', function() {
         var searchTerm = $(this).val().toLowerCase();
 
-        $('#all-users-table tr').each(function() {
+        $('#pending-sellers-table tr').each(function() {
             var userName = $(this).find('.user-name').text().toLowerCase();
             var userPhone = $(this).find('td:nth-child(3)').text().toLowerCase();
             var userEmail = $(this).find('td:nth-child(4)').text().toLowerCase();

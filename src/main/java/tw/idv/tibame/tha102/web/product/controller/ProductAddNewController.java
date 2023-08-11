@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import tw.idv.tibame.tha102.web.product.service.ProductService;
-import tw.idv.tibame.tha102.web.product.service.ProductServiceImpl;
+import tw.idv.tibame.tha102.web.product.service.impl.ProductServiceImpl;
 
 @MultipartConfig(maxFileSize = 1024 * 1024, maxRequestSize = 10 * 1024 * 1024)
 @WebServlet("/product/add-new")
