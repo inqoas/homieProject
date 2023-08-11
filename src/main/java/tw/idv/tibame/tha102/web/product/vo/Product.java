@@ -1,6 +1,11 @@
 package tw.idv.tibame.tha102.web.product.vo;
 
 import java.util.Arrays;
+import java.util.List;
+
+import tw.idv.tibame.tha102.web.area.vo.Area;
+import tw.idv.tibame.tha102.web.availableTime.vo.AvailableTime;
+import tw.idv.tibame.tha102.web.service.vo.Service;
 
 public class Product implements java.io.Serializable{
     private static final long serialVersionUID = 1L;
@@ -16,6 +21,8 @@ public class Product implements java.io.Serializable{
     private Integer product_review_stars;
     private Integer product_review_count;
     
+  
+	
 	public Integer getProduct_id() {
 		return product_id;
 	}
