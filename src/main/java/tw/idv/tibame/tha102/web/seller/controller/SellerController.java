@@ -1,7 +1,6 @@
 package tw.idv.tibame.tha102.web.seller.controller;
 
 
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,8 +9,8 @@ import tw.idv.tibame.tha102.web.seller.vo.Seller;
 
 
 @RestController
-@RequestMapping("/seller")
-public class SellerController extends HttpServlet {
+@RequestMapping("/sellers")
+public class SellerController{
     private final SellerService sellerService;
 
     @Autowired
@@ -32,8 +31,8 @@ public class SellerController extends HttpServlet {
     }
 
     // 依userId查詢
-    @GetMapping("/find-seller-by-user-id")
-    public Seller getSellerByUserId(@RequestParam("user_id") Integer userId){
+    @GetMapping("/by-user/{userId}")
+    public Seller getSellerByUserId(@PathVariable("userId") Integer userId){
         return sellerService.getSellerByUserId(userId);
     }
 

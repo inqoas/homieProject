@@ -5,8 +5,8 @@ console.log(userId);
 document.addEventListener("DOMContentLoaded", function() {
     try {
         const getUserProfileAPI = "../userinfo/find-by-id";
-        const getSellerProfileAPI = "../seller/find-seller-by-user-id";
-        const getPcrcImageAPI = `http://localhost:8080/homieProject/seller/pcrc`;
+        const getSellerProfileAPI = `../sellers/by-user/${userId}`;
+        const getPcrcImageAPI = `http://localhost:8080/homieProject/sellers/pcrc`;
 
         const imgElement = document.getElementById('pcrcImage');
         imgElement.src = `${getPcrcImageAPI}?user_id=${userId}`;
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 userProfileContainer.querySelector('#idInput').textContent = user[0].user_id;
 
                 $.ajax({
-                    url: `${getSellerProfileAPI}?user_id=${userId}`,
+                    url: getSellerProfileAPI,
                     type: 'GET',
                     dataType: "json",
                     success: function(seller) {
@@ -50,13 +50,29 @@ document.addEventListener("DOMContentLoaded", function() {
         history.back();
     });
 
-    const updateStatusAPI = "../userinfo/update-status";
+    const updateStatusPassAPI = "../userinfo/update-status-pass";
     document.getElementById("sellerPassButton").addEventListener("click", function() {
         console.log("點擊了通過按鈕，試圖更改用戶狀態");
         console.log(userId);
 
         $.ajax({
-            url: `${updateStatusAPI}?user_id=${userId}`,
+            url: `${updateStatusPassAPI}?user_id=${userId}`,
+            type: 'POST',
+            success: function(response) {
+                console.log(response.message);
+                alert(response.message);
+                window.location.href = 'all-users.html';
+            }
+        });
+    });
+
+    const updateStatusFailAPI = "../userinfo/update-status-fail";
+    document.getElementById("sellerFailButton").addEventListener("click", function() {
+        console.log("點擊了通過按鈕，試圖更改用戶狀態");
+        console.log(userId);
+
+        $.ajax({
+            url: `${updateStatusFailAPI}?user_id=${userId}`,
             type: 'POST',
             success: function(response) {
                 console.log(response.message);

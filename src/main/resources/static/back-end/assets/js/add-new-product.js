@@ -58,34 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("無法取得新增商品：", error);
     }
 });
-
-// function validateForm(product_name, product_introduction, product_price, product_stock) {
-//     // 商品名稱：至少三個字
-//     if (product_name.length < 3) {
-//         alert('商品名稱必須至少三個字！');
-//         return false;
-//     }
-
-//     // 單價：不能為負數
-//     if (parseFloat(product_price) < 0) {
-//         alert('單價不能為負數！');
-//         return false;
-//     }
-
-//     // 庫存數量：至少為1
-//     if (parseInt(product_stock) < 1) {
-//         alert('庫存數量至少為1！');
-//         return false;
-//     }
-
-//     // 商品介紹：至少10字
-//     if (product_introduction.length < 10) {
-//         alert('商品介紹必須至少10字！');
-//         return false;
-//     }
-
-//     return true;
-// }
 function validateForm(product_name, product_introduction, product_price, product_stock) {
     var errors = [];
 

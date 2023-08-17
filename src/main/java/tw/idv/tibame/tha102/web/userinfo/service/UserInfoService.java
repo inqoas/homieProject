@@ -15,4 +15,6 @@ public interface UserInfoService {
 	public List<UserInfo> findUserById(Integer userId);
 	public UserInfo findAddressById(Integer userId);
 	public Integer sellerPass(Integer userId);
+
+	public Integer sellerFail(Integer userId);
 }

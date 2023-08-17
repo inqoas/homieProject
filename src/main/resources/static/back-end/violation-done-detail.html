@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Fastkart admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
+    <meta name="keywords"
+        content="admin template, Fastkart admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="pixelstrap">
+    <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+    <title>Homie - 違規詳情</title>
+
+    <!-- Google font-->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Fontawesome css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/vendors/font-awesome.css">
+
+    <!-- Linear Icon css -->
+    <link rel="stylesheet" href="assets/css/linearicon.css">
+
+    <!-- Themify icon css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/vendors/themify.css">
+
+    <!-- Feather icon css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/vendors/feather-icon.css">
+
+    <!-- remixicon css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/remixicon.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Plugins css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/vendors/scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/vendors/animate.css">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/vendors/bootstrap.css">
+
+    <!-- App css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+</head>
+
+<body>
+    <!-- tap on top start -->
+    <div class="tap-top">
+        <i data-feather="chevrons-up"></i>
+    </div>
+    <!-- tap on tap end -->
+
+    <!-- page-wrapper Start -->
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        <!-- Page Header Start-->
+        <div class="page-header">
+            <div class="header-wrapper m-0">
+                <div class="header-logo-wrapper p-0">
+                    <div class="logo-wrapper">
+                        <a href="index.html">
+                            <img class="img-fluid main-logo" src="assets/images/logo/1.png" alt="logo">
+                            <img class="img-fluid white-logo" src="assets/images/logo/1-white.png" alt="logo">
+                        </a>
+                    </div>
+                    <div class="toggle-sidebar">
+                        <i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>
+                        <a href="index.html">
+                            <img src="assets/images/logo/1.png" class="img-fluid" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-right col-6 pull-right right-header p-0">
+                    <ul class="nav-menus">
+                        <li>
+                            <span class="header-search">
+                                <i class="ri-search-line"></i>
+                            </span>
+                        </li>
+
+                        <li>
+                            <div class="mode">
+                                <i class="ri-moon-line"></i>
+                            </div>
+                        </li>
+                        <li class="profile-nav onhover-dropdown pe-0 me-0">
+                            <div class="media profile-media">
+                                <img class="user-profile rounded-circle" src="assets/images/users/4.jpg" alt="">
+                                <div class="user-name-hide media-body">
+                                    <span></span>
+                                    <p class="mb-0 font-roboto">管理員<i class="middle ri-arrow-down-s-line"></i></p>
+                                </div>
+                            </div>
+                            <ul class="profile-dropdown onhover-show-div">
+                                <li>
+                                    <a href="profile-setting.html">
+                                        <i data-feather="settings"></i>
+                                        <span>設定</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                        href="javascript:void(0)">
+                                        <i data-feather="log-out"></i>
+                                        <span>登出</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Page Header Ends-->
+
+        <!-- Page Body Start-->
+        <div class="page-body-wrapper">
+            <!-- Page Sidebar Start-->
+            <div class="sidebar-wrapper">
+                <div id="sidebarEffect"></div>
+                <div>
+                    <div class="logo-wrapper logo-wrapper-center">
+                        <a href="index.html" data-bs-original-title="" title="">
+                            <img class="img-fluid for-white" src="assets/images/logo/full-white.png" alt="logo">
+                        </a>
+                        <div class="back-btn">
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+                        <div class="toggle-sidebar">
+                            <i class="ri-apps-line status_toggle middle sidebar-toggle"></i>
+                        </div>
+                    </div>
+                    <div class="logo-icon-wrapper">
+                        <a href="index.html">
+                            <img class="img-fluid main-logo main-white" src="assets/images/logo/logo.png" alt="logo">
+                            <img class="img-fluid main-logo main-dark" src="assets/images/logo/logo-white.png"
+                                alt="logo">
+                        </a>
+                    </div>
+                    <nav class="sidebar-main">
+                        <div class="left-arrow" id="left-arrow">
+                            <i data-feather="arrow-left"></i>
+                        </div>
+
+                        <div id="sidebar-menu">
+                            <ul class="sidebar-links" id="simple-bar">
+                                <li class="back-btn"></li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="index.html">
+                                        <i class="ri-home-line"></i>
+                                        <span>Dashboard</span>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title " href="javascript:void(0)">
+                                        <i class="ri-archive-line"></i>
+                                        <span>訂單管理</span>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a href="product-order-list.html">商品訂單列表</a>
+                                        </li>
+                                        <li>
+                                            <a href="service-order-list.html">服務訂單列表</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="ri-user-3-line"></i>
+                                        <span>使用者管理</span>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a href="all-users.html">使用者</a>
+                                        </li>
+                                        <li>
+                                            <a href="pending-seller.html">待審核賣家</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="ri-store-3-line"></i>
+                                        <span>商品管理</span>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a href="products.html">商品一覽</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="add-new-product.html">上架商品</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="product-review.html">
+                                        <i class="ri-star-line"></i>
+                                        <span>商品評價</span>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="ri-focus-3-line"></i>
+                                        <span>違規管理</span>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a href="violation.html?violation_status=1">未處理</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="violation-done.html?violation_status=2">已處理</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="ri-list-check"></i>
+                                        <span>系統管理</span>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a href="list-page.html">公告列表</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="">banner設定</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="">GC幣設定</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="ri-phone-line"></i>
+                                        <span>幫助中心</span>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a href="">客服聊天室</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="">FAQ管理</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="reports.html">
+                                        <i class="ri-file-chart-line"></i>
+                                        <span>數據中心</span>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="">
+                                        <i class="ri-cash-fill"></i>
+                                        <span>金流管理</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="right-arrow" id="right-arrow">
+                            <i data-feather="arrow-right"></i>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="container rounded bg-white mt-5 mb-5" id="violationContainer">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 border-right">
+                        <div class="p-3 py-5">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-right">違規資料</h4>
+                            </div>
+            
+                            <!-- Personal Information Section -->
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="labels">編號</label>
+                                    <span id="idInput" class="form-control"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels">違規時間</label>
+                                    <span id="timeInput" class="form-control"></span>
+                                </div>
+                            </div>
+                            <div class="row mt-3">    
+                                <div class="col-md-6">
+                                    <label class="labels">使用者編號(檢舉人)</label>
+                                    <span id="userIdReportInput" class="form-control"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels">使用者編號(被檢舉人)</label>
+                                    <span id="userIdReportedInput" class="form-control"></span>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="labels">違規方向</label>
+                                    <span id="directionInput" class="form-control"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels">違規類別</label>
+                                    <span id="categoryInput" class="form-control"></span>
+                                </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <label class="labels">違規內容</label>
+                                    <textarea id="contentInput" class="form-control" rows="4"></textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <label class="labels">違規證據照片</label>
+                                    <div id="evidenceImages" class="d-flex flex-wrap">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container mt-5">
+                                <div class="row justify-content-end">
+                                    <div class="col-auto">
+                                        <button id="backButton" class="btn btn-primary profile-button" type="button">上一頁</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <img id="modalImage" src="" class="img-fluid" alt="Image">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>    
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- page-wrapper End -->
+
+    <!-- Modal start -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5 class="modal-title" id="staticBackdropLabel">Logging Out</h5>
+                    <p>Are you sure you want to log out?</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                    <div class="button-box">
+                        <button type="button" class="btn btn--no" data-bs-dismiss="modal">No</button>
+                        <button type="button" class="btn  btn--yes btn-primary">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal end -->
+
+    <script>
+        // 在受保護的頁面載入時檢查登錄狀態
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+          // 如果用戶未登錄，重定向到登錄頁面
+          window.location.href = 'login.html';
+        }
+    </script>
+
+    <script>
+        document.querySelector('.btn--yes').addEventListener('click', function() {
+            // 創建一個新的XMLHttpRequest對象
+            const xhr = new XMLHttpRequest();
+
+            // 配置請求類型、URL和是否異步處理
+            xhr.open('POST', '../emps/logout', true);
+
+            // 註冊一個事件處理程序，用於處理請求完成後的任務
+            xhr.onreadystatechange = function() {
+                // readyState === 4表示請求已完成
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        // 登出成功，移除登錄標誌
+                        sessionStorage.removeItem('isLoggedIn');
+                        // 可能會重定向到登錄頁面或其他位置
+                        window.location.href = 'login.html';
+                    } else {
+                        // 任何其他狀態代碼表示出現錯誤
+                        console.error('Error:', xhr.statusText);
+                        alert('An error occurred while logging out. Please try again.');
+                    }
+                }
+            };
+
+            // 發送請求
+            xhr.send();
+        });
+    </script>
+    <script>
+        window.onload = function() {
+            // 从sessionStorage获取员工姓名
+            const empName = sessionStorage.getItem('empName');
+            if (empName) {
+                // 如果找到员工姓名，则将其显示在页面上
+                document.querySelector('.user-name-hide span').textContent = empName;
+            }
+        };
+    </script>
+
+    <!-- latest js -->
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap js -->
+    <script src="assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- feather icon js -->
+    <script src="assets/js/icons/feather-icon/feather.min.js"></script>
+    <script src="assets/js/icons/feather-icon/feather-icon.js"></script>
+
+    <!-- scrollbar simplebar js -->
+    <script src="assets/js/scrollbar/simplebar.js"></script>
+    <script src="assets/js/scrollbar/custom.js"></script>
+
+    <!-- Sidebar js -->
+    <script src="assets/js/config.js"></script>
+
+    <!-- customizer js -->
+    <script src="assets/js/customizer.js"></script>
+
+    <!-- Plugins js -->
+    <script src="assets/js/sidebar-menu.js"></script>
+    <script src="assets/js/notify/bootstrap-notify.min.js"></script>
+    <script src="assets/js/notify/index.js"></script>
+
+    <!-- sidebar effect -->
+    <script src="assets/js/sidebareffect.js"></script>
+
+    <!-- Theme js -->
+    <script src="assets/js/script.js"></script>
+
+    <script src="assets/js/violation-done-detail.js"></script>
+
+</body>
+
+</html>

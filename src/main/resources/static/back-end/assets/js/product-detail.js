@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fetchProductDetails(getProductAPI, productId);
         handleChanges();
     } catch (error) {
-        console.error("無法取得會員資料：", error);
+        console.error("無法取得商品明細：", error);
     }
 });
 
@@ -26,7 +26,7 @@ function fetchProductDetails(api, productId) {
             handleBackButton(hasChanges);
         },
         error: function (error) {
-            console.error("無法取得會員資料：", error);
+            console.error("fetchProductDetails：", error);
         }
     });
 }

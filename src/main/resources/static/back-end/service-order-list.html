@@ -47,6 +47,29 @@
 
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <style>
+        .title-header.option-title {
+            display: flex;
+            justify-content: space-between; /* 使子元素在水平方向上平均分佈 */
+            align-items: center; /* 垂直居中對齊 */
+        }
+
+        .order-status-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .order-status-label {
+            font-size: 16px;
+            margin-right: 10px; /* 設定標籤和下拉框之間的距離 */
+        }
+
+        .order-status-select {
+            font-size: 14px;
+            padding: 5px;
+            width: 100px;
+        }
+    </style>
 </head>
 
 <body>
@@ -75,94 +98,30 @@
                         </a>
                     </div>
                 </div>
-
-                <form class="form-inline search-full" action="javascript:void(0)" method="get">
-                    <div class="form-group w-100">
-                        <div class="Typeahead Typeahead--twitterUsers">
-                            <div class="u-posRelative">
-                                <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text"
-                                    placeholder="搜尋 Homie .." name="q" title="" autofocus>
-                                <i class="close-search" data-feather="x"></i>
-                                <div class="spinner-border Typeahead-spinner" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>
-                            </div>
-                            <div class="Typeahead-menu"></div>
-                        </div>
-                    </div>
-                </form>
+                <div class="header-title"> <!-- 新增的部分 -->
+                    <h3>Homie後台管理系統</h3>
+                </div>
                 <div class="nav-right col-6 pull-right right-header p-0">
                     <ul class="nav-menus">
-                        <li>
-                            <span class="header-search">
-                                <i class="ri-search-line"></i>
-                            </span>
-                        </li>
-                        <li class="onhover-dropdown">
-                            <div class="notification-box">
-                                <i class="ri-notification-line"></i>
-                                <span class="badge rounded-pill badge-theme">4</span>
-                            </div>
-                            <ul class="notification-dropdown onhover-show-div">
-                                <li>
-                                    <i class="ri-notification-line"></i>
-                                    <h6 class="f-18 mb-0">Notitications</h6>
-                                </li>
-                                <li>
-                                    <p>
-                                        <i class="fa fa-circle me-2 font-primary"></i>Delivery processing <span
-                                            class="pull-right">10 min.</span>
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <i class="fa fa-circle me-2 font-success"></i>Order Complete<span
-                                            class="pull-right">1 hr</span>
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <i class="fa fa-circle me-2 font-info"></i>Tickets Generated<span
-                                            class="pull-right">3 hr</span>
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <i class="fa fa-circle me-2 font-danger"></i>Delivery Complete<span
-                                            class="pull-right">6 hr</span>
-                                    </p>
-                                </li>
-                                <li>
-                                    <a class="btn btn-primary" href="javascript:void(0)">Check all notification</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <div class="mode">
-                                <i class="ri-moon-line"></i>
-                            </div>
-                        </li>
                         <li class="profile-nav onhover-dropdown pe-0 me-0">
                             <div class="media profile-media">
-                                <img class="user-profile rounded-circle" src="assets/images/users/4.jpg" alt="">
                                 <div class="user-name-hide media-body">
-                                    <span>Emay Walter</span>
-                                    <p class="mb-0 font-roboto">Admin<i class="middle ri-arrow-down-s-line"></i></p>
+                                    <span></span>
+                                    <p class="mb-0 font-roboto">管理員<i class="middle ri-arrow-down-s-line"></i></p>
                                 </div>
                             </div>
                             <ul class="profile-dropdown onhover-show-div">
                                 <li>
                                     <a href="profile-setting.html">
                                         <i data-feather="settings"></i>
-                                        <span>Settings</span>
+                                        <span>設定</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                                         href="javascript:void(0)">
                                         <i data-feather="log-out"></i>
-                                        <span>Log out</span>
+                                        <span>登出</span>
                                     </a>
                                 </li>
                             </ul>
@@ -181,13 +140,10 @@
                 <div>
                     <div class="logo-wrapper logo-wrapper-center">
                         <a href="index.html" data-bs-original-title="" title="">
-                            <img class="img-fluid for-white" src="assets/images/logo/full-white.png" alt="logo">
+                            <img class="img-fluid for-white" src="assets/images/logo/1.png" alt="logo" style="width: 50px; height: 50px;">
                         </a>
                         <div class="back-btn">
                             <i class="fa fa-angle-left"></i>
-                        </div>
-                        <div class="toggle-sidebar">
-                            <i class="ri-apps-line status_toggle middle sidebar-toggle"></i>
                         </div>
                     </div>
                     <div class="logo-icon-wrapper">
@@ -238,7 +194,7 @@
                                             <a href="all-users.html">使用者</a>
                                         </li>
                                         <li>
-                                            <a href="">待審核賣家</a>
+                                            <a href="pending-seller.html">待審核賣家</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -353,7 +309,16 @@
                                 <div class="card-body">
                                     <div class="title-header option-title">
                                         <h5>服務訂單列表</h5>
-                                        <a href="#" class="btn btn-solid">Download all orders</a>
+                                        <div class="order-status-container">
+                                            <label for="order-status" class="order-status-label">選擇訂單狀態：</label>
+                                            <select id="order-status" name="status" class="order-status-select" onchange="filterOrdersByStatus(this.value)">
+                                                <option value="all">全部</option>
+                                                <option value="0">等待交易</option>
+                                                <option value="1">交易完成</option>
+                                                <option value="2">申請退款</option>
+                                                <option value="3">退款完成</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div>
                                         <div class="table-responsive">
@@ -543,6 +508,53 @@
         </div>
     </div>
     <!-- Offcanvas Box End -->
+    <script>
+        // 在受保護的頁面載入時檢查登錄狀態
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+          // 如果用戶未登錄，重定向到登錄頁面
+          window.location.href = 'login.html';
+        }
+    </script>
+
+    <script>
+        document.querySelector('.btn--yes').addEventListener('click', function() {
+            // 創建一個新的XMLHttpRequest對象
+            const xhr = new XMLHttpRequest();
+
+            // 配置請求類型、URL和是否異步處理
+            xhr.open('POST', '../emps/logout', true);
+
+            // 註冊一個事件處理程序，用於處理請求完成後的任務
+            xhr.onreadystatechange = function() {
+                // readyState === 4表示請求已完成
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        // 登出成功，移除登錄標誌
+                        sessionStorage.removeItem('isLoggedIn');
+                        // 可能會重定向到登錄頁面或其他位置
+                        window.location.href = 'login.html';
+                    } else {
+                        // 任何其他狀態代碼表示出現錯誤
+                        console.error('Error:', xhr.statusText);
+                        alert('An error occurred while logging out. Please try again.');
+                    }
+                }
+            };
+
+            // 發送請求
+            xhr.send();
+        });
+    </script>
+    <script>
+        window.onload = function() {
+            // 从sessionStorage获取员工姓名
+            const empName = sessionStorage.getItem('empName');
+            if (empName) {
+                // 如果找到员工姓名，则将其显示在页面上
+                document.querySelector('.user-name-hide span').textContent = empName;
+            }
+        };
+    </script>
 
     <!-- latest js -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
@@ -582,7 +594,7 @@
     <!-- Theme js -->
     <script src="assets/js/script.js"></script>
 
-    <script src="assets/js/order-service-find-all.js"></script>
+    <script src="assets/js/service-order-find-all.js"></script>
 </body>
 
 </html>

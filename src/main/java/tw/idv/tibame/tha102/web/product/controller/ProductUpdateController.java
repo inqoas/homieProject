@@ -37,15 +37,7 @@ public class ProductUpdateController extends HttpServlet {
             while ((line = reader.readLine()) != null) {
                 jsonBody.append(line);
             }
-//            Integer product_id = Integer.parseInt(request.getParameter("product_id"));
-//            String product_name = request.getParameter("product_name");
-//            Integer product_price = Integer.parseInt(request.getParameter("product_price"));
-//            Integer product_stock = Integer.parseInt(request.getParameter("product_stock"));
-//            Integer product_shipped = Integer.parseInt(request.getParameter("product_shipped"));
-//            String product_introduction = request.getParameter("product_introduction");
-//            Integer product_category = Integer.parseInt(request.getParameter("product_category"));
-//            Integer product_review_stars = Integer.parseInt(request.getParameter("product_review_stars"));
-//            Integer product_review_count = Integer.parseInt(request.getParameter("product_review_count"));
+
             JsonObject productRequest = gson.fromJson(jsonBody.toString(), JsonObject.class);
 
             Integer product_id = productRequest.get("product_id").getAsInt();

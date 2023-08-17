@@ -11,13 +11,13 @@ import tw.idv.tibame.tha102.web.userinfo.service.impl.UserInfoServiceImpl;
 import java.io.IOException;
 import java.io.Serial;
 
-@WebServlet("/userinfo/update-status")
-public class UserInfoUpdateStatusController extends HttpServlet {
+@WebServlet("/userinfo/update-status-pass")
+public class UserInfoUpdateStatusPassController extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
     private UserInfoService userInfoService;
 
-    public UserInfoUpdateStatusController(){
+    public UserInfoUpdateStatusPassController(){
         userInfoService = new UserInfoServiceImpl();
     }
 

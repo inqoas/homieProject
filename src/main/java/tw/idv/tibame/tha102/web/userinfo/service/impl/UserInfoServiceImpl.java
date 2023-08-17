@@ -51,7 +51,12 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Override
 	public Integer sellerPass(Integer userId) {
-		return dao.updateStatusById(userId);
+		return dao.updateStatusByIdPass(userId);
+	}
+
+	@Override
+	public Integer sellerFail(Integer userId) {
+		return dao.updateStatusByIdFail(userId);
 	}
 
 	@Override
