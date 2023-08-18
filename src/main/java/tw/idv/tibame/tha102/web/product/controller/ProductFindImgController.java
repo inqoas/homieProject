@@ -35,8 +35,6 @@ public class ProductFindImgController extends HttpServlet{
 		
 		resp.setContentType("image/jpg");
 		
-		//ServletOutputStream out = resp.getOutputStream();
-		
 		Integer id =Integer.parseInt(req.getParameter("product_id"));
 		
 		Product product =productDaoImpl.getProduct_ImgById(id);

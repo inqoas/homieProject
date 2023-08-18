@@ -2,34 +2,30 @@ package tw.idv.tibame.tha102.web.emp.vo;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import tw.idv.tibame.tha102.web.area.vo.Area;
+import tw.idv.tibame.tha102.web.availableTime.vo.AvailableTime;
+import tw.idv.tibame.tha102.web.seller.vo.Seller;
+
+@Entity(name="BackEndEmp")
+@Setter 
+@Getter 
+@NoArgsConstructor 
+@AllArgsConstructor
+@ToString
+
 public class Emp implements Serializable {
 
 	private static final long serialVersionUID = -423055614444130425L;
-
+	@Id
 	private Integer emp_id;
 	private String emp_password;
 	private String emp_name;
-	public Integer getEmp_id() {
-		return emp_id;
-	}
-	public void setEmp_id(Integer emp_id) {
-		this.emp_id = emp_id;
-	}
-	public String getEmp_password() {
-		return emp_password;
-	}
-	public void setEmp_password(String emp_password) {
-		this.emp_password = emp_password;
-	}
-	public String getEmp_name() {
-		return emp_name;
-	}
-	public void setEmp_name(String emp_name) {
-		this.emp_name = emp_name;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
 	
 }

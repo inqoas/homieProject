@@ -1638,7 +1638,8 @@
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
-        
+    $(document).ready(function() {   
+
         const plusButton      = document.querySelector('.qty-right-plus');
         const minusButton     = document.querySelector('.qty-left-minus');
         const qtyInput        = document.querySelector('.qty-input');
@@ -1716,23 +1717,23 @@
                         </div>
 
                         <div class="col-xl-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="right-box-contain">                         
-                                <h2 class="name">${data.service_name}</h2>
+                            <div class="right-box-contain">
+                                <h2 id="service_id" style="display: none;">${data.service_id}</h2>                         
+                                <h2 id="service_name" class="name">${data.service_name}</h2>
                                 <div class="price-rating">
-                                    <h3 class="theme-color price">$${data.service_price}                             
-                                    </h3>
+                                    <h3 class="theme-color price" id="service_price">$${data.service_price}</h3>
                                     <div class="product-rating custom-rate">
                                       
                                         <ul id="start" class="rating">
 										
 										     																																			                           
                                         </ul>
-                                        <span class="review">${data.seller.total_review_count} Customer Review</span>
+                                        <span id="totalReviewCount" class="review">${data.seller.totalReviewCount} Customer Review</span>
                                     </div>
                                 </div>
 
                                 <div class="procuct-contain">
-                                    <p>${data.service_introduction}</p>    
+                                    <p id="service_introduction">${data.service_introduction}</p>    
                                 </div>
                                                           
                                 <div class="note-box product-packege">
@@ -1804,10 +1805,10 @@
                 const div_rating = $("#start");
                 
                 const start_html =` <i class="bi bi-star-fill"  style="color:yellow"></i>`;  
-                const start_hrml_error =` <i class="bi bi-star"  style="color:yellow"></i> `  
+                const start_hrml_error =` <i class="bi bi-star"  style="color:yellow"></i> `;  
 
                 for(let num =0; num< 5; num++ ){
-					if( num < data.seller.total_review_stars){
+					if( num < data.seller.totalReviewStars){
                         div_rating.append(start_html);
                     }else{
                         div_rating.append(start_hrml_error);
@@ -1819,6 +1820,44 @@
                 console.log(error);
             }
         })
+
+        dynamicElements.on("click","button#add_to_cart",function(){
+
+            const service_id    =$(this).closest("div#dynamicElements").find("h2#Service_id").html();
+            const service_name  =$(this).closest("div#dynamicElements").find("h2#service_name").html();
+            const service_price =$(this).closest("div#dynamicElements").find("h3#service_price").html().substring(1);
+            const service_count =$(this).closest("div#dynamicElements").find(`input[name="quantity"]`).val();
+            const service_total =parseInt(service_price)*parseInt(service_count);
+            //const totalReviewCount =$(this).closest("div#dynamicElements").find("span#totalReviewCount").html();
+            //const service_introduction =$(this).closest("div#dynamicElements").find("p#service_introduction").html();        
+    
+            $.ajax({
+                url:"/homieProject/Service/InsetRedisController",
+	            type:"POST",
+	            dataType:"JSON",
+                data : JSON.stringify ({
+                    service_id:service_id,
+                    service_name:service_name,
+                    service_price:service_price,
+                    service_count:service_count,
+                    service_total:service_total     
+                }),
+	            success: function(data){
+
+                    window.location.href = "http://localhost:8080/homieProject/front-end/cart_Service.html";
+
+                },
+                error:function(error){
+
+                    console.log(error);
+                    
+                }    
+            })
+
+
+
+        });
+
 
         dynamicElements.on('click',".qty-right-plus", function () {
 
@@ -1842,7 +1881,7 @@
         });
         
                
-    
+    })
     </script>       
 
 </body>
