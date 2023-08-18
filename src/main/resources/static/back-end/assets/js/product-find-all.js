@@ -36,7 +36,6 @@ function init() {
                         <td>${categoryText}</td>
                         <td>${product.product_stock}</td>
                         <td class="td-price">$${product.product_price}</td>
-                        </td>
                         <td>
                             <ul>
                                 <li>
@@ -84,7 +83,7 @@ function init() {
     
     $('#confirm-delete').click(function() {
         var productId = $(this).data('product-id');
-        const deleteAPI = "../product/delete-by-id"
+        const deleteAPI = "../product/delete-by-id";
         $.ajax({
             url: `${deleteAPI}?product_id=${productId}`,
             type: 'GET',

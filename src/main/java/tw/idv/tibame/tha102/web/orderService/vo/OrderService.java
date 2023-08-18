@@ -58,7 +58,6 @@ public class OrderService implements Serializable {
 	private Timestamp reviewTime;
 	@Column(name = "refund_time")
 	private Timestamp refundTime;
-
-	
-	
+	@Column(name = "service_id")
+	private Integer serviceId;
 }
