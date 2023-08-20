@@ -5,6 +5,16 @@ import java.util.List;
 public class JsonList {
 
 	private List<Redis_Data> Redis_Data ;
+	
+	private List<Redis_Data_Service> Redis_Data_Service;
+
+	public List<Redis_Data_Service> getRedis_Data_Service() {
+		return Redis_Data_Service;
+	}
+
+	public void setRedis_Data_Service(List<Redis_Data_Service> redis_Data_Service) {
+		Redis_Data_Service = redis_Data_Service;
+	}
 
 	public List<Redis_Data> getRedis_Data() {
 		return Redis_Data;

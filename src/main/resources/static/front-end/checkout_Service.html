@@ -537,7 +537,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="accordion-item">
+                                                <!-- <div class="accordion-item">
                                                     <div class="accordion-header" id="flush-headingOne">
                                                         <div class="accordion-button collapsed"
                                                             data-bs-toggle="collapse"
@@ -609,7 +609,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
 
                                                 <!-- <div class="accordion-item">
                                                     <div class="accordion-header" id="flush-headingTwo">
@@ -1227,10 +1227,10 @@
     <script>
         window.onload = function() {
 
-
-
             //抓到 前頁 session值
-            const data = JSON.parse(sessionStorage.getItem("Product_data"));
+            const data = JSON.parse(sessionStorage.getItem("Service_data"));
+
+            console.log(data);
 
             const subtotal        =$("#subtotal");
             const Coupontotalotal =$("#Coupontotal");
@@ -1239,24 +1239,27 @@
             const home_addrss     =$("#home_addrss");
             const home_phone      =$("#home_phone");
 
-            const RedisData=[];
+            const Redis_Data_Service=[];
 
           
             for( let i in data){
                  
                 pre ={
                     user_id:data[i].user_id,
-                    product_id:data[i].product_id,
-                    product_price:data[i].product_price,
-                    product_name:data[i].product_name,
-                    product_count:data[i].product_count,
-                    product_total:data[i].product_total
-                    
+                    service_id:data[i].service_id,
+                    service_price:data[i].service_price,
+                    service_name:data[i].service_name,
+                    service_id_code:data[i].service_id_code,
+                    service_count:data[i].service_count,
+                    service_total:data[i].service_total,
+                    seller_id    :data[i].seller_id,
+                    service_Date :data[i].service_Date,
+                    service_DateDetail:data[i].service_DateDetail
                 }
 
-                RedisData.push(pre);
+                Redis_Data_Service.push(pre);
 
-                const total = parseInt(subtotal.html().substring(1)) + parseInt(data[i].product_total);
+                const total = parseInt(subtotal.html().substring(1)) + parseInt(data[i].service_total);
 
                 subtotal.html("$"+total);
 
@@ -1264,12 +1267,12 @@
 
                 finlTotal.html("$"+subCop);
 
-                let html =`<li>
-                                <img src="http://localhost:8080/homieProject//product/ProductFindImgController?product_id=${data[i].product_id}"
-                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
-                                <h4>Bell pepper <span>X ${data[i].product_count}</span></h4>
-                                <h4 class="price">$${data[i].product_total}</h4>
-                            </li>`;    
+              let html =`<li>
+                            <img src="http://localhost:8080/homieProject/service/Select_ImgController?service_id=${data[i].service_id}"
+                                class="img-fluid blur-up lazyloaded checkout-image" alt="">
+                            <h4>Bell pepper <span>X ${data[i].service_count}</span></h4>
+                            <h4 class="price">$${data[i].service_total}</h4>
+                        </li>`;    
 
                 $("ul.summery-contain").append(html);
 
@@ -1292,14 +1295,14 @@
 
                 if(home_name.val().trim() !="" && home_addrss.val().trim() !="" && home_phone.val().trim() !="" ){
 
-                    console.log("abcdef");
+                  //  console.log("abcdef");
                     
                     $.ajax({
-                        url:"/homieProject/OrderProdect/ordprodetControllrt",
+                        url:"/homieProject/OrderService/InsertIntoOrdSerControllrt",
                         type:"POST",
                         dataType:"JSON",
                         data :JSON.stringify({
-                            Redis_Data:RedisData
+                            Redis_Data_Service:Redis_Data_Service
                         }),
                         success: function(data){
 
@@ -1307,6 +1310,7 @@
                         $("ul.summery-contain").html("");
                         subtotal.html("$0");
                         finlTotal.html("$0");
+                        sessionStorage.clear();
                         },
                         error:function(error){
 

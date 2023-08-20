@@ -50,8 +50,11 @@ public class InsetRedisController extends HttpServlet{
 		try (Jedis jedis = new Jedis(LOCALHOST, PORT);) {
 
 			List<String> rediss = jedis.lrange(user_id, 0, jedis.llen(user_id));
+			
 			if (rediss.size() == 0) {
+				
 				jedis.lpush(user_id, jedisSev);
+				
 			} else {
 				for (String strs : rediss) {
 
@@ -68,16 +71,20 @@ public class InsetRedisController extends HttpServlet{
 						jedis.del(user_id, strs);
 
 						jedis.lpush(user_id, jedisSev);
-
+						
+						break;
+						
 					} else {
 
 						jedis.lpush(user_id, jedisSev);
-
+						
+						break;
 					}
 
 				}
 			}
 		}
+		
 		resp.getWriter().write(gson.toJson(product));
 		
 	}

@@ -1,6 +1,8 @@
 package tw.idv.tibame.tha102.web.service.controller;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -11,6 +13,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import redis.clients.jedis.Jedis;
+import tw.idv.tibame.tha102.web.Redis.vo.Redis_Data_Service;
 import tw.idv.tibame.tha102.web.product.vo.Product;
 import tw.idv.tibame.tha102.web.service.vo.Service;
 @WebServlet(urlPatterns = "/Service/DeleteRedisById")
@@ -25,39 +28,48 @@ public class DeleteRedisById extends HttpServlet{
 		gson =new Gson();
 	}
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
 		resp.setContentType("Appliction/json; charset=utf-8");
 		
 		String user_id   	 =req.getParameter("user_id");
-		String product_id	 =req.getParameter("Service_id").trim();
-		String product_price =req.getParameter("Service_price").trim();
-		String product_count =req.getParameter("Service_count").trim();
-		String product_name  =req.getParameter("Service_name").trim();
-		String product_total =req.getParameter("Service_total").trim();
-		
+		String service_id	 =req.getParameter("service_id").trim();
+		String service_name  =req.getParameter("service_name").trim();
+		String service_price =req.getParameter("service_price").trim();
+		String service_count =req.getParameter("service_count").trim();
+		String service_id_code=req.getParameter("service_id_code");
+		String seller_id     =req.getParameter("seller_id");
+		String service_DateDetail =req.getParameter("service_DateDetail");
+		String service_Date  =req.getParameter("service_Date").trim();
+		String service_total =req.getParameter("service_total");
+			
 		StringBuilder use_service =new StringBuilder(user_id).append("_Service");
 		
-		Service service =new Service();
-		service.setService_id(Integer.parseInt(product_id));
-		service.setService_price(Integer.parseInt(product_price));
-		service.setService_count(Integer.parseInt(product_count));
-		service.setService_name(product_name);
-		service.setService_total(Integer.parseInt(product_total));
+		Redis_Data_Service redis_data_service =new Redis_Data_Service();
+		
+		redis_data_service.setService_id(Integer.parseInt(service_id));
+		redis_data_service.setService_name(service_name);
+		redis_data_service.setService_price(Integer.parseInt(service_price));
+		redis_data_service.setService_count(Integer.parseInt(service_count));
+		redis_data_service.setService_id_code(Integer.parseInt(service_id_code));
+		redis_data_service.setSeller_id(Integer.parseInt(seller_id));
+		redis_data_service.setService_DateDetail(Integer.parseInt(service_DateDetail));
+		redis_data_service.setService_Date(service_Date);
+		redis_data_service.setService_total(Integer.parseInt(service_total));
 		
 		try(Jedis jedis =new Jedis()){
 			
 			List<String> jediss = jedis.lrange(use_service.toString(), 0, jedis.llen(use_service.toString()));
 			for(String strs : jediss) {
 				
-				Service jedisPro = gson.fromJson(strs,Service.class);
+				Redis_Data_Service jedisPro = gson.fromJson(strs,Redis_Data_Service.class);
 				
-				if(jedisPro.getService_id() == service.getService_id()) {
+				if(jedisPro.getService_id() == redis_data_service.getService_id()) {
 					jedis.lrem(use_service.toString(), 0, strs);
 				}
 			}
 		}
 		
-		resp.getWriter().write(gson.toJson(service));
+		resp.getWriter().write(gson.toJson(redis_data_service));
 		
 	}
 	@Override

@@ -20,7 +20,7 @@ public class OrderProductDetailDaoImpl implements OrderProductDetailDao{
 	public static void main(String[] args) {
 		
 //		OrderProduct orderproduct =new OrderProduct();
-//		orderproduct.setUser_id(1);
+//		orderproduct.setUser_id(2);
 //		orderproduct.setProduct_total(10);
 //		orderproduct.setProduct_status(0);
 //		orderproduct.setTracking_number(123255);
@@ -29,23 +29,23 @@ public class OrderProductDetailDaoImpl implements OrderProductDetailDao{
 //		
 //		//order_product_id,product_id,product_quantity,product_name,product_price
 //		List<OrderProductDetail> orderproductdetails =new ArrayList();
-//		OrderProductDetail orderproductdetail =new OrderProductDetail();
+//		OrderProductDetail ord1 =new OrderProductDetail();
 //		
 //		//orderproductdetail.setOrderProductId(2);
-//		orderproductdetail.setProductId(16);
-//		orderproductdetail.setProductQuantity(20);
-//		orderproductdetail.setProductName("titiio");
-//		orderproductdetail.setProductPrice(3000);
-//		OrderProductDetail orderproductdetail1 =new OrderProductDetail();
+//		ord1.setProductId(16);
+//		ord1.setProductQuantity(20);
+//		ord1.setProductName("titiio");
+//		ord1.setProductPrice(3000);
+//		OrderProductDetail ord =new OrderProductDetail();
 //		
 //		//orderproductdetail.setOrderProductId(1);
-//		orderproductdetail1.setProductId(1);
-//		orderproductdetail1.setProductQuantity(10);
-//		orderproductdetail1.setProductName("jojo");
-//		orderproductdetail1.setProductPrice(2000);
+//		ord.setProductId(1);
+//		ord.setProductQuantity(20);
+//		ord.setProductName("jojo");
+//		ord.setProductPrice(2000);
 //		
-//		orderproductdetails.add(orderproductdetail1);
-//		orderproductdetails.add(orderproductdetail);
+//		orderproductdetails.add(ord1);
+//		orderproductdetails.add(ord);
 //		
 //		
 //		new OrderProductDetailDaoImpl().Inset_ProDetail(orderproductdetails,orderproduct);
@@ -65,7 +65,7 @@ public class OrderProductDetailDaoImpl implements OrderProductDetailDao{
 		long OrdPro_id=0;
 		
 		try( Connection  con =DriverManager.getConnection(URL,USER,PASSWORD)){
-			PreparedStatement ps = con.prepareStatement(OrdPro, columns);
+			 PreparedStatement ps = con.prepareStatement(OrdPro, columns);
 				ps.setInt(1, orderproduct.getUser_id());
 				ps.setInt(2, orderproduct.getProduct_total());
 				ps.setInt(3, orderproduct.getProduct_status());
@@ -74,14 +74,14 @@ public class OrderProductDetailDaoImpl implements OrderProductDetailDao{
 				ps.setInt(6, orderproduct.getProduct_deduct_gc());
 			    ps.executeUpdate();
 			    
-			ResultSet rs = ps.getGeneratedKeys();    
-			while(rs.next()) {
-				OrdPro_id=rs.getLong(1);
-			//	System.out.println(OrdPro_id);
-			}
+			    ResultSet rs = ps.getGeneratedKeys();    
+				while(rs.next()) {
+					OrdPro_id=rs.getLong(1);
+				//	System.out.println(OrdPro_id);
+				}
 			
 //order_product_id,product_id,product_quantity,product_name,product_price			
-			PreparedStatement ps1 = con.prepareStatement(OrdProDet);
+				PreparedStatement ps1 = con.prepareStatement(OrdProDet);
 				for( OrderProductDetail ordprodet :orderproductdetail) {
 					ps1.setLong(1,OrdPro_id);
 					ps1.setInt(2,ordprodet.getProductId());
@@ -89,15 +89,10 @@ public class OrderProductDetailDaoImpl implements OrderProductDetailDao{
 					ps1.setString(4,ordprodet.getProductName());
 					ps1.setInt(5,ordprodet.getProductPrice());
 					ps1.addBatch();
+
 				}
-				int[] counts = ps.executeBatch();
-//				int sum = 0;
-//				for (int count : counts) {
-//					sum += count;
-//				}
-//				
-//				System.out.println(sum + " row(s) inserted!!");
-			
+				
+				int[] counts = ps1.executeBatch();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

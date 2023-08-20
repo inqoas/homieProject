@@ -838,13 +838,13 @@
         // sessionStorage.setItem("form_data", JSON.stringify(send_data));
         //     location.href = "./confirm.html"; // 導到下一頁
 
-        let proObjects =[];
-
-        let proObAlls   =[];
-
         all_product();
 
         getAllNum();
+
+        let proObjects =[];
+
+        let proObAlls   =[];
 
         $("#checkbox-All").on("click",function(){
             const checkedCheckboxes = $('input#checkbox_one');
@@ -861,7 +861,7 @@
                     
                     const product_price = $(this).closest("tr.product-box-contain").find("h5#price").html().substring(1);
                     
-                    const product_count = $(this).closest("tbody#Service_tbody").find("input[name='quantity']").val();
+                    const product_count = $(this).closest("tr.product-box-contain").find("input[name='quantity']").val();
                 
                     const product_total = parseInt(product_price)*parseInt(product_count);    
 

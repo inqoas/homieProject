@@ -495,7 +495,7 @@
                                 </div>
 
                                 <div class="procuct-contain">
-                                    <p>${product.product_introduction}</p>
+                                    <p></p>
                                 </div>
 
                                 <!-- <div class="product-packege">
@@ -585,14 +585,14 @@
 
                                 <div class="buy-box">
                                     <a href="wishlist.html">
-                                        <i data-feather="heart"></i>
+                                        <i data-feather="heart" style="color: red;" ></i>
                                         <span>Add To Wishlist</span>
                                     </a>
 
-                                    <a href="compare.html">
+                                    <!-- <a href="compare.html">
                                         <i data-feather="shuffle"></i>
                                         <span>Add To Compare</span>
-                                    </a>
+                                    </a> -->
                                 </div>
 
                                 <div class="pickup-box">
@@ -602,10 +602,7 @@
 
                                     <div class="pickup-detail">
                                         <h4 class="text-content">
-                                            在小小的花园里挖呀挖呀挖
-                                            种小小的种子开小小的花
-                                            在大大的森林里挖呀挖呀挖
-                                            种大大的种子开大大的花</h4>
+                                            ${product.product_introduction}</h4>
                                     </div>
 
                                     <div class="product-info">
@@ -1674,6 +1671,10 @@
 
                 const product_total = product_price * parseInt(qtyInput.value);
 
+                if( qtyInput.value == 0 ){
+                    alert("請輸入數量");
+                    return;
+                }
                 $.ajax({
                     url:"/homieProject/Product/InsetRedisController",
                     type:"POST",
@@ -1688,7 +1689,7 @@
 
                     }) ,
                     success:function(data){
-						//console.log("asdsa");
+						console.log("asdsa");
                         window.location.href = "http://localhost:8080/homieProject/front-end/cart.html";
 
                     },error:function(error){

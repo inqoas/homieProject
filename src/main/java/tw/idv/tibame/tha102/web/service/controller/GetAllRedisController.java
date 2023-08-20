@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import redis.clients.jedis.Jedis;
+import tw.idv.tibame.tha102.web.Redis.vo.Redis_Data_Service;
 import tw.idv.tibame.tha102.web.emp.vo.Emp;
 import tw.idv.tibame.tha102.web.orderproduct.dao.OrderProductDaoImpl;
 import tw.idv.tibame.tha102.web.product.dao.ProductDaoImpl;
@@ -38,7 +39,7 @@ public class GetAllRedisController extends HttpServlet{
 		
 		StringBuilder stringBuilder = new StringBuilder(user_id).append("_Service");
 		
-		List<Service> service =new ArrayList();
+		List<Redis_Data_Service> redis_data_services =new ArrayList();
 		
 		try(Jedis jedis =new Jedis(LOCALHOST,PORT)){
 			
@@ -46,12 +47,12 @@ public class GetAllRedisController extends HttpServlet{
 			
 			for(String str : ss) {
 				
-				Service empre =gson.fromJson(str, Service.class);
+				Redis_Data_Service empre =gson.fromJson(str, Redis_Data_Service.class);
 				
-				service.add(empre);
+				redis_data_services.add(empre);
 			}
 			
-			resp.getWriter().write(gson.toJson(service));	
+			resp.getWriter().write(gson.toJson(redis_data_services));	
 			
 			
 		}

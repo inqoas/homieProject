@@ -123,7 +123,7 @@ public class ServiceDaoImpl implements ServiceDao{
 	private final static String Insert_serice ="Insert into service(service_id_code, user_id, service_name, service_price, service_introduction, service_picture)"
 			                                   +"values(?,?,?,?,?,?)";
 	private final static String Select_img    ="select service_picture from service where service_id =?";
-	private final static String Select_ById   ="SELECT distinct se.*, sel.* FROM seller sel join service se on  sel.user_id = se.user_id where se.service_id =? ";
+	private final static String Select_ById   ="SELECT distinct se.*, sel.* FROM seller sel join service se on sel.user_id = se.user_id where se.service_id =? ";
 
 	
 	@Override

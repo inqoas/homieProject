@@ -285,13 +285,13 @@
                                             <li class="nav-item dropdown">
                                                 <a style="font-size: 20px; font-weight: bold;">商品頁面</a>
                                             </li>
-    
+                                            
                                             <li class="nav-item dropdown">
-                                                <a style="font-size: 20px; font-weight: bold;">服務頁面</a>
+                                                <a href="http://localhost:8080/homieProject/front-end/service.html" style="font-size: 20px; font-weight: bold;">服務頁面</a>
                                             </li>
     
                                             <li class="nav-item dropdown dropdown-mega">
-                                                <a style="font-size: 20px; font-weight: bold;">幫助中心</a>
+                                                <a href="index.html" style="font-size: 20px; font-weight: bold;">幫助中心</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -352,7 +352,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadscrumb-contain">
-                        <h2>Shop Top Filter</h2>
+                        <h2>商品頁面 </h2>
                         <nav>
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item">
@@ -360,7 +360,7 @@
                                         <i class="fa-solid fa-house"></i>
                                     </a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Shop Top Filter</li>
+                                <li class="breadcrumb-item active" aria-current="page">商品頁面</li>
                             </ol>
                         </nav>
                     </div>
@@ -500,16 +500,16 @@
                                 </ul>
                             </div>
 
-                            <div class="col-xl-3 col-md-6">
+                            <!-- <div class="col-xl-3 col-md-6">
                                 <div class="category-title">
                                     <h3>Price</h3>
                                 </div>
                                 <div class="range-slider">
                                     <input type="text" class="js-range-slider" value="">
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="col-xl-3 col-md-6">
+                            <!-- <div class="col-xl-3 col-md-6">
                                 <div class="category-title">
                                     <h3>Discount</h3>
                                 </div>
@@ -564,9 +564,9 @@
                                         </div>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> -->
 
-                            <div class="col-xl-3 col-md-6">
+                            <!-- <div class="col-xl-3 col-md-6">
                                 <div class="category-title">
                                     <h3>Category</h3>
                                 </div>
@@ -773,7 +773,7 @@
                                         </div>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
@@ -1449,7 +1449,7 @@
         });
 
         //依產品項目
-        function check_show_product(code,){
+        function check_show_product(code){
         
             $.ajax({
             url : "/homieProject/product/ProductFindItemController",
@@ -1578,21 +1578,26 @@
     		})    
         }
 
-
         // const checkbox_fruit =document.querySelector("#fruit");
         // const checkbox_cake =document.querySelector("#cake");
         // const checkbox_behe =document.querySelector("#behe");
         // const checkbox_snacks =document.querySelector("#snacks");
 
+        const deleteArea =[];
 
         checkbox_fruit.addEventListener("change", function () {
 
 				products.innerHTML = "";
 
+
 				if (this.checked) {    
-                        check_show_product(1);
+
+                	check_show_product(1);
+						
                 } else {
-					
+                	products.innerHTML = "";    	
+                    All_product();
+ 
 				}
 
 		});
@@ -1602,10 +1607,12 @@
 				//products.innerHTML = "";
 
 				if (this.checked) {    
-                        check_show_product(2);
+
+                	check_show_product(2);
+
                 } else {
-					
-				
+					products.innerHTML = "";    	
+					All_product();
 				}
 
 		});
@@ -1615,8 +1622,12 @@
 				//products.innerHTML = "";
 
 				if (this.checked) {    
-                        check_show_product(3);
+
+                	check_show_product(3);
+
                 } else {
+					products.innerHTML = "";    	
+					All_product();
 					
 					
 				}
