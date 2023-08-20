@@ -373,6 +373,12 @@
             <div class="row g-sm-5 g-3">
                 <div class="col-xxl-9">
                     <div class="cart-table">
+                        <span class="checkbox-gap" style="margin-left: 20px;" >
+                         <input type="checkbox" class="checkbox-input" id="checkbox-All">  <!-- 新增的 checkbox  --> 
+                         <label for="checkbox-All" style="margin-left: 15px;font-size: 18px;"> 全選 </label> 
+                        </span>
+                    </div>     
+                    <div class="cart-table">
                         <div class="table-responsive-xl">
                             <table class="table">
                                 <tbody id="Service_tbody">
@@ -513,7 +519,7 @@
                         <ul class="summery-total">
                             <li class="list-total border-top-0">
                                 <h4>Total (USD)</h4>
-                                <h4 id="priceFinally" class="price theme-color">$132.58</h4>
+                                <h4 id="priceFinally" class="price theme-color">$0</h4>
                             </li>
                         </ul>
                         <!-- onclick="location.href = 'checkout.html';" -->
@@ -835,47 +841,158 @@
     <script>
     window.onload = function() {  
 
-       
-        
         all_product();
         
         getAllNum();
 
-        //得到打勾商品，並更新價格
-        $(document).on('click', 'input.checkbox-input', function() {
-            const service_id =$(this).closest("tr.product-box-contain").find("input#product_id").val();
-            const service_price =$(this).closest("tr.product-box-contain").find("h5#price").html().substring(1);
-            const service_count =$(this).closest("tr.product-box-contain").find(`input[name="quantity"]`).val();
-            const service_total =parseInt(service_price)*parseInt(service_count);
-            const priceFinally  =$("div.summery-box").find("h4#priceFinally");
+        let proObjects =[];
+
+        let proObAlls  =[];
+
+        $("#checkbox-All").on("click",function(){
+
+            const checkedCheckboxes = $('input#checkbox_one');
+            const TotalFinally  =$("div.summery-box").find("h4#priceFinally");  
             const subtotal=$("div.summery-contain").find("h4#price");
-                     
-            
+
             if ($(this).is(':checked')) {
-                
-                const total =parseInt($("div.summery-contain").find("h4#price").html().substring(1));
+                //抓取全部 checkbox    
+                proObAlls=[];
+                checkedCheckboxes.each(function() {
 
-                const newtotal=total+service_total;
-                
-                subtotal.html("$"+newtotal);
+                    const service_id      =$(this).closest("td.product-detail").find("input#product_id").val();                   
+                    const service_name    =$(this).closest("td.product-detail").find("a#product_name").html();                   
+                    const service_price   =$(this).closest("tr.product-box-contain").find("h5#price").html().substring(1);                   
+                    const service_count   =$(this).closest("tr.product-box-contain").find("input#quantity").val();                   
+                    const service_id_code =$(this).closest("tr.product-box-contain").find("h2#service_id_code").html();
+                    const seller_id =$(this).closest("tr.product-box-contain").find("h2#service_seller_id").html();
+                    const service_DateDetail =$(this).closest("tr.product-box-contain").find("h2#service_DateDetail").html();
+                    const service_Date =$(this).closest("tr.product-box-contain").find("h2#service_Date").html();           
+                    const service_total   =parseInt(service_price)*parseInt(service_count);    
+                    
 
-                priceFinally.html("$"+newtotal);
+
+                    checkedCheckboxes.prop('checked', true);
+
+                    const total =parseInt($("div.summery-contain").find("h4#price").html().substring(1));
                 
-              
+                    const newtotal=total+service_total;
+
+                    subtotal.html("$"+newtotal);
+                    
+                    TotalFinally.html("$"+newtotal);
+
+                    const proall ={
+
+                        user_id :"user_id:1",
+                        seller_id:seller_id,        
+                        service_id:service_id,
+                        service_name:service_name,
+                        service_id_code:service_id_code,
+                        service_price:service_price,
+                        service_count:service_count,
+                        service_Date:service_Date,
+                        service_DateDetail:service_DateDetail,
+                        service_total:service_total
+                    }
+
+                    proObAlls.push(proall);    
+                    
+                })
+
+
             }else{
 
+                checkedCheckboxes.each(function() {
+                checkedCheckboxes.prop('checked', false);
+        
+                proObAlls=[];
+
+                })
+
+                subtotal.html("$ 0");
+                    
+                TotalFinally.html("$ 0");
+            }
+
+            console.log(proObAlls); 
+
+        });
+
+        $("#btn_cart").on("click",function(){
+
+            if( proObAlls.length != 0 ){
+                sessionStorage.setItem("Service_data", JSON.stringify(proObAlls));
+                location.href = "./checkout_Service.html"; // 導到下一頁
+            }else{
+                alert("請勾選商品");
+            }    
+                    
+        })
+        //得到打勾商品，並更新價格
+        $(document).on('click', 'input#checkbox_one', function() {    
+            
+            const service_id     =$(this).closest("tr.product-box-contain").find("input#product_id").val(); 
+            const service_name   =$(this).closest("td.product-detail").find("a#product_name").html();
+            const service_price  =$(this).closest("tr.product-box-contain").find("h5#price").html().substring(1);
+            const service_count  =$(this).closest("tr.product-box-contain").find(`input[name="quantity"]`).val();
+            const service_id_code=$(this).closest("tr.product-box-contain").find("h2#service_id_code").html();
+            const seller_id      =$(this).closest("tr.product-box-contain").find("h2#service_seller_id").html();
+            const service_DateDetail =$(this).closest("tr.product-box-contain").find("h2#service_DateDetail").html();
+            const service_Date   =$(this).closest("tr.product-box-contain").find("h2#service_Date").html();
+            const Service_total  =$(this).closest("tr.product-box-contain").find("h5#total").html().substring(1);
+
+            const service_total =parseInt(service_price)*parseInt(service_count);
+            const TotalFinally  =$("div.summery-box").find("h4#priceFinally");
+         
+
+            if ($(this).is(':checked')) {
+
+                const subtotal=$("div.summery-contain").find("h4#price");
+
+                const total =parseInt($("div.summery-contain").find("h4#price").html().substring(1));
+         
+                const newtotal=total+service_total;
+
+                subtotal.html("$"+newtotal);
+                
+                TotalFinally.html("$"+newtotal);
+
+                const pro={
+
+                        user_id:'user_id:1',
+                        seller_id:seller_id,
+                        service_id:service_id,
+                        service_name:service_name,
+                        service_id_code:service_id_code,
+                        service_price:service_price,
+                        service_count:service_count,
+                        service_Date:service_Date,
+                        service_DateDetail:service_DateDetail,
+                        service_total:service_total
+
+                }
+
+                proObAlls.push(pro);
+
+            }else{
+
+                const subtotal=$("div.summery-contain").find("h4#price");
 
                 const total =parseInt($("div.summery-contain").find("h4#price").html().substring(1));
 
                 const newtotal=total-service_total;
-              
+                
                 subtotal.html("$"+newtotal);
 
-                priceFinally.html("$"+newtotal);
-           
-            }
+                TotalFinally.html("$"+newtotal);
+                
+                proObAlls = proObAlls.filter(obj => obj.service_id !== service_id);
 
-        })    
+            }
+                
+        })
+
         //得到全部商品
         function all_product(){
             $.ajax({
@@ -886,7 +1003,7 @@
                         user_id:'user_id:1'
                     },
                     success:function(data){
-                        console.log(data.length);
+                        console.log(data);
                         Service_tbody.innerHTML = "";
 
                         if(data.length > 0){
@@ -899,7 +1016,7 @@
                                     <div class="product border-0">
                                         <div class="product-checkbox"> <!-- 新增的包裹元素 -->
                                             <span class="checkbox-gap" style="margin-right: 10px">
-                                            <input type="checkbox" class="checkbox-input"> <!-- 新增的 checkbox -->
+                                            <input type="checkbox" id="checkbox_one" class="checkbox-input"> <!-- 新增的 checkbox -->
                                             </span>
                                         </div>
                                         <a href="" class="product-image">
@@ -911,7 +1028,11 @@
                                                 <li class="name">
                                                     <a href="" id="product_name" >${data[key].service_name}</a>
                                                 </li>
-                                                <li class="text-content"><span class="text-title">Sold By:</span> ${data[key].product_stock}</li>
+                                                <h2 id="service_Date" style="display: none;">${data[key].service_Date}</h2>
+                                                <h2 id="service_DateDetail" style="display: none;">${data[key].service_DateDetail}</h2>
+                                                <h2 id="service_seller_id" style="display: none;">${data[key].seller_id}</h2>
+                                                <h2 id="service_id_code" style="display: none;">${data[key].service_id_code}</h2>
+                                                <li class="text-content" id="service_id_code"><span class="text-title">Sold By:</span> ${data[key].service_id_code}</li>
                                                 <li class="text-content"><span class="text-title">Quantity</span>  ${data[key].service_name}</li>
                                                 <li>
                                                     <h5 class="text-content d-inline-block">Price :</h5>
@@ -933,7 +1054,7 @@
                                                 <button type="button" class="btn qty-left-minus" data-type="minus" data-field="">
                                                     <i class="fa fa-minus ms-0" aria-hidden="true"></i>
                                                 </button>
-                                                <input class="form-control input-number qty-input" type="text" name="quantity" value="${data[key].service_count}">
+                                                <input class="form-control input-number qty-input" type="text" name="quantity" id="quantity" value="${data[key].service_count}">
                                                 <button type="button" class="btn qty-right-plus" data-type="plus" data-field="" >
                                                     <i class="fa fa-plus ms-0" aria-hidden="true"></i>
                                                 </button>
@@ -952,20 +1073,54 @@
                                 `;
                                     
                             Service_tbody.appendChild(trElement);
-                        
-                        
+                            
+                            //const service_id_code = $("li#service_id_code")
+                            if( data[key].service_id_code == 0 ){
+                         
+                                $("li#service_id_code").html(`<span class="text-title">Sold By:</span>居家清潔`)
+                            }else if( data[key].service_id_code == 1 ){
+                            
+                                $("li#service_id_code").html(`<span class="text-title">Sold By:</span>居家清潔`)
+                            }else if( data[key].service_id_code == 2){
+                              
+                                $("li#service_id_code").html(`<span class="text-title">Sold By:</span>居家清潔`)    
+                            }else if( data[key].service_id_code == 3){
+                 
+                                $("li#service_id_code").html(`<span class="text-title">Sold By:</span>居家清潔`)
+                            }else if( data[key].service_id_code == 4){
+                           
+                                $("li#service_id_code").html(`<span class="text-title">Sold By:</span>居家清潔`)
+                            }else if( data[key].service_id_code == 5){
+                          
+                                $("li#service_id_code").html(`<span class="text-title">Sold By:</span>居家清潔`)              
+                            };
+
+
                             }
                     
+                        }else{
+
+                            const row = Service_tbody.insertRow();
+                            const cell = row.insertCell();
+                            cell.colSpan = 5; // 設定單元格的合併列數，根據您的表格結構調整
+                            cell.style="text-align: center;font-size: 30px;color: red;";
+                            cell.textContent = "商品已清空囉";
+
                         }
                     }    
             })            
         }
         $(document).on('click', 'button#remove_id', function() {
-            const Service_id    =$(this).closest("tr.product-box-contain").find("input#product_id").val();  
-            const Service_price =$(this).closest("tr.product-box-contain").find("h5#price").html().substring(1);
-            const Service_count =$(this).closest("tr.product-box-contain").find("input[name='quantity']").val();
-            const Service_name  =$(this).closest("tr.product-box-contain").find("a#product_name").html();
-            const Service_total =$(this).closest("tr.product-box-contain").find("h5#total").html().substring(1);
+
+            const service_id     =$(this).closest("tr.product-box-contain").find("input#product_id").val(); 
+            const service_name   =$(this).closest("tr.product-box-contain").find("a#product_name").html(); 
+            const service_price  =$(this).closest("tr.product-box-contain").find("h5#price").html().substring(1);
+            const service_count  =$(this).closest("tr.product-box-contain").find("input[name='quantity']").val();
+            const service_id_code=$(this).closest("tr.product-box-contain").find("h2#service_id_code").html();
+            const seller_id      =$(this).closest("tr.product-box-contain").find("h2#service_seller_id").html();
+            const service_DateDetail =$(this).closest("tr.product-box-contain").find("h2#service_DateDetail").html();
+            const service_Date =$(this).closest("tr.product-box-contain").find("h2#service_Date").html();
+            const service_total =$(this).closest("tr.product-box-contain").find("h5#total").html().substring(1);
         
             //刪除指定整個元素
             const contain =$(this).closest("tr.product-box-contain");
@@ -979,11 +1134,15 @@
                         dataType:"json",
                         data :{ 
                             user_id:'user_id:1',
-                            Service_id:Service_id,
-                            Service_price:Service_price,
-                            Service_count:Service_count,
-                            Service_name:Service_name,
-                            Service_total:Service_total
+                            service_id:service_id,
+                            service_name:service_name,
+                            service_price:service_price,
+                            service_count:service_count,
+                            service_id_code:service_id_code,
+                            seller_id:seller_id,
+                            service_DateDetail:service_DateDetail,
+                            service_Date:service_Date,
+                            service_total:service_total
                         },
                         success:function(data){
 

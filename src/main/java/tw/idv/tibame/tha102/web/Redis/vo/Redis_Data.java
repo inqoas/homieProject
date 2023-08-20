@@ -17,9 +17,11 @@ import lombok.ToString;
 public class Redis_Data implements java.io.Serializable{
 	@Id
 	private String  user_id;
+	private String  product_name;
 	private Integer product_id;
 	private Integer product_price;
 	private Integer product_count;
 	private Integer product_total;
+
 	
 }
