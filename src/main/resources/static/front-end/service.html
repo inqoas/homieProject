@@ -452,7 +452,7 @@
                         
                         <ul class="navbar-nav flex-row mb-3">
 
-                            <li class="nav-item dropdown">
+                            <!-- <li class="nav-item dropdown">
                                 <a style="font-size: 20px; font-weight: bold;" class="my-auto">篩選</a>
                             </li>
 
@@ -462,7 +462,7 @@
 
                             <li class="nav-item dropdown">
                                 <a style="font-size: 20px; font-weight: bold;" class="my-auto">評價</a>
-                            </li>
+                            </li> -->
 
                         </ul>
                                 
@@ -471,7 +471,7 @@
                         <div class="table-responsive-xl"> 
                             <table class="table">
                                 <tbody id="Service_tbody">
-                                    <tr class="product-box-contain">
+                                    <!-- <tr class="product-box-contain">
                                         <td class="product-detail">
                                             <div class="product border-0">
                                                 <a href="product-left-thumbnail.html" class="product-image">
@@ -524,7 +524,7 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                            </div>
+                                            </div> 
                                         </td>
 
                                         <td class="price">
@@ -564,7 +564,7 @@
                                             <a class="remove close_button" href="javascript:void(0)">Remove</a>
                                         </td>
                                     </tr>
-                                </tbody>
+                                </tbody> -->
                             </table>
                         </div>                    
                     </div>
@@ -890,6 +890,9 @@
                     success: function(data){
                             console.log(data);
                         for(let key in data){   
+                            
+                            // console.log(data.length);
+                            // console.log(key);
                             const trElement = document.createElement('tr');
                             trElement.classList.add('product-box-contain');
                             trElement.innerHTML =                     
@@ -898,13 +901,13 @@
                                         <a href="Service_detail.html?service_id=${data[key].service_id}" class="product-image">
                                             <img src="http://localhost:8080/homieProject//service/Select_ImgController?service_id=${data[key].service_id}" class="img-fluid blur-up lazyload" alt="">
                                         </a>
-                                        <div class="product-detail ">
+                                        <div class="product-detail">
                                             <ul>
                                                 <li class="name">
                                                     <a href="product-left-thumbnail.html">${data[key].service_name}</a>
                                                 </li>
                                                 <li class="text-content"><span class="text-title">Sold By:</span> ${data[key].product_stock}</li>
-                                                <li class="text-content"><span class="text-title">Quantity</span> - ${data[key].service_name}</li>
+                                                <li id="service_id_code" class="text-content"><span class="text-title">服務類型:</span>${data[key].service_id_code}</li>
                                                 <li>
                                                     <h5 class="text-content d-inline-block">Price :</h5>
                                                     <span>$${data[key].service_price}</span>                                            
@@ -936,16 +939,29 @@
                                 <td class="subtotal">
                                     <h4 class="table-title text-content">Total</h4>
                                     <h5 id=total>$0</h5>
-                                </td>
-                                <td class="save-remove">
-                                    <h4 class="table-title text-content">Action</h4>
-                                    <a class="save notifi-wishlist" href="javascript:void(0)">Save for later</a>
-                                    <a class="remove close_button" href="javascript:void(0)">Remove</a>
-                                </td>
-                                `;
+                                </td>`;
                                     
                             Service_tbody.appendChild(trElement);
-                        
+
+                            let service_id_code =$("li#service_id_code");  
+                            
+                                console.log(service_id_code);
+                          
+                                
+                                if( data[key].service_id_code == 0 ){
+                                    service_id_code.html("居家清潔")[key];
+                                }else if( data[key].service_id_code == 1 ){
+                                    service_id_code.html("冷氣清潔")[key];
+                                }else if( data[key].service_id_code == 2){
+                                    service_id_code.html("洗衣機清潔")[key];    
+                                }else if( data[key].service_id_code == 3){
+                                    service_id_code.html("專業除蟎")[key];
+                                }else if( data[key].service_id_code == 4){
+                                    service_id_code.html("水塔清洗")[key];
+                                }else if( data[key].service_id_code == 5){
+                                    service_id_code.html("水管清洗")[key];             
+                                };
+                            
                         }
                     },
                     error: function(error){
@@ -1047,7 +1063,7 @@
                                                         <a href="product-left-thumbnail.html">${data[key].service_name}</a>
                                                     </li>
                                                     <li class="text-content"><span class="text-title">Sold By:</span> ${data[key].product_stock}</li>
-                                                    <li class="text-content"><span class="text-title">Quantity</span> - ${data[key].service_name}</li>
+                                                    <li id="service_id_code" class="text-content"><span class="text-title">服務類型:</span> ${data[key].service_name}</li>
                                                     <li>
                                                         <h5 class="text-content d-inline-block">Price :</h5>
                                                         <span>$${data[key].service_price}</span>                                            
@@ -1080,15 +1096,27 @@
                                         <h4 class="table-title text-content">Total</h4>
                                         <h5 id=total>$0</h5>
                                     </td>
-                                    <td class="save-remove">
-                                        <h4 class="table-title text-content">Action</h4>
-                                        <a class="save notifi-wishlist" href="javascript:void(0)">Save for later</a>
-                                        <a class="remove close_button" href="javascript:void(0)">Remove</a>
-                                    </td>
+                                
                                     `;
 
                                     
                                 Service_tbody.appendChild(trElement);
+
+                                const service_id_code =$("li#service_id_code");         
+
+                                if( data.service_id_code == 0 ){
+                                    service_id_code.html("居家清潔");
+                                }else if( data[key].service_id_code == 1 ){
+                                    service_id_code.html("冷氣清潔");
+                                }else if( data[key].service_id_code == 2){
+                                    service_id_code.html("洗衣機清潔");    
+                                }else if( data[key].service_id_code == 3){
+                                    service_id_code.html("專業除蟎");
+                                }else if( data[key].service_id_code == 4){
+                                    service_id_code.html("水塔清洗");
+                                }else if( data[key].service_id_code == 5){
+                                    service_id_code.html("水管清洗") ;             
+                                };
                             
                             }
 						},
