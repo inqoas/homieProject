@@ -76,5 +76,9 @@ spring.log.2023-08-16.0.gz
 spring.log.2023-08-17.0.gz
 spring.log.2023-08-18.0.gz
 spring.log.2023-08-19.0.gz
+<<<<<<< HEAD
 >>>>>>> a7c11c63506917210c6daff64080822651ced707
 >>>>>>> 78edc74e420f0abeaa361cc00b882af746e1f02e
+=======
+spring.log.2023-08-20.0.gz
+>>>>>>> joe

@@ -584,10 +584,12 @@
                                 </div>
 
                                 <div class="buy-box">
-                                    <a href="wishlist.html">
-                                        <i data-feather="heart" style="color: red;" ></i>
-                                        <span>Add To Wishlist</span>
-                                    </a>
+                                
+                                    <svg id="heart" xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                    </svg>
+                                    <span>Add To Wishlist</span>
+                                    
 
                                     <!-- <a href="compare.html">
                                         <i data-feather="shuffle"></i>
@@ -1639,11 +1641,14 @@
 
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--補滿紅色-->
+  
 
     <script>
         window.onload = function() {
    //在這裡放置你想要在所有內容（包括圖片和其他資源）載入完成後執行的程式碼
-   
+            
+            //feather.replace();
             const plusButton   = document.querySelector('.qty-right-plus');
             const minusButton  = document.querySelector('.qty-left-minus');
             const qtyInput     = document.querySelector('.qty-input');
@@ -1652,7 +1657,91 @@
             const product_name = document.querySelector("#product_name");
             const product_price= document.querySelector("#product_price");
             const car_num      = document.querySelector("#car_num");
-            
+            const heart        = $("#heart");
+            const user_id      = "1";
+            //查詢我的最愛
+            Select_heart();
+
+            function Select_heart(){
+
+                $.ajax({
+                    url:"/homieProject/product_collection/Select_ProCollController",
+                    type:"POST",
+                    dataType:"json",
+                    data : JSON.stringify ({
+                        user_id:user_id,
+                        product_id:product_id.innerHTML        
+                    }) ,
+                    success:function(data){
+
+                     if(data ==true){   
+
+                        heart.css({ "color": "red"});      
+                        heart.attr("data-title","true");
+
+                     }
+                        
+                    },error:function(error){
+
+                        console.log(error);
+
+                    }
+                })        
+
+            }
+
+            $("#heart").on("click",function(){
+                
+               // console.log(heart.attr("data-title"));
+               if( heart.attr("data-title") === undefined  ){    
+                    $.ajax({
+                        url:"/homieProject/product_collection/Insert_ProCollController",
+                        type:"POST",
+                        dataType:"json",
+                        data : JSON.stringify ({
+                            user_id:user_id,
+                            product_id:product_id.innerHTML        
+                        }) ,
+                        success:function(data){
+                       
+                            heart.css({ "color": "red"});      
+                            heart.attr("data-title","true");
+                            alert("加入我的最愛");
+                            
+                        },error:function(error){
+
+                            console.log(error);
+
+                        }
+                    })
+                
+                }else{
+                
+                    $.ajax({
+                        url:"/homieProject/product_collection/delete_ProCollController",
+                        type:"POST",
+                        dataType:"json",
+                        data : JSON.stringify ({
+                            user_id:user_id,
+                            product_id:product_id.innerHTML        
+                        }) ,
+                        success:function(data){
+                       
+                            heart.removeAttr("style");      
+                            heart.removeAttr("data-title");
+                            alert("移除我的最愛");
+                            
+                        },error:function(error){
+
+                            console.log(error);
+
+                        }
+                    })
+
+                }  
+
+            });
+
             plusButton.addEventListener('click', function () {
                 let currentValue = parseInt(qtyInput.value);
                 qtyInput.value = currentValue + 1;
@@ -1680,13 +1769,13 @@
                     type:"POST",
                     dataType:"json",
                     data : JSON.stringify ({
+
                         product_id:product_id.innerHTML,
                         product_name :product_name.innerHTML,
                         product_count:qtyInput.value,
                         product_price:product_price,
                         product_total:product_total,
                         
-
                     }) ,
                     success:function(data){
 						console.log("asdsa");
@@ -1698,7 +1787,7 @@
                 })    
 
             });    
-             
+             //案確認鍵
             $("#car_btn").on("click",function(){
 
                 //console.log("abcds");
@@ -1754,7 +1843,7 @@
             });
 
             
-
+            //購物車數量
             function getAllNum(){
                 $.ajax({
                     url:"/homieProject/Product/GetAllRedisController",
