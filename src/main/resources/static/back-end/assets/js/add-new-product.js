@@ -3,7 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
         
         CKEDITOR.replace('editor');
         const confirmAddButton = document.getElementById("confirmAddButton");
+        const confirmButton = document.getElementById("confirmButton")
         const errorMessageDiv = document.getElementById("errorMessage");
+
+        confirmButton.addEventListener("click", function(){
+            errorMessageDiv.innerHTML = '';
+        });
 
         confirmAddButton.addEventListener("click", function () {
             
@@ -13,13 +18,10 @@ document.addEventListener("DOMContentLoaded", function () {
             var product_price = document.getElementById("product_price").value;
             var product_stock = document.getElementById("product_stock").value;
 
-            // if (!validateForm(product_name, product_introduction, product_price, product_stock)) {
-            //     return; // 如果驗證失敗，不執行後續操作
-            // }
             var validationError = validateForm(product_name, product_introduction, product_price, product_stock);
             if (validationError) {
-                errorMessageDiv.innerHTML = validationError; // 顯示錯誤消息
-                return; // 如果驗證失敗，不執行後續操作
+                errorMessageDiv.innerHTML = validationError; 
+                return; 
             }
 
             var fileInput = document.getElementById("product_picture");
@@ -60,28 +62,23 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 function validateForm(product_name, product_introduction, product_price, product_stock) {
     var errors = [];
-
-    // 商品名稱：至少三個字
+ 
     if (product_name.length < 3) {
         errors.push('商品名稱必須至少三個字！');
     }
 
-    // 單價：不能為負數
     if (parseFloat(product_price) < 0) {
         errors.push('單價不能為負數！');
     }
 
-    // 庫存數量：至少為1
     if (parseInt(product_stock) < 1) {
         errors.push('庫存數量至少為1！');
     }
 
-    // 商品介紹：至少10字
     if (product_introduction.length < 10) {
         errors.push('商品介紹必須至少10字！');
     }
 
-    // 如果有錯誤，則將其連接成一個字符串並返回
     if (errors.length > 0) {
         return errors.join('<br/>');
     }

@@ -29,7 +29,7 @@ function init() {
                     <tr>
                         <td>
                             <div class="table-image">
-                                <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${product.product_id}" class="img-fluid" alt="">
+                            <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${product.product_id}&time=${new Date().getTime()}" class="img-fluid" alt="">
                             </div>
                         </td>
                         <td>${product.product_name}</td>
@@ -89,8 +89,8 @@ function init() {
             type: 'GET',
             success: function(response) {
                 if (response.success) {
-                    $('#deleteModal').modal('hide');
-                    init();
+                    $('#deleteModal').modal('hide');            
+                    location.reload();
                 } else {
                     alert('刪除失敗');
                 }
