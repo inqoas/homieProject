@@ -1648,7 +1648,7 @@
         const dynamicElements = $("#dynamicElements");
         
         $.ajax({
-            url:"http://localhost:8080/homieProject/service/Select_byIdController",
+            url:"/homieProject/service/Select_byIdController",
             type:"POST",
             dataType:"JSON",
             data:JSON.stringify({
@@ -1771,15 +1771,12 @@
                                 </div>
 
                                 <div class="buy-box">
-                                    <a href="wishlist.html">
-                                        <i data-feather="heart"></i>
+                                    
+                                        <svg id="heart" xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                        </svg>
                                         <span>Add To Wishlist</span>
-                                    </a>
-
-                                    <a href="compare.html">
-                                        <i data-feather="shuffle"></i>
-                                        <span>Add To Compare</span>
-                                    </a>
+                                   
                                 </div>
 
                                 <div class="pickup-box">
@@ -1849,6 +1846,61 @@
                 console.log(error);
             }
         })
+
+        dynamicElements.on("click","svg#heart",function(){
+                const heart =$(this);
+            const user_id ="1";
+            const Service_id=$(this).closest("div#dynamicElements").find("h2#Service_id").html();
+            // console.log(heart.attr("data-title"));
+            if( heart.attr("data-title") === undefined  ){    
+                    $.ajax({
+                        url:"/homieProject/Service_Collection/Insert_SerCollControllers",
+                        type:"POST",
+                        dataType:"json",
+                        data : JSON.stringify ({
+                            user_id:user_id,
+                            Service_id:Service_id        
+                        }) ,
+                        success:function(data){
+                       
+                            heart.css({ "color": "red"});      
+                            heart.attr("data-title","true");
+                            alert("加入我的最愛");
+                            
+                        },error:function(error){
+
+                            console.log(error);
+
+                        }
+                    })
+                
+                }else{
+                
+                    $.ajax({
+                        url:"/homieProject/product_collection/delete_ProCollController",
+                        type:"POST",
+                        dataType:"json",
+                        data : JSON.stringify ({
+                            user_id:user_id,
+                            Service_id:Service_id        
+                        }) ,
+                        success:function(data){
+                       
+                            heart.removeAttr("style");      
+                            heart.removeAttr("data-title");
+                            alert("移除我的最愛");
+                            
+                        },error:function(error){
+
+                            console.log(error);
+
+                        }
+                    })
+
+                }          
+                
+        });
+
 
         dynamicElements.on("click","button#add_to_cart",function(){
 
