@@ -1,3 +1,14 @@
+.order-th, .order-td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 16px;
+}
+.order-name{
+    max-width: 150px; 
+    overflow-wrap: break-word; 
+    white-space: normal;
+}
 .order-top-div {
     text-align: center;
     font-size: 20px;
@@ -111,3 +122,4 @@
     color: #8B8C89;
     font-weight: bolder;
 }
+

@@ -403,3 +403,368 @@ document.querySelector(".headimg").addEventListener("change", function () {
         }
     )
   })
+
+  $(".pills-order-button").on("click", function(){
+    fetch("../OrderProduct/getOrderProductPill", {
+        method: "GET",
+        headers:{
+            "Authorization": "Bearer " + user_jwt,
+        }
+    }).then(resp =>{
+        return resp.json();
+    }).then(
+        body =>{
+            let orderHTML = "";
+            body.forEach(collection =>{
+                let message = collection.message;
+                let productId = collection.productId;
+                let productName = collection.productName;
+                let productPlacementTime = collection.productPlacementTime;
+                let productPrice = collection.productPrice;
+                let productQuantity = collection.productQuantity;
+                let productStatus = collection.productStatus;
+                let success = collection.success;
+                let dateTime = new Date(productPlacementTime);
+                let productPlacementDate = dateTime.toISOString().split("T")[0];
+
+                if(success == false && message == "驗證失敗，請重新登入"){
+                    alert("驗證失敗，請重新登入");
+                    localStorage.removeItem("user_jwt");
+                    location = "../front-end/login.html";
+                }
+                let button = "";
+                if(productStatus == 0){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button><button class="btn btn-danger order-cancel">取消訂單</button><button class="btn btn-success order-finish">完成訂單</button>'
+                }else if(productStatus == 1){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button><button class="btn btn-danger order-cancel">取消訂單</button><button class="btn btn-success order-finish">完成訂單</button>'
+                }else if(productStatus == 2){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button>'
+                }else if(productStatus == 3){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button>'
+                }
+                orderHTML += `
+                <tr>
+                    <td class="order-td order-id col-2">${productId}</td>
+                    <td class="order-td order-name text-truncate col-4">${productName}</td>
+                    <td class="order-td order-count col-1">${productQuantity}</td>
+                    <td class="order-td order-price col-1">${productPrice * productQuantity}元</td>
+                    <td class="order-td order-delivery-time col-2">${productPlacementDate}</td>
+                    <td class="order-td col-2">
+                        ${button}
+                    </td>
+                </tr>`
+            })
+            $(".order-tbody").html(orderHTML);
+        },
+        error =>{
+
+        }
+    )
+  });
+
+  $(".order-all").on("click", function(){
+    fetch("../OrderProduct/getOrderProductPill", {
+        method: "GET",
+        headers:{
+            "Authorization": "Bearer " + user_jwt,
+        }
+    }).then(resp =>{
+        return resp.json();
+    }).then(
+        body =>{
+            let orderHTML = "";
+            body.forEach(collection =>{
+                let message = collection.message;
+                let productId = collection.productId;
+                let productName = collection.productName;
+                let productPlacementTime = collection.productPlacementTime;
+                let productPrice = collection.productPrice;
+                let productQuantity = collection.productQuantity;
+                let productStatus = collection.productStatus;
+                let success = collection.success;
+                let dateTime = new Date(productPlacementTime);
+                let productPlacementDate = dateTime.toISOString().split("T")[0];
+
+                if(success == false && message == "驗證失敗，請重新登入"){
+                    alert("驗證失敗，請重新登入");
+                    localStorage.removeItem("user_jwt");
+                    location = "../front-end/login.html";
+                }
+                let button = "";
+                if(productStatus == 0){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button><button class="btn btn-danger order-cancel">取消訂單</button><button class="btn btn-success order-finish">完成訂單</button>'
+                }else if(productStatus == 1){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button><button class="btn btn-danger order-cancel">取消訂單</button><button class="btn btn-success order-finish">完成訂單</button>'
+                }else if(productStatus == 2){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button>'
+                }else if(productStatus == 3){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button>'
+                }
+                orderHTML += `
+                <tr>
+                    <td class="order-td order-id col-2">${productId}</td>
+                    <td class="order-td order-name text-truncate col-4">${productName}</td>
+                    <td class="order-td order-count col-1">${productQuantity}</td>
+                    <td class="order-td order-price col-1">${productPrice * productQuantity}元</td>
+                    <td class="order-td order-delivery-time col-2">${productPlacementDate}</td>
+                    <td class="order-td col-2">
+                        ${button}
+                    </td>
+                </tr>`
+            })
+            $(".order-tbody").html(orderHTML);
+        },
+        error =>{
+
+        }
+    )
+  });
+
+  $(".order-wait").on("click", function(){
+    fetch("../OrderProduct/getOrderProductWait", {
+        method: "GET",
+        headers:{
+            "Authorization": "Bearer " + user_jwt,
+        }
+    }).then(resp =>{
+        return resp.json();
+    }).then(
+        body =>{
+            console.log(body);
+            let orderHTML = "";
+            body.forEach(collection =>{
+                let message = collection.message;
+                let productId = collection.productId;
+                let productName = collection.productName;
+                let productPlacementTime = collection.productPlacementTime;
+                let productPrice = collection.productPrice;
+                let productQuantity = collection.productQuantity;
+                let productStatus = collection.productStatus;
+                let success = collection.success;
+                let dateTime = new Date(productPlacementTime);
+                let productPlacementDate = dateTime.toISOString().split("T")[0];
+
+                if(success == false && message == "驗證失敗，請重新登入"){
+                    alert("驗證失敗，請重新登入");
+                    localStorage.removeItem("user_jwt");
+                    location = "../front-end/login.html";
+                }
+                let button = "";
+                if(productStatus == 0){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button><button class="btn btn-danger order-cancel">取消訂單</button><button class="btn btn-success order-finish">完成訂單</button>'
+                }else if(productStatus == 1){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button><button class="btn btn-danger order-cancel">取消訂單</button><button class="btn btn-success order-finish">完成訂單</button>'
+                }else if(productStatus == 2){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button>'
+                }else if(productStatus == 3){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button>'
+                }
+                orderHTML += `
+                <tr>
+                    <td class="order-td order-id col-2">${productId}</td>
+                    <td class="order-td order-name text-truncate col-4">${productName}</td>
+                    <td class="order-td order-count col-1">${productQuantity}</td>
+                    <td class="order-td order-price col-1">${productPrice * productQuantity}元</td>
+                    <td class="order-td order-delivery-time col-2">${productPlacementDate}</td>
+                    <td class="order-td col-2">
+                        ${button}
+                    </td>
+                </tr>`
+            })
+            $(".order-tbody").html(orderHTML);
+        },
+        error =>{
+
+        }
+    )
+  });
+
+$(".order-end").on("click", function (){
+    fetch("../OrderProduct/getOrderProductEnd", {
+        method: "GET",
+        headers:{
+            "Authorization": "Bearer " + user_jwt,
+        }
+    }).then(resp =>{
+        return resp.json();
+    }).then(
+        body =>{
+            console.log(body);
+            let orderHTML = "";
+            body.forEach(collection =>{
+                let message = collection.message;
+                let productId = collection.productId;
+                let productName = collection.productName;
+                let productPlacementTime = collection.productPlacementTime;
+                let productPrice = collection.productPrice;
+                let productQuantity = collection.productQuantity;
+                let productStatus = collection.productStatus;
+                let success = collection.success;
+                let dateTime = new Date(productPlacementTime);
+                let productPlacementDate = dateTime.toISOString().split("T")[0];
+
+                if(success == false && message == "驗證失敗，請重新登入"){
+                    alert("驗證失敗，請重新登入");
+                    localStorage.removeItem("user_jwt");
+                    location = "../front-end/login.html";
+                }
+                let button = "";
+                if(productStatus == 0){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button><button class="btn btn-danger order-cancel">取消訂單</button><button class="btn btn-success order-finish">完成訂單</button>'
+                }else if(productStatus == 1){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button><button class="btn btn-danger order-cancel">取消訂單</button><button class="btn btn-success order-finish">完成訂單</button>'
+                }else if(productStatus == 2){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button>'
+                }else if(productStatus == 3){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button>'
+                }
+                orderHTML += `
+                <tr>
+                    <td class="order-td order-id col-2">${productId}</td>
+                    <td class="order-td order-name text-truncate col-4">${productName}</td>
+                    <td class="order-td order-count col-1">${productQuantity}</td>
+                    <td class="order-td order-price col-1">${productPrice * productQuantity}元</td>
+                    <td class="order-td order-delivery-time col-2">${productPlacementDate}</td>
+                    <td class="order-td col-2">
+                        ${button}
+                    </td>
+                </tr>`
+            })
+            $(".order-tbody").html(orderHTML);
+        },
+        error =>{
+
+        }
+    )
+  });
+
+  $(".order-return").on("click", function (){
+    fetch("../OrderProduct/getOrderProductReturn", {
+        method: "GET",
+        headers:{
+            "Authorization": "Bearer " + user_jwt,
+        }
+    }).then(resp =>{
+        return resp.json();
+    }).then(
+        body =>{
+            console.log(body);
+            let orderHTML = "";
+            body.forEach(collection =>{
+                let message = collection.message;
+                let productId = collection.productId;
+                let productName = collection.productName;
+                let productPlacementTime = collection.productPlacementTime;
+                let productPrice = collection.productPrice;
+                let productQuantity = collection.productQuantity;
+                let productStatus = collection.productStatus;
+                let success = collection.success;
+                let dateTime = new Date(productPlacementTime);
+                let productPlacementDate = dateTime.toISOString().split("T")[0];
+
+                if(success == false && message == "驗證失敗，請重新登入"){
+                    alert("驗證失敗，請重新登入");
+                    localStorage.removeItem("user_jwt");
+                    location = "../front-end/login.html";
+                }
+                let button = "";
+                if(productStatus == 0){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button><button class="btn btn-danger order-cancel">取消訂單</button><button class="btn btn-success order-finish">完成訂單</button>'
+                }else if(productStatus == 1){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button><button class="btn btn-danger order-cancel">取消訂單</button><button class="btn btn-success order-finish">完成訂單</button>'
+                }else if(productStatus == 2){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button>'
+                }else if(productStatus == 3){
+                    button = '<button class="btn btn-primary order-full">查看完整訂單</button>'
+                }
+                orderHTML += `
+                <tr>
+                    <td class="order-td order-id col-2">${productId}</td>
+                    <td class="order-td order-name text-truncate col-4">${productName}</td>
+                    <td class="order-td order-count col-1">${productQuantity}</td>
+                    <td class="order-td order-price col-1">${productPrice * productQuantity}元</td>
+                    <td class="order-td order-delivery-time col-2">${productPlacementDate}</td>
+                    <td class="order-td col-2">
+                        ${button}
+                    </td>
+                </tr>`
+            })
+            $(".order-tbody").html(orderHTML);
+        },
+        error =>{
+
+        }
+    )
+  });
+
+  $(document).on("click", ".order-full", function(){
+    let orderId = $(this).closest("tr").find(".order-id").text().trim();
+    location = "../front-end/order-product.html?orderProductId=" + orderId;
+  })
+
+  $(document).on("click", ".order-cancel", function(){
+    let confirmed = confirm("確定取消訂單?");
+    if(confirmed){
+        let orderId = $(this).closest("tr").find(".order-id").text().trim();
+        fetch("../OrderProduct/orderProductCancel",{
+            method: "POST",
+            headers: {
+                "Authorization": "Bearer " + user_jwt,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "orderId": orderId
+            })
+        }).then(resp => {
+            return resp.text();
+        }).then(
+            body => {
+                if(body == false){
+                    alert("更改失敗")
+                }else{
+                    location.reload();
+                }
+                
+            },
+            error =>{
+    
+            }
+        )
+    }else{
+        return;
+    }
+  })
+
+  $(document).on("click", ".order-finish", function(){
+    let confirmed = confirm("確定完成訂單?");
+    if(confirmed){
+        let orderId = $(this).closest("tr").find(".order-id").text().trim();
+        fetch("../OrderProduct/orderProductFinish",{
+            method: "POST",
+            headers: {
+                "Authorization": "Bearer " + user_jwt,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "orderId": orderId
+            })
+        }).then(resp => {
+            return resp.text();
+        }).then(
+            body => {
+                if(body == false){
+                    alert("更改失敗")
+                }else{
+                    location.reload();
+                }
+                
+            },
+            error =>{
+    
+            }
+        )
+    }else{
+        return;
+    }
+    
+  })

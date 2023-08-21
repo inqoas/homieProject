@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fastkart">
+    <meta name="keywords" content="Fastkart">
+    <meta name="author" content="Fastkart">
+    <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
+    <title>orderProduct</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- bootstrap css -->
+    <link id="rtl-link" rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
+
+    <!-- font-awesome css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
+
+    <!-- feather icon css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css">
+
+    <!-- slick css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick-theme.css">
+
+    <!-- Iconly css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/bulk-style.css">
+
+    <!-- Template css -->
+    <link id="color-link" rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <style>
+        table {
+            display: table;
+            border-collapse: separate;
+            box-sizing: border-box;
+            text-indent: initial;
+            border-spacing: 2px;
+            border-color: gray;
+            font-size: 16px;
+        }
+        td{
+            padding: 10px;
+        }
+        .intit{
+            font-size: 20px;
+            font-weight: bold;
+            height: 22px;
+            margin: 20px 0 15px 0;
+        }
+    </style>
+    
+</head>
+
+<body>
+
+    <!-- Loader Start -->
+    <div class="fullpage-loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <!-- Loader End -->
+
+   <!-- Header Start -->
+   <header class="pb-md-4 pb-0">
+
+    <div class="top-nav top-header sticky-header">
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-12">
+                    <div class="navbar-top">
+                        <button class="navbar-toggler d-xl-none d-inline navbar-menu-button" type="button"
+                            data-bs-toggle="offcanvas" data-bs-target="#primaryMenu">
+                            <span class="navbar-toggler-icon">
+                                <i class="fa-solid fa-bars"></i>
+                            </span>
+                        </button>
+                        <a href="index.html" class="web-logo nav-logo">
+                            <img src="../assets/images/svg/Homie_logo.svg" class="img-fluid blur-up lazyload"
+                                alt="">
+                        </a>
+                        <div class="rightside-box">
+                            <div class="search-full">
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i data-feather="search" class="font-light"></i>
+                                    </span>
+                                    <input type="text" class="form-control search-type"
+                                        placeholder="Search here..">dashboard-contant-title
+                                    <span class="input-group-text close-search">
+                                        <i data-feather="x" class="font-light"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <ul class="right-side-menu">
+                                <li class="right-side">
+                                    <div class="delivery-login-box">
+                                        <div class="delivery-icon">
+                                            <div class="search-box">
+                                                <i data-feather="search"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- 鈴鐺 -->
+                                <li class="right-side">
+                                    <div class="onhover-dropdown header-badge">
+                                        <button type="button" class="btn p-0 position-relative header-wishlist">
+                                            <div class="delivery-icon">
+                                                <i class="fa-regular fa-bell fa-xl"></i>
+                                            </div>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge">3
+                                                <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                        </button>
+
+                                        <div class="onhover-div">
+                                            <ul class="cart-list">
+                                                <li class="product-box-contain">
+                                                    <a class="aa" href="#">
+                                                        <div class="drop-cart">
+                                                            <div class="drop-contain">
+                                                                <h5 class="a">通知一</h5>
+                                                                <h6>關於今日特價方案</h6>
+                                                                <button class="close-button close_button">
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li class="product-box-contain">
+                                                    <a class="aa" href="#">
+                                                        <div class="drop-cart">
+                                                            <div class="drop-contain">
+                                                                <h5 class="a">通知二
+                                                                </h5>
+                                                                <h6>關於今日特價方案</h6>
+                                                                <button class="close-button close_button">
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+
+                                                <li class="product-box-contain">
+                                                    <a class="aa" href="#">
+                                                        <div class="drop-cart">
+                                                            <div class="drop-contain">
+                                                                <h5 class="a">通知三
+                                                                </h5>
+                                                                <h6>關於今日特價方案</h6>
+                                                                <button class="close-button close_button">
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- 鈴鐺 -->
+
+                                <li class="right-side">
+                                    <a href="user-dashboard.html" class="btn p-0 position-relative header-wishlist"
+                                        onclick="redirectToWishlist()">
+                                        <i data-feather="heart"></i>
+                                    </a>
+                                </li>
+
+
+                                <li class="right-side">
+                                    <div class="onhover-dropdown header-badge">
+                                        <button type="button" class="btn p-0 position-relative header-wishlist">
+                                            <i data-feather="shopping-cart"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge">2
+                                                <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                        </button>
+
+                                        <div class="onhover-div">
+                                            <ul class="cart-list">
+                                                <li class="product-box-contain">
+                                                    <div class="drop-cart">
+                                                        <a href="product-left-thumbnail.html" class="drop-image">
+                                                            <img src="../assets/images/vegetable/product/1.png"
+                                                                class="blur-up lazyload" alt="">
+                                                        </a>
+
+                                                        <div class="drop-contain">
+                                                            <a href="product-left-thumbnail.html">
+                                                                <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+                                                            </a>
+                                                            <h6><span>1 x</span> $80.58</h6>
+                                                            <button class="close-button close_button">
+                                                                <i class="fa-solid fa-xmark"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="product-box-contain">
+                                                    <div class="drop-cart">
+                                                        <a href="product-left-thumbnail.html" class="drop-image">
+                                                            <img src="../assets/images/vegetable/product/2.png"
+                                                                class="blur-up lazyload" alt="">
+                                                        </a>
+
+                                                        <div class="drop-contain">
+                                                            <a href="product-left-thumbnail.html">
+                                                                <h5>Peanut Butter Bite Premium Butter Cookies 600 g
+                                                                </h5>
+                                                            </a>
+                                                            <h6><span>1 x</span> $25.68</h6>
+                                                            <button class="close-button close_button">
+                                                                <i class="fa-solid fa-xmark"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+
+                                            <div class="price-box">
+                                                <h5>總價 :</h5>
+                                                <h4 class="theme-color fw-bold">$106.58</h4>
+                                            </div>
+
+                                            <div class="button-group">
+                                                <a href="cart.html" class="btn btn-sm cart-button">購物車</a>
+                                                <a href="checkout.html" class="btn btn-sm cart-button theme-bg-color
+                                                text-white">結帳</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="right-side onhover-dropdown">
+                                    <div class="delivery-login-box">
+                                        <div class="delivery-icon">
+                                            <i data-feather="user"></i>
+                                        </div>
+                                        <div class="delivery-detail">
+                                            <h6>Hello,</h6>
+                                            <h5>My Account</h5>
+                                        </div>
+                                    </div>
+
+                                    <div class="onhover-div onhover-div-login">
+                                        <ul class="user-box-name">
+                                            <li class="product-box-contain">
+                                                <i></i>
+                                                <a href="login.html">登入</a>
+                                            </li>
+
+                                            <li class="product-box-contain">
+                                                <a href="sign-up.html">註冊</a>
+                                            </li>
+
+                                            <li class="product-box-contain">
+                                                <a href="forgot.html">忘記密碼</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="username" style="font-weight: bold; color: #274C77;"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid-lg">
+        <div class="row">
+            <div class="col-12">
+                <div class="header-nav">
+                    <div class="header-nav-middle">
+                        <div class="main-nav navbar navbar-expand-xl navbar-light navbar-sticky">
+                            <div class="offcanvas offcanvas-collapse order-xl-2" id="primaryMenu">
+                                <div class="offcanvas-header navbar-shadow">
+                                    <h5>Menu</h5>
+                                    <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body">
+                                    <ul class="navbar-nav">
+
+                                        <li class="nav-item dropdown">
+                                            <a style="font-size: 20px; font-weight: bold;">商品頁面</a>
+                                        </li>
+
+                                        <li class="nav-item dropdown">
+                                            <a style="font-size: 20px; font-weight: bold;">服務頁面</a>
+                                        </li>
+
+                                        <li class="nav-item dropdown dropdown-mega">
+                                            <a style="font-size: 20px; font-weight: bold;">幫助中心</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header End -->
+
+
+    <!-- mobile fix menu start -->
+    <div class="mobile-menu d-md-none d-block mobile-cart">
+        <ul>
+            <li class="active">
+                <a href="index.html">
+                    <i class="iconly-Home icli"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <li class="mobile-category">
+                <a href="javascript:void(0)">
+                    <i class="iconly-Category icli js-link"></i>
+                    <span>Category</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="search.html" class="search-box">
+                    <i class="iconly-Search icli"></i>
+                    <span>Search</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="wishlist.html" class="notifi-wishlist">
+                    <i class="iconly-Heart icli"></i>
+                    <span>My Wish</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="cart.html">
+                    <i class="iconly-Bag-2 icli fly-cate"></i>
+                    <span>Cart</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- mobile fix menu end -->
+
+    <!-- Breadcrumb Section Start -->
+    <section class="breadscrumb-section pt-0">
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadscrumb-contain">
+                        <h2>訂單資訊</h2>
+                        <nav>
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">
+                                        <i class="fa-solid fa-house"></i>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item active">訂單資訊</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    
+    <!-- log in section start -->
+    <section class="log-in-section section-b-space forgot-section">
+        <div class="container-fluid-lg w-100">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="intit">訂單資訊</div>
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width:12%; background-color:#F3F3F3;">訂單編號</td>
+                                <td class="id" style="width:38%"></td>
+                                <td style="width:12%; background-color:#F3F3F3;">付款方式</td>
+                                <td style="width:38%">信用卡</td>
+                            </tr>
+                            <tr>
+                                <td style="width:12%; background-color:#F3F3F3;">賣家帳號</td>
+                                <td style="width:38%">Homie</td>
+                                <td style="width:12%; background-color:#F3F3F3;">運送方式</td>
+                                <td style="width:38%">貨運</td>
+                            </tr>
+                            <tr>
+                                <td style="width:12%; background-color:#F3F3F3;">付款金額</td>
+                                <td class="orderprice" style="width:38%"></td>
+                                <td style="width:12%; background-color:#F3F3F3;">訂單狀態</td>
+                                <td class="status" style="width:38%"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="intit">賣家資料</div>
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width:12%; background-color:#F3F3F3;">賣家姓名</td>
+                                <td style="width:38%">Homie</td>
+                                <td style="width:12%; background-color:#F3F3F3;">手機/電話</td>
+                                <td style="width:38%">02-0909-0909</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="intit">買家資料</div>
+                    <table style="width: 100%; table-layout: fixed;">
+                        <tbody>
+                            <tr>
+                                <td style="width:12%; background-color:#F3F3F3;">買家姓名</td>
+                                <td class="buyerName" style="width:38%"></td>
+                                <td style="width:12%; background-color:#F3F3F3;">信箱</td>
+                                <td class="buyerMail" style="width:38%"></td>
+                            </tr>
+                            <tr>
+                                <td style="width:12%; background-color:#F3F3F3;">手機</td>
+                                <td class="buyerPhone" style="width:38%"></td>
+                                <td style="width:12%; background-color:#F3F3F3;">住址</td>
+                                <td class="buyerAddress" style="width:38%; word-break: break-all;"></td>
+                            </tr>
+                            <tr>
+                                <td style="width:12%; background-color:#F3F3F3;">備註</td>
+                                <td style="width:38%"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="intit">商品/服務資訊</div>
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <td style="background-color:#F3F3F3;">編號</td>
+                                <td style="background-color:#F3F3F3;">名稱</td>
+                                <td style="background-color:#F3F3F3;">數量</td>
+                                <td style="background-color:#F3F3F3;">單價</td>
+                                <td style="background-color:#F3F3F3;">總價</td>
+                            </tr>
+                        </thead>
+                        <tbody class="allOrderDetail">
+                            <tr>
+                                <td class="id" style="background-color:white;"></td>
+                                <td class="name" style="width: 40%; background-color: white; word-break: break-all;"></td>
+                                <td class="count" style="background-color:white;"></td>
+                                <td class="price" style="background-color:white;"></td>
+                                <td class="allprice" style="background-color:white;"></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td style="background-color: #FFFDE4; font-weight: bolder;">扣除GC幣</td>
+                                <td style="background-color: #FFFDE4;"></td>
+                                <td style="background-color: #FFFDE4;"></td>
+                                <td style="background-color: #FFFDE4;"></td>
+                                <td style="background-color: #FFFDE4;"></td>
+                                <td class="GC" style="background-color: #FFFDE4; font-weight: bolder;">0</td>
+                                </tr>
+                            <tr>
+                            <td style="background-color: #FFFDE4; font-weight: bolder;">付款金額</td>
+                            <td style="background-color: #FFFDE4;"></td>
+                            <td style="background-color: #FFFDE4;"></td>
+                            <td style="background-color: #FFFDE4;"></td>
+                            <td style="background-color: #FFFDE4;"></td>
+                            <td class="fullprice" style="background-color: #FFFDE4; font-weight: bolder;"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- log in section end -->
+
+ <!-- Footer Section Start -->
+ <footer class="section-t-space">
+    <div class="container-fluid-lg">
+        <div class="service-section">
+            <div class="row g-3">
+                <div class="col-12">
+                </div>
+            </div>
+        </div>
+
+        <div class="main-footer section-b-space section-t-space">
+            <div class="row g-md-4 g-3">
+                <div class="col-lg-6">
+                    <div class="footer-logo">
+                        <div class="theme-logo">
+                            <a href="index.html">
+                                <img src="../assets/images/logo/1.png" class="blur-up lazyload" alt="">
+                            </a>
+                        </div>
+
+                        <div class="footer-logo-contain">
+                            <p>我們是一家專業的清潔服務提供商，為客戶提供高品質的清潔服務和產品。
+                                我們的平台連結客戶和優質的清潔人員，提供各種清潔服務，包括家庭和商業清潔。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="footer-title">
+                        <h4>聯絡我們</h4>
+                    </div>
+
+                    <div class="footer-contact">
+                        <ul>
+                            <li>
+                                <div class="footer-number">
+                                    <i data-feather="phone"></i>
+                                    <div class="contact-number">
+                                        <h6 class="text-content">客服專線 :</h6>
+                                        <h5>02-0909-0909</h5>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="footer-number">
+                                    <i data-feather="mail"></i>
+                                    <div class="contact-number">
+                                        <h6 class="text-content">公司信箱 :</h6>
+                                        <h5>stella@Homie.com.tw</h5>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="footer-number">
+                                    <i data-feather="home"></i>
+                                    <div class="contact-number">
+                                        <h6 class="text-content">公司地址 :</h6>
+                                        <h5>台北市信義區忠孝東路五段</h5>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+    <!-- Tap to top start -->
+    <div class="theme-option">
+        <div class="back-to-top">
+            <a id="back-to-top" href="#">
+                <i class="fas fa-chevron-up"></i>
+            </a>
+        </div>
+    </div>
+    <!-- Tap to top end -->
+
+    <!-- Bg overlay Start -->
+    <div class="bg-overlay"></div>
+    <!-- Bg overlay End -->
+
+    <!-- latest jquery-->
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/bootstrap/popper.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="../assets/js/feather/feather.min.js"></script>
+    <script src="../assets/js/feather/feather-icon.js"></script>
+
+    <!-- Slick js-->
+    <script src="../assets/js/slick/slick.js"></script>
+    <script src="../assets/js/slick/slick-animation.min.js"></script>
+    <script src="../assets/js/slick/custom_slick.js"></script>
+
+    <!-- Lazyload Js -->
+    <script src="../assets/js/lazysizes.min.js"></script>
+
+    <!-- script js -->
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/orderProduct.js"></script>
+</body>
+
+</html>
