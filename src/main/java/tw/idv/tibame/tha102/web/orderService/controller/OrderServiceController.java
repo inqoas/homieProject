@@ -2,19 +2,25 @@ package tw.idv.tibame.tha102.web.orderService.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tw.idv.tibame.tha102.web.orderService.repo.OrderServiceDTODao;
 import tw.idv.tibame.tha102.web.orderService.service.OrderServiceService;
 import tw.idv.tibame.tha102.web.orderService.vo.OrderService;
+import tw.idv.tibame.tha102.web.orderService.vo.OrderServiceDTO;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/orderservice")
+@RequestMapping("/orderservices")
 public class OrderServiceController {
     private final OrderServiceService orderServiceService;
 
+    private final OrderServiceDTODao orderServiceDTODao;
+
+
     @Autowired
-    public OrderServiceController(OrderServiceService orderServiceService){
+    public OrderServiceController(OrderServiceService orderServiceService, OrderServiceDTODao orderServiceDTODao){
         this.orderServiceService = orderServiceService;
+        this.orderServiceDTODao = orderServiceDTODao;
     }
 
     @GetMapping
@@ -42,4 +48,10 @@ public class OrderServiceController {
     public void deleteOrderService(@PathVariable("id") Integer id){
         orderServiceService.deleteOrderService(id);
     }
+
+    @GetMapping("/withServiceName")
+    public List<OrderServiceDTO> findOrderServicesWithServiceName(@RequestParam Integer orderServiceId) {
+        return orderServiceDTODao.findOrderServicesWithServiceName(orderServiceId);
+    }
+
 }

@@ -156,7 +156,7 @@
                             <div class="media profile-media">
                                 <img class="user-profile rounded-circle" src="assets/images/users/4.jpg" alt="">
                                 <div class="user-name-hide media-body">
-                                    <span>Emay Walter</span>
+                                    <span></span>
                                     <p class="mb-0 font-roboto">Admin<i class="middle ri-arrow-down-s-line"></i></p>
                                 </div>
                             </div>
@@ -282,11 +282,11 @@
                                     </a>
                                     <ul class="sidebar-submenu">
                                         <li>
-                                            <a href="violation.html">未處理</a>
+                                            <a href="violation.html?violation_status=1">未處理</a>
                                         </li>
 
                                         <li>
-                                            <a href="violation-done.html">已處理</a>
+                                            <a href="violation-done.html?violation_status=2">已處理</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -341,96 +341,6 @@
                                         <span>金流管理</span>
                                     </a>
                                 </li>
-
-                                <!-- <li class="sidebar-list">
-                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
-                                        <i class="ri-list-settings-line"></i>
-                                        <span>Attributes</span>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li>
-                                            <a href="attributes.html">Attributes</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="add-new-attributes.html">Add Attributes</a>
-                                        </li>
-                                    </ul>
-                                </li> -->
-
-                                <!-- <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                                        <i class="ri-user-3-line"></i>
-                                        <span>Roles</span>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li>
-                                            <a href="role.html">All roles</a>
-                                        </li>
-                                        <li>
-                                            <a href="create-role.html">Create Role</a>
-                                        </li>
-                                    </ul>
-                                </li> -->
-
-                                <!-- <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="media.html">
-                                        <i class="ri-price-tag-3-line"></i>
-                                        <span>Media</span>
-                                    </a>
-                                </li> -->
-
-                                <!-- <li class="sidebar-list">
-                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
-                                        <i class="ri-focus-3-line"></i>
-                                        <span>Localization</span>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li>
-                                            <a href="translation.html">Translation</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="currency-rates.html">Currency Rates</a>
-                                        </li>
-                                    </ul>
-                                </li> -->
-
-                                <!-- <li class="sidebar-list">
-                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
-                                        <i class="ri-price-tag-3-line"></i>
-                                        <span>Coupons</span>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li>
-                                            <a href="coupon-list.html">Coupon List</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="create-coupon.html">Create Coupon</a>
-                                        </li>
-                                    </ul>
-                                </li> -->
-
-                                <!-- <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="taxes.html">
-                                        <i class="ri-price-tag-3-line"></i>
-                                        <span>Tax</span>
-                                    </a>
-                                </li>
-
-                                <li class="sidebar-list">
-                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
-                                        <i class="ri-settings-line"></i>
-                                        <span>Settings</span>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li>
-                                            <a href="profile-setting.html">Profile Setting</a>
-                                        </li>
-                                    </ul>
-                                </li> -->
-
                             </ul>
                         </div>
 
@@ -727,6 +637,53 @@
         </div>
     </div>
     <!-- Modal End -->
+    <script>
+        // 在受保護的頁面載入時檢查登錄狀態
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+          // 如果用戶未登錄，重定向到登錄頁面
+          window.location.href = 'login.html';
+        }
+    </script>
+
+    <script>
+        document.querySelector('.btn--yes').addEventListener('click', function() {
+            // 創建一個新的XMLHttpRequest對象
+            const xhr = new XMLHttpRequest();
+
+            // 配置請求類型、URL和是否異步處理
+            xhr.open('POST', '../emps/logout', true);
+
+            // 註冊一個事件處理程序，用於處理請求完成後的任務
+            xhr.onreadystatechange = function() {
+                // readyState === 4表示請求已完成
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        // 登出成功，移除登錄標誌
+                        sessionStorage.removeItem('isLoggedIn');
+                        // 可能會重定向到登錄頁面或其他位置
+                        window.location.href = 'login.html';
+                    } else {
+                        // 任何其他狀態代碼表示出現錯誤
+                        console.error('Error:', xhr.statusText);
+                        alert('An error occurred while logging out. Please try again.');
+                    }
+                }
+            };
+
+            // 發送請求
+            xhr.send();
+        });
+    </script>
+    <script>
+        window.onload = function() {
+            // 从sessionStorage获取员工姓名
+            const empName = sessionStorage.getItem('empName');
+            if (empName) {
+                // 如果找到员工姓名，则将其显示在页面上
+                document.querySelector('.user-name-hide span').textContent = empName;
+            }
+        };
+    </script>
 
     <!-- latest js -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>

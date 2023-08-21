@@ -101,11 +101,11 @@
                                     <!-- 鈴鐺 -->
                                     <li class="right-side">
                                         <div class="onhover-dropdown header-badge">
-                                            <button type="button" class="btn p-0 position-relative header-wishlist">
+                                            <button type="button" class="btn p-0 position-relative header-wishlist" >
                                                 <div class="delivery-icon">
                                                     <i class="fa-regular fa-bell fa-xl"></i>
                                                 </div>
-                                                <span class="position-absolute top-0 start-100 translate-middle badge">3
+                                                <span  class="position-absolute top-0 start-100 translate-middle badge">3
                                                     <span class="visually-hidden">unread messages</span>
                                                 </span>
                                             </button>
@@ -170,16 +170,17 @@
     
     
                                     <li class="right-side">
-                                        <div class="onhover-dropdown header-badge">
-                                            <button type="button" class="btn p-0 position-relative header-wishlist">
+                                        <div  class="onhover-dropdown header-badge">
+                                            <button id="car_btn" type="button" class="btn p-0 position-relative header-wishlist">
+                                                <!-- <a href="http://localhost:8080/homieProject/front-end/cart.html" class="btn p-0 position-relative header-wishlist"></a> -->
                                                 <i data-feather="shopping-cart"></i>
-                                                <span class="position-absolute top-0 start-100 translate-middle badge">2
+                                                <span id="car_num" class="position-absolute top-0 start-100 translate-middle badge">2
                                                     <span class="visually-hidden">unread messages</span>
                                                 </span>
                                             </button>
     
-                                            <div class="onhover-div">
-                                                <ul class="cart-list">
+                                             <!-- <div class="onhover-div">
+                                                <ul id="car_detail" class="cart-list">
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
                                                             <a href="product-left-thumbnail.html" class="drop-image">
@@ -230,7 +231,7 @@
                                                     <a href="checkout.html" class="btn btn-sm cart-button theme-bg-color
                                                     text-white">結帳</a>
                                                 </div>
-                                            </div>
+                                            </div>   -->
                                         </div>
                                     </li>
                                     <li class="right-side onhover-dropdown">
@@ -472,9 +473,10 @@
                         <div class="col-xl-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="right-box-contain">
                                 <!-- <h6 class="offer-top">30% Off</h6> -->
-                                <h2 class="name">${product.product_name}</h2>
+                                <h2 id="product_id" style="display: none;">${product.product_id}</h2>
+                                <h2 id="product_name">${product.product_name}</h2>
                                 <div class="price-rating">
-                                    <h3 class="theme-color price">$ ${product.product_price}
+                                    <h3 id="product_price" class="theme-color price">$${product.product_price}
                                         <!-- <del class="text-content">$58.46</del> 
                                         <span class="offer theme-color">(8% off)</span> -->
                                     </h3>
@@ -493,7 +495,7 @@
                                 </div>
 
                                 <div class="procuct-contain">
-                                    <p>${product.product_introduction}</p>
+                                    <p></p>
                                 </div>
 
                                 <!-- <div class="product-packege">
@@ -583,14 +585,14 @@
 
                                 <div class="buy-box">
                                     <a href="wishlist.html">
-                                        <i data-feather="heart"></i>
+                                        <i data-feather="heart" style="color: red;" ></i>
                                         <span>Add To Wishlist</span>
                                     </a>
 
-                                    <a href="compare.html">
+                                    <!-- <a href="compare.html">
                                         <i data-feather="shuffle"></i>
                                         <span>Add To Compare</span>
-                                    </a>
+                                    </a> -->
                                 </div>
 
                                 <div class="pickup-box">
@@ -600,10 +602,7 @@
 
                                     <div class="pickup-detail">
                                         <h4 class="text-content">
-                                            在小小的花园里挖呀挖呀挖
-                                            种小小的种子开小小的花
-                                            在大大的森林里挖呀挖呀挖
-                                            种大大的种子开大大的花</h4>
+                                            ${product.product_introduction}</h4>
                                     </div>
 
                                     <div class="product-info">
@@ -1634,25 +1633,179 @@
 
     <!-- script js -->
     <script src="../assets/js/script.js"></script>
-    <script>
-        
-        const plusButton  = document.querySelector('.qty-right-plus');
-        const minusButton = document.querySelector('.qty-left-minus');
-        const qtyInput    = document.querySelector('.qty-input');
-     
 
-        plusButton.addEventListener('click', function () {
-            let currentValue = parseInt(qtyInput.value);
-            qtyInput.value = currentValue + 1;
-        });
-    
-        minusButton.addEventListener('click', function () {
-            let currentValue = parseInt(qtyInput.value);
-            if (currentValue > 0) {
-                qtyInput.value = currentValue - 1;
-            }
-        });
+    <!-- ajax-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        window.onload = function() {
+   //在這裡放置你想要在所有內容（包括圖片和其他資源）載入完成後執行的程式碼
+   
+            const plusButton   = document.querySelector('.qty-right-plus');
+            const minusButton  = document.querySelector('.qty-left-minus');
+            const qtyInput     = document.querySelector('.qty-input');
+            const add_to_cart  = document.querySelector('#add_to_cart');
+            const product_id   = document.querySelector("#product_id");
+            const product_name = document.querySelector("#product_name");
+            const product_price= document.querySelector("#product_price");
+            const car_num      = document.querySelector("#car_num");
+            
+            plusButton.addEventListener('click', function () {
+                let currentValue = parseInt(qtyInput.value);
+                qtyInput.value = currentValue + 1;
+            });
         
+            minusButton.addEventListener('click', function () {
+                let currentValue = parseInt(qtyInput.value);
+                if (currentValue > 0) {
+                    qtyInput.value = currentValue - 1;
+                }
+            });
+
+            add_to_cart.addEventListener('click',function(){
+                
+                const product_price =parseInt(document.querySelector("#product_price").innerHTML.substring(1));
+
+                const product_total = product_price * parseInt(qtyInput.value);
+
+                if( qtyInput.value == 0 ){
+                    alert("請輸入數量");
+                    return;
+                }
+                $.ajax({
+                    url:"/homieProject/Product/InsetRedisController",
+                    type:"POST",
+                    dataType:"json",
+                    data : JSON.stringify ({
+                        product_id:product_id.innerHTML,
+                        product_name :product_name.innerHTML,
+                        product_count:qtyInput.value,
+                        product_price:product_price,
+                        product_total:product_total,
+                        
+
+                    }) ,
+                    success:function(data){
+						console.log("asdsa");
+                        window.location.href = "http://localhost:8080/homieProject/front-end/cart.html";
+
+                    },error:function(error){
+
+                    }
+                })    
+
+            });    
+             
+            $("#car_btn").on("click",function(){
+
+                //console.log("abcds");
+
+                 window.location.href = "http://localhost:8080/homieProject/front-end/cart.html";
+
+                // $.ajax({
+                //     url:"/homieProject/Product/GetAllRedisController",
+                //     type:"POST",
+                //     dataType:"json",
+                //     data :{ 
+                //         user_id:'user_id:1'
+                //     },
+                //     success:function(data){
+                        
+                //         console.log("abcdef");
+                    
+                //         $("#car_detail").html("");
+
+                //         for( let key in data){    
+                //               let hmtl=`<li class="product-box-contain">
+                //                             <div class="drop-cart">
+                //                                 <a href="product-left-thumbnail.html" class="drop-image">
+                //                                     <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}"
+                //                                         class="blur-up lazyload" alt="">
+                //                                 </a>
+
+                //                                 <div class="drop-contain">
+                //                                     <a href="product-left-thumbnail.html">
+                //                                         <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+                //                                     </a>
+                //                                     <h6><span>${data[key].product_count} x</span> $${data[key].product_total}</h6>
+                //                                     <button class="close-button close_button">
+                //                                         <i class="fa-solid fa-xmark"></i>
+                //                                     </button>
+                //                                 </div>
+                //                             </div>
+                //                         </li>`;
+
+                            
+                //                         $("#car_detail").html(hmtl);            
+                                        
+                //         }                
+                    
+                //     },
+                //     error:function(error){
+
+                //         console.log(error);
+
+                //     }
+
+                // })
+            });
+
+            
+
+            function getAllNum(){
+                $.ajax({
+                    url:"/homieProject/Product/GetAllRedisController",
+                    type:"POST",
+                    dataType:"json",
+                    data :{ 
+                        user_id:'user_id:1'
+                    },
+                    success:function(data){
+                        car_num.innerHTML=data.length;
+                      //  console.log(data);
+                        //$("#car_detail").html("");
+
+                        // for( let key in data){    
+                        //       let hmtl=`<li class="product-box-contain">
+                        //                     <div class="drop-cart">
+                        //                         <a href="product-left-thumbnail.html" class="drop-image">
+                        //                             <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}"
+                        //                                 class="blur-up lazyload" alt="">
+                        //                         </a>
+
+                        //                         <div class="drop-contain">
+                        //                             <a href="product-left-thumbnail.html">
+                        //                                 <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+                        //                             </a>
+                        //                             <h6><span>${data[key].product_count} x</span> $${data[key].product_total}</h6>
+                        //                             <button class="close-button close_button">
+                        //                                 <i class="fa-solid fa-xmark"></i>
+                        //                             </button>
+                        //                         </div>
+                        //                     </div>
+                        //                 </li>`;
+
+                            
+                        //                 $("#car_detail").html(hmtl);            
+                                        
+                        // }                
+                    
+                    },
+                    error:function(error){
+
+                        console.log(error);
+
+                    }
+
+                })
+            }
+
+            getAllNum();
+
+        };    
      
     </script>       
 

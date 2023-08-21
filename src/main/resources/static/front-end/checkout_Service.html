@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fastkart">
+    <meta name="keywords" content="Fastkart">
+    <meta name="author" content="Fastkart">
+    <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
+    <title>Checkout</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- bootstrap css -->
+    <link id="rtl-link" rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
+
+    <!-- font-awesome css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
+
+    <!-- feather icon css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css">
+
+    <!-- slick css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick-theme.css">
+
+    <!-- Iconly css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/bulk-style.css">
+
+    <!-- Template css -->
+    <link id="color-link" rel="stylesheet" type="text/css" href="../assets/css/style.css">
+</head>
+
+<body>
+    <!-- Loader Start -->
+    <div class="fullpage-loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <!-- Loader End -->
+
+    <!-- Header Start -->
+    <header class="pb-md-4 pb-0">
+        <div class="top-nav top-header sticky-header">
+            <div class="container-fluid-lg">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="navbar-top">
+                            <button class="navbar-toggler d-xl-none d-inline navbar-menu-button" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#primaryMenu">
+                                <span class="navbar-toggler-icon">
+                                    <i class="fa-solid fa-bars"></i>
+                                </span>
+                            </button>
+                            <a href="index.html" class="web-logo nav-logo">
+                                <img src="../assets/images/svg/Homie_logo.svg" class="img-fluid blur-up lazyload"
+                                    alt="">
+                            </a>
+                            <div class="rightside-box">
+                                <div class="search-full">
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i data-feather="search" class="font-light"></i>
+                                        </span>
+                                        <input type="text" class="form-control search-type"
+                                            placeholder="Search here..">dashboard-contant-title
+                                        <span class="input-group-text close-search">
+                                            <i data-feather="x" class="font-light"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <ul class="right-side-menu">
+                                    <li class="right-side">
+                                        <div class="delivery-login-box">
+                                            <div class="delivery-icon">
+                                                <div class="search-box">
+                                                    <i data-feather="search"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- 鈴鐺 -->
+                                    <li class="right-side">
+                                        <div class="onhover-dropdown header-badge">
+                                            <button type="button" class="btn p-0 position-relative header-wishlist">
+                                                <div class="delivery-icon">
+                                                    <i class="fa-regular fa-bell fa-xl"></i>
+                                                </div>
+                                                <span class="position-absolute top-0 start-100 translate-middle badge">3
+                                                    <span class="visually-hidden">unread messages</span>
+                                                </span>
+                                            </button>
+    
+                                            <div class="onhover-div">
+                                                <ul class="cart-list">
+                                                    <li class="product-box-contain">
+                                                        <a class="aa" href="#">
+                                                            <div class="drop-cart">
+                                                                <div class="drop-contain">
+                                                                    <h5 class="a">通知一</h5>
+                                                                    <h6>關於今日特價方案</h6>
+                                                                    <button class="close-button close_button">
+                                                                        <i class="fa-solid fa-xmark"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+    
+                                                    <li class="product-box-contain">
+                                                        <a class="aa" href="#">
+                                                            <div class="drop-cart">
+                                                                <div class="drop-contain">
+                                                                    <h5 class="a">通知二
+                                                                    </h5>
+                                                                    <h6>關於今日特價方案</h6>
+                                                                    <button class="close-button close_button">
+                                                                        <i class="fa-solid fa-xmark"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+    
+                                                    <li class="product-box-contain">
+                                                        <a class="aa" href="#">
+                                                            <div class="drop-cart">
+                                                                <div class="drop-contain">
+                                                                    <h5 class="a">通知三
+                                                                    </h5>
+                                                                    <h6>關於今日特價方案</h6>
+                                                                    <button class="close-button close_button">
+                                                                        <i class="fa-solid fa-xmark"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- 鈴鐺 -->
+    
+                                    <li class="right-side">
+                                        <a href="user-dashboard.html" class="btn p-0 position-relative header-wishlist"
+                                            onclick="redirectToWishlist()">
+                                            <i data-feather="heart"></i>
+                                        </a>
+                                    </li>
+    
+    
+                                    <li class="right-side">
+                                        <div class="onhover-dropdown header-badge">
+                                            <button type="button" class="btn p-0 position-relative header-wishlist">
+                                                <i data-feather="shopping-cart"></i>
+                                                <span class="position-absolute top-0 start-100 translate-middle badge">2
+                                                    <span class="visually-hidden">unread messages</span>
+                                                </span>
+                                            </button>
+    
+                                            <div class="onhover-div">
+                                                <ul class="cart-list">
+                                                    <li class="product-box-contain">
+                                                        <div class="drop-cart">
+                                                            <a href="product-left-thumbnail.html" class="drop-image">
+                                                                <img src="../assets/images/vegetable/product/1.png"
+                                                                    class="blur-up lazyload" alt="">
+                                                            </a>
+    
+                                                            <div class="drop-contain">
+                                                                <a href="product-left-thumbnail.html">
+                                                                    <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+                                                                </a>
+                                                                <h6><span>1 x</span> $80.58</h6>
+                                                                <button class="close-button close_button">
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+    
+                                                    <li class="product-box-contain">
+                                                        <div class="drop-cart">
+                                                            <a href="product-left-thumbnail.html" class="drop-image">
+                                                                <img src="../assets/images/vegetable/product/2.png"
+                                                                    class="blur-up lazyload" alt="">
+                                                            </a>
+    
+                                                            <div class="drop-contain">
+                                                                <a href="product-left-thumbnail.html">
+                                                                    <h5>Peanut Butter Bite Premium Butter Cookies 600 g
+                                                                    </h5>
+                                                                </a>
+                                                                <h6><span>1 x</span> $25.68</h6>
+                                                                <button class="close-button close_button">
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+    
+                                                <div class="price-box">
+                                                    <h5>總價 :</h5>
+                                                    <h4 class="theme-color fw-bold">$106.58</h4>
+                                                </div>
+    
+                                                <div class="button-group">
+                                                    <a href="cart.html" class="btn btn-sm cart-button">購物車</a>
+                                                    <a href="checkout.html" class="btn btn-sm cart-button theme-bg-color
+                                                    text-white">結帳</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="right-side onhover-dropdown">
+                                        <div class="delivery-login-box">
+                                            <div class="delivery-icon">
+                                                <i data-feather="user"></i>
+                                            </div>
+                                            <div class="delivery-detail">
+                                                <h6>Hello,</h6>
+                                                <h5>My Account</h5>
+                                            </div>
+                                        </div>
+    
+                                        <div class="onhover-div onhover-div-login">
+                                            <ul class="user-box-name">
+                                                <li class="product-box-contain">
+                                                    <i></i>
+                                                    <a href="login.html">登入</a>
+                                                </li>
+    
+                                                <li class="product-box-contain">
+                                                    <a href="sign-up.html">註冊</a>
+                                                </li>
+    
+                                                <li class="product-box-contain">
+                                                    <a href="forgot.html">忘記密碼</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-12">
+                    <div class="header-nav">
+                        <div class="header-nav-middle">
+                            <div class="main-nav navbar navbar-expand-xl navbar-light navbar-sticky">
+                                <div class="offcanvas offcanvas-collapse order-xl-2" id="primaryMenu">
+                                    <div class="offcanvas-header navbar-shadow">
+                                        <h5>Menu</h5>
+                                        <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="offcanvas-body">
+                                        <ul class="navbar-nav">
+    
+                                            <li class="nav-item dropdown">
+                                                <a style="font-size: 20px; font-weight: bold;">商品頁面</a>
+                                            </li>
+    
+                                            <li class="nav-item dropdown">
+                                                <a style="font-size: 20px; font-weight: bold;">服務頁面</a>
+                                            </li>
+    
+                                            <li class="nav-item dropdown dropdown-mega">
+                                                <a style="font-size: 20px; font-weight: bold;">幫助中心</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- mobile fix menu start -->
+    <div class="mobile-menu d-md-none d-block mobile-cart">
+        <ul>
+            <li class="active">
+                <a href="index.html">
+                    <i class="iconly-Home icli"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <li class="mobile-category">
+                <a href="javascript:void(0)">
+                    <i class="iconly-Category icli js-link"></i>
+                    <span>Category</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="search.html" class="search-box">
+                    <i class="iconly-Search icli"></i>
+                    <span>Search</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="wishlist.html" class="notifi-wishlist">
+                    <i class="iconly-Heart icli"></i>
+                    <span>My Wish</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="cart.html">
+                    <i class="iconly-Bag-2 icli fly-cate"></i>
+                    <span>Cart</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- mobile fix menu end -->
+
+    <!-- Breadcrumb Section Start -->
+    <section class="breadscrumb-section pt-0">
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadscrumb-contain">
+                        <h2>Checkout</h2>
+                        <nav>
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">
+                                        
+                                        <i class="fa-solid fa-house"></i>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Checkout section Start -->
+    <section class="checkout-section-2 section-b-space">
+        <div class="container-fluid-lg">
+            <div class="row g-sm-4 g-3">
+                <div class="col-lg-8">
+                    <div class="left-sidebar-checkout">
+                        <div class="checkout-detail-box">
+                            <ul>
+                                <li>
+                                    <div class="checkout-icon">
+                                        <lord-icon target=".nav-item" src="https://cdn.lordicon.com/ggihhudh.json"
+                                            trigger="loop-on-hover"
+                                            colors="primary:#121331,secondary:#646e78,tertiary:#0baf9a"
+                                            class="lord-icon">
+                                        </lord-icon>
+                                    </div>
+                                    <div class="checkout-box">
+                                        <div class="checkout-title">
+                                            <h4>收件詳細</h4>
+                                        </div>
+
+                                        <div class="checkout-detail">
+                                            <div class="row g-4">
+                                                <div class="col-xxl-12 col-lg-12 col-md-6">
+                                                    <div class="delivery-address-box">
+                                                        <div>
+                                                            <div class="form-group">
+                                                                <label for="home_name">收件人</label>
+                                                                <input type="text" class="form-control" id="home_name" placeholder="收件人" style=" width: 650px;">
+                                                                <div class="error-message" id="home_name_error" style="color: red;"></div>
+                                                                <label for="home_addrss">地址</label>
+                                                                <input type="text" class="form-control" id="home_addrss" placeholder="地址" style=" width: 650px;">
+                                                                <div class="error-message" id="home_addrss_error" style="color: red;"></div>
+                                                                <label for="home_phone">電話</label>
+                                                                <input type="text" class="form-control" id="home_phone" placeholder="電話" style=" width: 650px;">
+                                                                <div class="error-message" id="home_phone_error" style="color: red;"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- <li>
+                                    <div class="checkout-icon">
+                                        <lord-icon target=".nav-item" src="https://cdn.lordicon.com/oaflahpk.json"
+                                            trigger="loop-on-hover" colors="primary:#0baf9a" class="lord-icon">
+                                        </lord-icon>
+                                    </div>
+                                    <div class="checkout-box">
+                                        <div class="checkout-title">
+                                            <h4>Delivery Option</h4>
+                                        </div>
+
+                                        <div class="checkout-detail">
+                                            <div class="row g-4">
+                                                <div class="col-xxl-6">
+                                                    <div class="delivery-option">
+                                                        <div class="delivery-category">
+                                                            <div class="shipment-detail">
+                                                                <div
+                                                                    class="form-check custom-form-check hide-check-box">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="standard" id="standard" checked>
+                                                                    <label class="form-check-label"
+                                                                        for="standard">Standard
+                                                                        Delivery Option</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xxl-6">
+                                                    <div class="delivery-option">
+                                                        <div class="delivery-category">
+                                                            <div class="shipment-detail">
+                                                                <div
+                                                                    class="form-check mb-0 custom-form-check show-box-checked">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="standard" id="future">
+                                                                    <label class="form-check-label" for="future">Future
+                                                                        Delivery Option</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 future-box">
+                                                    <div class="future-option">
+                                                        <div class="row g-md-0 gy-4">
+                                                            <div class="col-md-6">
+                                                                <div class="delivery-items">
+                                                                    <div>
+                                                                        <h5 class="items text-content"><span>3
+                                                                                Items</span>@
+                                                                            $693.48</h5>
+                                                                        <h5 class="charge text-content">Delivery Charge
+                                                                            $34.67
+                                                                            <button type="button" class="btn p-0"
+                                                                                data-bs-toggle="tooltip"
+                                                                                data-bs-placement="top"
+                                                                                title="Extra Charge">
+                                                                                <i
+                                                                                    class="fa-solid fa-circle-exclamation"></i>
+                                                                            </button>
+                                                                        </h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6">
+                                                                <form
+                                                                    class="form-floating theme-form-floating date-box">
+                                                                    <input type="date" class="form-control">
+                                                                    <label>Select Date</label>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li> -->
+
+                                <li>
+                                    <div class="checkout-icon">
+                                        <lord-icon target=".nav-item" src="https://cdn.lordicon.com/qmcsqnle.json"
+                                            trigger="loop-on-hover" colors="primary:#0baf9a,secondary:#0baf9a"
+                                            class="lord-icon">
+                                        </lord-icon>
+                                    </div>
+                                    <div class="checkout-box">
+                                        <div class="checkout-title">
+                                            <h4>Payment Option</h4>
+                                        </div>
+
+                                        <div class="checkout-detail">
+                                            <div class="accordion accordion-flush custom-accordion"
+                                                id="accordionFlushExample">
+                                                <div class="accordion-item">
+                                                    <div class="accordion-header" id="flush-headingFour">
+                                                        <div class="accordion-button collapsed"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#flush-collapseFour" 
+                                                            >
+                                                            <div class="custom-form-check form-check mb-0">
+                                                                <label class="form-check-label" for="cash"><input
+                                                                        class="form-check-input mt-0" type="radio"
+                                                                        name="flexRadioDefault" id="cash" checked> 
+                                                                        貨到付款</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="flush-collapseFour"
+                                                        class="accordion-collapse collapse show"
+                                                        data-bs-parent="#accordionFlushExample">
+                                                        <div class="accordion-body">
+                                                            <p class="cod-review">
+                                                                請你把錢直接交給物流人員，謝謝
+                                                                <!-- <a href="javascript:void(0)">Know more.</a> -->
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- <div class="accordion-item">
+                                                    <div class="accordion-header" id="flush-headingOne">
+                                                        <div class="accordion-button collapsed"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#flush-collapseOne">
+                                                            <div class="custom-form-check form-check mb-0">
+                                                                <label class="form-check-label" for="credit"><input
+                                                                        class="form-check-input mt-0" type="radio"
+                                                                        name="flexRadioDefault" id="credit">
+                                                                    信用卡或金融卡支付</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                                        data-bs-parent="#accordionFlushExample">
+                                                        <div class="accordion-body">
+                                                            <div class="row g-2">
+                                                                <div class="col-12">
+                                                                    <div class="payment-method">
+                                                                        <div
+                                                                            class="form-floating mb-lg-3 mb-2 theme-form-floating">
+                                                                            <input type="text" class="form-control"
+                                                                                id="credit2"
+                                                                                placeholder="Enter Credit & Debit Card Number">
+                                                                            <label for="credit2">信用卡卡號</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-xxl-4">
+                                                                    <div
+                                                                        class="form-floating mb-lg-3 mb-2 theme-form-floating">
+                                                                        <input type="text" class="form-control"
+                                                                            id="expiry" placeholder="Enter Expiry Date">
+                                                                        <label for="expiry">Expiry Date</label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-xxl-4">
+                                                                    <div
+                                                                        class="form-floating mb-lg-3 mb-2 theme-form-floating">
+                                                                        <input type="text" class="form-control" id="cvv"
+                                                                            placeholder="Enter CVV Number">
+                                                                        <label for="cvv">CVV Number</label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-xxl-4">
+                                                                    <div
+                                                                        class="form-floating mb-lg-3 mb-2 theme-form-floating">
+                                                                        <input type="password" class="form-control"
+                                                                            id="password" placeholder="Enter Password">
+                                                                        <label for="password">Password</label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="button-group mt-0">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <button
+                                                                                class="btn btn-light shopping-button">Cancel</button>
+                                                                        </li>
+
+                                                                        <li>
+                                                                            <button class="btn btn-animation">Use This
+                                                                                Card</button>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+
+                                                <!-- <div class="accordion-item">
+                                                    <div class="accordion-header" id="flush-headingTwo">
+                                                        <div class="accordion-button collapsed"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#flush-collapseTwo">
+                                                            <div class="custom-form-check form-check mb-0">
+                                                                <label class="form-check-label" for="banking"><input
+                                                                        class="form-check-input mt-0" type="radio"
+                                                                        name="flexRadioDefault" id="banking">Net
+                                                                    Banking</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                                        data-bs-parent="#accordionFlushExample">
+                                                        <div class="accordion-body">
+                                                            <h5 class="text-uppercase mb-4">Select Your Bank
+                                                            </h5>
+                                                            <div class="row g-2">
+                                                                <div class="col-md-6">
+                                                                    <div class="custom-form-check form-check">
+                                                                        <input class="form-check-input mt-0"
+                                                                            type="radio" name="flexRadioDefault"
+                                                                            id="bank1">
+                                                                        <label class="form-check-label"
+                                                                            for="bank1">Industrial & Commercial
+                                                                            Bank</label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <div class="custom-form-check form-check">
+                                                                        <input class="form-check-input mt-0"
+                                                                            type="radio" name="flexRadioDefault"
+                                                                            id="bank2">
+                                                                        <label class="form-check-label"
+                                                                            for="bank2">Agricultural Bank</label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <div class="custom-form-check form-check">
+                                                                        <input class="form-check-input mt-0"
+                                                                            type="radio" name="flexRadioDefault"
+                                                                            id="bank3">
+                                                                        <label class="form-check-label" for="bank3">Bank
+                                                                            of America</label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <div class="custom-form-check form-check">
+                                                                        <input class="form-check-input mt-0"
+                                                                            type="radio" name="flexRadioDefault"
+                                                                            id="bank4">
+                                                                        <label class="form-check-label"
+                                                                            for="bank4">Construction Bank Corp.</label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <div class="custom-form-check form-check">
+                                                                        <input class="form-check-input mt-0"
+                                                                            type="radio" name="flexRadioDefault"
+                                                                            id="bank5">
+                                                                        <label class="form-check-label" for="bank5">HSBC
+                                                                            Holdings</label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <div class="custom-form-check form-check">
+                                                                        <input class="form-check-input mt-0"
+                                                                            type="radio" name="flexRadioDefault"
+                                                                            id="bank6">
+                                                                        <label class="form-check-label"
+                                                                            for="bank6">JPMorgan Chase & Co.</label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-12">
+                                                                    <div class="select-option">
+                                                                        <div class="form-floating theme-form-floating">
+                                                                            <select
+                                                                                class="form-select theme-form-select"
+                                                                                aria-label="Default select example">
+                                                                                <option value="hsbc">HSBC Holdings
+                                                                                </option>
+                                                                                <option value="loyds">Lloyds Banking
+                                                                                    Group</option>
+                                                                                <option value="natwest">Nat West Group
+                                                                                </option>
+                                                                                <option value="Barclays">Barclays
+                                                                                </option>
+                                                                                <option value="other">Others Bank
+                                                                                </option>
+                                                                            </select>
+                                                                            <label>Select Other Bank</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="accordion-item">
+                                                    <div class="accordion-header" id="flush-headingThree">
+                                                        <div class="accordion-button collapsed"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#flush-collapseThree">
+                                                            <div class="custom-form-check form-check mb-0">
+                                                                <label class="form-check-label" for="wallet"><input
+                                                                        class="form-check-input mt-0" type="radio"
+                                                                        name="flexRadioDefault" id="wallet">My
+                                                                    Wallet</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                                        data-bs-parent="#accordionFlushExample">
+                                                        <div class="accordion-body">
+                                                            <h5 class="text-uppercase mb-4">Select Your Wallet
+                                                            </h5>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="custom-form-check form-check">
+                                                                        <label class="form-check-label"
+                                                                            for="amazon"><input
+                                                                                class="form-check-input mt-0"
+                                                                                type="radio" name="flexRadioDefault"
+                                                                                id="amazon">Amazon Pay</label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <div class="custom-form-check form-check">
+                                                                        <input class="form-check-input mt-0"
+                                                                            type="radio" name="flexRadioDefault"
+                                                                            id="gpay">
+                                                                        <label class="form-check-label"
+                                                                            for="gpay">Google Pay</label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <div class="custom-form-check form-check">
+                                                                        <input class="form-check-input mt-0"
+                                                                            type="radio" name="flexRadioDefault"
+                                                                            id="airtel">
+                                                                        <label class="form-check-label"
+                                                                            for="airtel">Airtel Money</label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <div class="custom-form-check form-check">
+                                                                        <input class="form-check-input mt-0"
+                                                                            type="radio" name="flexRadioDefault"
+                                                                            id="paytm">
+                                                                        <label class="form-check-label"
+                                                                            for="paytm">Paytm Pay</label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <div class="custom-form-check form-check">
+                                                                        <input class="form-check-input mt-0"
+                                                                            type="radio" name="flexRadioDefault"
+                                                                            id="jio">
+                                                                        <label class="form-check-label" for="jio">JIO
+                                                                            Money</label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <div class="custom-form-check form-check">
+                                                                        <input class="form-check-input mt-0"
+                                                                            type="radio" name="flexRadioDefault"
+                                                                            id="free">
+                                                                        <label class="form-check-label"
+                                                                            for="free">Freecharge</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="right-side-summery-box">
+                        <div class="summery-box-2">
+                            <div class="summery-header">
+                                <h3>Order Summery</h3>
+                            </div>
+
+                            <ul class="summery-contain">
+                                <li>
+                                    <img src="../assets/images/vegetable/product/1.png"
+                                        class="img-fluid blur-up lazyloaded checkout-image" alt="">
+                                    <h4>Bell pepper <span>X 1</span></h4>
+                                    <h4 class="price">$32.34</h4>
+                                </li>
+                            </ul>
+
+                            <ul class="summery-total">
+                                <li>
+                                    <h4>小計</h4>
+                                    <h4 class="price" id="subtotal">$0</h4>
+                                </li>
+                
+                                <li>
+                                    <h4>折價</h4>
+                                    <h4 class="price" id="Coupontotal">$0</h4>
+                                </li>
+
+                                <li class="list-total">
+                                    <h4>總計</h4>
+                                    <h4 class="price" id="finlTotal">$0</h4>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="checkout-offer">
+                            <div class="offer-title">
+                                <div class="offer-icon">
+                                    <img src="../assets/images/inner-page/offer.svg" class="img-fluid" alt="">
+                                </div>
+                                <div class="offer-name">
+                                    <h6>Available Offers</h6>
+                                </div>
+                            </div>
+
+                            <ul class="offer-detail">
+                                <li>
+                                    <p>Combo: BB Royal Almond/Badam Californian, Extra Bold 100 gm...</p>
+                                </li>
+                                <li>
+                                    <p>combo: Royal Cashew Californian, Extra Bold 100 gm + BB Royal Honey 500 gm</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <button id="btn_order" class="btn theme-bg-color text-white btn-md w-100 mt-4 fw-bold">Place Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Checkout section End -->
+
+    <!-- Footer Section Start -->
+    <footer class="section-t-space">
+        <div class="container-fluid-lg">
+            <div class="main-footer section-b-space section-t-space">
+                <div class="row g-md-4 g-3">
+                    <div class="col-lg-6">
+                        <div class="footer-logo">
+                            <div class="theme-logo">
+                                <a href="index.html">
+                                    <img src="../assets/images/logo/1.png" class="blur-up lazyload" alt="">
+                                </a>
+                            </div>
+    
+                            <div class="footer-logo-contain">
+                                <p>我們是一家專業的清潔服務提供商，為客戶提供高品質的清潔服務和產品。
+                                    我們的平台連結客戶和優質的清潔人員，提供各種清潔服務，包括家庭和商業清潔。</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-6">
+                        <div class="footer-title">
+                            <h4>聯絡我們</h4>
+                        </div>
+    
+                        <div class="footer-contact">
+                            <ul>
+                                <li>
+                                    <div class="footer-number">
+                                        <i data-feather="phone"></i>
+                                        <div class="contact-number">
+                                            <h6 class="text-content">客服專線 :</h6>
+                                            <h5>02-0909-0909</h5>
+                                        </div>
+                                    </div>
+                                </li>
+    
+                                <li>
+                                    <div class="footer-number">
+                                        <i data-feather="mail"></i>
+                                        <div class="contact-number">
+                                            <h6 class="text-content">公司信箱 :</h6>
+                                            <h5>stella@Homie.com.tw</h5>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="footer-number">
+                                        <i data-feather="home"></i>
+                                        <div class="contact-number">
+                                            <h6 class="text-content">公司地址 :</h6>
+                                            <h5>台北市信義區忠孝東路五段</h5>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Location Modal Start -->
+    <div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Choose your Delivery Location</h5>
+                    <p class="mt-1 text-content">Enter your address and we will specify the offer for your area.</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="location-list">
+                        <div class="search-input">
+                            <input type="search" class="form-control" placeholder="Search Your Area">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+
+                        <div class="disabled-box">
+                            <h6>Select a Location</h6>
+                        </div>
+
+                        <ul class="location-select custom-height">
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Alabama</h6>
+                                    <span>Min: $130</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Arizona</h6>
+                                    <span>Min: $150</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>California</h6>
+                                    <span>Min: $110</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Colorado</h6>
+                                    <span>Min: $140</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Florida</h6>
+                                    <span>Min: $160</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Georgia</h6>
+                                    <span>Min: $120</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Kansas</h6>
+                                    <span>Min: $170</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Minnesota</h6>
+                                    <span>Min: $120</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>New York</h6>
+                                    <span>Min: $110</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Washington</h6>
+                                    <span>Min: $130</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Location Modal End -->
+
+    <!-- Add address modal box start -->
+    <div class="modal fade theme-modal" id="add-address" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">Add a new address</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-floating mb-4 theme-form-floating">
+                            <input type="text" class="form-control" id="fname" placeholder="Enter First Name">
+                            <label for="fname">First Name</label>
+                        </div>
+                    </form>
+
+                    <form>
+                        <div class="form-floating mb-4 theme-form-floating">
+                            <input type="text" class="form-control" id="lname" placeholder="Enter Last Name">
+                            <label for="lname">Last Name</label>
+                        </div>
+                    </form>
+
+                    <form>
+                        <div class="form-floating mb-4 theme-form-floating">
+                            <input type="email" class="form-control" id="email" placeholder="Enter Email Address">
+                            <label for="email">Email Address</label>
+                        </div>
+                    </form>
+
+                    <form>
+                        <div class="form-floating mb-4 theme-form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="address"
+                                style="height: 100px"></textarea>
+                            <label for="address">Enter Address</label>
+                        </div>
+                    </form>
+
+                    <form>
+                        <div class="form-floating mb-4 theme-form-floating">
+                            <input type="email" class="form-control" id="pin" placeholder="Enter Pin Code">
+                            <label for="pin">Pin Code</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-md" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn theme-bg-color btn-md text-white" data-bs-dismiss="modal">Save
+                        changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add address modal box end -->
+
+    <!-- Deal Box Modal Start -->
+    <div class="modal fade theme-modal deal-modal" id="deal-box" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title w-100" id="deal_today">Deal Today</h5>
+                        <p class="mt-1 text-content">Recommended deals for you.</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="deal-offer-box">
+                        <ul class="deal-offer-list">
+                            <li class="list-1">
+                                <div class="deal-offer-contain">
+                                    <a href="shop-left-sidebar.html" class="deal-image">
+                                        <img src="../assets/images/vegetable/product/10.png" class="blur-up lazyload"
+                                            alt="">
+                                    </a>
+
+                                    <a href="shop-left-sidebar.html" class="deal-contain">
+                                        <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
+                                        <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="list-2">
+                                <div class="deal-offer-contain">
+                                    <a href="shop-left-sidebar.html" class="deal-image">
+                                        <img src="../assets/images/vegetable/product/11.png" class="blur-up lazyload"
+                                            alt="">
+                                    </a>
+
+                                    <a href="shop-left-sidebar.html" class="deal-contain">
+                                        <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
+                                        <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="list-3">
+                                <div class="deal-offer-contain">
+                                    <a href="shop-left-sidebar.html" class="deal-image">
+                                        <img src="../assets/images/vegetable/product/12.png" class="blur-up lazyload"
+                                            alt="">
+                                    </a>
+
+                                    <a href="shop-left-sidebar.html" class="deal-contain">
+                                        <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
+                                        <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="list-1">
+                                <div class="deal-offer-contain">
+                                    <a href="shop-left-sidebar.html" class="deal-image">
+                                        <img src="../assets/images/vegetable/product/13.png" class="blur-up lazyload"
+                                            alt="">
+                                    </a>
+
+                                    <a href="shop-left-sidebar.html" class="deal-contain">
+                                        <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
+                                        <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Deal Box Modal End -->
+
+    <!-- Tap to top start -->
+    <div class="theme-option">
+        <div class="back-to-top">
+            <a id="back-to-top" href="#">
+                <i class="fas fa-chevron-up"></i>
+            </a>
+        </div>
+    </div>
+    <!-- Tap to top end -->
+
+    <!-- Bg overlay Start -->
+    <div class="bg-overlay"></div>
+    <!-- Bg overlay End -->
+
+    <!-- latest jquery-->
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+
+    <!-- jquery ui-->
+    <script src="../assets/js/jquery-ui.min.js"></script>
+
+    <!-- Lordicon Js -->
+    <script src="../assets/js/lusqsztk.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/bootstrap/popper.min.js"></script>
+    <script src="../assets/js/bootstrap/bootstrap-notify.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="../assets/js/feather/feather.min.js"></script>
+    <script src="../assets/js/feather/feather-icon.js"></script>
+
+    <!-- Lazyload Js -->
+    <script src="../assets/js/lazysizes.min.js"></script>
+
+    <!-- Delivery Option js -->
+    <script src="../assets/js/delivery-option.js"></script>
+
+    <!-- Slick js-->
+    <script src="../assets/js/slick/slick.js"></script>
+    <script src="../assets/js/slick/custom_slick.js"></script>
+
+    <!-- Quantity js -->
+    <script src="../assets/js/quantity.js"></script>
+
+    <!-- script js -->
+    <script src="../assets/js/script.js"></script>
+
+    <!-- Ajax-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <script>
+        window.onload = function() {
+
+            //抓到 前頁 session值
+            const data = JSON.parse(sessionStorage.getItem("Service_data"));
+
+            console.log(data);
+
+            const subtotal        =$("#subtotal");
+            const Coupontotalotal =$("#Coupontotal");
+            const finlTotal       =$("#finlTotal");
+            const home_name       =$("#home_name"); 
+            const home_addrss     =$("#home_addrss");
+            const home_phone      =$("#home_phone");
+
+            const Redis_Data_Service=[];
+
+          
+            for( let i in data){
+                 
+                pre ={
+                    user_id:data[i].user_id,
+                    service_id:data[i].service_id,
+                    service_price:data[i].service_price,
+                    service_name:data[i].service_name,
+                    service_id_code:data[i].service_id_code,
+                    service_count:data[i].service_count,
+                    service_total:data[i].service_total,
+                    seller_id    :data[i].seller_id,
+                    service_Date :data[i].service_Date,
+                    service_DateDetail:data[i].service_DateDetail
+                }
+
+                Redis_Data_Service.push(pre);
+
+                const total = parseInt(subtotal.html().substring(1)) + parseInt(data[i].service_total);
+
+                subtotal.html("$"+total);
+
+                const subCop= total - parseInt(Coupontotalotal.html().substring(1));
+
+                finlTotal.html("$"+subCop);
+
+              let html =`<li>
+                            <img src="http://localhost:8080/homieProject/service/Select_ImgController?service_id=${data[i].service_id}"
+                                class="img-fluid blur-up lazyloaded checkout-image" alt="">
+                            <h4>Bell pepper <span>X ${data[i].service_count}</span></h4>
+                            <h4 class="price">$${data[i].service_total}</h4>
+                        </li>`;    
+
+                $("ul.summery-contain").append(html);
+
+            }         
+            
+            $("#btn_order").on("click",function(){
+               
+                if(home_name.val().trim() ==""){
+                    $("#home_name_error").html("請輸入收件人");    
+                }
+
+                if(home_addrss.val().trim() ==""){
+                    $("#home_addrss_error").html("請輸入地址");   
+                } 
+
+                if(home_phone.val().trim() == ""){
+                    $("#home_phone_error").html("請輸入電話");
+
+                }
+
+                if(home_name.val().trim() !="" && home_addrss.val().trim() !="" && home_phone.val().trim() !="" ){
+
+                  //  console.log("abcdef");
+                    
+                    $.ajax({
+                        url:"/homieProject/OrderService/InsertIntoOrdSerControllrt",
+                        type:"POST",
+                        dataType:"JSON",
+                        data :JSON.stringify({
+                            Redis_Data_Service:Redis_Data_Service
+                        }),
+                        success: function(data){
+
+                        //   window.location.href = "http://localhost:8080/homieProject/front-end/cart_Service.html";
+                        $("ul.summery-contain").html("");
+                        subtotal.html("$0");
+                        finlTotal.html("$0");
+                        sessionStorage.clear();
+                        },
+                        error:function(error){
+
+                        //    console.log(error);
+                            
+                        }    
+                    })
+
+                 }
+            });
+
+        }
+    </script>
+
+</body>
+
+</html>

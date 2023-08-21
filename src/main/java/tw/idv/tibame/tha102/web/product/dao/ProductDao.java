@@ -18,4 +18,6 @@ public interface ProductDao {
 	public Product getById(Integer product_id);
 
 	public void updateProductPicture(Integer product_id, byte[] product_picture);
+
+	//public void InsertProductDetail(Integer user_id,) 
 }

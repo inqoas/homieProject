@@ -12,7 +12,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    <title>Fastkart - Order Details</title>
+    <title>Homie - 商品訂單明細</title>
 
     <!-- Google font-->
     <link
@@ -95,46 +95,7 @@
                                 <i class="ri-search-line"></i>
                             </span>
                         </li>
-                        <li class="onhover-dropdown">
-                            <div class="notification-box">
-                                <i class="ri-notification-line"></i>
-                                <span class="badge rounded-pill badge-theme">4</span>
-                            </div>
-                            <ul class="notification-dropdown onhover-show-div">
-                                <li>
-                                    <i class="ri-notification-line"></i>
-                                    <h6 class="f-18 mb-0">Notitications</h6>
-                                </li>
-                                <li>
-                                    <p>
-                                        <i class="fa fa-circle me-2 font-primary"></i>Delivery processing <span
-                                            class="pull-right">10 min.</span>
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <i class="fa fa-circle me-2 font-success"></i>Order Complete<span
-                                            class="pull-right">1 hr</span>
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <i class="fa fa-circle me-2 font-info"></i>Tickets Generated<span
-                                            class="pull-right">3 hr</span>
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <i class="fa fa-circle me-2 font-danger"></i>Delivery Complete<span
-                                            class="pull-right">6 hr</span>
-                                    </p>
-                                </li>
-                                <li>
-                                    <a class="btn btn-primary" href="javascript:void(0)">Check all notification</a>
-                                </li>
-                            </ul>
-                        </li>
-
+                        
                         <li>
                             <div class="mode">
                                 <i class="ri-moon-line"></i>
@@ -144,22 +105,22 @@
                             <div class="media profile-media">
                                 <img class="user-profile rounded-circle" src="assets/images/users/4.jpg" alt="">
                                 <div class="user-name-hide media-body">
-                                    <span>Emay Walter</span>
-                                    <p class="mb-0 font-roboto">Admin<i class="middle ri-arrow-down-s-line"></i></p>
+                                    <span></span>
+                                    <p class="mb-0 font-roboto">管理員<i class="middle ri-arrow-down-s-line"></i></p>
                                 </div>
                             </div>
                             <ul class="profile-dropdown onhover-show-div">
                                 <li>
                                     <a href="profile-setting.html">
                                         <i data-feather="settings"></i>
-                                        <span>Settings</span>
+                                        <span>設定</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                                         href="javascript:void(0)">
                                         <i data-feather="log-out"></i>
-                                        <span>Log out</span>
+                                        <span>登出</span>
                                     </a>
                                 </li>
                             </ul>
@@ -178,13 +139,10 @@
                 <div>
                     <div class="logo-wrapper logo-wrapper-center">
                         <a href="index.html" data-bs-original-title="" title="">
-                            <img class="img-fluid for-white" src="assets/images/logo/full-white.png" alt="logo">
+                            <img class="img-fluid for-white" src="assets/images/logo/1.png" alt="logo" style="width: 50px; height: 50px;">
                         </a>
                         <div class="back-btn">
                             <i class="fa fa-angle-left"></i>
-                        </div>
-                        <div class="toggle-sidebar">
-                            <i class="ri-apps-line status_toggle middle sidebar-toggle"></i>
                         </div>
                     </div>
                     <div class="logo-icon-wrapper">
@@ -270,11 +228,11 @@
                                     </a>
                                     <ul class="sidebar-submenu">
                                         <li>
-                                            <a href="violation.html">未處理</a>
+                                            <a href="violation.html?violation_status=1">未處理</a>
                                         </li>
 
                                         <li>
-                                            <a href="violation-done.html">已處理</a>
+                                            <a href="violation-done.html?violation_status=2">已處理</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -361,7 +319,7 @@
                                                                 <th colspan="2">品項</th>
                                                                 <th class="text-end" colspan="2">
                                                                     <a href="javascript:void(0)"
-                                                                        class="theme-color">編輯品項
+                                                                        class="theme-color">
                                                                         </a>
                                                                 </th>
                                                             </tr>
@@ -420,19 +378,55 @@
         <div class="modal-dialog  modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h5 class="modal-title" id="staticBackdropLabel">Logging Out</h5>
-                    <p>Are you sure you want to log out?</p>
+                    <h5 class="modal-title" id="staticBackdropLabel">登出</h5>
+                    <p>你確定要登出嗎?</p>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
                     <div class="button-box">
-                        <button type="button" class="btn btn--no" data-bs-dismiss="modal">No</button>
-                        <button type="button" class="btn  btn--yes btn-primary">Yes</button>
+                        <button type="button" class="btn btn--no" data-bs-dismiss="modal">否</button>
+                        <button type="button" class="btn  btn--yes btn-primary">是</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Modal end -->
+    
+    <!-- 登入系統 Start -->
+    <script>
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+          window.location.href = 'login.html';
+        }
+
+        document.querySelector('.btn--yes').addEventListener('click', function() {
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('POST', '../emps/logout', true);
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        sessionStorage.removeItem('isLoggedIn');
+                        window.location.href = 'login.html';
+                    } else {
+                        console.error('Error:', xhr.statusText);
+                        alert('An error occurred while logging out. Please try again.');
+                    }
+                }
+            };
+            xhr.send();
+        });
+
+        window.onload = function() {
+            const empName = sessionStorage.getItem('empName');
+            if (empName) {
+                document.querySelector('.user-name-hide span').textContent = empName;
+            }
+        };
+    </script>
+    <!-- 登入系統 End -->  
+
+
+
 
     <!-- latest js -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>

@@ -26,7 +26,8 @@ public class UserInfoDaoImpl implements UserInfoDao{
 	private static final String GET_ONE_ID_STMT = "select user_id, user_account, user_password, user_name, user_address, user_phone, user_gender, user_birth, user_ic, user_pic, user_status, garbage_coin, seller_identity from user_info where user_id = ?";
 	private static final String GET_ALL_BY_STATUS_STMT = "select user_id, user_account, user_password, user_name, user_address, user_phone, user_gender, user_birth, user_ic, user_pic, user_status, garbage_coin, seller_identity from user_info where user_status = 2";
 	private static final String GET_ADDRESS_BY_ID_STMT = "select user_address from user_info where user_id = ?";
-	private static final String UPDATE_STATUS_BY_ID_STMT = "update user_info set user_status = 0, seller_identity = 1 where user_id = ?";
+	private static final String UPDATE_STATUS_BY_ID_PASS_STMT = "update user_info set user_status = 0, seller_identity = 1 where user_id = ?";
+	private static final String UPDATE_STATUS_BY_ID_FAIL_STMT = "update user_info set user_status = 0, seller_identity = 0 where user_id = ?";
 	
 	
 	
@@ -160,16 +161,27 @@ public class UserInfoDaoImpl implements UserInfoDao{
 	}
 
 	@Override
-	public Integer updateStatusById(Integer user_id) {
+	public Integer updateStatusByIdPass(Integer user_id) {
 		try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-			 PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_STATUS_BY_ID_STMT)) {
+			 PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_STATUS_BY_ID_PASS_STMT)) {
 			preparedStatement.setInt(1, user_id);
 			return preparedStatement.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return -1;
 		}
+	}
 
+	@Override
+	public Integer updateStatusByIdFail(Integer user_id) {
+		try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+			 PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_STATUS_BY_ID_FAIL_STMT)) {
+			preparedStatement.setInt(1, user_id);
+			return preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
 	}
 
 	public UserInfo getUserPicById(Integer user_id) {

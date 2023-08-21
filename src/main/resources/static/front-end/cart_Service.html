@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fastkart">
+    <meta name="keywords" content="Fastkart">
+    <meta name="author" content="Fastkart">
+    <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
+    <title>Cart</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- bootstrap css -->
+    <link id="rtl-link" rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
+
+    <!-- font-awesome css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
+
+    <!-- feather icon css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css">
+
+    <!-- slick css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick-theme.css">
+
+    <!-- Iconly css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/bulk-style.css">
+
+    <!-- Template css -->
+    <link id="color-link" rel="stylesheet" type="text/css" href="../assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Loader Start -->
+    <div class="fullpage-loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <!-- Loader End -->
+
+    <!-- Header Start -->
+    <header class="pb-md-4 pb-0">
+        <div class="top-nav top-header sticky-header">
+            <div class="container-fluid-lg">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="navbar-top">
+                            <button class="navbar-toggler d-xl-none d-inline navbar-menu-button" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#primaryMenu">
+                                <span class="navbar-toggler-icon">
+                                    <i class="fa-solid fa-bars"></i>
+                                </span>
+                            </button>
+                            <a href="index.html" class="web-logo nav-logo">
+                                <img src="../assets/images/svg/Homie_logo.svg" class="img-fluid blur-up lazyload"
+                                    alt="">
+                            </a>
+                            <div class="rightside-box">
+                                <div class="search-full">
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i data-feather="search" class="font-light"></i>
+                                        </span>
+                                        <input type="text" class="form-control search-type"
+                                            placeholder="Search here..">dashboard-contant-title
+                                        <span class="input-group-text close-search">
+                                            <i data-feather="x" class="font-light"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <ul class="right-side-menu">
+                                    <li class="right-side">
+                                        <div class="delivery-login-box">
+                                            <div class="delivery-icon">
+                                                <div class="search-box">
+                                                    <i data-feather="search"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- 鈴鐺 -->
+                                    <li class="right-side">
+                                        <div class="onhover-dropdown header-badge">
+                                            <button type="button" class="btn p-0 position-relative header-wishlist">
+                                                <div class="delivery-icon">
+                                                    <i class="fa-regular fa-bell fa-xl"></i>
+                                                </div>
+                                                <span class="position-absolute top-0 start-100 translate-middle badge">3
+                                                    <span class="visually-hidden">unread messages</span>
+                                                </span>
+                                            </button>
+    
+                                            <div class="onhover-div">
+                                                <ul class="cart-list">
+                                                    <li class="product-box-contain">
+                                                        <a class="aa" href="#">
+                                                            <div class="drop-cart">
+                                                                <div class="drop-contain">
+                                                                    <h5 class="a">通知一</h5>
+                                                                    <h6>關於今日特價方案</h6>
+                                                                    <button class="close-button close_button">
+                                                                        <i class="fa-solid fa-xmark"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+    
+                                                    <li class="product-box-contain">
+                                                        <a class="aa" href="#">
+                                                            <div class="drop-cart">
+                                                                <div class="drop-contain">
+                                                                    <h5 class="a">通知二
+                                                                    </h5>
+                                                                    <h6>關於今日特價方案</h6>
+                                                                    <button class="close-button close_button">
+                                                                        <i class="fa-solid fa-xmark"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+    
+                                                    <li class="product-box-contain">
+                                                        <a class="aa" href="#">
+                                                            <div class="drop-cart">
+                                                                <div class="drop-contain">
+                                                                    <h5 class="a">通知三
+                                                                    </h5>
+                                                                    <h6>關於今日特價方案</h6>
+                                                                    <button class="close-button close_button">
+                                                                        <i class="fa-solid fa-xmark"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- 鈴鐺 -->
+    
+                                    <li class="right-side">
+                                        <a href="user-dashboard.html" class="btn p-0 position-relative header-wishlist"
+                                            onclick="redirectToWishlist()">
+                                            <i data-feather="heart"></i>
+                                        </a>
+                                    </li>
+    
+    
+                                    <li class="right-side">
+                                        <div class="onhover-dropdown header-badge">
+                                            <button type="button" class="btn p-0 position-relative header-wishlist">
+                                                <i data-feather="shopping-cart"></i>
+                                                <span id="car_num" class="position-absolute top-0 start-100 translate-middle badge">2
+                                                    <span class="visually-hidden">unread messages</span>
+                                                </span>
+                                            </button>
+    
+                                            <!-- <div class="onhover-div">
+                                                <ul class="cart-list">
+                                                    <li class="product-box-contain">
+                                                        <div class="drop-cart">
+                                                            <a href="product-left-thumbnail.html" class="drop-image">
+                                                                <img src="../assets/images/vegetable/product/1.png"
+                                                                    class="blur-up lazyload" alt="">
+                                                            </a>
+    
+                                                            <div class="drop-contain">
+                                                                <a href="product-left-thumbnail.html">
+                                                                    <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+                                                                </a>
+                                                                <h6><span>1 x</span> $80.58</h6>
+                                                                <button class="close-button close_button">
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+    
+                                                    <li class="product-box-contain">
+                                                        <div class="drop-cart">
+                                                            <a href="product-left-thumbnail.html" class="drop-image">
+                                                                <img src="../assets/images/vegetable/product/2.png"
+                                                                    class="blur-up lazyload" alt="">
+                                                            </a>
+    
+                                                            <div class="drop-contain">
+                                                                <a href="product-left-thumbnail.html">
+                                                                    <h5>Peanut Butter Bite Premium Butter Cookies 600 g
+                                                                    </h5>
+                                                                </a>
+                                                                <h6><span>1 x</span> $25.68</h6>
+                                                                <button class="close-button close_button">
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+    
+                                                <div class="price-box">
+                                                    <h5>總價 :</h5>
+                                                    <h4 class="theme-color fw-bold">$106.58</h4>
+                                                </div>
+    
+                                                <div class="button-group">
+                                                    <a href="cart.html" class="btn btn-sm cart-button">購物車</a>
+                                                    <a href="checkout.html" class="btn btn-sm cart-button theme-bg-color
+                                                    text-white">結帳</a>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </li>
+                                    <li class="right-side onhover-dropdown">
+                                        <div class="delivery-login-box">
+                                            <div class="delivery-icon">
+                                                <i data-feather="user"></i>
+                                            </div>
+                                            <div class="delivery-detail">
+                                                <h6>Hello,</h6>
+                                                <h5>My Account</h5>
+                                            </div>
+                                        </div>
+    
+                                        <div class="onhover-div onhover-div-login">
+                                            <ul class="user-box-name">
+                                                <li class="product-box-contain">
+                                                    <i></i>
+                                                    <a href="login.html">登入</a>
+                                                </li>
+    
+                                                <li class="product-box-contain">
+                                                    <a href="sign-up.html">註冊</a>
+                                                </li>
+    
+                                                <li class="product-box-contain">
+                                                    <a href="forgot.html">忘記密碼</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-12">
+                    <div class="header-nav">
+                        <div class="header-nav-middle">
+                            <div class="main-nav navbar navbar-expand-xl navbar-light navbar-sticky">
+                                <div class="offcanvas offcanvas-collapse order-xl-2" id="primaryMenu">
+                                    <div class="offcanvas-header navbar-shadow">
+                                        <h5>Menu</h5>
+                                        <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="offcanvas-body">
+                                        <ul class="navbar-nav">
+    
+                                            <li class="nav-item dropdown">
+                                                <a style="font-size: 20px; font-weight: bold;">商品頁面</a>
+                                            </li>
+    
+                                            <li class="nav-item dropdown">
+                                                <a style="font-size: 20px; font-weight: bold;">服務頁面</a>
+                                            </li>
+    
+                                            <li class="nav-item dropdown dropdown-mega">
+                                                <a style="font-size: 20px; font-weight: bold;">幫助中心</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- mobile fix menu start -->
+    <div class="mobile-menu d-md-none d-block mobile-cart">
+        <ul>
+            <li class="active">
+                <a href="index.html">
+                    <i class="iconly-Home icli"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <li class="mobile-category">
+                <a href="javascript:void(0)">
+                    <i class="iconly-Category icli js-link"></i>
+                    <span>Category</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="search.html" class="search-box">
+                    <i class="iconly-Search icli"></i>
+                    <span>Search</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="wishlist.html" class="notifi-wishlist">
+                    <i class="iconly-Heart icli"></i>
+                    <span>My Wish</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="cart.html">
+                    <i class="iconly-Bag-2 icli fly-cate"></i>
+                    <span>Cart</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- mobile fix menu end -->
+
+    <!-- Breadcrumb Section Start -->
+    <section class="breadscrumb-section pt-0">
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadscrumb-contain">
+                        <h2>Cart</h2>
+                        <nav>
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">
+                                        <i class="fa-solid fa-house"></i>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Cart Section Start -->
+    <section class="cart-section section-b-space">
+        <div class="container-fluid-lg">
+            <div class="row g-sm-5 g-3">
+                <div class="col-xxl-9">
+                    <div class="cart-table">
+                        <span class="checkbox-gap" style="margin-left: 20px;" >
+                         <input type="checkbox" class="checkbox-input" id="checkbox-All">  <!-- 新增的 checkbox  --> 
+                         <label for="checkbox-All" style="margin-left: 15px;font-size: 18px;"> 全選 </label> 
+                        </span>
+                    </div>     
+                    <div class="cart-table">
+                        <div class="table-responsive-xl">
+                            <table class="table">
+                                <tbody id="Service_tbody">
+                                    <tr class="product-box-contain">
+                                        <td class="product-detail">
+                                            <div class="product border-0">
+                                                <a href="product-left-thumbnail.html" class="product-image">
+                                                    <img src="../assets/images/vegetable/product/1.png"
+                                                        class="img-fluid blur-up lazyload" alt="">
+                                                </a>
+                                                <div class="product-detail">
+                                                    <ul>
+                                                        <li class="name">
+                                                            <a href="product-left-thumbnail.html">Bell pepper</a>
+                                                        </li>
+
+                                                        <li class="text-content"><span class="text-title">Sold
+                                                                By:</span> Fresho</li>
+
+                                                        <li class="text-content"><span
+                                                                class="text-title">Quantity</span> - 500 g</li>
+
+                                                        <li>
+                                                            <h5 class="text-content d-inline-block">Price :</h5>
+                                                            <span>$35.10</span>
+                                                            <span class="text-content">$45.68</span>
+                                                        </li>
+
+                                                        <li>
+                                                            <h5 class="saving theme-color">Saving : $20.68</h5>
+                                                        </li>
+
+                                                        <li class="quantity-price-box">
+                                                            <div class="cart_qty">
+                                                                <div class="input-group">
+                                                                    <button type="button" class="btn qty-left-minus"
+                                                                        data-type="minus" data-field="">
+                                                                        <i class="fa fa-minus ms-0"
+                                                                            aria-hidden="true"></i>
+                                                                    </button>
+                                                                    <input class="form-control input-number qty-input"
+                                                                        type="text" name="quantity" value="0">
+                                                                    <button type="button" class="btn qty-right-plus"
+                                                                        data-type="plus" data-field="">
+                                                                        <i class="fa fa-plus ms-0"
+                                                                            aria-hidden="true"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                        <li>
+                                                            <h5>Total: $35.10</h5>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td class="price">
+                                            <h4 class="table-title text-content">Price</h4>
+                                            <h5>$35.10 <del class="text-content">$45.68</del></h5>
+                                            <h6 class="theme-color">You Save : $20.68</h6>
+                                        </td>
+
+                                        <td class="quantity">
+                                            <h4 class="table-title text-content">Qty</h4>
+                                            <div class="quantity-price">
+                                                <div class="cart_qty">
+                                                    <div class="input-group">
+                                                        <button type="button" class="btn qty-left-minus"
+                                                            data-type="minus" data-field="">
+                                                            <i class="fa fa-minus ms-0" aria-hidden="true"></i>
+                                                        </button>
+                                                        <input class="form-control input-number qty-input" type="text"
+                                                            name="quantity" value="0">
+                                                        <button type="button" class="btn qty-right-plus"
+                                                            data-type="plus" data-field="">
+                                                            <i class="fa fa-plus ms-0" aria-hidden="true"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td class="subtotal">
+                                            <h4 class="table-title text-content">Total</h4>
+                                            <h5>$35.10</h5>
+                                        </td>
+
+                                        <td class="save-remove">
+                                            <h4 class="table-title text-content">Action</h4>
+                                            <a class="save notifi-wishlist" href="javascript:void(0)">Save for later</a>
+                                            <a class="remove close_button" href="javascript:void(0)">Remove</a>
+                                        </td>
+                                    </tr>
+
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xxl-3">
+                    <div class="summery-box p-sticky">
+                        <div class="summery-header">
+                            <h3>Cart Total</h3>
+                        </div>
+
+                        <div class="summery-contain">
+                            <div class="coupon-cart">
+                                <h6 class="text-content mb-2">Coupon Apply</h6>
+                                <div class="mb-3 coupon-box input-group">
+                                    <input type="email" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="Enter Coupon Code Here...">
+                                    <button class="btn-apply">Apply</button>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <h4>Subtotal</h4>
+                                    <h4 id="price" class="price">$0</h4>
+                                </li>
+
+                                <li>
+                                    <h4>Coupon Discount</h4>
+                                    <h4 class="price">(-) 0</h4>
+                                </li>
+
+                                <!-- <li class="align-items-start">
+                                    <h4>Shipping</h4>
+                                    <h4 class="price text-end">$0</h4>
+                                </li> -->
+                            </ul>
+                        </div>
+
+                        <ul class="summery-total">
+                            <li class="list-total border-top-0">
+                                <h4>Total (USD)</h4>
+                                <h4 id="priceFinally" class="price theme-color">$0</h4>
+                            </li>
+                        </ul>
+                        <!-- onclick="location.href = 'checkout.html';" -->
+                        <div class="button-group cart-button">
+                            <ul>
+                                <li>    
+                                    <button id="btn_cart"
+                                        class="btn btn-animation proceed-btn fw-bold">Process To Checkout</button>
+                                </li>
+
+                                <li>
+                                    <button 
+                                        class="btn btn-light shopping-button text-dark">
+                                        <i class="fa-solid fa-arrow-left-long"></i>Return To Shopping</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Cart Section End -->
+
+    <!-- Footer Section Start -->
+    <footer class="section-t-space">
+        <div class="container-fluid-lg">
+            <div class="service-section">
+                <div class="row g-3">
+                    <div class="col-12">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="main-footer section-b-space section-t-space">
+                <div class="row g-md-4 g-3">
+                    <div class="col-lg-6">
+                        <div class="footer-logo">
+                            <div class="theme-logo">
+                                <a href="index.html">
+                                    <img src="../assets/images/logo/1.png" class="blur-up lazyload" alt="">
+                                </a>
+                            </div>
+    
+                            <div class="footer-logo-contain">
+                                <p>我們是一家專業的清潔服務提供商，為客戶提供高品質的清潔服務和產品。
+                                    我們的平台連結客戶和優質的清潔人員，提供各種清潔服務，包括家庭和商業清潔。</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-6">
+                        <div class="footer-title">
+                            <h4>聯絡我們</h4>
+                        </div>
+    
+                        <div class="footer-contact">
+                            <ul>
+                                <li>
+                                    <div class="footer-number">
+                                        <i data-feather="phone"></i>
+                                        <div class="contact-number">
+                                            <h6 class="text-content">客服專線 :</h6>
+                                            <h5>02-0909-0909</h5>
+                                        </div>
+                                    </div>
+                                </li>
+    
+                                <li>
+                                    <div class="footer-number">
+                                        <i data-feather="mail"></i>
+                                        <div class="contact-number">
+                                            <h6 class="text-content">公司信箱 :</h6>
+                                            <h5>stella@Homie.com.tw</h5>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="footer-number">
+                                        <i data-feather="home"></i>
+                                        <div class="contact-number">
+                                            <h6 class="text-content">公司地址 :</h6>
+                                            <h5>台北市信義區忠孝東路五段</h5>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Location Modal Start -->
+    <div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Choose your Delivery Location</h5>
+                    <p class="mt-1 text-content">Enter your address and we will specify the offer for your area.</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="location-list">
+                        <div class="search-input">
+                            <input type="search" class="form-control" placeholder="Search Your Area">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+
+                        <div class="disabled-box">
+                            <h6>Select a Location</h6>
+                        </div>
+
+                        <ul class="location-select custom-height">
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Alabama</h6>
+                                    <span>Min: $130</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Arizona</h6>
+                                    <span>Min: $150</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>California</h6>
+                                    <span>Min: $110</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Colorado</h6>
+                                    <span>Min: $140</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Florida</h6>
+                                    <span>Min: $160</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Georgia</h6>
+                                    <span>Min: $120</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Kansas</h6>
+                                    <span>Min: $170</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Minnesota</h6>
+                                    <span>Min: $120</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>New York</h6>
+                                    <span>Min: $110</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <h6>Washington</h6>
+                                    <span>Min: $130</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Location Modal End -->
+
+    <!-- Deal Box Modal Start -->
+    <div class="modal fade theme-modal deal-modal" id="deal-box" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title w-100" id="deal_today">Deal Today</h5>
+                        <p class="mt-1 text-content">Recommended deals for you.</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="deal-offer-box">
+                        <ul class="deal-offer-list">
+                            <li class="list-1">
+                                <div class="deal-offer-contain">
+                                    <a href="shop-left-sidebar.html" class="deal-image">
+                                        <img src="../assets/images/vegetable/product/10.png" class="blur-up lazyload"
+                                            alt="">
+                                    </a>
+
+                                    <a href="shop-left-sidebar.html" class="deal-contain">
+                                        <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
+                                        <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="list-2">
+                                <div class="deal-offer-contain">
+                                    <a href="shop-left-sidebar.html" class="deal-image">
+                                        <img src="../assets/images/vegetable/product/11.png" class="blur-up lazyload"
+                                            alt="">
+                                    </a>
+
+                                    <a href="shop-left-sidebar.html" class="deal-contain">
+                                        <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
+                                        <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="list-3">
+                                <div class="deal-offer-contain">
+                                    <a href="shop-left-sidebar.html" class="deal-image">
+                                        <img src="../assets/images/vegetable/product/12.png" class="blur-up lazyload"
+                                            alt="">
+                                    </a>
+
+                                    <a href="shop-left-sidebar.html" class="deal-contain">
+                                        <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
+                                        <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="list-1">
+                                <div class="deal-offer-contain">
+                                    <a href="shop-left-sidebar.html" class="deal-image">
+                                        <img src="../assets/images/vegetable/product/13.png" class="blur-up lazyload"
+                                            alt="">
+                                    </a>
+
+                                    <a href="shop-left-sidebar.html" class="deal-contain">
+                                        <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
+                                        <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Deal Box Modal End -->
+
+    <!-- Tap to top start -->
+    <div class="theme-option">
+        <div class="back-to-top">
+            <a id="back-to-top" href="#">
+                <i class="fas fa-chevron-up"></i>
+            </a>
+        </div>
+    </div>
+    <!-- Tap to top end -->
+
+    <!-- Bg overlay Start -->
+    <div class="bg-overlay"></div>
+    <!-- Bg overlay End -->
+
+    <!-- latest jquery-->
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+
+    <!-- jquery ui-->
+    <script src="../assets/js/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/bootstrap/popper.min.js"></script>
+    <script src="../assets/js/bootstrap/bootstrap-notify.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="../assets/js/feather/feather.min.js"></script>
+    <script src="../assets/js/feather/feather-icon.js"></script>
+
+    <!-- Lazyload Js -->
+    <script src="../assets/js/lazysizes.min.js"></script>
+
+    <!-- Slick js-->
+    <script src="../assets/js/slick/slick.js"></script>
+    <script src="../assets/js/slick/custom_slick.js"></script>
+
+    <!-- Quantity js -->
+    <script src="../assets/js/quantity.js"></script>
+
+    <!-- script js -->
+    <script src="../assets/js/script.js"></script>
+
+    <script>
+    window.onload = function() {  
+
+        all_product();
+        
+        getAllNum();
+
+        let proObjects =[];
+
+        let proObAlls  =[];
+
+        $("#checkbox-All").on("click",function(){
+
+            const checkedCheckboxes = $('input#checkbox_one');
+            const TotalFinally  =$("div.summery-box").find("h4#priceFinally");  
+            const subtotal=$("div.summery-contain").find("h4#price");
+
+            if ($(this).is(':checked')) {
+                //抓取全部 checkbox    
+                proObAlls=[];
+                checkedCheckboxes.each(function() {
+
+                    const service_id      =$(this).closest("td.product-detail").find("input#product_id").val();                   
+                    const service_name    =$(this).closest("td.product-detail").find("a#product_name").html();                   
+                    const service_price   =$(this).closest("tr.product-box-contain").find("h5#price").html().substring(1);                   
+                    const service_count   =$(this).closest("tr.product-box-contain").find("input#quantity").val();                   
+                    const service_id_code =$(this).closest("tr.product-box-contain").find("h2#service_id_code").html();
+                    const seller_id =$(this).closest("tr.product-box-contain").find("h2#service_seller_id").html();
+                    const service_DateDetail =$(this).closest("tr.product-box-contain").find("h2#service_DateDetail").html();
+                    const service_Date =$(this).closest("tr.product-box-contain").find("h2#service_Date").html();           
+                    const service_total   =parseInt(service_price)*parseInt(service_count);    
+                    
+
+
+                    checkedCheckboxes.prop('checked', true);
+
+                    const total =parseInt($("div.summery-contain").find("h4#price").html().substring(1));
+                
+                    const newtotal=total+service_total;
+
+                    subtotal.html("$"+newtotal);
+                    
+                    TotalFinally.html("$"+newtotal);
+
+                    const proall ={
+
+                        user_id :"user_id:1",
+                        seller_id:seller_id,        
+                        service_id:service_id,
+                        service_name:service_name,
+                        service_id_code:service_id_code,
+                        service_price:service_price,
+                        service_count:service_count,
+                        service_Date:service_Date,
+                        service_DateDetail:service_DateDetail,
+                        service_total:service_total
+                    }
+
+                    proObAlls.push(proall);    
+                    
+                })
+
+
+            }else{
+
+                checkedCheckboxes.each(function() {
+                checkedCheckboxes.prop('checked', false);
+        
+                proObAlls=[];
+
+                })
+
+                subtotal.html("$ 0");
+                    
+                TotalFinally.html("$ 0");
+            }
+
+            console.log(proObAlls); 
+
+        });
+
+        $("#btn_cart").on("click",function(){
+
+            if( proObAlls.length != 0 ){
+                sessionStorage.setItem("Service_data", JSON.stringify(proObAlls));
+                location.href = "./checkout_Service.html"; // 導到下一頁
+            }else{
+                alert("請勾選商品");
+            }    
+                    
+        })
+        //得到打勾商品，並更新價格
+        $(document).on('click', 'input#checkbox_one', function() {    
+            
+            const service_id     =$(this).closest("tr.product-box-contain").find("input#product_id").val(); 
+            const service_name   =$(this).closest("td.product-detail").find("a#product_name").html();
+            const service_price  =$(this).closest("tr.product-box-contain").find("h5#price").html().substring(1);
+            const service_count  =$(this).closest("tr.product-box-contain").find(`input[name="quantity"]`).val();
+            const service_id_code=$(this).closest("tr.product-box-contain").find("h2#service_id_code").html();
+            const seller_id      =$(this).closest("tr.product-box-contain").find("h2#service_seller_id").html();
+            const service_DateDetail =$(this).closest("tr.product-box-contain").find("h2#service_DateDetail").html();
+            const service_Date   =$(this).closest("tr.product-box-contain").find("h2#service_Date").html();
+            const Service_total  =$(this).closest("tr.product-box-contain").find("h5#total").html().substring(1);
+
+            const service_total =parseInt(service_price)*parseInt(service_count);
+            const TotalFinally  =$("div.summery-box").find("h4#priceFinally");
+         
+
+            if ($(this).is(':checked')) {
+
+                const subtotal=$("div.summery-contain").find("h4#price");
+
+                const total =parseInt($("div.summery-contain").find("h4#price").html().substring(1));
+         
+                const newtotal=total+service_total;
+
+                subtotal.html("$"+newtotal);
+                
+                TotalFinally.html("$"+newtotal);
+
+                const pro={
+
+                        user_id:'user_id:1',
+                        seller_id:seller_id,
+                        service_id:service_id,
+                        service_name:service_name,
+                        service_id_code:service_id_code,
+                        service_price:service_price,
+                        service_count:service_count,
+                        service_Date:service_Date,
+                        service_DateDetail:service_DateDetail,
+                        service_total:service_total
+
+                }
+
+                proObAlls.push(pro);
+
+            }else{
+
+                const subtotal=$("div.summery-contain").find("h4#price");
+
+                const total =parseInt($("div.summery-contain").find("h4#price").html().substring(1));
+
+                const newtotal=total-service_total;
+                
+                subtotal.html("$"+newtotal);
+
+                TotalFinally.html("$"+newtotal);
+                
+                proObAlls = proObAlls.filter(obj => obj.service_id !== service_id);
+
+            }
+                
+        })
+
+        //得到全部商品
+        function all_product(){
+            $.ajax({
+                    url:"/homieProject/Service/GetAllRedisController",
+                    type:"POST",
+                    dataType:"json",
+                    data :{ 
+                        user_id:'user_id:1'
+                    },
+                    success:function(data){
+                        console.log(data);
+                        Service_tbody.innerHTML = "";
+
+                        if(data.length > 0){
+
+                            for(let key in data){   
+                            const trElement = document.createElement('tr');
+                            trElement.classList.add('product-box-contain');
+                            trElement.innerHTML =                     
+                                `<td class="product-detail ">
+                                    <div class="product border-0">
+                                        <div class="product-checkbox"> <!-- 新增的包裹元素 -->
+                                            <span class="checkbox-gap" style="margin-right: 10px">
+                                            <input type="checkbox" id="checkbox_one" class="checkbox-input"> <!-- 新增的 checkbox -->
+                                            </span>
+                                        </div>
+                                        <a href="" class="product-image">
+                                            <img src="http://localhost:8080/homieProject/service/Select_ImgController?service_id=${data[key].service_id}" class="img-fluid blur-up lazyload" alt="">
+                                        </a>
+                                        <input type="hidden" id="product_id" name="product_id" value="${data[key].service_id}">
+                                        <div class="product-detail ">
+                                            <ul>
+                                                <li class="name">
+                                                    <a href="" id="product_name" >${data[key].service_name}</a>
+                                                </li>
+                                                <h2 id="service_Date" style="display: none;">${data[key].service_Date}</h2>
+                                                <h2 id="service_DateDetail" style="display: none;">${data[key].service_DateDetail}</h2>
+                                                <h2 id="service_seller_id" style="display: none;">${data[key].seller_id}</h2>
+                                                <h2 id="service_id_code" style="display: none;">${data[key].service_id_code}</h2>
+                                                <li class="text-content" id="service_id_code"><span class="text-title">Sold By:</span> ${data[key].service_id_code}</li>
+                                                <li class="text-content"><span class="text-title">Quantity</span>  ${data[key].service_name}</li>
+                                                <li>
+                                                    <h5 class="text-content d-inline-block">Price :</h5>
+                                                    <span>$${data[key].service_price}</span>                                            
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="price">
+                                    <h4 class="table-title text-content">Price</h4>
+                                    <h5 id="price" >$${data[key].service_price}</h5>
+                                </td>
+                                <td class="quantity">
+                                    <h4 class="table-title text-content">Qty</h4>
+                                    <div class="quantity-price">
+                                        <div class="cart_qty">
+                                            <div class="input-group">
+                                                <button type="button" class="btn qty-left-minus" data-type="minus" data-field="">
+                                                    <i class="fa fa-minus ms-0" aria-hidden="true"></i>
+                                                </button>
+                                                <input class="form-control input-number qty-input" type="text" name="quantity" id="quantity" value="${data[key].service_count}">
+                                                <button type="button" class="btn qty-right-plus" data-type="plus" data-field="" >
+                                                    <i class="fa fa-plus ms-0" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="subtotal">
+                                    <h4 class="table-title text-content">Total</h4>
+                                    <h5 id=total>$${data[key].service_total}</h5>
+                                </td>
+                                <td class="save-remove">
+                                    <h4 class="table-title text-content">Action</h4>
+                                    <button type="button" class="btn btn-default" id="remove_id">刪除</button>
+                                </td>
+                                `;
+                                    
+                            Service_tbody.appendChild(trElement);
+                            
+                            //const service_id_code = $("li#service_id_code")
+                            if( data[key].service_id_code == 0 ){
+                         
+                                $("li#service_id_code").html(`<span class="text-title">Sold By:</span>居家清潔`)
+                            }else if( data[key].service_id_code == 1 ){
+                            
+                                $("li#service_id_code").html(`<span class="text-title">Sold By:</span>居家清潔`)
+                            }else if( data[key].service_id_code == 2){
+                              
+                                $("li#service_id_code").html(`<span class="text-title">Sold By:</span>居家清潔`)    
+                            }else if( data[key].service_id_code == 3){
+                 
+                                $("li#service_id_code").html(`<span class="text-title">Sold By:</span>居家清潔`)
+                            }else if( data[key].service_id_code == 4){
+                           
+                                $("li#service_id_code").html(`<span class="text-title">Sold By:</span>居家清潔`)
+                            }else if( data[key].service_id_code == 5){
+                          
+                                $("li#service_id_code").html(`<span class="text-title">Sold By:</span>居家清潔`)              
+                            };
+
+
+                            }
+                    
+                        }else{
+
+                            const row = Service_tbody.insertRow();
+                            const cell = row.insertCell();
+                            cell.colSpan = 5; // 設定單元格的合併列數，根據您的表格結構調整
+                            cell.style="text-align: center;font-size: 30px;color: red;";
+                            cell.textContent = "商品已清空囉";
+
+                        }
+                    }    
+            })            
+        }
+        $(document).on('click', 'button#remove_id', function() {
+
+            const service_id     =$(this).closest("tr.product-box-contain").find("input#product_id").val(); 
+            const service_name   =$(this).closest("tr.product-box-contain").find("a#product_name").html(); 
+            const service_price  =$(this).closest("tr.product-box-contain").find("h5#price").html().substring(1);
+            const service_count  =$(this).closest("tr.product-box-contain").find("input[name='quantity']").val();
+            const service_id_code=$(this).closest("tr.product-box-contain").find("h2#service_id_code").html();
+            const seller_id      =$(this).closest("tr.product-box-contain").find("h2#service_seller_id").html();
+            const service_DateDetail =$(this).closest("tr.product-box-contain").find("h2#service_DateDetail").html();
+            const service_Date =$(this).closest("tr.product-box-contain").find("h2#service_Date").html();
+            const service_total =$(this).closest("tr.product-box-contain").find("h5#total").html().substring(1);
+        
+            //刪除指定整個元素
+            const contain =$(this).closest("tr.product-box-contain");
+            const result = confirm('確定要刪除嗎？');
+
+            if (result) {
+                //console.log(product_id);
+                $.ajax({
+                        url:"/homieProject/Service/DeleteRedisById",
+                        type:"POST",
+                        dataType:"json",
+                        data :{ 
+                            user_id:'user_id:1',
+                            service_id:service_id,
+                            service_name:service_name,
+                            service_price:service_price,
+                            service_count:service_count,
+                            service_id_code:service_id_code,
+                            seller_id:seller_id,
+                            service_DateDetail:service_DateDetail,
+                            service_Date:service_Date,
+                            service_total:service_total
+                        },
+                        success:function(data){
+
+                            contain.remove();
+                            //console.log(data);
+
+                        },error:function(error){
+
+                        }
+                    });
+            } 
+
+        });
+
+
+        $(document).on('click', 'button.qty-right-plus', function() {
+                
+            const price =parseInt( $(this).closest("tr.product-box-contain").find("h5#price").html().substring(1));
+            
+            const total =$(this).closest("tr.product-box-contain").find("h5#total");
+
+            // 找到相鄰的輸入框元素
+            const inputField = $(this).prev('.qty-input');
+            // 獲取當前值並將其轉換為數字
+            let currentValue = parseInt(inputField.val());
+            // 增加數量
+            currentValue++;
+            // 更新輸入框的值
+            inputField.val(currentValue);
+            
+            const inputQuantity=parseInt($(this).closest("tr.product-box-contain").find("input.qty-input").val());
+
+            total.html('$'+(price*inputQuantity));
+
+        });
+        
+        $(document).on('click','button.qty-left-minus',function(){
+
+            const price =parseInt( $(this).closest("tr.product-box-contain").find("h5#price").html().substring(1));
+            
+            const total =$(this).closest("tr.product-box-contain").find("h5#total");    
+
+            const inputField = $(this).next('.qty-input');
+            // 獲取當前值並將其轉換為數字
+            let currentValue = parseInt(inputField.val());
+            // 減少數量，但確保不小於0
+            currentValue = Math.max(currentValue - 1, 0);
+                        
+            inputField.val(currentValue);
+                
+            const inputQuantity=parseInt($(this).closest("tr.product-box-contain").find("input.qty-input").val());
+            
+            total.html('$'+(price*inputQuantity));
+                                
+        })
+        //如何購物車數量
+        function getAllNum(){
+                $.ajax({
+                    url:"/homieProject/Service/GetAllRedisController",
+                    type:"POST",
+                    dataType:"json",
+                    data :{ 
+                        user_id:'user_id:1'
+                    },
+                    success:function(data){
+                        car_num.innerHTML=data.length;
+                      //  console.log(data);
+                        //$("#car_detail").html("");
+
+                        // for( let key in data){    
+                        //       let hmtl=`<li class="product-box-contain">
+                        //                     <div class="drop-cart">
+                        //                         <a href="product-left-thumbnail.html" class="drop-image">
+                        //                             <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}"
+                        //                                 class="blur-up lazyload" alt="">
+                        //                         </a>
+
+                        //                         <div class="drop-contain">
+                        //                             <a href="product-left-thumbnail.html">
+                        //                                 <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+                        //                             </a>
+                        //                             <h6><span>${data[key].product_count} x</span> $${data[key].product_total}</h6>
+                        //                             <button class="close-button close_button">
+                        //                                 <i class="fa-solid fa-xmark"></i>
+                        //                             </button>
+                        //                         </div>
+                        //                     </div>
+                        //                 </li>`;
+
+                            
+                        //                 $("#car_detail").html(hmtl);            
+                                        
+                        // }                
+                    
+                    },
+                    error:function(error){
+
+                        console.log(error);
+
+                    }
+
+                })
+            }
+           
+
+    }    
+    </script>
+
+</body>
+
+</html>
