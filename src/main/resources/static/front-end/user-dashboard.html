@@ -425,7 +425,7 @@
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-order-tab" data-bs-toggle="pill"
+                                <button class="nav-link pills-order-button" id="pills-order-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-order" type="button" role="tab" aria-controls="pills-order"
                                     aria-selected="false"><i data-feather="shopping-bag"></i>購買清單</button>
                             </li>
@@ -586,36 +586,40 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="order-top row">
-                                                    <div class="col-3 order-top-div"><a href="#">全部</a></div>
-                                                    <div class="col-3 order-top-div"><a href="#">等待交易</a> </div>
-                                                    <div class="col-3 order-top-div"><a href="#">交易完成</a></div>
-                                                    <div class="col-3 order-top-div"><a href="#">退貨</a></div>
+                                                    <div class="col-3 order-top-div order-all"><a href="#">全部</a></div>
+                                                    <div class="col-3 order-top-div order-wait"><a href="#">等待交易</a> </div>
+                                                    <div class="col-3 order-top-div order-end"><a href="#">交易完成</a></div>
+                                                    <div class="col-3 order-top-div order-return"><a href="#">退貨</a></div>
                                                 </div>
                                             </div>
                                         </div>
                                         <hr>
-                                        <div class="order-contain">
-                                            <div class="order-contain-top">
-                                                Homie百貨
-                                                <button class="order-contain-top-button">查看完整訂單</button>
-                                            </div>
-                                            <div class="order-contain-content">
-                                                <img class="order-contain-content-img   " src="../assets/images/nousaki.jpeg" alt="無圖片顯示">
-                                                <div class="order-contain-content-shop">八合一多功能清潔器 擦拭布 毛刷 耳機 相機 鍵盤 螢幕清潔 清潔筆 AirPods清潔器 清潔工具 清潔套裝 XU01</div>
-                                                <div class="order-contain-content-price">$1000</div>
-                                            </div>
-                                            <div class="order-contain-foot">
-                                                <div class="col-12">
-                                                    <div class="row">
-                                                        <div class="col-4 order-contain-foot-time">訂單時間:<span>2023/07/14 20:35</span></div>
-                                                        <div class="col-2"><button class="order-contain-foot-button">聯絡賣家</button></div>
-                                                        <div class="col-2"><button class="order-contain-foot-button">修改訂單</button></div>
-                                                        <div class="col-2"><button class="order-contain-foot-button">取消訂單</button></div>
-                                                        <div class="col-2"><button class="order-contain-foot-button">完成訂單</button></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <table class="order-table table table-striped col-12">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="order-th col-2">訂單編號</th>
+                                                    <th scope="col" class="order-th col-4">商品名稱</th>
+                                                    <th scope="col" class="order-th col-1">數量</th>
+                                                    <th scope="col" class="order-th col-1">金額</th>
+                                                    <th scope="col" class="order-th col-2">下單時間</th>
+                                                    <th scope="col" class="order-th col-2">訂單管理</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="order-tbody">
+                                                <!-- <tr>
+                                                    <td class="order-td order-id col-2">123456</td>
+                                                    <td class="order-td order-name text-truncate col-4">商品 Asjoi hfshfiudsahfiudshfiushffsafhsiuhfiusfhaiuhfdsfhsfhsi</td>
+                                                    <td class="order-td order-count col-1">2</td>
+                                                    <td class="order-td order-price col-1">$100</td>
+                                                    <td class="order-td order-delivery-time col-2">2023-08-09</td>
+                                                    <td class="order-td col-2">
+                                                        <button class="btn btn-primary order-full">查看完整訂單</button>
+                                                        <button class="btn btn-danger order-cancel">取消訂單</button>
+                                                        <button class="btn btn-success order-finish">完成訂單</button>
+                                                    </td>
+                                                </tr> -->
+                                            </tbody>
+                                        </table>                                        
                                     </div>
                                 </div>
                             </div>
