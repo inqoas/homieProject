@@ -19,10 +19,8 @@ function init(){
 
             var tableBody = $('#all-users-table');
         
-            // 清空原本的內容
             tableBody.empty();
         
-            // 插入待審核賣家的資料
             response.forEach(function(userinfo) {
 
                 var statusText = getStatusText(userinfo.user_status);
@@ -69,9 +67,9 @@ function init(){
             var userEmail = $(this).find('td:nth-child(4)').text().toLowerCase();
 
             if (userName.includes(searchTerm) || userPhone.includes(searchTerm) || userEmail.includes(searchTerm)) {
-                $(this).show(); // 符合搜尋條件，顯示該行
+                $(this).show(); 
             } else {
-                $(this).hide(); // 不符合搜尋條件，隱藏該行
+                $(this).hide(); 
             }
         });
     });

@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity(name="BackEndEmp")
+@Table(name="emp")
 @Setter 
 @Getter 
 @NoArgsConstructor 

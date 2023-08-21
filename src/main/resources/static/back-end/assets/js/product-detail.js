@@ -70,7 +70,7 @@ function handleImageUpdate(product) {
         formDataPic.append('product_id', $('#idInput').text());
     
         $.ajax({
-            url: '../product/update-picture', // 圖片更新的API URL
+            url: '../product/update-picture', 
             type: 'POST',
             data: formDataPic,
             contentType: false,
@@ -104,7 +104,7 @@ function handleBackButton() {
     const backButton = document.getElementById("backButton");
     backButton.addEventListener("click", function () {
         if (hasChanges) {
-            // 提示用户
+            
             var isConfirmed = confirm('您的內容有變動，是否保存更改？');
             if (isConfirmed) {
                 var productData = {
@@ -120,11 +120,11 @@ function handleBackButton() {
                 };
 
                 if (!validateFormData(productData)) {
-                    return; // 如果驗證失敗，不執行更新操作
+                    return; 
                 }
 
                 $.ajax({
-                    url: '../product/update', // 適當的更新API URL
+                    url: '../product/update', 
                     type: 'POST',
                     data: JSON.stringify(productData),
                     contentType: 'application/json',

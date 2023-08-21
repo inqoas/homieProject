@@ -74,22 +74,13 @@
                         </a>
                     </div>
                 </div>
+                <div class="header-title"> 
+                    <h3>Homie後台管理系統</h3>
+                </div>
                 <div class="nav-right col-6 pull-right right-header p-0">
                     <ul class="nav-menus">
-                        <li>
-                            <span class="header-search">
-                                <i class="ri-search-line"></i>
-                            </span>
-                        </li>
-                        
-                        <li>
-                            <div class="mode">
-                                <i class="ri-moon-line"></i>
-                            </div>
-                        </li>
                         <li class="profile-nav onhover-dropdown pe-0 me-0">
                             <div class="media profile-media">
-                                <img class="user-profile rounded-circle" src="assets/images/users/4.jpg" alt="">
                                 <div class="user-name-hide media-body">
                                     <span></span>
                                     <p class="mb-0 font-roboto">管理員<i class="middle ri-arrow-down-s-line"></i></p>
@@ -125,13 +116,10 @@
                 <div>
                     <div class="logo-wrapper logo-wrapper-center">
                         <a href="index.html" data-bs-original-title="" title="">
-                            <img class="img-fluid for-white" src="assets/images/logo/full-white.png" alt="logo">
+                            <img class="img-fluid for-white" src="assets/images/logo/1.png" alt="logo" style="width: 50px; height: 50px;">
                         </a>
                         <div class="back-btn">
                             <i class="fa fa-angle-left"></i>
-                        </div>
-                        <div class="toggle-sidebar">
-                            <i class="ri-apps-line status_toggle middle sidebar-toggle"></i>
                         </div>
                     </div>
                     <div class="logo-icon-wrapper">
@@ -285,6 +273,8 @@
                     </nav>
                 </div>
             </div>
+            <!-- Page Sidebar Ends-->
+
             <div class="container rounded bg-white mt-5 mb-5" id="violationContainer">
                 <div class="row">
                     <div class="col-md-3"></div>
@@ -398,19 +388,52 @@
         <div class="modal-dialog  modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h5 class="modal-title" id="staticBackdropLabel">Logging Out</h5>
-                    <p>Are you sure you want to log out?</p>
+                    <h5 class="modal-title" id="staticBackdropLabel">登出</h5>
+                    <p>你確定要登出嗎?</p>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
                     <div class="button-box">
-                        <button type="button" class="btn btn--no" data-bs-dismiss="modal">No</button>
-                        <button type="button" class="btn  btn--yes btn-primary">Yes</button>
+                        <button type="button" class="btn btn--no" data-bs-dismiss="modal">否</button>
+                        <button type="button" class="btn  btn--yes btn-primary">是</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Modal end -->
+
+    <!-- 登入系統 Start -->
+    <script>
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+          window.location.href = 'login.html';
+        }
+
+        document.querySelector('.btn--yes').addEventListener('click', function() {
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('POST', '../emps/logout', true);
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        sessionStorage.removeItem('isLoggedIn');
+                        window.location.href = 'login.html';
+                    } else {
+                        console.error('Error:', xhr.statusText);
+                        alert('An error occurred while logging out. Please try again.');
+                    }
+                }
+            };
+            xhr.send();
+        });
+
+        window.onload = function() {
+            const empName = sessionStorage.getItem('empName');
+            if (empName) {
+                document.querySelector('.user-name-hide span').textContent = empName;
+            }
+        };
+    </script>
+    <!-- 登入系統 End -->
 
     <!-- latest js -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
