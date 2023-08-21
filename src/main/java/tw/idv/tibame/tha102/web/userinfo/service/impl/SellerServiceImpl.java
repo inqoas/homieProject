@@ -2,8 +2,6 @@ package tw.idv.tibame.tha102.web.userinfo.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
 import org.springframework.transaction.annotation.Transactional;
 
 import tw.idv.tibame.tha102.web.userinfo.dao.MemberDao;
@@ -11,7 +9,6 @@ import tw.idv.tibame.tha102.web.userinfo.dao.SellerDao;
 import tw.idv.tibame.tha102.web.userinfo.service.SellerService;
 import tw.idv.tibame.tha102.web.userinfo.vo.Seller;
 @Service
-@Transactional
 public class SellerServiceImpl implements SellerService{
 	@Autowired
 	private SellerDao sellerDao;
@@ -28,6 +25,7 @@ public class SellerServiceImpl implements SellerService{
 		return seller;
 	}
 
+	@Transactional
 	@Override
 	public Seller insertSeller(Seller seller, int userid) {
 		seller.setUserId(userid);
@@ -62,7 +60,7 @@ public class SellerServiceImpl implements SellerService{
 			return seller;
 		}
 		//更改使用者的商家狀態
-		checkCount = memberDao.updateUserStatusByUserId(2, userid);
+		checkCount = sellerDao.updateUserStatusByUserId(2, userid);
 		if(checkCount < 1) {
 			seller.setMessage("申請失敗，請聯繫客服");
 			seller.setSuccess(false);

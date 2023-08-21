@@ -40,9 +40,9 @@ $(document).ready(function(){
             $(".buyerPhone").html(userinfo.user_phone);
             $(".buyerAddress").html(userinfo.user_address);
             orderProductDetails.forEach(collection => {
-                let detailName = detail.product_name;
-                let detailCount = detail.product_count;
-                let detailPrice = detail.product_price;
+                let detailName = collection.productName;
+                let detailCount = collection.productQuantity;
+                let detailPrice = collection.productPrice;
                 
                 orderProductDetailsHTML += `
                                 <tr>

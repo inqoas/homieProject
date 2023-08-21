@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 
 import jakarta.persistence.PersistenceContext;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
 import org.apache.jasper.tagplugins.jstl.core.If;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -66,5 +69,16 @@ public class SellerDaoImpl implements SellerDao{
 			return seller;
 		}
 	}
-
+	
+	public int updateUserStatusByUserId(int userStatus, int userid) {
+		String nativesql = "UPDATE user_info SET seller_identity = :userStatus WHERE user_id = :userId";
+		try {
+			Query query = session.createNativeQuery(nativesql);
+			query.setParameter("userStatus", userStatus)
+				 .setParameter("userId", userid);
+			return query.executeUpdate();
+		} catch (Exception e) {
+			return 0;
+		}
+	}
 }

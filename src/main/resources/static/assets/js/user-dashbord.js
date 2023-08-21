@@ -110,17 +110,17 @@ window.addEventListener("load", function(){
             }
             
             document.querySelector("#paddress").value = body.user_address.substring(3);
-            if(body.user_status == 0){
+            if(body.seller_identity == 0){
                 document.querySelector("#bankName").classList.add("display")
                 document.querySelector("#bankCode").classList.add("display")
                 document.querySelector("#bankAccount").classList.add("display")
                 document.querySelector("#pcrcImg").classList.add("display")
             }
-            if(body.user_status == 2){
+            if(body.seller_identity == 2){
                 document.querySelector(".apply-business").classList.add("display")
                 document.querySelector(".sellerTable").insertAdjacentHTML('beforebegin', "<div style='font-weight: bolder; color: #274C77; font-size: 20px'>商家申請中</div>");
             }
-            if(body.seller_identity == 1 && body.user_status == 0){
+            if(body.seller_identity == 1){
                 document.querySelector(".apply-business").classList.add("display")
             }
             }

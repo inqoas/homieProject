@@ -6,4 +6,5 @@ public interface SellerDao {
 	public int insertSeller(Seller seller);
 	public boolean updateSeller(Seller seller, int userId);
 	public Seller selectSellerById(int userId);
+	public int updateUserStatusByUserId(int userStatus, int userid);
 }
