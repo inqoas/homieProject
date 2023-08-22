@@ -68,9 +68,9 @@ public class ordprodetControllrt extends HttpServlet{
 			FinalTotal+=rsd.getProduct_total();
 			
 			orderproduct.setUser_id(Integer.parseInt(strlast));
-			orderproduct.setProduct_total(TrkNum);
+			orderproduct.setProduct_total(FinalTotal);
 			orderproduct.setProduct_status(0);
-			orderproduct.setTracking_number(FinalTotal);
+			orderproduct.setTracking_number(TrkNum);
 			orderproduct.setProduct_add_gc(FinalTotal/100);
 			orderproduct.setProduct_deduct_gc(0);
 			
