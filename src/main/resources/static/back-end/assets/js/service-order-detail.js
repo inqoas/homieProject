@@ -118,17 +118,21 @@ function renderOrderService(orderServiceData) {
     var sec4 = $('#ajax4');
     sec4.empty();
 
+    var orderServiceFinishDate = orderServiceInfo.orderServiceFinishDate ? orderServiceInfo.orderServiceFinishDate : '未知';
+    var orderServiceFinishTime = orderServiceInfo.orderServiceFinishTime ? orderServiceInfo.orderServiceFinishTime : '未知';
+    var reviewContent = orderServiceInfo.reviewContent ? orderServiceInfo.reviewContent : '尚無評價';
+
     var data4 = `
         <h4>時間總覽</h4>
         <ul class="order-details">
             <li>預約服務日期: <br>${orderServiceInfo.orderServiceDate}</li>
-            <li>服務完成日期: <br>${orderServiceInfo.orderServiceFinishDate}</li>
-            <li>訂單完成日期: <br>${orderServiceInfo.orderServiceFinishTime}</li>
+            <li>服務完成日期: <br>${orderServiceFinishDate}</li>
+            <li>訂單完成日期: <br>${orderServiceFinishTime}</li>
         </ul>
 
         <h4>評價</h4>
         <ul class="order-details">
-            <li>${orderServiceInfo.reviewContent}</li>
+            <li>${reviewContent}</li>
         </ul>
 
         <div class="payment-mode">
