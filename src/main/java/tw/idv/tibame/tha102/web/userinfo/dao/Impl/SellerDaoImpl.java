@@ -71,7 +71,7 @@ public class SellerDaoImpl implements SellerDao{
 	}
 	
 	public int updateUserStatusByUserId(int userStatus, int userid) {
-		String nativesql = "UPDATE user_info SET seller_identity = :userStatus WHERE user_id = :userId";
+		String nativesql = "UPDATE user_info SET user_status = :userStatus WHERE user_id = :userId";
 		try {
 			Query query = session.createNativeQuery(nativesql);
 			query.setParameter("userStatus", userStatus)
