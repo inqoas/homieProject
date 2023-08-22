@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,8 +54,8 @@ public class OrderProductDetailDaoImpl implements OrderProductDetailDao{
 	}
 	
 
-	private final String OrdPro ="insert into order_product(user_id,product_total,product_status,tracking_number,product_add_gc,product_deduct_gc) "
-			                    +"value(?,?,?,?,?,?)";
+	private final String OrdPro ="insert into order_product(user_id,product_total,product_status,tracking_number,product_placement_time,product_add_gc,product_deduct_gc) "
+			                    +"value(?,?,?,?,?,?,?)";
 	private final String OrdProDet ="insert into order_product_detail(order_product_id,product_id,product_quantity,product_name,product_price) \r\n"
 			                    + "value(?,?,?,?,?)";
 	
@@ -66,12 +67,14 @@ public class OrderProductDetailDaoImpl implements OrderProductDetailDao{
 		
 		try( Connection  con =DriverManager.getConnection(URL,USER,PASSWORD)){
 			 PreparedStatement ps = con.prepareStatement(OrdPro, columns);
+			 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 				ps.setInt(1, orderproduct.getUser_id());
 				ps.setInt(2, orderproduct.getProduct_total());
 				ps.setInt(3, orderproduct.getProduct_status());
-				ps.setInt(4, orderproduct.getTracking_number());		
-				ps.setInt(5, orderproduct.getProduct_add_gc());
-				ps.setInt(6, orderproduct.getProduct_deduct_gc());
+				ps.setInt(4, orderproduct.getTracking_number());
+				ps.setTimestamp(5, timestamp);
+				ps.setInt(6, orderproduct.getProduct_add_gc());
+				ps.setInt(7, orderproduct.getProduct_deduct_gc());
 			    ps.executeUpdate();
 			    
 			    ResultSet rs = ps.getGeneratedKeys();    
