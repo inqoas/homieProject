@@ -116,7 +116,7 @@ window.addEventListener("load", function(){
                 document.querySelector("#bankAccount").classList.add("display")
                 document.querySelector("#pcrcImg").classList.add("display")
             }
-            if(body.seller_identity == 2){
+            if(body.user_status == 2 && body.seller_identity == 0){
                 document.querySelector(".apply-business").classList.add("display")
                 document.querySelector(".sellerTable").insertAdjacentHTML('beforebegin', "<div style='font-weight: bolder; color: #274C77; font-size: 20px'>商家申請中</div>");
             }
