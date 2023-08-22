@@ -1664,11 +1664,11 @@
             var bigbag = {};
 
             const user_jwt  = localStorage.getItem("user_jwt");
-
+            
             if(user_jwt == null){
                 location ="../front-end/login.html";
             }else{
-
+               
                 $.ajax({
 			            url:"/homieProject/userinfo/CheckMemberController",
 			            type:"POST",
@@ -1683,7 +1683,7 @@
 								
                                 location ="../front-end/login.html";
                             }
-                            
+                            console.log(data);
                             getAllNum(data);
                             Select_heart(data);
                             
@@ -1738,7 +1738,40 @@
                             }  
             
                         });
- 
+                        
+                        add_to_cart.addEventListener('click',function(){
+                
+                            const product_price =parseInt(document.querySelector("#product_price").innerHTML.substring(1));
+
+                            const product_total = product_price * parseInt(qtyInput.value);
+
+                            if( qtyInput.value == 0 ){
+                                alert("請輸入數量");
+                                return;
+                            }
+                            $.ajax({
+                                url:"/homieProject/Product/InsetRedisController",
+                                type:"POST",
+                                dataType:"json",
+                                data :{
+                                    user_id:data,
+                                    product_id:product_id.innerHTML,
+                                    product_name :product_name.innerHTML,
+                                    product_count:qtyInput.value,
+                                    product_price:product_price,
+                                    product_total:product_total,
+                                    
+                                } ,
+                                success:function(data){
+                                    console.log("asdsa");
+                                    window.location.href = "http://localhost:8080/homieProject/front-end/cart.html";
+
+                                },error:function(error){
+
+                                }
+                            })    
+
+                        });   
                             
                         },
                         error:function(error){
@@ -1781,8 +1814,6 @@
             }
 
             
-
-            
             plusButton.addEventListener('click', function () {
                 let currentValue = parseInt(qtyInput.value);
                 qtyInput.value = currentValue + 1;
@@ -1795,39 +1826,7 @@
                 }
             });
 
-            add_to_cart.addEventListener('click',function(){
-                
-                const product_price =parseInt(document.querySelector("#product_price").innerHTML.substring(1));
-
-                const product_total = product_price * parseInt(qtyInput.value);
-
-                if( qtyInput.value == 0 ){
-                    alert("請輸入數量");
-                    return;
-                }
-                $.ajax({
-                    url:"/homieProject/Product/InsetRedisController",
-                    type:"POST",
-                    dataType:"json",
-                    data : JSON.stringify ({
-
-                        product_id:product_id.innerHTML,
-                        product_name :product_name.innerHTML,
-                        product_count:qtyInput.value,
-                        product_price:product_price,
-                        product_total:product_total,
-                        
-                    }) ,
-                    success:function(data){
-						console.log("asdsa");
-                        window.location.href = "http://localhost:8080/homieProject/front-end/cart.html";
-
-                    },error:function(error){
-
-                    }
-                })    
-
-            });    
+             
              //案鍵跳購物車
             $("#car_btn").on("click",function(){
 

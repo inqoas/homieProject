@@ -900,7 +900,7 @@
 								
                                 location ="../front-end/login.html";
                             }
-                            
+                            getAllNum(data);
 
                         },
                         error:function(error){
@@ -1099,8 +1099,6 @@
                                         <h4 class="table-title text-content">Price</h4>
                                         <h5 id="price" >$${data[key].service_price} </h5>
                                     </td>
-                                   
-                                
                                     `;
 
                                     
@@ -1165,8 +1163,9 @@
 
             // })
             });
-            getAllNum();
-            function getAllNum(){
+
+            
+            function getAllNum(data){
                 $.ajax({
                     url:"/homieProject/Service/GetAllRedisController",
                     type:"POST",
@@ -1175,7 +1174,6 @@
                         user_id:'user_id:1'
                     },
                     success:function(data){
-                        console.log(data);
                         car_num.innerHTML=data.length;
                       //  console.log(data);
                         //$("#car_detail").html("");

@@ -60,16 +60,17 @@ public class ordprodetControllrt extends HttpServlet{
 			
 			strUser_id = rsd.getUser_id();
 			
+			
 			StringBuilder stringBuilder = new StringBuilder(strUser_id).insert(0, "user_id:");
 			//System.out.println(rsd.toString());
 			OrderProductDetail orderproductdetail1  =new OrderProductDetail();
 			//取得 user_idd
-			strlast = rsd.getUser_id().substring(rsd.getUser_id().length()-1);
+			//strlast = rsd.getUser_id().substring(rsd.getUser_id().length()-1);
 			//物流編號
 			Integer TrkNum =Double.valueOf(Math.random()*1000000).intValue();
 			FinalTotal+=rsd.getProduct_total();
 			
-			orderproduct.setUser_id(Integer.parseInt(strlast));
+			orderproduct.setUser_id(Integer.parseInt(strUser_id));
 			orderproduct.setProduct_total(FinalTotal);
 			orderproduct.setProduct_status(0);
 			orderproduct.setTracking_number(TrkNum);
@@ -96,9 +97,7 @@ public class ordprodetControllrt extends HttpServlet{
 					}
 					
 				}
-				
-				//jedis.del(strUser_id);
-				
+	
 			}
 			
 		}

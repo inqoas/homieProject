@@ -859,11 +859,16 @@
                     },
                     success: function(data){
 
+                        console.log(data);
+
                         if(data == '0'){
                         location ="../front-end/login.html";
                         }
 
-                        getAllNum( data );
+                        console.log(data);
+
+                        getAllNum(data);
+                        all_product(data);
                         all_product(data);      
                         
                         $("#checkbox-All").on("click",function(){

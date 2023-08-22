@@ -28,8 +28,10 @@ public class Select_ProById extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		Service_Collection service_collection = gson.fromJson(req.getReader(), Service_Collection.class);
 		
+		service_collection.toString();
 		//boolean str =new product_collectionDaoImpl().Select_UserId_ProId(product_collection);
 			
 		boolean str= service_collectiondao.Select_SerById(service_collection);

@@ -30,6 +30,8 @@ public class Product implements java.io.Serializable{
     private Integer product_category;
     private Integer product_review_stars;
     private Integer product_review_count;
+    //取的使用者id
+    private Integer user_id;
     //存購買數量
     private Integer product_count;
     //存購買總價

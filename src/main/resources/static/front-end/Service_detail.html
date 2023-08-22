@@ -1651,201 +1651,289 @@
         const service_id      = urlParams.get("service_id");
         const dynamicElements = $("#dynamicElements");
         
-        $.ajax({
-            url:"/homieProject/service/Select_byIdController",
-            type:"POST",
-            dataType:"JSON",
-            data:JSON.stringify({
-                service_id:service_id
-            }),
-            success:  function(data){
-				         
-                const html1 =`
-                    <div class="row g-4">
-                        <div class="col-xl-6 wow fadeInUp">
-                            <div class="product-left-box">
-                                <div class="row g-2">
-                                    <div class="col-xxl-10 col-lg-12 col-md-10 order-xxl-2 order-lg-1 order-md-2">
-                                        <div class="product-main-2 no-arrow">
-                                            <div>
-                                                <div class="slider-image">
-                                                    <img src="http://localhost:8080/homieProject/service/Select_ImgController?service_id=${data.service_id}" id="img-1"
-                                                        data-zoom-image="../assets/images/product/category/1.jpg"
-                                                        class="img-fluid image_zoom_cls-0 blur-up lazyload" alt="">
-                                                </div>
-                                            </div>
+        const user_jwt  = localStorage.getItem("user_jwt");
+    
+        if(user_jwt == null){
+            location ="../front-end/login.html";
+        }else{
 
-                                            <div>
-                                                <div class="slider-image">
-                                                    <img src=""
-                                                        data-zoom-image="../assets/images/product/category/2.jpg"
-                                                        class="img-fluid image_zoom_cls-1 blur-up lazyload" alt="">
-                                                </div>
-                                            </div>
+            $.ajax({
+                    url:"/homieProject/userinfo/CheckMemberController",
+                    type:"POST",
+                    dataType:"JSON",
+                    headers : {
+                        "Authorization" :"Bearer "+user_jwt
+                    },
+                    success: function(userid){
+                                                    
+                        if(userid == '0'){
+                            
+                            location ="../front-end/login.html";
+                        }
+                        
+                        getAllNum(userid);
+                        //Select_heart(user_id);
 
-                                            <div>
-                                                <div class="slider-image">
-                                                    <img src=""
-                                                        data-zoom-image="../assets/images/product/category/3.jpg"
-                                                        class="img-fluid image_zoom_cls-2 blur-up lazyload" alt="">
-                                                </div>
-                                            </div>
-
-                                            <div>
-                                                <div class="slider-image">
-                                                    <img src=""
-                                                        data-zoom-image="../assets/images/product/category/4.jpg"
-                                                        class="img-fluid image_zoom_cls-3 blur-up lazyload" alt="">
-                                                </div>
-                                            </div>
-
-                                            <div>
-                                                <div class="slider-image">
-                                                    <img src=""
-                                                        data-zoom-image="../assets/images/product/category/5.jpg"
-                                                        class="img-fluid image_zoom_cls-4 blur-up lazyload" alt="">
-                                                </div>
-                                            </div>
-
-                                            <div>
-                                                <div class="slider-image">
-                                                    <img src=""
-                                                        data-zoom-image="../assets/images/product/category/6.jpg"
-                                                        class="img-fluid image_zoom_cls-5 blur-up lazyload" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                                   
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="right-box-contain">
-                                <h2 id="service_id" style="display: none;">${data.service_id}</h2>                         
-                                <h2 id="service_name" class="name">${data.service_name}</h2>
-                                <div class="price-rating">
-                                    <h3 class="theme-color price" id="service_price">$${data.service_price}</h3>
-                                    <div class="product-rating custom-rate">
-                                      
-                                        <ul id="start" class="rating">
-										
-										     																																			                           
-                                        </ul>
-                                        <span id="totalReviewCount" class="review">${data.seller.totalReviewCount} 評價人數</span>
-                                    </div>
-                                </div>
-
-                                <div class="procuct-contain">
-                                    <h2 id="service_user_id" style="display: none;">${data.user_id}</h2>
-                                    <h2 id="service_id_code" style="display: none;">${data.service_id_code}</h2>
-                                    <p id="service_introduction">${data.service_id_code}</p>    
-                                </div>
-                                                          
-                                <div class="note-box product-packege">
-                                    <div class="cart_qty qty-box product-qty">
-                                        <div class="input-group">
-                                            <button type="button" class="qty-right-plus" data-type="plus" data-field="">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                            <input class="form-control input-number qty-input" type="text"
-                                                name="quantity" value="0">
-                                            <button type="button" class="qty-left-minus" data-type="minus"
-                                                data-field="">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                        <div class="form-floating theme-form-floating">
-                                                <input id="date" type="date" class="form-control" placeholder="Full Name">
-                                                <label for="user_birth">預約日期</label>
-                                        </div> 
-                                        <div class="form-floating theme-form-floating">
-                                            <select id="date_detail" name="date_detail" class="form-select">
-                                                <option value="0">請選擇</option>
-                                                <option value="1">上午</option>
-                                                <option value="2">下午</option>
-                                                <option value="3">晚上</option>
-                                            </select>    
-                                            <label for="area">預約時間</label>
-                                        </div>                                        
-                                    </div>
-                                                <!-- onclick="location.href = 'cart.html';" -->
-                                    <button    id="add_to_cart"
-                                        class="btn btn-md bg-dark cart-button text-white w-100">加入購物車</button>
-                                </div>
-
-                                <div class="buy-box">
+                        dynamicElements.on("click","svg#heart",function(){
+                            const heart =$(this);
+                            const user_id =userid;
+                            const Service_id=$(this).closest("div#dynamicElements").find("h2#Service_id").html();
+                            // console.log(heart.attr("data-title"));                            
+                            if( heart.attr("data-title") === undefined  ){    
+                                    $.ajax({
+                                        url:"/homieProject/Service_Collection/Insert_SerCollControllers",
+                                        type:"POST",
+                                        dataType:"json",
+                                        data : JSON.stringify ({
+                                            user_id:user_id,
+                                            category_id:Service_id        
+                                        }) ,
+                                        success:function(data){
                                     
-                                        <svg id="heart" xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                                        </svg>
-                                        <span>加入收藏</span>
-                                   
-                                </div>
+                                            heart.css({ "color": "red"});      
+                                            heart.attr("data-title","true");
+                                            alert("加入我的最愛");
+                                            
+                                        },error:function(error){
 
-                                <div class="pickup-box">
-                                    <div class="product-title">
-                                        <h4>商品簡介</h4>
+                                            console.log(error);
+
+                                        }
+                                    })
+                                
+                                }else{
+                                
+                                    $.ajax({
+                                        url:"/homieProject//Service_Collection/delete_SerCollController",
+                                        type:"POST",
+                                        dataType:"json",
+                                        data : JSON.stringify ({
+                                            user_id:user_id,
+                                            category_id:Service_id        
+                                        }) ,
+                                        success:function(data){
+                                    
+                                            heart.removeAttr("style");      
+                                            heart.removeAttr("data-title");
+                                            alert("移除我的最愛");
+                                            
+                                        },error:function(error){
+
+                                            console.log(error);
+
+                                        }
+                                    })
+
+                                }          
+                                
+                        });
+
+                        $.ajax({
+                        url:"/homieProject/service/Select_byIdController",
+                        type:"POST",
+                        dataType:"JSON",
+                        data:JSON.stringify({
+                            service_id:service_id
+                        }),
+                        success:  function(data){
+                                    
+                            const html1 =`
+                                <div class="row g-4">
+                                    <div class="col-xl-6 wow fadeInUp">
+                                        <div class="product-left-box">
+                                            <div class="row g-2">
+                                                <div class="col-xxl-10 col-lg-12 col-md-10 order-xxl-2 order-lg-1 order-md-2">
+                                                                    <div class="product-main-2 no-arrow">
+                                                        <div>
+                                                            <div class="slider-image">
+                                                                <img src="http://localhost:8080/homieProject/service/Select_ImgController?service_id=${data.service_id}" id="img-1"
+                                                                    data-zoom-image="../assets/images/product/category/1.jpg"
+                                                                    class="img-fluid image_zoom_cls-0 blur-up lazyload" alt="">
+                                                            </div>
+                                                        </div>
+
+                                                        <div>
+                                                            <div class="slider-image">
+                                                                <img src=""
+                                                                    data-zoom-image="../assets/images/product/category/2.jpg"
+                                                                    class="img-fluid image_zoom_cls-1 blur-up lazyload" alt="">
+                                                            </div>
+                                                        </div>
+
+                                                        <div>
+                                                            <div class="slider-image">
+                                                                <img src=""
+                                                                    data-zoom-image="../assets/images/product/category/3.jpg"
+                                                                    class="img-fluid image_zoom_cls-2 blur-up lazyload" alt="">
+                                                            </div>
+                                                        </div>
+
+                                                        <div>
+                                                            <div class="slider-image">
+                                                                <img src=""
+                                                                    data-zoom-image="../assets/images/product/category/4.jpg"
+                                                                    class="img-fluid image_zoom_cls-3 blur-up lazyload" alt="">
+                                                            </div>
+                                                        </div>
+
+                                                        <div>
+                                                            <div class="slider-image">
+                                                                <img src=""
+                                                                    data-zoom-image="../assets/images/product/category/5.jpg"
+                                                                    class="img-fluid image_zoom_cls-4 blur-up lazyload" alt="">
+                                                            </div>
+                                                        </div>
+
+                                                        <div>
+                                                            <div class="slider-image">
+                                                                <img src=""
+                                                                    data-zoom-image="../assets/images/product/category/6.jpg"
+                                                                    class="img-fluid image_zoom_cls-5 blur-up lazyload" alt="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>                                   
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="pickup-detail">
-                                        <h4 class="text-content">
-                                            ${data.service_introduction}
-                                        </h4>
+                                    <div class="col-xl-6 wow fadeInUp" data-wow-delay="0.1s">
+                                        <div class="right-box-contain">
+                                            <h2 id="service_id" style="display: none;">${data.service_id}</h2>                         
+                                            <h2 id="service_name" class="name">${data.service_name}</h2>
+                                            <div class="price-rating">
+                                                <h3 class="theme-color price" id="service_price">$${data.service_price}</h3>
+                                                <div class="product-rating custom-rate">
+                                                
+                                                    <ul id="start" class="rating">
+                                                    
+                                                                                                                                                                                                                            
+                                                    </ul>
+                                                    <span id="totalReviewCount" class="review">${data.seller.totalReviewCount} 評價人數</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="procuct-contain">
+                                                <h2 id="service_user_id" style="display: none;">${data.user_id}</h2>
+                                                <h2 id="service_id_code" style="display: none;">${data.service_id_code}</h2>
+                                                <p id="service_introduction">${data.service_id_code}</p>    
+                                            </div>
+                                                                    
+                                            <div class="note-box product-packege">
+                                                <div class="cart_qty qty-box product-qty">
+                                                    <div class="input-group">
+                                                        <button type="button" class="qty-right-plus" data-type="plus" data-field="">
+                                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                                        </button>
+                                                        <input class="form-control input-number qty-input" type="text"
+                                                            name="quantity" value="0">
+                                                        <button type="button" class="qty-left-minus" data-type="minus"
+                                                            data-field="">
+                                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="form-floating theme-form-floating">
+                                                            <input id="date" type="date" class="form-control" placeholder="Full Name">
+                                                            <label for="user_birth">預約日期</label>
+                                                    </div> 
+                                                    <div class="form-floating theme-form-floating">
+                                                        <select id="date_detail" name="date_detail" class="form-select">
+                                                            <option value="0">請選擇</option>
+                                                            <option value="1">上午</option>
+                                                            <option value="2">下午</option>
+                                                            <option value="3">晚上</option>
+                                                        </select>    
+                                                        <label for="area">預約時間</label>
+                                                    </div>                                        
+                                                </div>
+                                                            <!-- onclick="location.href = 'cart.html';" -->
+                                                <button    id="add_to_cart"
+                                                    class="btn btn-md bg-dark cart-button text-white w-100">加入購物車</button>
+                                            </div>
+
+                                            <div class="buy-box">
+                                                
+                                                    <svg id="heart" xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                                    </svg>
+                                                    <span>加入收藏</span>
+                                            
+                                            </div>
+
+                                            <div class="pickup-box">
+                                                <div class="product-title">
+                                                    <h4>商品簡介</h4>
+                                                </div>
+
+                                                <div class="pickup-detail">
+                                                    <h4 class="text-content">
+                                                        ${data.service_introduction}
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                    
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                                `;
 
-                        <div class="col-12">
-                           
-                        </div>
-                    </div>
-                    `;
+                            dynamicElements.html(html1); 
+                            
+                            const div_rating = $("#start");
+                            const service_introduction = $("#service_introduction");
+                            
+                            const start_html =` <i class="bi bi-star-fill"  style="color:yellow"></i>`;  
+                            const start_hrml_error =` <i class="bi bi-star"  style="color:yellow"></i> `;  
 
-                dynamicElements.html(html1); 
-                
-                const div_rating = $("#start");
-                const service_introduction = $("#service_introduction");
-                
-                const start_html =` <i class="bi bi-star-fill"  style="color:yellow"></i>`;  
-                const start_hrml_error =` <i class="bi bi-star"  style="color:yellow"></i> `;  
+                            for(let num =0; num< 5; num++ ){
+                                if( num < data.seller.totalReviewStars){
+                                    div_rating.append(start_html);
+                                }else{
+                                    div_rating.append(start_hrml_error);
+                                }
+                            }
 
-                for(let num =0; num< 5; num++ ){
-					if( num < data.seller.totalReviewStars){
-                        div_rating.append(start_html);
-                    }else{
-                        div_rating.append(start_hrml_error);
-                    }
-				}
-                //0:居家清潔 1:冷氣清潔2:洗衣機清潔 3:專業除蟎4:水塔清洗 5:水管清洗
-                if( data.service_id_code == 0 ){
-                    service_introduction.html("居家清潔")
-                }else if( data.service_id_code == 1 ){
-                    service_introduction.html("冷氣清潔")
-                }else if( data.service_id_code == 2){
-                    service_introduction.html("洗衣機清潔")    
-                }else if( data.service_id_code == 3){
-                    service_introduction.html("專業除蟎")
-                }else if( data.service_id_code == 4){
-                    service_introduction.html("水塔清洗")
-                }else if( data.service_id_code == 5){
-                    service_introduction.html("水管清洗")              
-                };
+                            //0:居家清潔 1:冷氣清潔2:洗衣機清潔 3:專業除蟎4:水塔清洗 5:水管清洗
+                            if( data.service_id_code == 0 ){
+                                service_introduction.html("居家清潔")
+                            }else if( data.service_id_code == 1 ){
+                                service_introduction.html("冷氣清潔")
+                            }else if( data.service_id_code == 2){
+                                service_introduction.html("洗衣機清潔")    
+                            }else if( data.service_id_code == 3){
+                                service_introduction.html("專業除蟎")
+                            }else if( data.service_id_code == 4){
+                                service_introduction.html("水塔清洗")
+                            }else if( data.service_id_code == 5){
+                                service_introduction.html("水管清洗")              
+                            };
 
-                datalimit();
-                Select_heart();
-            },    
-            error: function(error){
-                console.log(error);
-            }
-        })
+                            datalimit();
+                            Select_heart(userid);
+                        },    
+                        error: function(error){
+                            console.log(error);
+                        }
+                    })
+
+
+                    },
+                    error:function(error){
+
+                    }    
+                }) 
+        }
+
+            
         
-            function Select_heart(){
+            function Select_heart(data){
                 const heart =dynamicElements.closest("div#dynamicElements").find("svg#heart");
-                const user_id="1";
+                const user_id=data;
                 const Service_id=dynamicElements.closest("div#dynamicElements").find("h2#Service_id").html();
-
+                console.log(data);
                 console.log(Service_id);
                 $.ajax({
                     url:"/homieProject/Service_Collection/Select_ProById",
@@ -1857,12 +1945,12 @@
                     }) ,
                     success:function(data){
 
-                     if(data ==true){   
+                    if(data ==true){   
 
                         heart.css({ "color": "red"});      
                         heart.attr("data-title","true");
 
-                     }
+                    }
                         
                     },error:function(error){
 
@@ -1871,205 +1959,104 @@
                     }
                 })        
 
-            }
+            }  
 
-        dynamicElements.on("click","svg#heart",function(){
-            const heart =$(this);
-            const user_id ="1";
-            const Service_id=$(this).closest("div#dynamicElements").find("h2#Service_id").html();
-            // console.log(heart.attr("data-title"));
-            if( heart.attr("data-title") === undefined  ){    
+            
+                dynamicElements.on("click","button#add_to_cart",function(){
+
+                const service_id     =$(this).closest("div#dynamicElements").find("h2#Service_id").html();
+                const service_name   =$(this).closest("div#dynamicElements").find("h2#service_name").html();
+                const service_price  =$(this).closest("div#dynamicElements").find("h3#service_price").html().substring(1);
+                const service_count  =$(this).closest("div#dynamicElements").find(`input[name="quantity"]`).val();
+                const service_id_code=$(this).closest("div#dynamicElements").find("h2#service_id_code").html();
+                const seller_id      =$(this).closest("div#dynamicElements").find("h2#service_user_id").html();
+                const service_Date   =$(this).closest("div#dynamicElements").find("input#date").val();
+                const service_DateDetail=$(this).closest("div#dynamicElements").find("select#date_detail").val();
+                const service_total =parseInt(service_price)*parseInt(service_count);
+                //抓 下拉式的值
+                const selectedValue = $(this).closest("div#dynamicElements").find("select#date_detail").val();
+
+                // console.log(service_Date);
+                // console.log(service_DateDetail);
+
+                // console.log($(this).closest("div#dynamicElements").find("select#date_detail").val());
+
+                //const totalReviewCount =$(this).closest("div#dynamicElements").find("span#totalReviewCount").html();
+                //const service_introduction =$(this).closest("div#dynamicElements").find("p#service_introduction").html();        
+                
+                if(selectedValue == 0){
+                    alert("請選擇時間");
+                    return
+                }
+
+                if(service_Date.trim() ==""){
+                    alert("請選擇時間");
+                    return
+                }
+
+                if(service_DateDetail == 0){
+                    alert("請選擇時段");
+                    return
+                }
+
+                if( service_count != 0  ){
+
                     $.ajax({
-                        url:"/homieProject/Service_Collection/Insert_SerCollControllers",
+                        url:"/homieProject/Service/InsetRedisController",
                         type:"POST",
-                        dataType:"json",
+                        dataType:"JSON",
                         data : JSON.stringify ({
-                            user_id:user_id,
-                            category_id:Service_id        
-                        }) ,
-                        success:function(data){
-                       
-                            heart.css({ "color": "red"});      
-                            heart.attr("data-title","true");
-                            alert("加入我的最愛");
-                            
-                        },error:function(error){
+                            service_id:service_id,
+                            service_name:service_name,
+                            service_price:service_price,
+                            service_id_code:service_id_code,
+                            service_count:service_count,
+                            service_total:service_total,
+                            service_Date:service_Date,
+                            service_DateDetail:service_DateDetail,
+                            seller_id:seller_id     
+                        }),
+                        success: function(data){
+
+                            window.location.href = "http://localhost:8080/homieProject/front-end/cart_Service.html";
+
+                        },
+                        error:function(error){
 
                             console.log(error);
-
-                        }
+                            
+                        }    
                     })
-                
                 }else{
+                    alert("請輸入數量");
+                }    
+
+
+            });
+
+
+            dynamicElements.on('click',".qty-right-plus", function () {
+
+                const currentValue=$(this).closest("div#dynamicElements").find("input.qty-input");
                 
-                    $.ajax({
-                        url:"/homieProject//Service_Collection/delete_SerCollController",
-                        type:"POST",
-                        dataType:"json",
-                        data : JSON.stringify ({
-                            user_id:user_id,
-                            category_id:Service_id        
-                        }) ,
-                        success:function(data){
-                       
-                            heart.removeAttr("style");      
-                            heart.removeAttr("data-title");
-                            alert("移除我的最愛");
-                            
-                        },error:function(error){
-
-                            console.log(error);
-
-                        }
-                    })
-
-                }          
-                
-        });
-
-
-        dynamicElements.on("click","button#add_to_cart",function(){
-
-            const service_id     =$(this).closest("div#dynamicElements").find("h2#Service_id").html();
-            const service_name   =$(this).closest("div#dynamicElements").find("h2#service_name").html();
-            const service_price  =$(this).closest("div#dynamicElements").find("h3#service_price").html().substring(1);
-            const service_count  =$(this).closest("div#dynamicElements").find(`input[name="quantity"]`).val();
-            const service_id_code=$(this).closest("div#dynamicElements").find("h2#service_id_code").html();
-            const seller_id      =$(this).closest("div#dynamicElements").find("h2#service_user_id").html();
-            const service_Date   =$(this).closest("div#dynamicElements").find("input#date").val();
-            const service_DateDetail=$(this).closest("div#dynamicElements").find("select#date_detail").val();
-            const service_total =parseInt(service_price)*parseInt(service_count);
-            //抓 下拉式的值
-            const selectedValue = $(this).closest("div#dynamicElements").find("select#date_detail").val();
-
-            // console.log(service_Date);
-            // console.log(service_DateDetail);
-
-           // console.log($(this).closest("div#dynamicElements").find("select#date_detail").val());
-
-            //const totalReviewCount =$(this).closest("div#dynamicElements").find("span#totalReviewCount").html();
-            //const service_introduction =$(this).closest("div#dynamicElements").find("p#service_introduction").html();        
-            
-            if(selectedValue == 0){
-                alert("請選擇時間");
-                return
-            }
-
-            if(service_Date.trim() ==""){
-                alert("請選擇時間");
-                return
-            }
-
-            if(service_DateDetail == 0){
-                alert("請選擇時段");
-                return
-            }
-
-            if( service_count != 0  ){
-
-                $.ajax({
-                    url:"/homieProject/Service/InsetRedisController",
-                    type:"POST",
-                    dataType:"JSON",
-                    data : JSON.stringify ({
-                        service_id:service_id,
-                        service_name:service_name,
-                        service_price:service_price,
-                        service_id_code:service_id_code,
-                        service_count:service_count,
-                        service_total:service_total,
-                        service_Date:service_Date,
-                        service_DateDetail:service_DateDetail,
-                        seller_id:seller_id     
-                    }),
-                    success: function(data){
-
-                        window.location.href = "http://localhost:8080/homieProject/front-end/cart_Service.html";
-
-                    },
-                    error:function(error){
-
-                        console.log(error);
-                        
-                    }    
-                })
-            }else{
-                alert("請輸入數量");
-            }    
-
-
-        });
-
-
-        dynamicElements.on('click',".qty-right-plus", function () {
-
-		    const currentValue=$(this).closest("div#dynamicElements").find("input.qty-input");
-            
-            const Value=parseInt(currentValue.val())+1;
-                 
-            currentValue.val(Value);
-
-        });
-        
-        dynamicElements.on('click',".qty-left-minus", function () {
-            
-            const currentValue=$(this).closest("div#dynamicElements").find("input.qty-input");
-            
-            const Value=parseInt(currentValue.val());
-
-            if ( Value > 0) {
-                currentValue.val(Value-1);
-            }
-        });
-        
-        function getAllNum(){
-                $.ajax({
-                    url:"/homieProject/Service/GetAllRedisController",
-                    type:"POST",
-                    dataType:"json",
-                    data :{ 
-                        user_id:'user_id:1'
-                    },
-                    success:function(data){
-                        car_num.innerHTML=data.length;
-                      //  console.log(data);
-                        //$("#car_detail").html("");
-
-                        // for( let key in data){    
-                        //       let hmtl=`<li class="product-box-contain">
-                        //                     <div class="drop-cart">
-                        //                         <a href="product-left-thumbnail.html" class="drop-image">
-                        //                             <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}"
-                        //                                 class="blur-up lazyload" alt="">
-                        //                         </a>
-
-                        //                         <div class="drop-contain">
-                        //                             <a href="product-left-thumbnail.html">
-                        //                                 <h5>Fantasy Crunchy Choco Chip Cookies</h5>
-                        //                             </a>
-                        //                             <h6><span>${data[key].product_count} x</span> $${data[key].product_total}</h6>
-                        //                             <button class="close-button close_button">
-                        //                                 <i class="fa-solid fa-xmark"></i>
-                        //                             </button>
-                        //                         </div>
-                        //                     </div>
-                        //                 </li>`;
-
-                            
-                        //                 $("#car_detail").html(hmtl);            
-                                        
-                        // }                
+                const Value=parseInt(currentValue.val())+1;
                     
-                    },
-                    error:function(error){
+                currentValue.val(Value);
 
-                        console.log(error);
-
-                    }
-
-                })
-            }
+            });
         
+            dynamicElements.on('click',".qty-left-minus", function () {
+                
+                const currentValue=$(this).closest("div#dynamicElements").find("input.qty-input");
+                
+                const Value=parseInt(currentValue.val());
+
+                if ( Value > 0) {
+                    currentValue.val(Value-1);
+                }
+            });
+        
+    
             $("#car_btn").on("click",function(){
             window.location.href = "http://localhost:8080/homieProject/front-end/cart_Service.html";
 
@@ -2120,8 +2107,8 @@
 
             // })
             });
-            getAllNum();
-            function getAllNum(){
+           
+            function getAllNum(data){
                 $.ajax({
                     url:"/homieProject/Service/GetAllRedisController",
                     type:"POST",
@@ -2130,7 +2117,6 @@
                         user_id:'user_id:1'
                     },
                     success:function(data){
-                        console.log(data);
                         car_num.innerHTML=data.length;
                       //  console.log(data);
                         //$("#car_detail").html("");
