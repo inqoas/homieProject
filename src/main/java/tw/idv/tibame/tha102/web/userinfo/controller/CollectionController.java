@@ -35,6 +35,7 @@ public class CollectionController {
 		int userId = userInfoJwtUtil.checkUserInfoJwt(authorization);
 		if (userId < 1) {
 			return Collections.emptyList();
+					//Collections.emptyList();  產生新的集合
 		}
 		return collectionService.getProductCollection(userId);
 	}

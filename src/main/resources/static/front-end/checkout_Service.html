@@ -38,6 +38,8 @@
 
     <!-- Template css -->
     <link id="color-link" rel="stylesheet" type="text/css" href="../assets/css/style.css">
+
+
 </head>
 
 <body>
@@ -165,14 +167,14 @@
     
                                     <li class="right-side">
                                         <div class="onhover-dropdown header-badge">
-                                            <button type="button" class="btn p-0 position-relative header-wishlist">
+                                            <button id="car_btn" type="button" class="btn p-0 position-relative header-wishlist">
                                                 <i data-feather="shopping-cart"></i>
-                                                <span class="position-absolute top-0 start-100 translate-middle badge">2
+                                                <span id="car_num" class="position-absolute top-0 start-100 translate-middle badge">2
                                                     <span class="visually-hidden">unread messages</span>
                                                 </span>
                                             </button>
     
-                                            <div class="onhover-div">
+                                            <!-- <div class="onhover-div">
                                                 <ul class="cart-list">
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
@@ -224,7 +226,7 @@
                                                     <a href="checkout.html" class="btn btn-sm cart-button theme-bg-color
                                                     text-white">結帳</a>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </li>
                                     <li class="right-side onhover-dropdown">
@@ -254,6 +256,7 @@
                                                 </li>
                                             </ul>
                                         </div>
+                                        <div class="username" style="font-weight: bold; color: #274C77;"></div>
                                     </li>
                                 </ul>
                             </div>
@@ -279,11 +282,11 @@
                                         <ul class="navbar-nav">
     
                                             <li class="nav-item dropdown">
-                                                <a style="font-size: 20px; font-weight: bold;">商品頁面</a>
+                                                <a href="http://localhost:8080/homieProject/front-end/shop-top-filter.html" style="font-size: 20px; font-weight: bold;">商品頁面</a>
                                             </li>
     
                                             <li class="nav-item dropdown">
-                                                <a style="font-size: 20px; font-weight: bold;">服務頁面</a>
+                                                <a href="http://localhost:8080/homieProject/front-end/service.html" style="font-size: 20px; font-weight: bold;">服務頁面</a>
                                             </li>
     
                                             <li class="nav-item dropdown dropdown-mega">
@@ -348,7 +351,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadscrumb-contain">
-                        <h2>Checkout</h2>
+                        <h2>服務購物車</h2>
                         <nav>
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item">
@@ -357,7 +360,7 @@
                                         <i class="fa-solid fa-house"></i>
                                     </a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                                <li class="breadcrumb-item active" aria-current="page">服務購物車</li>
                             </ol>
                         </nav>
                     </div>
@@ -395,13 +398,13 @@
                                                         <div>
                                                             <div class="form-group">
                                                                 <label for="home_name">收件人</label>
-                                                                <input type="text" class="form-control" id="home_name" placeholder="收件人" style=" width: 650px;">
+                                                                <input type="text" class="form-control" id="home_name" placeholder="收件人" style=" width: 650px;" value="張三">
                                                                 <div class="error-message" id="home_name_error" style="color: red;"></div>
                                                                 <label for="home_addrss">地址</label>
-                                                                <input type="text" class="form-control" id="home_addrss" placeholder="地址" style=" width: 650px;">
+                                                                <input type="text" class="form-control" id="home_addrss" placeholder="地址" style=" width: 650px;" value="新北市中和區興南路36巷17之5號">
                                                                 <div class="error-message" id="home_addrss_error" style="color: red;"></div>
                                                                 <label for="home_phone">電話</label>
-                                                                <input type="text" class="form-control" id="home_phone" placeholder="電話" style=" width: 650px;">
+                                                                <input type="text" class="form-control" id="home_phone" placeholder="電話" style=" width: 650px;" value="092445634">
                                                                 <div class="error-message" id="home_phone_error" style="color: red;"></div>
                                                             </div>
                                                         </div>
@@ -505,7 +508,7 @@
                                     </div>
                                     <div class="checkout-box">
                                         <div class="checkout-title">
-                                            <h4>Payment Option</h4>
+                                            <h4>付款方式</h4>
                                         </div>
 
                                         <div class="checkout-detail">
@@ -816,12 +819,7 @@
                             </div>
 
                             <ul class="summery-contain">
-                                <li>
-                                    <img src="../assets/images/vegetable/product/1.png"
-                                        class="img-fluid blur-up lazyloaded checkout-image" alt="">
-                                    <h4>Bell pepper <span>X 1</span></h4>
-                                    <h4 class="price">$32.34</h4>
-                                </li>
+                                
                             </ul>
 
                             <ul class="summery-total">
@@ -843,7 +841,7 @@
                         </div>
 
                         <div class="checkout-offer">
-                            <div class="offer-title">
+                            <!-- <div class="offer-title">
                                 <div class="offer-icon">
                                     <img src="../assets/images/inner-page/offer.svg" class="img-fluid" alt="">
                                 </div>
@@ -859,10 +857,10 @@
                                 <li>
                                     <p>combo: Royal Cashew Californian, Extra Bold 100 gm + BB Royal Honey 500 gm</p>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </div>
 
-                        <button id="btn_order" class="btn theme-bg-color text-white btn-md w-100 mt-4 fw-bold">Place Order</button>
+                        <button id="btn_order" class="btn theme-bg-color text-white btn-md w-100 mt-4 fw-bold">結帳</button>
                     </div>
                 </div>
             </div>
@@ -1224,14 +1222,20 @@
     <!-- Ajax-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
+     <!--header-->
+     <script src="../assets/js/header.js"> </script>
+
+
     <script>
         window.onload = function() {
 
             //抓到 前頁 session值
             const data = JSON.parse(sessionStorage.getItem("Service_data"));
+            const car_num         =document.querySelector("#car_num");
+
 
             console.log(data);
-
+           
             const subtotal        =$("#subtotal");
             const Coupontotalotal =$("#Coupontotal");
             const finlTotal       =$("#finlTotal");
@@ -1240,7 +1244,8 @@
             const home_phone      =$("#home_phone");
 
             const Redis_Data_Service=[];
-
+            //沒有商品 不能按
+           
           
             for( let i in data){
                  
@@ -1256,6 +1261,8 @@
                     service_Date :data[i].service_Date,
                     service_DateDetail:data[i].service_DateDetail
                 }
+                 
+                console.log(data[i].service_name,);
 
                 Redis_Data_Service.push(pre);
 
@@ -1270,7 +1277,7 @@
               let html =`<li>
                             <img src="http://localhost:8080/homieProject/service/Select_ImgController?service_id=${data[i].service_id}"
                                 class="img-fluid blur-up lazyloaded checkout-image" alt="">
-                            <h4>Bell pepper <span>X ${data[i].service_count}</span></h4>
+                            <h4>${data[i].service_name} <span>X ${data[i].service_count}</span></h4>
                             <h4 class="price">$${data[i].service_total}</h4>
                         </li>`;    
 
@@ -1296,31 +1303,93 @@
                 if(home_name.val().trim() !="" && home_addrss.val().trim() !="" && home_phone.val().trim() !="" ){
 
                   //  console.log("abcdef");
-                    
-                    $.ajax({
-                        url:"/homieProject/OrderService/InsertIntoOrdSerControllrt",
-                        type:"POST",
-                        dataType:"JSON",
-                        data :JSON.stringify({
-                            Redis_Data_Service:Redis_Data_Service
-                        }),
-                        success: function(data){
+                        $.ajax({
+                            url:"/homieProject/OrderService/InsertIntoOrdSerControllrt",
+                            type:"POST",
+                            dataType:"JSON",
+                            data :JSON.stringify({
+                                Redis_Data_Service:Redis_Data_Service
+                            }),
+                            success: function(data){
 
-                        //   window.location.href = "http://localhost:8080/homieProject/front-end/cart_Service.html";
-                        $("ul.summery-contain").html("");
-                        subtotal.html("$0");
-                        finlTotal.html("$0");
-                        sessionStorage.clear();
-                        },
-                        error:function(error){
+                            //   window.location.href = "http://localhost:8080/homieProject/front-end/cart_Service.html";
+                            $("ul.summery-contain").html("");
+                            subtotal.html("$0");
+                            finlTotal.html("$0");
+                            sessionStorage.clear();
 
-                        //    console.log(error);
-                            
-                        }    
-                    })
+                            location ="../front-end/order-success.html";
 
+                            },
+                            error:function(error){
+
+                            //    console.log(error);
+                                
+                            }    
+                        })
                  }
             });
+
+            btn_car();
+
+            function btn_car(){
+
+                if(finlTotal.html() =="$0"){
+                    
+                    $("#btn_order").prop("disabled", true);
+                    
+                }    
+            }
+               
+            getAllNum();
+            function getAllNum(){
+                $.ajax({
+                    url:"/homieProject/Product/GetAllRedisController",
+                    type:"POST",
+                    dataType:"json",
+                    data :{ 
+                        user_id:'user_id:1'
+                    },
+                    success:function(data){
+                        car_num.innerHTML=data.length;
+                      //  console.log(data);
+                        //$("#car_detail").html("");
+
+                        // for( let key in data){    
+                        //       let hmtl=`<li class="product-box-contain">
+                        //                     <div class="drop-cart">
+                        //                         <a href="product-left-thumbnail.html" class="drop-image">
+                        //                             <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}"
+                        //                                 class="blur-up lazyload" alt="">
+                        //                         </a>
+
+                        //                         <div class="drop-contain">
+                        //                             <a href="product-left-thumbnail.html">
+                        //                                 <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+                        //                             </a>
+                        //                             <h6><span>${data[key].product_count} x</span> $${data[key].product_total}</h6>
+                        //                             <button class="close-button close_button">
+                        //                                 <i class="fa-solid fa-xmark"></i>
+                        //                             </button>
+                        //                         </div>
+                        //                     </div>
+                        //                 </li>`;
+
+                            
+                        //                 $("#car_detail").html(hmtl);            
+                                        
+                        // }                
+                    
+                    },
+                    error:function(error){
+
+                        console.log(error);
+
+                    }
+
+                })
+            }
+
 
         }
     </script>
