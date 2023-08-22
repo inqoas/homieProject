@@ -64,7 +64,7 @@ function renderOrderService(orderServiceData) {
             <tr class="table-order" >
                 <td>
                     <a href="javascript:void(0)">
-                        <img src="http://localhost:8080/homieProject/service/Select_ImgController?service_id=${orderServiceInfo.orderServiceId}"
+                        <img src="http://localhost:8080/homieProject/service/Select_ImgController?service_id=${orderServiceInfo.serviceId}"
                             class="img-fluid blur-up lazyload" alt="">
                     </a>
                 </td>
