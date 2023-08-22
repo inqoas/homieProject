@@ -19,14 +19,14 @@ window.addEventListener("load", function(){
       const user_id = body.user_id;
       const seller_identity = body.seller_identity;
       const user_name = body.user_name;
-      const success = body.success;
+      const success = body.success;                //front-end/user-dashboard.html
       const user_div = document.querySelector(".onhover-div-login")
       if(user_id != null && seller_identity != null && user_name != null && success == true){
         user_div.innerHTML = `
                             <ul class="logined-box">
                                 <li class="product-box-contain">
                                     <i></i>
-                                    <a href="user-dashboard.html">會員中心</a>
+                                    <a href="../front-end/user-dashboard.html">會員中心</a>
                                 </li>
                                 <br>
                                 <li class="product-box-contain">

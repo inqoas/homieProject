@@ -1233,10 +1233,10 @@
     <script>
         window.onload = function() {
 
-            
-           
             //抓到 前頁 session值
             const data = JSON.parse(sessionStorage.getItem("Product_data"));
+
+            console.log(data);
 
             const subtotal        =$("#subtotal");
             const Coupontotalotal =$("#Coupontotal");
@@ -1247,11 +1247,59 @@
 
             const RedisData=[];
 
-            getAllNum();
-            
-            console.log(data);
+            getUser_id();
 
-          
+            function getUser_id(){
+
+                $.ajax({
+                        url:"/homieProject/userinfo/find-by-id?user_id="+data[0].user_id,
+                        type:"POST",
+                        dataType:"JSON",
+                        success: function(data){
+
+                            home_name.html(data[0].user_name);
+                            home_addrss.html(data[0].user_address);
+                            home_phone.html(data[0].user_phone);  
+                                                 
+                        },
+                        error:function(error){
+
+                        }    
+                    }) 
+                
+            }
+
+            const user_jwt  = localStorage.getItem("user_jwt");
+
+
+            if(user_jwt == null){
+                location ="../front-end/login.html";
+            }else{
+
+                $.ajax({
+                        url:"/homieProject/userinfo/CheckMemberController",
+                        type:"POST",
+                        dataType:"JSON",
+                        headers : {
+                            "Authorization" :"Bearer "+user_jwt
+                            },
+                        success: function(data){
+
+                            if(data == '0'){
+                                
+                                location ="../front-end/login.html";
+                            }
+                            
+                            getAllNum( data );
+
+                        },
+                        error:function(error){
+
+                        }    
+                    }) 
+            }    
+
+
             for( let i in data){
                  
                 pre ={
@@ -1263,10 +1311,7 @@
                     product_total:data[i].product_total
                     
                 }
-
-                
-                console.log(data[i].product_name);
-                
+               
                 RedisData.push(pre);
 
                 const total = parseInt(subtotal.html().substring(1)) + parseInt(data[i].product_total);
@@ -1305,7 +1350,7 @@
 
                 if(home_name.val().trim() !="" && home_addrss.val().trim() !="" && home_phone.val().trim() !="" ){
 
-                    console.log("abcdef");
+                    //console.log("abcdef");
                     
                     $.ajax({
                         url:"/homieProject/OrderProdect/ordprodetControllrt",
@@ -1343,14 +1388,14 @@
                     
                 }    
             }   
-            getAllNum();
-            function getAllNum(){
+
+            function getAllNum(data){
                 $.ajax({
                     url:"/homieProject/Product/GetAllRedisController",
                     type:"POST",
                     dataType:"json",
                     data :{ 
-                        user_id:'user_id:1'
+                        user_id:data
                     },
                     success:function(data){
                         car_num.innerHTML=data.length;

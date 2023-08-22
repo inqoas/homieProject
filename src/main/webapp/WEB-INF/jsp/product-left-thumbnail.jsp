@@ -71,7 +71,7 @@
                                     <i class="fa-solid fa-bars"></i>
                                 </span>
                             </button>
-                            <a href="index.html" class="web-logo nav-logo">
+                            <a href="../front-end/index.html" class="web-logo nav-logo">
                                 <img src="../assets/images/svg/Homie_logo.svg" class="img-fluid blur-up lazyload"
                                     alt="">
                             </a>
@@ -162,7 +162,7 @@
                                     <!-- 鈴鐺 -->
     
                                     <li class="right-side">
-                                        <a href="user-dashboard.html" class="btn p-0 position-relative header-wishlist"
+                                        <a href="../front-end/user-dashboard.html" class="btn p-0 position-relative header-wishlist"
                                             onclick="redirectToWishlist()">
                                             <i data-feather="heart"></i>
                                         </a>
@@ -1661,6 +1661,7 @@
             const car_num      = document.querySelector("#car_num");
             const heart        = $("#heart");
             const user_id      = "1";
+            var bigbag = {};
 
             const user_jwt  = localStorage.getItem("user_jwt");
 
@@ -1676,13 +1677,69 @@
                             "Authorization" :"Bearer "+user_jwt
                          },
 			            success: function(data){
-														
+                            
+
                             if(data.user_id == '0'){
 								
                                 location ="../front-end/login.html";
                             }
                             
-                       
+                            getAllNum(data);
+                            Select_heart(data);
+                            
+                            $("#heart").on("click",function(){
+                
+                            // console.log(heart.attr("data-title"));
+                            if( heart.attr("data-title") === undefined  ){    
+                                $.ajax({
+                                    url:"/homieProject/product_collection/Insert_ProCollController",
+                                    type:"POST",
+                                    dataType:"json",
+                                    data : JSON.stringify ({
+                                        user_id:data,
+                                        product_id:product_id.innerHTML        
+                                    }) ,
+                                    success:function(data){
+                                    
+                                        heart.css({ "color": "red"});      
+                                        heart.attr("data-title","true");
+                                        alert("加入我的最愛");
+                                        
+                                    },error:function(error){
+            
+                                        console.log(error);
+            
+                                    }
+                                })
+                            
+                            }else{
+                            
+                                $.ajax({
+                                    url:"/homieProject/product_collection/delete_ProCollController",
+                                    type:"POST",
+                                    dataType:"json",
+                                    data : JSON.stringify ({
+                                        user_id:data,
+                                        product_id:product_id.innerHTML        
+                                    }) ,
+                                    success:function(data){
+                                    
+                                        heart.removeAttr("style");      
+                                        heart.removeAttr("data-title");
+                                        alert("移除我的最愛");
+                                        
+                                    },error:function(error){
+            
+                                        console.log(error);
+            
+                                    }
+                                })
+            
+                            }  
+            
+                        });
+ 
+                            
                         },
                         error:function(error){
 
@@ -1690,12 +1747,12 @@
                     }) 
             }
 
-         
+            
 
             //查詢我的最愛
-            Select_heart();
+           
 
-            function Select_heart(){
+            function Select_heart( user_id){
 
                 $.ajax({
                     url:"/homieProject/product_collection/Select_ProCollController",
@@ -1723,58 +1780,9 @@
 
             }
 
-            $("#heart").on("click",function(){
-                
-               // console.log(heart.attr("data-title"));
-               if( heart.attr("data-title") === undefined  ){    
-                    $.ajax({
-                        url:"/homieProject/product_collection/Insert_ProCollController",
-                        type:"POST",
-                        dataType:"json",
-                        data : JSON.stringify ({
-                            user_id:user_id,
-                            product_id:product_id.innerHTML        
-                        }) ,
-                        success:function(data){
-                       
-                            heart.css({ "color": "red"});      
-                            heart.attr("data-title","true");
-                            alert("加入我的最愛");
-                            
-                        },error:function(error){
+            
 
-                            console.log(error);
-
-                        }
-                    })
-                
-                }else{
-                
-                    $.ajax({
-                        url:"/homieProject/product_collection/delete_ProCollController",
-                        type:"POST",
-                        dataType:"json",
-                        data : JSON.stringify ({
-                            user_id:user_id,
-                            product_id:product_id.innerHTML        
-                        }) ,
-                        success:function(data){
-                       
-                            heart.removeAttr("style");      
-                            heart.removeAttr("data-title");
-                            alert("移除我的最愛");
-                            
-                        },error:function(error){
-
-                            console.log(error);
-
-                        }
-                    })
-
-                }  
-
-            });
-
+            
             plusButton.addEventListener('click', function () {
                 let currentValue = parseInt(qtyInput.value);
                 qtyInput.value = currentValue + 1;
@@ -1877,14 +1885,14 @@
 
             
             //購物車數量
-            function getAllNum(){
+            function getAllNum( data ){
                 
                 $.ajax({
                     url:"/homieProject/Product/GetAllRedisController",
                     type:"POST",
                     dataType:"json",
                     data :{ 
-                        user_id:'user_id:1'
+                        user_id:data
                     },
                     success:function(data){
                         car_num.innerHTML=data.length;
@@ -1926,7 +1934,7 @@
                 })
             }
 
-            getAllNum();
+           
 
         };    
      

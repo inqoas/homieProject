@@ -28,6 +28,10 @@ public class DeleteRedisById extends HttpServlet{
 		resp.setContentType("Appliction/json; charset=utf-8");
 		
 		String user_id   	 =req.getParameter("user_id");
+		
+		
+		
+		StringBuilder stringBuilder = new StringBuilder(user_id).insert(0, "user_id:");
 
 		String product_id	 =req.getParameter("product_id").trim();
 		String product_price =req.getParameter("product_price").trim();
@@ -44,13 +48,13 @@ public class DeleteRedisById extends HttpServlet{
 		
 		try(Jedis jedis =new Jedis()){
 			
-			List<String> jediss = jedis.lrange(user_id, 0, jedis.llen(user_id));
+			List<String> jediss = jedis.lrange(stringBuilder.toString(), 0, jedis.llen(stringBuilder.toString()));
 			for(String strs : jediss) {
 				
 				Product jedisPro = gson.fromJson(strs,Product.class);
 				
 				if(jedisPro.getProduct_id() == product.getProduct_id()) {
-					jedis.lrem(user_id, 0, strs);
+					jedis.lrem(stringBuilder.toString(), 0, strs);
 				}
 			}
 		}

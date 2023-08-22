@@ -255,6 +255,7 @@
                                                 </li>
                                             </ul>
                                         </div>
+                                        <div class="username" style="font-weight: bold; color: #274C77;"></div>
                                     </li>
                                 </ul>
                             </div>
@@ -1203,6 +1204,7 @@
                                 
         })
         $("#car_btn").on("click",function(){
+
             window.location.href = "http://localhost:8080/homieProject/front-end/cart_Service.html";
 
             // $.ajax({
@@ -1253,54 +1255,55 @@
             // })
             });
         //如何購物車數量
+ 
         getAllNum()
         function getAllNum(){
-                $.ajax({
-                    url:"/homieProject/Service/GetAllRedisController",
-                    type:"POST",
-                    dataType:"json",
-                    data :{ 
-                        user_id:'user_id:1'
-                    },
-                    success:function(data){
-                        car_num.innerHTML=data.length;
-                      //  console.log(data);
-                        //$("#car_detail").html("");
+            $.ajax({
+                url:"/homieProject/Service/GetAllRedisController",
+                type:"POST",
+                dataType:"json",
+                data :{ 
+                    user_id:'user_id:1'
+                },
+                success:function(data){
+                    car_num.innerHTML=data.length;
+                //  console.log(data);
+                    //$("#car_detail").html("");
 
-                        // for( let key in data){    
-                        //       let hmtl=`<li class="product-box-contain">
-                        //                     <div class="drop-cart">
-                        //                         <a href="product-left-thumbnail.html" class="drop-image">
-                        //                             <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}"
-                        //                                 class="blur-up lazyload" alt="">
-                        //                         </a>
+                    // for( let key in data){    
+                    //       let hmtl=`<li class="product-box-contain">
+                    //                     <div class="drop-cart">
+                    //                         <a href="product-left-thumbnail.html" class="drop-image">
+                    //                             <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}"
+                    //                                 class="blur-up lazyload" alt="">
+                    //                         </a>
 
-                        //                         <div class="drop-contain">
-                        //                             <a href="product-left-thumbnail.html">
-                        //                                 <h5>Fantasy Crunchy Choco Chip Cookies</h5>
-                        //                             </a>
-                        //                             <h6><span>${data[key].product_count} x</span> $${data[key].product_total}</h6>
-                        //                             <button class="close-button close_button">
-                        //                                 <i class="fa-solid fa-xmark"></i>
-                        //                             </button>
-                        //                         </div>
-                        //                     </div>
-                        //                 </li>`;
+                    //                         <div class="drop-contain">
+                    //                             <a href="product-left-thumbnail.html">
+                    //                                 <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+                    //                             </a>
+                    //                             <h6><span>${data[key].product_count} x</span> $${data[key].product_total}</h6>
+                    //                             <button class="close-button close_button">
+                    //                                 <i class="fa-solid fa-xmark"></i>
+                    //                             </button>
+                    //                         </div>
+                    //                     </div>
+                    //                 </li>`;
 
-                            
-                        //                 $("#car_detail").html(hmtl);            
-                                        
-                        // }                
-                    
-                    },
-                    error:function(error){
+                        
+                    //                 $("#car_detail").html(hmtl);            
+                                    
+                    // }                
+                
+                },
+                error:function(error){
 
-                        console.log(error);
+                    console.log(error);
 
-                    }
+                }
 
-                })
-            }
+            })
+        }
            
 
     }    

@@ -37,11 +37,14 @@ public class GetAllRedisController extends HttpServlet{
 		
 		String user_id =req.getParameter("user_id");
 		
+		StringBuilder stringBuilder = new StringBuilder(user_id).insert(0, "user_id:");
+		
+		
 		List<Product> products =new ArrayList();
 		
 		try(Jedis jedis =new Jedis(LOCALHOST,PORT)){
 			
-			List<String> ss = jedis.lrange(user_id,0,jedis.llen(user_id));
+			List<String> ss = jedis.lrange(stringBuilder.toString(),0,jedis.llen(stringBuilder.toString()));
 			
 			for(String str : ss) {
 				

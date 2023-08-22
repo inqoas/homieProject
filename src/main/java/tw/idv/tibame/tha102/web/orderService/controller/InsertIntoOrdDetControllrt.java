@@ -89,6 +89,7 @@ public class InsertIntoOrdDetControllrt extends HttpServlet{
 			orderservice.setUserIdSeller(rsd.getSeller_id());
 			orderservice.setOrderQuantity(rsd.getService_count());
 			orderservice.setOrderStatus(0);
+			orderservice.setOrderPlacementTime(timestamp);
 			orderservice.setOrderUnitPrice(rsd.getService_total());
 		    orderservice.setOrderTotal(FinalTotal);
 		    orderservice.setOrderServiceDate(timestamp);

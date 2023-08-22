@@ -843,149 +843,196 @@
         // sessionStorage.setItem("form_data", JSON.stringify(send_data));
         //     location.href = "./confirm.html"; // 導到下一頁
 
-        all_product();
-
-        getAllNum();
-
-        let proObjects =[];
-
         let proObAlls   =[];
+        const user_jwt  = localStorage.getItem("user_jwt");
 
-        $("#checkbox-All").on("click",function(){
-            const checkedCheckboxes = $('input#checkbox_one');
-            const TotalFinally  =$("div.summery-box").find("h4#priceFinally");  
-            const subtotal=$("div.summery-contain").find("h4#price");
+        if(user_jwt == null){
+                location ="../front-end/login.html";
+        }else{
 
-            if ($(this).is(':checked')) {
-                //抓取全部 checkbox    
-                checkedCheckboxes.each(function() {
+            $.ajax({
+                    url:"/homieProject/userinfo/CheckMemberController",
+                    type:"POST",
+                    dataType:"JSON",
+                    headers : {
+                        "Authorization" :"Bearer "+user_jwt
+                    },
+                    success: function(data){
 
-                    const product_id    = $(this).closest("td.product-detail").find("input#product_id").val();
-                    
-                    const product_name  = $(this).closest("td.product-detail").find("a#product_name").html();
-                    
-                    const product_price = $(this).closest("tr.product-box-contain").find("h5#price").html().substring(1);
-                    
-                    const product_count = $(this).closest("tr.product-box-contain").find("input[name='quantity']").val();
-                
-                    const product_total = parseInt(product_price)*parseInt(product_count);    
+                        if(data == '0'){
+                        location ="../front-end/login.html";
+                        }
 
-                    checkedCheckboxes.prop('checked', true);
+                        getAllNum( data );
+                        all_product(data);      
+                        
+                        $("#checkbox-All").on("click",function(){
+                                const checkedCheckboxes = $('input#checkbox_one');
+                                const TotalFinally  =$("div.summery-box").find("h4#priceFinally");  
+                                const subtotal=$("div.summery-contain").find("h4#price");
 
-                    const total =parseInt($("div.summery-contain").find("h4#price").html().substring(1));
-                
-                    const newtotal=total+product_total;
+                                if ($(this).is(':checked')) {
+                                    //抓取全部 checkbox    
+                                    checkedCheckboxes.each(function() {
 
-                    subtotal.html("$"+newtotal);
-                    
-                    TotalFinally.html("$"+newtotal);
+                                        const product_id    = $(this).closest("td.product-detail").find("input#product_id").val();
+                                        
+                                        const product_name  = $(this).closest("td.product-detail").find("a#product_name").html();
+                                        
+                                        const product_price = $(this).closest("tr.product-box-contain").find("h5#price").html().substring(1);
+                                        
+                                        const product_count = $(this).closest("tr.product-box-contain").find("input[name='quantity']").val();
+                                    
+                                        const product_total = parseInt(product_price)*parseInt(product_count);    
 
-                    const proall ={
-                            user_id :"user_id:1",        
-                            product_id:product_id,
-                            product_name:product_name,
-                            product_price:product_price,
-                            product_count:product_count,
-                            product_total:product_total
-                    }
+                                        checkedCheckboxes.prop('checked', true);
 
-                    proObAlls.push(proall);    
-                    
-                })
+                                        const total =parseInt($("div.summery-contain").find("h4#price").html().substring(1));
+                                    
+                                        const newtotal=total+product_total;
+
+                                        subtotal.html("$"+newtotal);
+                                        
+                                        TotalFinally.html("$"+newtotal);
+
+                                        const proall ={
+                                                user_id :data,        
+                                                product_id:product_id,
+                                                product_name:product_name,
+                                                product_price:product_price,
+                                                product_count:product_count,
+                                                product_total:product_total
+                                        }
+
+                                        proObAlls.push(proall);    
+                                        
+                                    })
 
 
-            }else{
+                                }else{
 
-                checkedCheckboxes.each(function() {
-                checkedCheckboxes.prop('checked', false);
-         
-                 proObAlls=[];
+                                    checkedCheckboxes.each(function() {
+                                    checkedCheckboxes.prop('checked', false);
+                            
+                                    proObAlls=[];
 
-                })
+                                    })
 
-                subtotal.html("$ 0");
-                    
-                TotalFinally.html("$ 0");
-            }
+                                    subtotal.html("$ 0");
+                                        
+                                    TotalFinally.html("$ 0");
+                                }
 
-            console.log(proObAlls); 
+                                console.log(proObAlls); 
 
-        });
+                            });
 
-        $("#btn_cart").on("click",function(){
+                            $(document).on('click', 'input#checkbox_one', function() {    
+                            
+                            const product_id    =$(this).closest("tr.product-box-contain").find("input#product_id").val(); 
+                            const product_name  = $(this).closest("tr.product-box-contain").find("a#product_name").html();
+                            const product_price =$(this).closest("tr.product-box-contain").find("h5#price").html().substring(1);
+                            const product_count =$(this).closest("tr.product-box-contain").find(`input[name="quantity"]`).val();
+                            const product_total =parseInt(product_price)*parseInt(product_count);
+                            const TotalFinally  =$("div.summery-box").find("h4#priceFinally");
+                            
+                            console.log(product_price);
+                                    
+                            if ($(this).is(':checked')) {
 
-            if( proObAlls.length != 0 ){
-                sessionStorage.setItem("Product_data", JSON.stringify(proObAlls));
-                location.href = "./checkout.html"; // 導到下一頁
-            }else{
-                alert("請勾選商品");
-            }    
-                    
-        })
+                                const subtotal=$("div.summery-contain").find("h4#price");
 
-        $(document).on('click', 'input#checkbox_one', function() {    
-           
-           const product_id    =$(this).closest("tr.product-box-contain").find("input#product_id").val(); 
-           const product_name  = $(this).closest("tr.product-box-contain").find("a#product_name").html();
-           const product_price =$(this).closest("tr.product-box-contain").find("h5#price").html().substring(1);
-           const product_count =$(this).closest("tr.product-box-contain").find(`input[name="quantity"]`).val();
-           const product_total =parseInt(product_price)*parseInt(product_count);
-           const TotalFinally  =$("div.summery-box").find("h4#priceFinally");
-           
-           console.log(product_price);
-                
-           if ($(this).is(':checked')) {
+                                const total =parseInt($("div.summery-contain").find("h4#price").html().substring(1));
+                            
+                                const newtotal=total+product_total;
 
-               const subtotal=$("div.summery-contain").find("h4#price");
+                                subtotal.html("$"+newtotal);
+                                
+                                TotalFinally.html("$"+newtotal);
 
-               const total =parseInt($("div.summery-contain").find("h4#price").html().substring(1));
-        
-               const newtotal=total+product_total;
+                                const pro={
 
-               subtotal.html("$"+newtotal);
-               
-               TotalFinally.html("$"+newtotal);
+                                        user_id:data,
+                                        product_id:product_id,
+                                        product_name:product_name,
+                                        product_price:product_price,
+                                        product_count:product_count,
+                                        product_total:product_total
 
-               const pro={
+                                }
 
-                    user_id:'user_id:1',
-                    product_id:product_id,
-                    product_name:product_name,
-                    product_price:product_price,
-                    product_count:product_count,
-                    product_total:product_total
+                                proObAlls.push(pro);
 
-               }
+                            }else{
 
-               proObAlls.push(pro);
+                                const subtotal=$("div.summery-contain").find("h4#price");
 
-           }else{
+                                const total =parseInt($("div.summery-contain").find("h4#price").html().substring(1));
 
-               const subtotal=$("div.summery-contain").find("h4#price");
+                                const newtotal=total-product_total;
+                                
+                                subtotal.html("$"+newtotal);
 
-               const total =parseInt($("div.summery-contain").find("h4#price").html().substring(1));
+                                TotalFinally.html("$"+newtotal);
+                                
+                                proObAlls = proObAlls.filter(obj => obj.product_id !== product_id);
 
-               const newtotal=total-product_total;
-            
-               subtotal.html("$"+newtotal);
+                            }
+                            
+                        })  
+                        
+                        $(document).on('click', 'button#remove_id', function() {
+                            const product_id    =$(this).closest("tr.product-box-contain").find("input#product_id").val();  
+                            const product_price =$(this).closest("tr.product-box-contain").find("h5#price").html().substring(1);
+                            const product_count =$(this).closest("tr.product-box-contain").find("input[name='quantity']").val();
+                            const product_name  =$(this).closest("tr.product-box-contain").find("a#product_name").html();
+                            const product_total =$(this).closest("tr.product-box-contain").find("h5#total").html().substring(1);
+                        
+                            //刪除指定整個元素
+                            const contain =$(this).closest("tr.product-box-contain");
+                            const result = confirm('確定要刪除嗎？');
 
-               TotalFinally.html("$"+newtotal);
-               
-               proObAlls = proObAlls.filter(obj => obj.product_id !== product_id);
+                            if (result) {
+                                $.ajax({
+                                        url:"/homieProject/Product/DeleteRedisById",
+                                        type:"POST",
+                                        dataType:"json",
+                                        data :{ 
+                                            user_id:data,
+                                            product_id:product_id,
+                                            product_price:product_price,
+                                            product_count:product_count,
+                                            product_name:product_name,
+                                            product_total:product_total
+                                        },
+                                        success:function(data){
 
-           }
+                                            contain.remove();
+                                            console.log(data);
 
-           //console.log(proObjects);
-           
-       })
+                                        },error:function(error){
 
-        function all_product(){
+                                        }
+                                    });
+                            
+                            }
+
+                        });    
+
+                    },
+                    error:function(error){
+
+                    }    
+                }) 
+        }    
+
+        function all_product(data){
             $.ajax({
                     url:"/homieProject/Product/GetAllRedisController",
                     type:"POST",
                     dataType:"json",
                     data :{ 
-                        user_id:'user_id:1'
+                        user_id:data
                     },
                     success:function(data){
                         
@@ -1057,44 +1104,18 @@
                     }    
             })            
         }
-        $(document).on('click', 'button#remove_id', function() {
-            const product_id    =$(this).closest("tr.product-box-contain").find("input#product_id").val();  
-            const product_price =$(this).closest("tr.product-box-contain").find("h5#price").html().substring(1);
-            const product_count =$(this).closest("tr.product-box-contain").find("input[name='quantity']").val();
-            const product_name  =$(this).closest("tr.product-box-contain").find("a#product_name").html();
-            const product_total =$(this).closest("tr.product-box-contain").find("h5#total").html().substring(1);
         
-            //刪除指定整個元素
-            const contain =$(this).closest("tr.product-box-contain");
-            const result = confirm('確定要刪除嗎？');
 
-            if (result) {
-                $.ajax({
-                        url:"/homieProject/Product/DeleteRedisById",
-                        type:"POST",
-                        dataType:"json",
-                        data :{ 
-                            user_id:'user_id:1',
-                            product_id:product_id,
-                            product_price:product_price,
-                            product_count:product_count,
-                            product_name:product_name,
-                            product_total:product_total
-                        },
-                        success:function(data){
+        $("#btn_cart").on("click",function(){
 
-                            contain.remove();
-                            console.log(data);
-
-                        },error:function(error){
-
-                        }
-                    });
-            
-            }
-
-        });
-
+        if( proObAlls.length != 0 ){
+            sessionStorage.setItem("Product_data", JSON.stringify(proObAlls));
+            location.href = "./checkout.html"; // 導到下一頁
+        }else{
+            alert("請勾選商品");
+        }    
+                
+        })
 
         $(document).on('click', 'button.qty-right-plus', function() {
                 
@@ -1191,13 +1212,13 @@
             // })
             });
 
-        function getAllNum(){
+        function getAllNum( data){
                 $.ajax({
                     url:"/homieProject/Product/GetAllRedisController",
                     type:"POST",
                     dataType:"json",
                     data :{ 
-                        user_id:'user_id:1'
+                        user_id:data
                     },
                     success:function(data){
                         car_num.innerHTML=data.length;

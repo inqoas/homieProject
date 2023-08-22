@@ -930,7 +930,7 @@
                                         <div class="contact-number">
                                             <h6 class="text-content">公司地址 :</h6>
                                             <h5>台北市信義區忠孝東路五段</h5>
-                                            <h2 id="user_id" style="display: none;">aaa</h2>
+                                            <h2 id="user_id" style="display: none;"></h2>
                                         </div>
                                     </div>
                                 </li>
@@ -1319,85 +1319,37 @@
         
         const user_jwt  = localStorage.getItem("user_jwt");
 
-            if(user_jwt == null){
-                location ="../front-end/login.html";
-            }else{
+        if(user_jwt == null){
+            location ="../front-end/login.html";
+        }else{
 
-                $.ajax({
-			            url:"/homieProject/userinfo/CheckMemberController",
-			            type:"POST",
-			            dataType:"JSON",
-                        headers : {
-                            "Authorization" :"Bearer "+user_jwt
-                         },
-			            success: function(data){
-
-                            console.log(data);
-
-                            if(data == '0'){
-								
-                                location ="../front-end/login.html";
-                            }
-                            
-                        
-                        },
-                        error:function(error){
-
-                        }    
-                    }) 
-            }    
-
-        getAllNum();
-
-        function getAllNum( ){
-            
             $.ajax({
-                url:"/homieProject/Product/GetAllRedisController",
-                type:"POST",
-                dataType:"json",
-                data :{ 
-                    user_id:'user_id:1'
-                },
-                success:function(data){
-                    car_num.innerHTML=data.length;
-                    //  console.log(data);
-                    //$("#car_detail").html("");
+                    url:"/homieProject/userinfo/CheckMemberController",
+                    type:"POST",
+                    dataType:"JSON",
+                    headers : {
+                        "Authorization" :"Bearer "+user_jwt
+                        },
+                    success: function(data){
 
-                    // for( let key in data){    
-                    //       let hmtl=`<li class="product-box-contain">
-                    //                     <div class="drop-cart">
-                    //                         <a href="product-left-thumbnail.html" class="drop-image">
-                    //                             <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}"
-                    //                                 class="blur-up lazyload" alt="">
-                    //                         </a>
+                        document.querySelector("#user_id").innerHTML=data;
 
-                    //                         <div class="drop-contain">
-                    //                             <a href="product-left-thumbnail.html">
-                    //                                 <h5>Fantasy Crunchy Choco Chip Cookies</h5>
-                    //                             </a>
-                    //                             <h6><span>${data[key].product_count} x</span> $${data[key].product_total}</h6>
-                    //                             <button class="close-button close_button">
-                    //                                 <i class="fa-solid fa-xmark"></i>
-                    //                             </button>
-                    //                         </div>
-                    //                     </div>
-                    //                 </li>`;
+                        getAllNum( data );
 
-                        
-                    //                 $("#car_detail").html(hmtl);            
-                                    
-                    // }                
-                
-                },
-                error:function(error){
+                        if(data == '0'){
+                            
+                            location ="../front-end/login.html";
+                        }
+                                                
+                    },
+                    error:function(error){
 
-                    console.log(error);
-
-                }
-
-            })
-        }
+                    }    
+                }) 
+        }    
        
+
+
         All_product();
 
 		function All_product(){
@@ -1712,15 +1664,69 @@
                 } else {
 					products.innerHTML = "";    	
 					All_product();
-					
-					
+							
 				}
 
 		});
 
-        $("#car_btn").on("click",function(){
+        const user_id =document.querySelector("#user_id").innerHTML;
 
-        //console.log("abcds");
+        console.log(user_id);
+
+       // getAllNum();
+
+        function getAllNum( data ){
+
+            console.log(data);
+
+            $.ajax({
+                url:"/homieProject/Product/GetAllRedisController",
+                type:"POST",
+                dataType:"json",
+                data :{ 
+                    user_id:data
+                },
+                success:function(data){
+                    car_num.innerHTML=data.length;
+                    //  console.log(data);
+                    //$("#car_detail").html("");
+
+                    // for( let key in data){    
+                    //       let hmtl=`<li class="product-box-contain">
+                    //                     <div class="drop-cart">
+                    //                         <a href="product-left-thumbnail.html" class="drop-image">
+                    //                             <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}"
+                    //                                 class="blur-up lazyload" alt="">
+                    //                         </a>
+
+                    //                         <div class="drop-contain">
+                    //                             <a href="product-left-thumbnail.html">
+                    //                                 <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+                    //                             </a>
+                    //                             <h6><span>${data[key].product_count} x</span> $${data[key].product_total}</h6>
+                    //                             <button class="close-button close_button">
+                    //                                 <i class="fa-solid fa-xmark"></i>
+                    //                             </button>
+                    //                         </div>
+                    //                     </div>
+                    //                 </li>`;
+
+                        
+                    //                 $("#car_detail").html(hmtl);            
+                                    
+                    // }                
+                
+                },
+                error:function(error){
+
+                    console.log(error);
+
+                }
+
+            })
+        }
+
+        $("#car_btn").on("click",function(){
 
         window.location.href = "http://localhost:8080/homieProject/front-end/cart.html";
 
@@ -1757,7 +1763,6 @@
         //                             </div>
         //                         </li>`;
 
-                    
         //                         $("#car_detail").html(hmtl);            
                                 
         //         }                

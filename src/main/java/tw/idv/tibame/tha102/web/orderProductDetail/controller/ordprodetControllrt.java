@@ -59,6 +59,8 @@ public class ordprodetControllrt extends HttpServlet{
 		for(Redis_Data rsd:jsonList.getRedis_Data()) {
 			
 			strUser_id = rsd.getUser_id();
+			
+			StringBuilder stringBuilder = new StringBuilder(strUser_id).insert(0, "user_id:");
 			//System.out.println(rsd.toString());
 			OrderProductDetail orderproductdetail1  =new OrderProductDetail();
 			//取得 user_idd
@@ -83,14 +85,14 @@ public class ordprodetControllrt extends HttpServlet{
 			
 			try(Jedis jedis =new Jedis()){
 				
-				List<String> jediss = jedis.lrange(strUser_id, 0, jedis.llen(strUser_id));
+				List<String> jediss = jedis.lrange(stringBuilder.toString(), 0, jedis.llen(stringBuilder.toString()));
 				
 				for(String strs : jediss) {
 					
 					Redis_Data jedisPro = gson.fromJson(strs,Redis_Data.class);
 					
 					if(jedisPro.getProduct_id() == rsd.getProduct_id()) {
-						jedis.lrem(strUser_id, 0, strs);
+						jedis.lrem(stringBuilder.toString(), 0, strs);
 					}
 					
 				}

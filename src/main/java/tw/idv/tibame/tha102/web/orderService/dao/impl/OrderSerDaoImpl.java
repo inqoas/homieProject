@@ -35,8 +35,10 @@ public class OrderSerDaoImpl implements OrderSerDao{
 	}
 	
 	private String OrdProSer ="insert into order_service\r\n"
-			+ "(user_id_buyer,user_id_seller,order_quantity,order_status,order_unit_price,order_total,order_service_date,order_finish_period,order_add_gc,order_service_item,service_id)\r\n"
-			+ "value(?,?,?,?,?,?,?,?,?,?,?)"; 
+			+ "(user_id_buyer,user_id_seller,order_quantity,order_status,order_unit_price,order_total,"
+			+ "order_placement_time,order_service_date,order_finish_period,order_add_gc,order_service_item,"
+			+ "service_id)\r\n"
+			+ "value(?,?,?,?,?,?,?,?,?,?,?,?)"; 
 	
 	@Override
 	public void Insert_OrdSer(List<OrderService> orderservices) {
@@ -45,6 +47,7 @@ public class OrderSerDaoImpl implements OrderSerDao{
 			PreparedStatement ps = con.prepareStatement(OrdProSer);
 			
 			for(OrderService orderservice :orderservices) {
+				Timestamp NowTime = new Timestamp(System.currentTimeMillis());
 				Timestamp timestamp = orderservice.getOrderServiceDate();
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				String OrderServiceDate = sdf.format(timestamp);
@@ -54,11 +57,12 @@ public class OrderSerDaoImpl implements OrderSerDao{
 				ps.setInt( 4,orderservice.getOrderStatus());
 				ps.setInt( 5,orderservice.getOrderUnitPrice());
 				ps.setInt( 6,orderservice.getOrderTotal());
-				ps.setString(7,OrderServiceDate);
-				ps.setInt( 8,orderservice.getOrderFinishPeriod());
-				ps.setInt( 9,orderservice.getOrderAddGc());
-				ps.setInt( 10,orderservice.getOrderServiceItem());
-				ps.setInt( 11,orderservice.getServiceId());
+				ps.setTimestamp(7, NowTime);
+				ps.setString(8,OrderServiceDate);		
+				ps.setInt( 9,orderservice.getOrderFinishPeriod());
+				ps.setInt( 10,orderservice.getOrderAddGc());
+				ps.setInt( 11,orderservice.getOrderServiceItem());
+				ps.setInt( 12,orderservice.getServiceId());
 				ps.addBatch();
 			}	
 				
