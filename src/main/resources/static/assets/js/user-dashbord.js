@@ -478,6 +478,7 @@ document.querySelector(".headimg").addEventListener("change", function () {
     }).then(
         body =>{
             let orderHTML = "";
+            console.log(body)
             body.forEach(collection =>{
                 let message = collection.message;
                 let productId = collection.productId;

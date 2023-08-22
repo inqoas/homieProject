@@ -13,7 +13,7 @@ import tw.idv.tibame.tha102.web.orderProductDetail.vo.OrderProductDetail; // 添
 @Repository
 public interface OrderProductRepository extends JpaRepository<OrderProduct, Integer> {
 
-	@Query(value = "SELECT op.order_product_id, op.delivery_time , op.product_status, opd.product_name, opd.product_quantity, opd.product_price FROM order_product op " + 
+	@Query(value = "SELECT op.order_product_id, op.product_placement_time , op.product_status, opd.product_name, opd.product_quantity, opd.product_price FROM order_product op " + 
 	           "JOIN order_product_detail opd ON op.order_product_id = opd.order_product_id " +
 	           "WHERE op.user_id = :userId " +
 	           "ORDER BY op.order_product_id DESC"
