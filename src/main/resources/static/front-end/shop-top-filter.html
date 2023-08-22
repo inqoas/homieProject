@@ -169,14 +169,14 @@
     
                                     <li class="right-side">
                                         <div class="onhover-dropdown header-badge">
-                                            <button type="button" class="btn p-0 position-relative header-wishlist">
+                                            <button id="car_btn"  type="button" class="btn p-0 position-relative header-wishlist">
                                                 <i data-feather="shopping-cart"></i>
-                                                <span class="position-absolute top-0 start-100 translate-middle badge">2
+                                                <span id="car_num" class="position-absolute top-0 start-100 translate-middle badge">2
                                                     <span class="visually-hidden">unread messages</span>
                                                 </span>
                                             </button>
     
-                                            <div class="onhover-div">
+                                            <!-- <div class="onhover-div">
                                                 <ul class="cart-list">
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
@@ -228,7 +228,7 @@
                                                     <a href="checkout.html" class="btn btn-sm cart-button theme-bg-color
                                                     text-white">結帳</a>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </li>
                                     <li class="right-side onhover-dropdown">
@@ -258,6 +258,7 @@
                                                 </li>
                                             </ul>
                                         </div>
+                                        <div class="username" style="font-weight: bold; color: #274C77;"></div>
                                     </li>
                                 </ul>
                             </div>
@@ -283,7 +284,7 @@
                                         <ul class="navbar-nav">
     
                                             <li class="nav-item dropdown">
-                                                <a style="font-size: 20px; font-weight: bold;">商品頁面</a>
+                                                <a href="http://localhost:8080/homieProject/front-end/shop-top-filter.html" style="font-size: 20px; font-weight: bold;">商品頁面</a>
                                             </li>
                                             
                                             <li class="nav-item dropdown">
@@ -384,9 +385,9 @@
 
                             <div class="ms-auto d-flex align-items-center">
                                 <div class="category-dropdown me-md-3">
-                                    <h5 class="text-content">Sort By :</h5>
+                                    <!-- <h5 class="text-content">Sort By :</h5> -->
                                     <div class="dropdown">
-                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                        <!-- <button class="dropdown-toggle" type="button" id="dropdownMenuButton1"
                                             data-bs-toggle="dropdown">
                                             <span>Most Popular</span> <i class="fa-solid fa-angle-down"></i>
                                         </button>
@@ -420,7 +421,7 @@
                                                     Hight To
                                                     Low</a>
                                             </li>
-                                        </ul>
+                                        </ul> -->
                                     </div>
                                 </div>
 
@@ -465,7 +466,7 @@
                                         <div class="form-check ps-0 m-0 category-list-box">
                                             <input class="checkbox_animated" type="checkbox" id="fruit">
                                             <label class="form-check-label" for="fruit">
-                                                <span class="name">清接劑</span>
+                                                <span class="name">清潔用品</span>
                                                 <span id="fruit_number" class="number">(15)</span>
                                             </label>
                                         </div>
@@ -778,8 +779,8 @@
                     </div>
 
                     <div id="product" class="row g-sm-4 g-3 row-cols-xxl-5 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section">
-                        <div>
-                            <div class="product-box-3 h-100 wow fadeInUp">
+                        <!-- <div> -->
+                            <!-- <div class="product-box-3 h-100 wow fadeInUp">
                                 <div class="product-header">
                                     <div class="product-image">
                                         <a href="product-left-thumbnail.html">
@@ -820,7 +821,7 @@
                                             cheese macaroni cheese croque monsieur.</p>
                                         <div class="product-rating mt-2">
                                             <ul class="rating">
-                                                <li>    <!-- class="fill" 加這個星星會亮 -->
+                                                <li>    
                                                     <i data-feather="star" class="fill"></i>
                                                 </li>
                                                 <li>
@@ -843,8 +844,8 @@
                                         </h5>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div> -->
+                        <!-- </div> -->
 
                     </div>
 
@@ -929,6 +930,7 @@
                                         <div class="contact-number">
                                             <h6 class="text-content">公司地址 :</h6>
                                             <h5>台北市信義區忠孝東路五段</h5>
+                                            <h2 id="user_id" style="display: none;">aaa</h2>
                                         </div>
                                     </div>
                                 </li>
@@ -1296,7 +1298,8 @@
      <!-- ajax-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
-    <script src="../assets/js/shop-top-filter.js"></script> 
+    <script src="../assets/js/shop-top-filter.js"></script>
+    <script src="../assets/js/header.js"> </script> 
 
     <script>
     window.onload = function() {    
@@ -1305,15 +1308,96 @@
         const behe_number  =document.querySelector("#behe_number");
         const snacks_number=document.querySelector("#snacks_number");
         
-        const checkbox_fruit =document.querySelector("#fruit");
-        const checkbox_cake =document.querySelector("#cake");
-        const checkbox_behe =document.querySelector("#behe");
+        const checkbox_fruit  =document.querySelector("#fruit");
+        const checkbox_cake   =document.querySelector("#cake");
+        const checkbox_behe   =document.querySelector("#behe");
         const checkbox_snacks =document.querySelector("#snacks");
-
+        const car_num         =document.querySelector("#car_num");
+        //const user_num        =document.querySelector("#user_id");
+    
         const products =document.querySelector("#product");
+        
+        const user_jwt  = localStorage.getItem("user_jwt");
 
-        //let dynamicElements = [];
+            if(user_jwt == null){
+                location ="../front-end/login.html";
+            }else{
 
+                $.ajax({
+			            url:"/homieProject/userinfo/CheckMemberController",
+			            type:"POST",
+			            dataType:"JSON",
+                        headers : {
+                            "Authorization" :"Bearer "+user_jwt
+                         },
+			            success: function(data){
+
+                            console.log(data);
+
+                            if(data == '0'){
+								
+                                location ="../front-end/login.html";
+                            }
+                            
+                        
+                        },
+                        error:function(error){
+
+                        }    
+                    }) 
+            }    
+
+        getAllNum();
+
+        function getAllNum( ){
+            
+            $.ajax({
+                url:"/homieProject/Product/GetAllRedisController",
+                type:"POST",
+                dataType:"json",
+                data :{ 
+                    user_id:'user_id:1'
+                },
+                success:function(data){
+                    car_num.innerHTML=data.length;
+                    //  console.log(data);
+                    //$("#car_detail").html("");
+
+                    // for( let key in data){    
+                    //       let hmtl=`<li class="product-box-contain">
+                    //                     <div class="drop-cart">
+                    //                         <a href="product-left-thumbnail.html" class="drop-image">
+                    //                             <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}"
+                    //                                 class="blur-up lazyload" alt="">
+                    //                         </a>
+
+                    //                         <div class="drop-contain">
+                    //                             <a href="product-left-thumbnail.html">
+                    //                                 <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+                    //                             </a>
+                    //                             <h6><span>${data[key].product_count} x</span> $${data[key].product_total}</h6>
+                    //                             <button class="close-button close_button">
+                    //                                 <i class="fa-solid fa-xmark"></i>
+                    //                             </button>
+                    //                         </div>
+                    //                     </div>
+                    //                 </li>`;
+
+                        
+                    //                 $("#car_detail").html(hmtl);            
+                                    
+                    // }                
+                
+                },
+                error:function(error){
+
+                    console.log(error);
+
+                }
+
+            })
+        }
+       
         All_product();
 
 		function All_product(){
@@ -1633,6 +1717,61 @@
 				}
 
 		});
+
+        $("#car_btn").on("click",function(){
+
+        //console.log("abcds");
+
+        window.location.href = "http://localhost:8080/homieProject/front-end/cart.html";
+
+        // $.ajax({
+        //     url:"/homieProject/Product/GetAllRedisController",
+        //     type:"POST",
+        //     dataType:"json",
+        //     data :{ 
+        //         user_id:'user_id:1'
+        //     },
+        //     success:function(data){
+                
+        //         console.log("abcdef");
+            
+        //         $("#car_detail").html("");
+
+        //         for( let key in data){    
+        //               let hmtl=`<li class="product-box-contain">
+        //                             <div class="drop-cart">
+        //                                 <a href="product-left-thumbnail.html" class="drop-image">
+        //                                     <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}"
+        //                                         class="blur-up lazyload" alt="">
+        //                                 </a>
+
+        //                                 <div class="drop-contain">
+        //                                     <a href="product-left-thumbnail.html">
+        //                                         <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+        //                                     </a>
+        //                                     <h6><span>${data[key].product_count} x</span> $${data[key].product_total}</h6>
+        //                                     <button class="close-button close_button">
+        //                                         <i class="fa-solid fa-xmark"></i>
+        //                                     </button>
+        //                                 </div>
+        //                             </div>
+        //                         </li>`;
+
+                    
+        //                         $("#car_detail").html(hmtl);            
+                                
+        //         }                
+            
+        //     },
+        //     error:function(error){
+
+        //         console.log(error);
+
+        //     }
+
+        // })
+        });
+
 		
     }        
     </script>

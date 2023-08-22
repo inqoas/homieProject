@@ -169,14 +169,14 @@
     
                                     <li class="right-side">
                                         <div class="onhover-dropdown header-badge">
-                                            <button type="button" class="btn p-0 position-relative header-wishlist">
+                                            <button id="car_btn" type="button" class="btn p-0 position-relative header-wishlist">
                                                 <i data-feather="shopping-cart"></i>
-                                                <span class="position-absolute top-0 start-100 translate-middle badge">2
+                                                <span id="car_num" class="position-absolute top-0 start-100 translate-middle badge">2
                                                     <span class="visually-hidden">unread messages</span>
                                                 </span>
                                             </button>
     
-                                            <div class="onhover-div">
+                                            <!-- <div class="onhover-div">
                                                 <ul class="cart-list">
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
@@ -228,7 +228,7 @@
                                                     <a href="checkout.html" class="btn btn-sm cart-button theme-bg-color
                                                     text-white">結帳</a>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </li>
                                     <li class="right-side onhover-dropdown">
@@ -257,6 +257,7 @@
                                                     <a href="forgot.html">忘記密碼</a>
                                                 </li>
                                             </ul>
+                                            <div class="username" style="font-weight: bold; color: #274C77;"></div>
                                         </div>
                                     </li>
                                 </ul>
@@ -283,11 +284,11 @@
                                         <ul class="navbar-nav">
     
                                             <li class="nav-item dropdown">
-                                                <a style="font-size: 20px; font-weight: bold;">商品頁面</a>
+                                                <a href="http://localhost:8080/homieProject/front-end/shop-top-filter.html" style="font-size: 20px; font-weight: bold;">商品頁面</a>
                                             </li>
     
                                             <li class="nav-item dropdown">
-                                                <a style="font-size: 20px; font-weight: bold;">服務頁面</a>
+                                                <a href="http://localhost:8080/homieProject/front-end/service.html" style="font-size: 20px; font-weight: bold;">服務頁面</a>
                                             </li>
     
                                             <li class="nav-item dropdown dropdown-mega">
@@ -338,7 +339,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadscrumb-contain">
-                        <h2>Product detail</h2>
+                        <h2></h2>
                         <nav>
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item">
@@ -347,7 +348,7 @@
                                     </a>
                                 </li>
 
-                                <li class="breadcrumb-item active">Product detail</li>
+                                <li class="breadcrumb-item active">商品詳細</li>
                             </ol>
                         </nav>
                     </div>
@@ -1636,6 +1637,9 @@
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
      <!-- JQuery -->
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <!--header-->
+     <script src="../assets/js/header.js"> </script>
+
 
     <script>
     $(document).ready(function() {   
@@ -1728,7 +1732,7 @@
 										
 										     																																			                           
                                         </ul>
-                                        <span id="totalReviewCount" class="review">${data.seller.totalReviewCount} Customer Review</span>
+                                        <span id="totalReviewCount" class="review">${data.seller.totalReviewCount} 評價人數</span>
                                     </div>
                                 </div>
 
@@ -1767,7 +1771,7 @@
                                     </div>
                                                 <!-- onclick="location.href = 'cart.html';" -->
                                     <button    id="add_to_cart"
-                                        class="btn btn-md bg-dark cart-button text-white w-100">Add To Cart</button>
+                                        class="btn btn-md bg-dark cart-button text-white w-100">加入購物車</button>
                                 </div>
 
                                 <div class="buy-box">
@@ -1775,7 +1779,7 @@
                                         <svg id="heart" xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                                         </svg>
-                                        <span>Add To Wishlist</span>
+                                        <span>加入收藏</span>
                                    
                                 </div>
 
@@ -1788,17 +1792,6 @@
                                         <h4 class="text-content">
                                             ${data.service_introduction}
                                         </h4>
-                                    </div>
-
-                                    <div class="product-info">
-                                        <ul class="product-info-list product-info-list-2">
-                                            <li>Type : <a href="javascript:void(0)">Black Forest</a></li>
-                                            <li>SKU : <a href="javascript:void(0)">SDFVW65467</a></li>
-                                            <li>MFG : <a href="javascript:void(0)">Jun 4, 2022</a></li>
-                                            <li>Stock : <a href="javascript:void(0)">2 Items Left</a></li>
-                                            <li>Tags : <a href="javascript:void(0)">Cake,</a> <a
-                                                    href="javascript:void(0)">Backery</a></li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -1841,14 +1834,47 @@
                 };
 
                 datalimit();
+                Select_heart();
             },    
             error: function(error){
                 console.log(error);
             }
         })
+        
+            function Select_heart(){
+                const heart =dynamicElements.closest("div#dynamicElements").find("svg#heart");
+                const user_id="1";
+                const Service_id=dynamicElements.closest("div#dynamicElements").find("h2#Service_id").html();
+
+                console.log(Service_id);
+                $.ajax({
+                    url:"/homieProject/Service_Collection/Select_ProById",
+                    type:"POST",
+                    dataType:"json",
+                    data : JSON.stringify ({
+                        user_id:user_id,
+                        category_id:Service_id     
+                    }) ,
+                    success:function(data){
+
+                     if(data ==true){   
+
+                        heart.css({ "color": "red"});      
+                        heart.attr("data-title","true");
+
+                     }
+                        
+                    },error:function(error){
+
+                        console.log(error);
+
+                    }
+                })        
+
+            }
 
         dynamicElements.on("click","svg#heart",function(){
-                const heart =$(this);
+            const heart =$(this);
             const user_id ="1";
             const Service_id=$(this).closest("div#dynamicElements").find("h2#Service_id").html();
             // console.log(heart.attr("data-title"));
@@ -1859,7 +1885,7 @@
                         dataType:"json",
                         data : JSON.stringify ({
                             user_id:user_id,
-                            Service_id:Service_id        
+                            category_id:Service_id        
                         }) ,
                         success:function(data){
                        
@@ -1877,12 +1903,12 @@
                 }else{
                 
                     $.ajax({
-                        url:"/homieProject/product_collection/delete_ProCollController",
+                        url:"/homieProject//Service_Collection/delete_SerCollController",
                         type:"POST",
                         dataType:"json",
                         data : JSON.stringify ({
                             user_id:user_id,
-                            Service_id:Service_id        
+                            category_id:Service_id        
                         }) ,
                         success:function(data){
                        
@@ -1996,6 +2022,153 @@
             }
         });
         
+        function getAllNum(){
+                $.ajax({
+                    url:"/homieProject/Service/GetAllRedisController",
+                    type:"POST",
+                    dataType:"json",
+                    data :{ 
+                        user_id:'user_id:1'
+                    },
+                    success:function(data){
+                        car_num.innerHTML=data.length;
+                      //  console.log(data);
+                        //$("#car_detail").html("");
+
+                        // for( let key in data){    
+                        //       let hmtl=`<li class="product-box-contain">
+                        //                     <div class="drop-cart">
+                        //                         <a href="product-left-thumbnail.html" class="drop-image">
+                        //                             <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}"
+                        //                                 class="blur-up lazyload" alt="">
+                        //                         </a>
+
+                        //                         <div class="drop-contain">
+                        //                             <a href="product-left-thumbnail.html">
+                        //                                 <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+                        //                             </a>
+                        //                             <h6><span>${data[key].product_count} x</span> $${data[key].product_total}</h6>
+                        //                             <button class="close-button close_button">
+                        //                                 <i class="fa-solid fa-xmark"></i>
+                        //                             </button>
+                        //                         </div>
+                        //                     </div>
+                        //                 </li>`;
+
+                            
+                        //                 $("#car_detail").html(hmtl);            
+                                        
+                        // }                
+                    
+                    },
+                    error:function(error){
+
+                        console.log(error);
+
+                    }
+
+                })
+            }
+        
+            $("#car_btn").on("click",function(){
+            window.location.href = "http://localhost:8080/homieProject/front-end/cart_Service.html";
+
+            // $.ajax({
+            //     url:"/homieProject/Product/GetAllRedisController",
+            //     type:"POST",
+            //     dataType:"json",
+            //     data :{ 
+            //         user_id:'user_id:1'
+            //     },
+            //     success:function(data){
+                    
+            //         console.log("abcdef");
+                
+            //         $("#car_detail").html("");
+
+            //         for( let key in data){    
+            //               let hmtl=`<li class="product-box-contain">
+            //                             <div class="drop-cart">
+            //                                 <a href="product-left-thumbnail.html" class="drop-image">
+            //                                     <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}"
+            //                                         class="blur-up lazyload" alt="">
+            //                                 </a>
+
+            //                                 <div class="drop-contain">
+            //                                     <a href="product-left-thumbnail.html">
+            //                                         <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+            //                                     </a>
+            //                                     <h6><span>${data[key].product_count} x</span> $${data[key].product_total}</h6>
+            //                                     <button class="close-button close_button">
+            //                                         <i class="fa-solid fa-xmark"></i>
+            //                                     </button>
+            //                                 </div>
+            //                             </div>
+            //                         </li>`;
+
+                        
+            //                         $("#car_detail").html(hmtl);            
+                                    
+            //         }                
+                
+            //     },
+            //     error:function(error){
+
+            //         console.log(error);
+
+            //     }
+
+            // })
+            });
+            getAllNum();
+            function getAllNum(){
+                $.ajax({
+                    url:"/homieProject/Service/GetAllRedisController",
+                    type:"POST",
+                    dataType:"json",
+                    data :{ 
+                        user_id:'user_id:1'
+                    },
+                    success:function(data){
+                        console.log(data);
+                        car_num.innerHTML=data.length;
+                      //  console.log(data);
+                        //$("#car_detail").html("");
+
+                        // for( let key in data){    
+                        //       let hmtl=`<li class="product-box-contain">
+                        //                     <div class="drop-cart">
+                        //                         <a href="product-left-thumbnail.html" class="drop-image">
+                        //                             <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}"
+                        //                                 class="blur-up lazyload" alt="">
+                        //                         </a>
+
+                        //                         <div class="drop-contain">
+                        //                             <a href="product-left-thumbnail.html">
+                        //                                 <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+                        //                             </a>
+                        //                             <h6><span>${data[key].product_count} x</span> $${data[key].product_total}</h6>
+                        //                             <button class="close-button close_button">
+                        //                                 <i class="fa-solid fa-xmark"></i>
+                        //                             </button>
+                        //                         </div>
+                        //                     </div>
+                        //                 </li>`;
+
+                            
+                        //                 $("#car_detail").html(hmtl);            
+                                        
+                        // }                
+                    
+                    },
+                    error:function(error){
+
+                        console.log(error);
+
+                    }
+
+                })
+            }    
 
         function datalimit(){
 

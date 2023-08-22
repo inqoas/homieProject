@@ -61,6 +61,7 @@ public class SellerDaoImpl implements SellerDao{
 			Query<Seller> query = session.createQuery(hqlString, Seller.class);
 			query.setParameter("userId", userId);
 			return query.getSingleResult();
+			      // 回傳一個一筆資料
 		} catch (Exception e) {
 			Seller seller = new Seller();
 			return seller;

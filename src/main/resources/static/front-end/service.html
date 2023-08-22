@@ -166,14 +166,14 @@
     
                                     <li class="right-side">
                                         <div class="onhover-dropdown header-badge">
-                                            <button type="button" class="btn p-0 position-relative header-wishlist">
+                                            <button id="car_btn" type="button" class="btn p-0 position-relative header-wishlist">
                                                 <i data-feather="shopping-cart"></i>
-                                                <span class="position-absolute top-0 start-100 translate-middle badge">2
+                                                <span id="car_num" class="position-absolute top-0 start-100 translate-middle badge">2
                                                     <span class="visually-hidden">unread messages</span>
                                                 </span>
                                             </button>
     
-                                            <div class="onhover-div">
+                                            <!-- <div class="onhover-div">
                                                 <ul class="cart-list">
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
@@ -225,7 +225,7 @@
                                                     <a href="checkout.html" class="btn btn-sm cart-button theme-bg-color
                                                     text-white">結帳</a>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </li>
                                     <li class="right-side onhover-dropdown">
@@ -254,6 +254,7 @@
                                                     <a href="forgot.html">忘記密碼</a>
                                                 </li>
                                             </ul>
+                                            <div class="username" style="font-weight: bold; color: #274C77;"></div>
                                         </div>
                                     </li>
                                 </ul>
@@ -284,7 +285,7 @@
                                             </li>
     
                                             <li class="nav-item dropdown">
-                                                <a style="font-size: 20px; font-weight: bold;">服務頁面</a>
+                                                <a  style="font-size: 20px; font-weight: bold;">服務頁面</a>
                                             </li>
     
                                             <li class="nav-item dropdown dropdown-mega">
@@ -349,7 +350,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadscrumb-contain">
-                        <h2>Service</h2>
+                        <h2>服務頁面</h2>
                         <nav>
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item">
@@ -357,7 +358,7 @@
                                         <i class="fa-solid fa-house"></i>
                                     </a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Service</li>
+                                <li class="breadcrumb-item active" aria-current="page">服務頁面</li>
                             </ol>
                         </nav>
                     </div>
@@ -872,8 +873,42 @@
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+     <!--header-->
+     <script src="../assets/js/header.js"> </script>
+
+
     <script>
         $(document).ready(function() {
+
+            const user_jwt  = localStorage.getItem("user_jwt");
+            const car_num         =document.querySelector("#car_num");
+
+            if(user_jwt == null){
+                location ="../front-end/login.html";
+            }else{
+
+                $.ajax({
+			            url:"/homieProject/userinfo/CheckMemberController",
+			            type:"POST",
+			            dataType:"JSON",
+                        headers : {
+                            "Authorization" :"Bearer "+user_jwt
+                         },
+			            success: function(data){
+														
+                            if(data == '0'){
+								
+                                location ="../front-end/login.html";
+                            }
+                            
+
+                        },
+                        error:function(error){
+
+                        }    
+                    }) 
+            }
+
 
             datalimit();
 
@@ -891,8 +926,20 @@
                             console.log(data);
                         for(let key in data){   
                             
-                            // console.log(data.length);
-                            // console.log(key);
+                                 if( data[key].service_id_code == 0 ){
+                                    data[key].service_id_code="居家清潔";
+                                }else if( data[key].service_id_code == 1 ){
+                                    data[key].service_id_code="冷氣清潔";
+                                }else if( data[key].service_id_code == 2){
+                                    data[key].service_id_code="洗衣機清潔";    
+                                }else if( data[key].service_id_code == 3){
+                                    data[key].service_id_code="專業除蟎";
+                                }else if( data[key].service_id_code == 4){
+                                    data[key].service_id_code="水塔清洗";
+                                }else if( data[key].service_id_code == 5){
+                                    data[key].service_id_code="水管清洗";             
+                                };
+                            
                             const trElement = document.createElement('tr');
                             trElement.classList.add('product-box-contain');
                             trElement.innerHTML =                     
@@ -906,12 +953,9 @@
                                                 <li class="name">
                                                     <a href="product-left-thumbnail.html">${data[key].service_name}</a>
                                                 </li>
-                                                <li class="text-content"><span class="text-title">Sold By:</span> ${data[key].product_stock}</li>
+                                                
                                                 <li id="service_id_code" class="text-content"><span class="text-title">服務類型:</span>${data[key].service_id_code}</li>
-                                                <li>
-                                                    <h5 class="text-content d-inline-block">Price :</h5>
-                                                    <span>$${data[key].service_price}</span>                                            
-                                                </li>
+                                               
                                             </ul>
                                         </div>
                                     </div>
@@ -920,48 +964,15 @@
                                     <h4 class="table-title text-content">Price</h4>
                                     <h5 id="price" >$${data[key].service_price} </h5>
                                 </td>
-                                <td class="quantity">
-                                    <h4 class="table-title text-content">Qty</h4>
-                                    <div class="quantity-price">
-                                        <div class="cart_qty">
-                                            <div class="input-group">
-                                                <button type="button" class="btn qty-left-minus" data-type="minus" data-field="">
-                                                    <i class="fa fa-minus ms-0" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text" name="quantity" value="0">
-                                                <button type="button" class="btn qty-right-plus" data-type="plus" data-field="" >
-                                                    <i class="fa fa-plus ms-0" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="subtotal">
-                                    <h4 class="table-title text-content">Total</h4>
-                                    <h5 id=total>$0</h5>
-                                </td>`;
+                                `;
                                     
                             Service_tbody.appendChild(trElement);
 
-                            let service_id_code =$("li#service_id_code");  
+                            // let service_id_code =$("li#service_id_code");  
                             
-                                console.log(service_id_code);
+                            //     console.log(service_id_code);
                           
-                                
-                                if( data[key].service_id_code == 0 ){
-                                    service_id_code.html("居家清潔")[key];
-                                }else if( data[key].service_id_code == 1 ){
-                                    service_id_code.html("冷氣清潔")[key];
-                                }else if( data[key].service_id_code == 2){
-                                    service_id_code.html("洗衣機清潔")[key];    
-                                }else if( data[key].service_id_code == 3){
-                                    service_id_code.html("專業除蟎")[key];
-                                }else if( data[key].service_id_code == 4){
-                                    service_id_code.html("水塔清洗")[key];
-                                }else if( data[key].service_id_code == 5){
-                                    service_id_code.html("水管清洗")[key];             
-                                };
-                            
+                                                         
                         }
                     },
                     error: function(error){
@@ -1049,6 +1060,21 @@
                             Service_tbody.innerHTML = "";
 
                             for(let key in data){   
+
+                                if( data[key].service_id_code == 0 ){
+                                    data[key].service_id_code="居家清潔";
+                                }else if( data[key].service_id_code == 1 ){
+                                    data[key].service_id_code="冷氣清潔";
+                                }else if( data[key].service_id_code == 2){
+                                    data[key].service_id_code="洗衣機清潔";    
+                                }else if( data[key].service_id_code == 3){
+                                    data[key].service_id_code="專業除蟎";
+                                }else if( data[key].service_id_code == 4){
+                                    data[key].service_id_code="水塔清洗";
+                                }else if( data[key].service_id_code == 5){
+                                    data[key].service_id_code="水管清洗";             
+                                };
+
                                 const trElement = document.createElement('tr');
                                 trElement.classList.add('product-box-contain');
                                 trElement.innerHTML =                     
@@ -1062,12 +1088,9 @@
                                                     <li class="name">
                                                         <a href="product-left-thumbnail.html">${data[key].service_name}</a>
                                                     </li>
-                                                    <li class="text-content"><span class="text-title">Sold By:</span> ${data[key].product_stock}</li>
-                                                    <li id="service_id_code" class="text-content"><span class="text-title">服務類型:</span> ${data[key].service_name}</li>
-                                                    <li>
-                                                        <h5 class="text-content d-inline-block">Price :</h5>
-                                                        <span>$${data[key].service_price}</span>                                            
-                                                    </li>
+                                                
+                                                    <li id="service_id_code" class="text-content"><span class="text-title">服務類型:</span> ${data[key].service_id_code}</li>
+                                                   
                                                 </ul>
                                             </div>
                                         </div>
@@ -1076,48 +1099,13 @@
                                         <h4 class="table-title text-content">Price</h4>
                                         <h5 id="price" >$${data[key].service_price} </h5>
                                     </td>
-                                    <td class="quantity">
-                                        <h4 class="table-title text-content">Qty</h4>
-                                        <div class="quantity-price">
-                                            <div class="cart_qty">
-                                                <div class="input-group">
-                                                    <button type="button" class="btn qty-left-minus" data-type="minus" data-field="">
-                                                        <i class="fa fa-minus ms-0" aria-hidden="true"></i>
-                                                    </button>
-                                                    <input class="form-control input-number qty-input" type="text" name="quantity" value="0">
-                                                    <button type="button" class="btn qty-right-plus" data-type="plus" data-field="" >
-                                                        <i class="fa fa-plus ms-0" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="subtotal">
-                                        <h4 class="table-title text-content">Total</h4>
-                                        <h5 id=total>$0</h5>
-                                    </td>
+                                   
                                 
                                     `;
 
                                     
                                 Service_tbody.appendChild(trElement);
 
-                                const service_id_code =$("li#service_id_code");         
-
-                                if( data.service_id_code == 0 ){
-                                    service_id_code.html("居家清潔");
-                                }else if( data[key].service_id_code == 1 ){
-                                    service_id_code.html("冷氣清潔");
-                                }else if( data[key].service_id_code == 2){
-                                    service_id_code.html("洗衣機清潔");    
-                                }else if( data[key].service_id_code == 3){
-                                    service_id_code.html("專業除蟎");
-                                }else if( data[key].service_id_code == 4){
-                                    service_id_code.html("水塔清洗");
-                                }else if( data[key].service_id_code == 5){
-                                    service_id_code.html("水管清洗") ;             
-                                };
-                            
                             }
 						},
 						error:function(error){
@@ -1125,12 +1113,107 @@
 						}
 					})
 					
-					
 				 }
         	})
-            
-       
+            $("#car_btn").on("click",function(){
+            window.location.href = "http://localhost:8080/homieProject/front-end/cart_Service.html";
 
+            // $.ajax({
+            //     url:"/homieProject/Product/GetAllRedisController",
+            //     type:"POST",
+            //     dataType:"json",
+            //     data :{ 
+            //         user_id:'user_id:1'
+            //     },
+            //     success:function(data){
+                    
+            //         console.log("abcdef");
+                
+            //         $("#car_detail").html("");
+
+            //         for( let key in data){    
+            //               let hmtl=`<li class="product-box-contain">
+            //                             <div class="drop-cart">
+            //                                 <a href="product-left-thumbnail.html" class="drop-image">
+            //                                     <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}"
+            //                                         class="blur-up lazyload" alt="">
+            //                                 </a>
+
+            //                                 <div class="drop-contain">
+            //                                     <a href="product-left-thumbnail.html">
+            //                                         <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+            //                                     </a>
+            //                                     <h6><span>${data[key].product_count} x</span> $${data[key].product_total}</h6>
+            //                                     <button class="close-button close_button">
+            //                                         <i class="fa-solid fa-xmark"></i>
+            //                                     </button>
+            //                                 </div>
+            //                             </div>
+            //                         </li>`;
+
+                        
+            //                         $("#car_detail").html(hmtl);            
+                                    
+            //         }                
+                
+            //     },
+            //     error:function(error){
+
+            //         console.log(error);
+
+            //     }
+
+            // })
+            });
+            getAllNum();
+            function getAllNum(){
+                $.ajax({
+                    url:"/homieProject/Service/GetAllRedisController",
+                    type:"POST",
+                    dataType:"json",
+                    data :{ 
+                        user_id:'user_id:1'
+                    },
+                    success:function(data){
+                        console.log(data);
+                        car_num.innerHTML=data.length;
+                      //  console.log(data);
+                        //$("#car_detail").html("");
+
+                        // for( let key in data){    
+                        //       let hmtl=`<li class="product-box-contain">
+                        //                     <div class="drop-cart">
+                        //                         <a href="product-left-thumbnail.html" class="drop-image">
+                        //                             <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}"
+                        //                                 class="blur-up lazyload" alt="">
+                        //                         </a>
+
+                        //                         <div class="drop-contain">
+                        //                             <a href="product-left-thumbnail.html">
+                        //                                 <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+                        //                             </a>
+                        //                             <h6><span>${data[key].product_count} x</span> $${data[key].product_total}</h6>
+                        //                             <button class="close-button close_button">
+                        //                                 <i class="fa-solid fa-xmark"></i>
+                        //                             </button>
+                        //                         </div>
+                        //                     </div>
+                        //                 </li>`;
+
+                            
+                        //                 $("#car_detail").html(hmtl);            
+                                        
+                        // }                
+                    
+                    },
+                    error:function(error){
+
+                        console.log(error);
+
+                    }
+
+                })
+            }
             function datalimit(){
 
                 const today = new Date();

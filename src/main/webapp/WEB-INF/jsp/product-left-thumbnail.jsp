@@ -261,6 +261,7 @@
                                                 </li>
                                             </ul>
                                         </div>
+                                        <div class="username" style="font-weight: bold; color: #274C77;"></div>
                                     </li>
                                 </ul>
                             </div>
@@ -286,15 +287,15 @@
                                         <ul class="navbar-nav">
     
                                             <li class="nav-item dropdown">
-                                                <a style="font-size: 20px; font-weight: bold;">商品頁面</a>
+                                                <a href="http://localhost:8080/homieProject/front-end/shop-top-filter.html" style="font-size: 20px; font-weight: bold;">商品頁面</a>
                                             </li>
     
                                             <li class="nav-item dropdown">
-                                                <a style="font-size: 20px; font-weight: bold;">服務頁面</a>
+                                                <a href="http://localhost:8080/homieProject/front-end/service.html" style="font-size: 20px; font-weight: bold;">服務頁面</a>
                                             </li>
     
                                             <li class="nav-item dropdown dropdown-mega">
-                                                <a style="font-size: 20px; font-weight: bold;">幫助中心</a>
+                                                <a href="" style="font-size: 20px; font-weight: bold;">幫助中心</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -341,7 +342,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadscrumb-contain">
-                        <h2>Product detail</h2>
+                        <h2></h2>
                         <nav>
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item">
@@ -350,7 +351,7 @@
                                     </a>
                                 </li>
 
-                                <li class="breadcrumb-item active">Product detail</li>
+                                <li class="breadcrumb-item active">商品詳細</li>
                             </ol>
                         </nav>
                     </div>
@@ -490,7 +491,7 @@
 											 <i class="bi bi-star${product.product_review_stars >= 5 ? "-fill" : ""}" style="color:yellow"></i>
 										     																																			                           
                                         </ul>
-                                        <span class="review">${product.product_review_count} Customer Review</span>
+                                        <span class="review">${product.product_review_count} 評價人數</span>
                                     </div>
                                 </div>
 
@@ -580,7 +581,7 @@
                                     </div>
                                                 <!-- onclick="location.href = 'cart.html';" -->
                                     <button    id="add_to_cart"
-                                        class="btn btn-md bg-dark cart-button text-white w-100">Add To Cart</button>
+                                        class="btn btn-md bg-dark cart-button text-white w-100">加入購物車</button>
                                 </div>
 
                                 <div class="buy-box">
@@ -588,7 +589,7 @@
                                     <svg id="heart" xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                                     </svg>
-                                    <span>Add To Wishlist</span>
+                                    <span>加入收藏</span>
                                     
 
                                     <!-- <a href="compare.html">
@@ -599,7 +600,7 @@
 
                                 <div class="pickup-box">
                                     <div class="product-title">
-                                        <h4>Store Information</h4>
+                                        <h4>商品資訊</h4>
                                     </div>
 
                                     <div class="pickup-detail">
@@ -607,7 +608,7 @@
                                             ${product.product_introduction}</h4>
                                     </div>
 
-                                    <div class="product-info">
+                                    <!-- <div class="product-info">
                                         <ul class="product-info-list product-info-list-2">
                                             <li>Type : <a href="javascript:void(0)">Black Forest</a></li>
                                             <li>SKU : <a href="javascript:void(0)">SDFVW65467</a></li>
@@ -616,7 +617,7 @@
                                             <li>Tags : <a href="javascript:void(0)">Cake,</a> <a
                                                     href="javascript:void(0)">Backery</a></li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <!-- <div class="paymnet-option">
@@ -1641,8 +1642,9 @@
 
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!--補滿紅色-->
-  
+
+    <!--header-->
+    <script src="../assets/js/header.js"> </script>
 
     <script>
         window.onload = function() {
@@ -1659,6 +1661,37 @@
             const car_num      = document.querySelector("#car_num");
             const heart        = $("#heart");
             const user_id      = "1";
+
+            const user_jwt  = localStorage.getItem("user_jwt");
+
+            if(user_jwt == null){
+                location ="../front-end/login.html";
+            }else{
+
+                $.ajax({
+			            url:"/homieProject/userinfo/CheckMemberController",
+			            type:"POST",
+			            dataType:"JSON",
+                        headers : {
+                            "Authorization" :"Bearer "+user_jwt
+                         },
+			            success: function(data){
+														
+                            if(data.user_id == '0'){
+								
+                                location ="../front-end/login.html";
+                            }
+                            
+                       
+                        },
+                        error:function(error){
+
+                        }    
+                    }) 
+            }
+
+         
+
             //查詢我的最愛
             Select_heart();
 
@@ -1787,7 +1820,7 @@
                 })    
 
             });    
-             //案確認鍵
+             //案鍵跳購物車
             $("#car_btn").on("click",function(){
 
                 //console.log("abcds");
@@ -1845,6 +1878,7 @@
             
             //購物車數量
             function getAllNum(){
+                
                 $.ajax({
                     url:"/homieProject/Product/GetAllRedisController",
                     type:"POST",

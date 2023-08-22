@@ -19,6 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import redis.clients.jedis.Jedis;
 import tw.idv.tibame.tha102.web.Redis.vo.JsonList;
 import tw.idv.tibame.tha102.web.Redis.vo.Redis_Data;
+import tw.idv.tibame.tha102.web.Redis.vo.Redis_Data_Service;
 import tw.idv.tibame.tha102.web.orderProductDetail.dao.OrderProductDetailDao;
 import tw.idv.tibame.tha102.web.orderProductDetail.dao.OrderProductDetailDaoImpl;
 import tw.idv.tibame.tha102.web.orderProductDetail.vo.OrderProductDetail;
@@ -80,15 +81,29 @@ public class ordprodetControllrt extends HttpServlet{
 			
 			ordprodet.add(orderproductdetail1);
 			
+			try(Jedis jedis =new Jedis()){
+				
+				List<String> jediss = jedis.lrange(strUser_id, 0, jedis.llen(strUser_id));
+				
+				for(String strs : jediss) {
+					
+					Redis_Data jedisPro = gson.fromJson(strs,Redis_Data.class);
+					
+					if(jedisPro.getProduct_id() == rsd.getProduct_id()) {
+						jedis.lrem(strUser_id, 0, strs);
+					}
+					
+				}
+				
+				//jedis.del(strUser_id);
+				
+			}
+			
 		}
 				
 		orderproductdetailDao.Inset_ProDetail(ordprodet, orderproduct);
 			
-		try(Jedis jedis =new Jedis()){
-			
-			jedis.del(strUser_id);
-			
-		}
+		
 		
 		resp.getWriter().write(gson.toJson(orderproductdetailDao));
 		
