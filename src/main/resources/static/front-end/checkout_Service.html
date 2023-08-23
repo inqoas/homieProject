@@ -1245,6 +1245,7 @@
             const Redis_Data_Service=[];
             //沒有商品 不能按
            
+            getAllNum(data[0].user_id);
           
             for( let i in data){
                  
@@ -1340,14 +1341,14 @@
                 }    
             }
                
-            getAllNum();
-            function getAllNum(){
+           
+            function getAllNum(data){
                 $.ajax({
                     url:"/homieProject/Product/GetAllRedisController",
                     type:"POST",
                     dataType:"json",
                     data :{ 
-                        user_id:'user_id:1'
+                        user_id:data
                     },
                     success:function(data){
                         car_num.innerHTML=data.length;

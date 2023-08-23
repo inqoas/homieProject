@@ -16,14 +16,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import jakarta.activation.DataSource;
 import tw.idv.tibame.tha102.web.seller.vo.Seller;
 import tw.idv.tibame.tha102.web.service.dao.ServiceDao;
 import tw.idv.tibame.tha102.web.service.vo.Service;
 
 public class ServiceDaoImpl implements ServiceDao{
-
+//	
+//	@Autowired
+//	private DataSource dataSource; 
+//	
 	public static void main(String [] args)  {
 //		byte [] bytes;
 //		InputStream ii;
@@ -91,31 +95,39 @@ public class ServiceDaoImpl implements ServiceDao{
 //		
 //		System.out.println(service.toString());
 		
-		String sql ="SELECT distinct se.*, sel.* FROM seller sel join service se on  sel.user_id = se.user_id where se.service_id =2 ";
-		try(Connection con = DriverManager.getConnection(URL,USER,PASSWORD);
-			PreparedStatement ps =con.prepareStatement(sql)	){
-			ResultSet rs =ps.executeQuery();
-			Service service =null;
-			while( rs.next()) {
-				service =new Service();
-				Seller seller =new Seller();
-				seller.setTotalReviewCount(rs.getInt("total_review_count"));
-				seller.setTotalReviewStars(rs.getInt("total_review_stars"));
-				
-				service.setSeller(seller);
-					
-				
-				
-			}
-					
-			System.out.println(service.getSeller().getTotalReviewStars());
+//		String sql ="SELECT distinct se.*, sel.* FROM seller sel join service se on  sel.user_id = se.user_id where se.service_id =2 ";
+//		try(Connection con = DriverManager.getConnection(URL,USER,PASSWORD);
+//			PreparedStatement ps =con.prepareStatement(sql)	){
+//			ResultSet rs =ps.executeQuery();
+//			Service service =null;
+//			while( rs.next()) {
+//				service =new Service();
+//				Seller seller =new Seller();
+//				seller.setTotalReviewCount(rs.getInt("total_review_count"));
+//				seller.setTotalReviewStars(rs.getInt("total_review_stars"));
+//				
+//				service.setSeller(seller);
+//					
+//				
+//				
+//			}
+//					
+//			System.out.println(service.getSeller().getTotalReviewStars());
+//			
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+//select_check(String area_name, Integer service_id_code, String service_date,Integer service_state)		
+		
+		List<Service> services = 	new ServiceDaoImpl().select_check("新北市", 6, "", 0);
+		
+		for(Service service : services) {
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(service.toString());
+			
 		}
-		
-		
 		
 	}
 	
@@ -204,10 +216,10 @@ public class ServiceDaoImpl implements ServiceDao{
 	public List<Service> select_check(String area_name, Integer service_id_code, String service_date,
 	Integer service_state) {
 		
-		String Select_check  ="select DISTINCT ser.*from seller sel\r\n"
-				+ "join service ser on ser.user_id = sel.user_id\r\n"
-				+ "join available_time avt on sel.user_id = avt.user_id\r\n"
-				+ "join area ar on sel.user_id = sel.user_id ";
+		String Select_check  =" select DISTINCT ser.* from service ser " 
+				+ " join seller sel  on ser.user_id = sel.user_id "
+				+ " join available_time avt on sel.user_id = avt.user_id "
+				+ " join area ar on avt.user_id = ar.user_id ";
 		
 	 	List<Service> services =new ArrayList();
 		boolean isWhere = false;
@@ -219,7 +231,7 @@ public class ServiceDaoImpl implements ServiceDao{
 		
 		}
 			 
-		if(service_id_code != 1) {
+		if(service_id_code != 6) {
 			
 			if( isWhere ) {
 				
@@ -261,13 +273,13 @@ public class ServiceDaoImpl implements ServiceDao{
 				}	
 			}else {
 				if( service_state == 1 ) {
-					Select_check = Select_check + "and avt.morning= ? ";
+					Select_check = Select_check + "where avt.morning= ? ";
 					isWhere = true;
 				}else if( service_state == 2 ) {
-					Select_check = Select_check + "and avt.afternoon= ? ";
+					Select_check = Select_check + "where avt.afternoon= ? ";
 					isWhere = true;
 				}else if( service_state ==  3) {
-					Select_check = Select_check + "and avt.night= ? ";
+					Select_check = Select_check + "where avt.night= ? ";
 					isWhere = true;
 				}	
 				
@@ -286,7 +298,7 @@ public class ServiceDaoImpl implements ServiceDao{
 	            ps.setString(parameterIndex++, area_name);
 	        }
 
-	        if (service_id_code != 1) {
+	        if (service_id_code != 6) {
 	            ps.setInt(parameterIndex++, service_id_code);
 	        }
 

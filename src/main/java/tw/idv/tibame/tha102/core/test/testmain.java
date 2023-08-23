@@ -37,6 +37,9 @@ public class testmain {
 		
 		
 		System.out.println(TrkNum);
+		
+		
+		
 
 //		jedis.set("test","Hello testRedis");
 //		System.out.println("mykey"+jedis.get("test"));
@@ -72,6 +75,22 @@ public class testmain {
 //		System.out.println(jedis.get("pens"));
 		
 		
+		
+		
+		
+	
+				
+				
+		
 	}
 	
 }	
+
+ class test{
+	
+	
+	
+	
+	
+	
+}

@@ -393,7 +393,7 @@
                                         <div class="col-12">
                                             <div class="form-floating theme-form-floating">
                                                 <select id="ServiceItem" name="ServiceItem" class="form-select">
-                                                    <option value="01">請選擇</option>
+                                                    <option value="6">請選擇</option>
                                                     <option value="0">居家清潔</option>
                                                     <option value="1">冷氣清潔</option>
                                                     <option value="2">洗衣機清潔</option>
@@ -951,7 +951,7 @@
                                         <div class="product-detail">
                                             <ul>
                                                 <li class="name">
-                                                    <a href="product-left-thumbnail.html">${data[key].service_name}</a>
+                                                    <a href="Service_detail.html?service_id=${data[key].service_id}">${data[key].service_name}</a>
                                                 </li>
                                                 
                                                 <li id="service_id_code" class="text-content"><span class="text-title">服務類型:</span>${data[key].service_id_code}</li>
@@ -1086,7 +1086,7 @@
                                             <div class="product-detail ">
                                                 <ul>
                                                     <li class="name">
-                                                        <a href="product-left-thumbnail.html">${data[key].service_name}</a>
+                                                        <a href="Service_detail.html?service_id=${data[key].service_id}" >${data[key].service_name}</a>
                                                     </li>
                                                 
                                                     <li id="service_id_code" class="text-content"><span class="text-title">服務類型:</span> ${data[key].service_id_code}</li>

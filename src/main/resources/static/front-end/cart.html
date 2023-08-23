@@ -1054,14 +1054,14 @@
                                         <input type="checkbox" class="checkbox-input" id="checkbox_one"> <!-- 新增的 checkbox -->
                                         </span>
                                     </div>
-	                                <a href="" class="product-image">
+	                                <a href="http://localhost:8080/homieProject/Product/ProductDetail?product_id=${data[key].product_id}" class="product-image">
 	                                    <img src="http://localhost:8080/homieProject/product/ProductFindImgController?product_id=${data[key].product_id}" class="img-fluid blur-up lazyload" alt="">
 	                                </a>
                                     <input type="hidden" id="product_id" name="product_id" value="${data[key].product_id}">
 	                                <div class="product-detail ">
 	                                    <ul>
 	                                        <li class="name">
-	                                            <a href="" id="product_name" >${data[key].product_name}</a>
+	                                            <a href="http://localhost:8080/homieProject/Product/ProductDetail?product_id=${data[key].product_id}" id="product_name" >${data[key].product_name}</a>
 	                                        </li>
 	                                     
 	                                        <li>
